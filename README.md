@@ -87,3 +87,16 @@ Added subtle dark mode star and meteor animations.
 
 Removed eslint config
 
+
+Text classes
+18px
+text-xs md:text-sm lg:text-base 
+
+20px
+text-sm md:text-base lg:text-lg 
+
+24px
+text-base md:text-lg lg:text-xl 
+
+36px
+text-xl md:text-2xl lg:text-3xl text-center

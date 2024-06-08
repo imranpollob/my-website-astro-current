@@ -19,7 +19,7 @@ const projects = (await getCollection("projects"))
 
 const stack = [
   {
-    text: "Astro",
+    text: "Python",
     icon: "astro",
     href: "https://astro.build",
   },
@@ -132,7 +132,7 @@ const stack = [
     <div class="mx-auto max-w-screen-md p-5 space-y-24 pb-16">
       <!-- About Section -->
       <section class="animate">
-        <article>
+        <article class="text-sm md:text-base lg:text-lg">
           <p>
             I am a <b><i>software engineer</i></b>, <b><i>ui/ux designer</i></b
             >, <b><i>product planner</i></b>, <b><i>mentor</i></b>, <b
@@ -165,13 +165,17 @@ const stack = [
       <section class="animate">
         <div class="space-y-4">
           <div class="flex justify-between">
-            <p class="font-semibold text-black dark:text-white">Recent posts</p>
+            <p
+              class="text-sm md:text-base lg:text-lg font-semibold text-black dark:text-white"
+            >
+              Recent posts
+            </p>
             <a
               href="/blog"
               class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend"
             >
               <span
-                class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend"
+                class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend text-sm md:text-base lg:text-lg"
               >
                 All posts
               </span>
@@ -192,8 +196,10 @@ const stack = [
       <!-- Tech Stack Section -->
       <section class="animate">
         <div class="space-y-4">
-          <p class="font-semibold text-black dark:text-white">
-            Website build with
+          <p
+            class="text-base md:text-lg lg:text-xl font-semibold text-black dark:text-white"
+          >
+            My Tech Stack
           </p>
           <div class="flex flex-wrap items-center gap-2 mt-5">
             {
@@ -201,20 +207,6 @@ const stack = [
                 <StackCard text={item.text} icon={item.icon} href={item.href} />
               ))
             }
-          </div>
-          <div>
-            Performing reactivity and statefulness, special guest
-            <a
-              href="https://www.solidjs.com/"
-              target="_blank"
-              class="w-fit group underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend"
-            >
-              <span
-                class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend"
-              >
-                SolidJS
-              </span>
-            </a>
           </div>
         </div>
       </section>
@@ -252,14 +244,20 @@ const stack = [
       <!-- Contact Section -->
       <section class="animate">
         <div>
-          <p class="font-semibold text-black dark:text-white">Let's Connect</p>
-          <p>Reach out to me via email or on social media.</p>
+          <p
+            class="text-base md:text-lg lg:text-xl font-semibold text-black dark:text-white"
+          >
+            Let's Connect
+          </p>
+          <p class="text-sm md:text-base lg:text-lg">
+            Reach out to me via email or on social media.
+          </p>
           <div class="grid grid-cols-4 gap-y-2 mt-4 auto-cols-min">
             {
               SOCIALS.map((social) => (
                 <>
                   <div class="col-span-1 flex items-center gap-1">
-                    <span class="whitespace-nowrap truncate">
+                    <span class="text-sm md:text-base lg:text-lg whitespace-nowrap truncate">
                       {social.NAME}
                     </span>
                   </div>
@@ -269,7 +267,7 @@ const stack = [
                       target="_blank"
                       class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend"
                     >
-                      <span class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
+                      <span class="text-sm md:text-base lg:text-lg text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
                         {social.TEXT}
                       </span>
                     </a>
