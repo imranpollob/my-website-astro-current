@@ -67,6 +67,13 @@ article {
   @apply prose dark:prose-invert max-w-full pb-12;
 }
 
+@layer components {
+  .prose {
+    @apply text-sm md:text-base lg:text-lg;
+  }
+}
+
+
 .page-heading {
   @apply font-semibold text-black dark:text-white;
 }

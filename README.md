@@ -89,14 +89,14 @@ Removed eslint config
 
 
 Text classes
-18px
+18px date
 text-xs md:text-sm lg:text-base 
 
-20px
+20px summary text
 text-sm md:text-base lg:text-lg 
 
-24px
+24px heading
 text-base md:text-lg lg:text-xl 
 
-36px
-text-xl md:text-2xl lg:text-3xl text-center
+36px big text
+text-xl md:text-2xl lg:text-3xl text-center 

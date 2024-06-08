@@ -211,7 +211,7 @@ Output
 
 #### Syntax
 
-```markdown
+```xml
 <abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.
 
 H<sub>2</sub>O
