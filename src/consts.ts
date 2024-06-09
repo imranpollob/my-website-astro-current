@@ -7,9 +7,9 @@ export const SITE: Site = {
   AUTHOR: "Imran Pollob",
 };
 
-// Work Page
-export const WORK: Page = {
-  TITLE: "Work",
+// Experience Page
+export const EXPERIENCE: Page = {
+  TITLE: "Experience",
   DESCRIPTION: "Places I have worked.",
 };
 
@@ -39,7 +39,7 @@ export const LINKS: Links = [
   },
   {
     TEXT: "Experience",
-    HREF: "/work",
+    HREF: "/experience",
   },
   {
     TEXT: "Projects",

@@ -20,23 +20,19 @@ const projects = (await getCollection("projects"))
 const stack = [
   {
     text: "Python",
-    icon: "astro",
-    href: "https://astro.build",
+    icon: "python",
   },
   {
     text: "Javascript",
     icon: "javascript",
-    href: "https://www.javascript.com",
   },
   {
     text: "Typescript",
     icon: "typescript",
-    href: "https://www.typescriptlang.org",
   },
   {
     text: "Tailwind",
     icon: "tailwind",
-    href: "https://tailwindcss.com",
   },
 ];
 ---
@@ -134,7 +130,7 @@ const stack = [
               Read my blog
             </a>
             <a
-              href="/work"
+              href="/projects"
               class="py-2 px-4 truncate rounded uppercase text-xs md:text-sm lg:text-base border border-black/25 dark:border-white/25 hover:bg-black/5 hover:dark:bg-white/15 blend"
             >
               View my projects
@@ -187,7 +183,7 @@ const stack = [
               class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend"
             >
               <span
-                class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend text-sm md:text-base lg:text-lg"
+                class="text-sm md:text-base lg:text-lg text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend"
               >
                 All posts
               </span>
@@ -216,7 +212,7 @@ const stack = [
           <div class="flex flex-wrap items-center gap-2 mt-5">
             {
               stack.map((item) => (
-                <StackCard text={item.text} icon={item.icon} href={item.href} />
+                <StackCard text={item.text} icon={item.icon} />
               ))
             }
           </div>
@@ -227,7 +223,7 @@ const stack = [
       <section class="animate">
         <div class="space-y-4">
           <div class="flex justify-between">
-            <p class="font-semibold text-black dark:text-white">
+            <p class="text-sm md:text-base lg:text-lg font-semibold text-black dark:text-white">
               Recent projects
             </p>
             <a
@@ -235,7 +231,7 @@ const stack = [
               class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend"
             >
               <span
-                class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend"
+                class="text-sm md:text-base lg:text-lg text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend"
               >
                 All projects
               </span>
@@ -255,10 +251,10 @@ const stack = [
 
       <section class="animate text-center">
         <a
-          href="/work"
+          href="/experience"
           class="py-2 px-4 rounded uppercase truncate text-xs md:text-sm lg:text-base bg-black dark:bg-white text-white dark:text-black hover:opacity-75 blend"
         >
-          View my projects
+          View my experience
         </a>
       </section>
 
