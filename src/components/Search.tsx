@@ -35,6 +35,7 @@ export default function Search({data}: Props) {
     <div class="flex flex-col">
       <div class="relative">
         <input
+          autofocus
           name="search"
           type="text"
           value={query()}
