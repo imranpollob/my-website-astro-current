@@ -101,7 +101,7 @@ const stack = [
 
           <!-- Introduction -->
           <p
-            class="animated text-lg md:text-xl lg:text-2xl font-semibold opacity-75"
+            class="animated text-lg md:text-xl lg:text-2xl font-semibold text-black dark:text-white"
           >
             👋 I'm Imran
           </p>
@@ -121,7 +121,7 @@ const stack = [
           <!-- CTA Buttons -->
           <div
             id="ctaButtons"
-            class="animated flex flex-wrap gap-4 justify-center mt-5"
+            class="animated flex flex-wrap gap-4 justify-center mt-5 relative"
           >
             <a
               href="/blog"
@@ -135,6 +135,25 @@ const stack = [
             >
               View my projects
             </a>
+
+            <div class="absolute mt-20 animate-bounce">
+              <div class="flex flex-col justify-center items-center">
+                <span>Scroll</span>
+                <svg
+                  viewBox="0 0 16 16"
+                  class="rotate-90 size-[18px] min-w-[18px] fill-none stroke-[1.75] stroke-current group-hover:stroke-white transition-all duration-300 ease-in-out"
+                >
+                  <path
+                    d="M3.3335 8H12.6668"
+                    class="origin-right -translate-x-2 group-hover:-translate-x-0 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"
+                  ></path>
+                  <path
+                    d="M8 3.3335L12.6667 8.00016L8 12.6668"
+                    class="-translate-x-1 group-hover:translate-x-0 transition-transform duration-300 ease-in-out"
+                  ></path>
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -145,14 +164,11 @@ const stack = [
     <div class="mx-auto max-w-screen-md p-5 space-y-24 pb-16">
       <!-- About Section -->
       <section class="animate">
-        <article class="text-sm md:text-base lg:text-lg">
-          <h4>
-            About Me
-          </h4>
+        <article id="about" class="text-sm md:text-base lg:text-lg">
+          <h4>About Me</h4>
           <p>
-            I'm a PhD student. I do
-            research on Blockchain Security and trying to build automated smart
-            contract vulnerability detection tools.
+            I'm a PhD student. I do research on Blockchain Security and trying
+            to build automated smart contract vulnerability detection tools.
           </p>
 
           <h4>My Journey</h4>
@@ -223,7 +239,9 @@ const stack = [
       <section class="animate">
         <div class="space-y-4">
           <div class="flex justify-between">
-            <p class="text-sm md:text-base lg:text-lg font-semibold text-black dark:text-white">
+            <p
+              class="text-sm md:text-base lg:text-lg font-semibold text-black dark:text-white"
+            >
               Recent projects
             </p>
             <a
@@ -298,3 +316,10 @@ const stack = [
     </div>
   </div>
 </PageLayout>
+
+<style>
+  .scroll-ease-in-out {
+    scroll-behavior: smooth;
+    transition: scroll-top 0.5s ease-in-out; /* Adjust duration as needed */
+  }
+</style>
