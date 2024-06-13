@@ -1,16 +1,17 @@
 ---
 title: "Getting Started with Astro Sphere"
 summary: "All the things you need to know to run your website"
-date: "Jun 3 2024"
+date: "May 1 2024"
 draft: false
 tags:
-- Tutorial
-- Astro
+  - Tutorial
+  - Astro
 ---
 
 ## Astro Sphere: File Structure
 
 A one line summary of what each file and directory is for:
+
 ```js
 /
 ├── public/ // Files publicly available to the browser
@@ -51,7 +52,6 @@ A one line summary of what each file and directory is for:
 └── package.json // All the installed packages
 ```
 
-
 ## Astro Sphere: Getting Started
 
 Astro Sphere is designed to be configurable. This article will cover the basics on
@@ -64,8 +64,13 @@ configuring the site and make it personal.
 
 export default defineConfig({
   site: "https://astro-sphere.vercel.app", // your domain here
-  integrations: [mdx(), sitemap(), solidJs(), tailwind({ applyBaseStyles: false })],
-})
+  integrations: [
+    mdx(),
+    sitemap(),
+    solidJs(),
+    tailwind({ applyBaseStyles: false }),
+  ],
+});
 ```
 
 ### Next, Let's configure the Site
@@ -75,9 +80,10 @@ export default defineConfig({
 
 export const SITE: Site = {
   TITLE: "Astro Sphere",
-  DESCRIPTION: "Welcome to Astro Sphere, a portfolio and blog for designers and developers.",
+  DESCRIPTION:
+    "Welcome to Astro Sphere, a portfolio and blog for designers and developers.",
   AUTHOR: "Mark Horn",
-}
+};
 ```
 
 | Field       | Type   | Description                                                            |
@@ -100,7 +106,7 @@ Each page has a metadata entry that is useful for SEO.
 export const WORK: Page = {
   TITLE: "Work",
   DESCRIPTION: "Places I have worked.",
-}
+};
 ```
 
 The links that are displayed in the header and drawer
@@ -111,30 +117,28 @@ export const LINKS: Links = [
   { HREF: "/work", TEXT: "Work" },
   { HREF: "/blog", TEXT: "Blog" },
   { HREF: "/projects", TEXT: "Projects" },
-]
+];
 ```
 
 The social media links
 
 ```js
 export const SOCIALS: Socials = [
-  { 
+  {
     NAME: "Github",
     ICON: "github",
     TEXT: "markhorn-dev",
-    HREF: "https://github.com/markhorn-dev/astro-sphere"
+    HREF: "https://github.com/markhorn-dev/astro-sphere",
   },
-]
+];
 ```
 
-| Field | Type | Required | Description |
-| :---- | :--- | :------- | :---------- |
-| NAME  | string | yes | Accessible name |
-| ICON  | string | yes | Refers to the symbol id in `public/social.svg` |
-| TEXT  | string | yes | Shorthand profile name |
-| HREF  | string | yes | The link to the social media profile |
-
-
+| Field | Type   | Required | Description                                    |
+| :---- | :----- | :------- | :--------------------------------------------- |
+| NAME  | string | yes      | Accessible name                                |
+| ICON  | string | yes      | Refers to the symbol id in `public/social.svg` |
+| TEXT  | string | yes      | Shorthand profile name                         |
+| HREF  | string | yes      | The link to the social media profile           |
 
 ## Astro Sphere: Adding a new post or project.
 
@@ -159,13 +163,13 @@ Front matter is in yaml if you are familiar with the format. All posts and proje
 
 ### Blog Collection
 
-| Field   | Type    | Req? | Description                                                   |
-| :------ | :------ | :--- | :------------------------------------------------------------ |
-| title   | string  | yes  | Title of the post. Used in SEO.                               |
-| summary | string  | yes  | Short description of the post. Used in SEO.                   |
-| date    | string  | yes  | Any string date that javascript can convert. Used in sorting  |
-| tags    | array   | yes  | Post topic. Array of strings. Used in filtering.              |
-| draft   | boolean | no   | Hides the post from collections. Unpublished entry.           |
+| Field   | Type    | Req? | Description                                                  |
+| :------ | :------ | :--- | :----------------------------------------------------------- |
+| title   | string  | yes  | Title of the post. Used in SEO.                              |
+| summary | string  | yes  | Short description of the post. Used in SEO.                  |
+| date    | string  | yes  | Any string date that javascript can convert. Used in sorting |
+| tags    | array   | yes  | Post topic. Array of strings. Used in filtering.             |
+| draft   | boolean | no   | Hides the post from collections. Unpublished entry.          |
 
 Example blog post frontmatter
 
@@ -176,23 +180,23 @@ summary: "Adding a new article (blog post or project) is pretty easy."
 date: "Mar 18 2024"
 draft: false
 tags:
-- Tutorial
-- Astro
-- Astro Sphere
+  - Tutorial
+  - Astro
+  - Astro Sphere
 ---
 ```
 
 ### Projects Collection (extends Blog Collection)
 
-| Field   | Type    | Req? | Description                                                   |
-| :------ | :------ | :--- | :------------------------------------------------------------ |
-| title   | string  | yes  | Title of the post. Used in SEO.                               |
-| summary | string  | yes  | Short description of the post. Used in SEO.                   |
-| date    | string  | yes  | Any string date that javascript can convert. Used in sorting  |
-| tags    | array   | yes  | Post topic. Array of strings. Used in filtering.              |
-| draft   | boolean | no   | Hides the post from collections. Unpublished entry.           |
-| demoUrl | string  | no   | A link to the deployed project, if applicable.                |
-| repoUrl | string  | no   | A link to the repository, if applicable.                      |
+| Field   | Type    | Req? | Description                                                  |
+| :------ | :------ | :--- | :----------------------------------------------------------- |
+| title   | string  | yes  | Title of the post. Used in SEO.                              |
+| summary | string  | yes  | Short description of the post. Used in SEO.                  |
+| date    | string  | yes  | Any string date that javascript can convert. Used in sorting |
+| tags    | array   | yes  | Post topic. Array of strings. Used in filtering.             |
+| draft   | boolean | no   | Hides the post from collections. Unpublished entry.          |
+| demoUrl | string  | no   | A link to the deployed project, if applicable.               |
+| repoUrl | string  | no   | A link to the repository, if applicable.                     |
 
 Example project frontmatter
 
@@ -203,23 +207,19 @@ summary: "Astro Sphere, a portfolio and blog for designers and developers."
 date: "Mar 18 2024"
 draft: false
 tags:
-- Astro
-- Typescript
-- Javascript
-- Tailwind
-- SolidJS
+  - Astro
+  - Typescript
+  - Javascript
+  - Tailwind
+  - SolidJS
 demoUrl: https://astro-sphere.vercel.app
 repoUrl: https://github.com/markhorn-dev/astro-sphere
 ---
 ```
 
 ### Write your content
+
 You've made it this far, all that is left to do is write your content beneath the frontmatter. Writing markdown will be covered in the next article.
-
-
-
-
-
 
 ## Astro Sphere: Writing Markdown
 
@@ -334,7 +334,7 @@ we can use 3 backticks ``` in new line and write snippet and close with 3 backti
 
 ````markdown
 ```html
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -350,7 +350,7 @@ we can use 3 backticks ``` in new line and write snippet and close with 3 backti
 Output
 
 ```html
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -448,9 +448,6 @@ Press <kbd><kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd></kbd> to end the ses
 
 Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.
 
-
-
-
 ## Astro Sphere: Writing MDX
 
 MDX is a special flavor of Markdown that supports embedded JavaScript & JSX syntax. This unlocks the ability to [mix JavaScript and UI Components into your Markdown content](https://docs.astro.build/en/guides/markdown-content/#mdx-features) for things like interactive charts or alerts.
@@ -468,13 +465,9 @@ import MyComponent from "./MyComponent.astro"
 </MyComponent>
 ```
 
-import MyComponent from "./MyComponent.astro"
+import MyComponent from "./MyComponent.astro";
 
-<MyComponent name="You">
-  Welcome to MDX
-</MyComponent>
-
-
+<MyComponent name="You">Welcome to MDX</MyComponent>
 
 ### An interactive Solid Js component
 
@@ -483,20 +476,16 @@ import MyComponent from "./MyComponent.astro"
 import MyComponent from "@components/Counter"
 
 // Don't forget the astro client:load directive
-<Counter client:load /> 
+<Counter client:load />
 ```
 
-import Counter from "@components/Counter"
+import Counter from "@components/Counter";
 
 <Counter client:load />
 
-<br/>
-<br/>
-<br/>
-
-
-
-
+<br />
+<br />
+<br />
 
 ## Astro Sphere: Social media links
 
@@ -508,21 +497,21 @@ Astro Sphere comes preconfigured with social media links for Email, Github, Link
 // consts.ts
 
 export const SOCIALS: Socials = [
-  { 
+  {
     NAME: "Github",
     ICON: "github",
     TEXT: "markhorn-dev",
-    HREF: "https://github.com/markhorn-dev/astro-sphere"
+    HREF: "https://github.com/markhorn-dev/astro-sphere",
   },
-]
+];
 ```
 
-| Field | Type | Required | Description |
-| :---- | :--- | :------- | :---------- |
-| NAME  | string | yes | Accessible name |
-| ICON  | string | yes | Refers to the symbol id in `public/social.svg` |
-| TEXT  | string | yes | Shorthand profile name |
-| HREF  | string | yes | The link to the social media profile |
+| Field | Type   | Required | Description                                    |
+| :---- | :----- | :------- | :--------------------------------------------- |
+| NAME  | string | yes      | Accessible name                                |
+| ICON  | string | yes      | Refers to the symbol id in `public/social.svg` |
+| TEXT  | string | yes      | Shorthand profile name                         |
+| HREF  | string | yes      | The link to the social media profile           |
 
 ### Edit /public/social.svg
 
@@ -538,8 +527,10 @@ The id should match the icon field as specified in your `consts.ts` file.
 <svg xmlns="http://www.w3.org/2000/svg">
   <defs>
     <symbol id="github" viewBox="0 0 496 512">
-      <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+      <path
+        d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"
+      />
     </symbol>
-</defs>
+  </defs>
 </svg>
 ```

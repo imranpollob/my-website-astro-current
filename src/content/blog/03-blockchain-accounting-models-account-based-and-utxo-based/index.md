@@ -1,11 +1,10 @@
 ---
 title: "Blockchain Accounting Models: Account-Based and UTXO-Based"
 summary: ""
-date: "May 31 2024"
+date: "May 15 2024"
 draft: false
 tags:
-- Tutorial
-- Astro
+- Blockchain
 ---
 
 Blockchain accounting models dictate how transactions are recorded, validated, and processed on the blockchain. The two primary models are the **account-based** model and the **UTXO (Unspent Transaction Output) based** model. Each model has its own mechanisms for managing balances and ensuring the integrity of transactions.
@@ -62,14 +61,14 @@ The UTXO model is used by Bitcoin and many other cryptocurrencies. It is based o
 
 ### Comparison
 
-| Feature                     | Account-Based Model           | UTXO-Based Model               |
-|-----------------------------|-------------------------------|--------------------------------|
-| **Balance Tracking**        | Account balances              | Sum of UTXOs                   |
-| **Transaction Structure**   | Direct balance transfers      | UTXO inputs and outputs        |
-| **Double-Spending Prevention** | Account nonce or sequence number | UTXO can only be spent once    |
-| **Privacy**                 | Lower, accounts are linked    | Higher, UTXOs can be mixed     |
-| **Complexity**              | Simpler                       | More complex                   |
-| **Efficiency**              | More efficient                | Less efficient, more data overhead |
+| Feature                        | Account-Based Model              | UTXO-Based Model                   |
+| ------------------------------ | -------------------------------- | ---------------------------------- |
+| **Balance Tracking**           | Account balances                 | Sum of UTXOs                       |
+| **Transaction Structure**      | Direct balance transfers         | UTXO inputs and outputs            |
+| **Double-Spending Prevention** | Account nonce or sequence number | UTXO can only be spent once        |
+| **Privacy**                    | Lower, accounts are linked       | Higher, UTXOs can be mixed         |
+| **Complexity**                 | Simpler                          | More complex                       |
+| **Efficiency**                 | More efficient                   | Less efficient, more data overhead |
 
 ### Use Cases
 - **Account-Based Model**: Ethereum, NEO, EOS.
