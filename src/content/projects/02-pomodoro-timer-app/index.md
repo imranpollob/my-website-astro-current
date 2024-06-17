@@ -1,7 +1,7 @@
 ---
 title: "Pomodoro Timer App"
 summary: "A simple pomodoro timer featuring useful functionalities"
-date: "Feb 27 2024"
+date: "Jun 10 2024"
 draft: false
 tags:
 - Python

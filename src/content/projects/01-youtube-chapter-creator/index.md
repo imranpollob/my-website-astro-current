@@ -1,7 +1,7 @@
 ---
 title: "YouTube Chapter Creator"
 summary: "Automated YouTube Chapter Creation for Combined Videos"
-date: "Jun 25 2020"
+date: "May 13 2024"
 draft: false
 tags:
 - Python
