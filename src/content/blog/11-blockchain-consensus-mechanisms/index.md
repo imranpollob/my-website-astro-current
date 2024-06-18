@@ -1,6 +1,6 @@
 ---
 title: "Blockchain Consensus Mechanisms"
-summary: "itional system, a cent"
+summary: ""
 date: "Jun 17 2024"
 draft: false
 tags:
@@ -60,17 +60,17 @@ There are several key properties a good consensus mechanism should achieve:
 
 ### Comparison Table
 
-| **Feature**                   | **Proof of Work (PoW)** | **Proof of Stake (PoS)** | **Delegated Proof of Stake (DPoS)** | **Practical Byzantine Fault Tolerance (PBFT)** |
-| ----------------------------- | ----------------------- | ------------------------ | ----------------------------------- | ---------------------------------------------- |
-| **Energy Efficiency**         | Low                     | High                     | High                                | High                                           |
-| **Scalability**               | Moderate                | High                     | Very High                           | Moderate                                       |
-| **Security**                  | Very High               | High                     | Moderate to High                    | High                                           |
-| **Throughput**                | Low                     | High                     | Very High                           | High                                           |
-| **Latency**                   | High                    | Moderate                 | Low                                 | Low                                            |
-| **Fault Tolerance**           | High                    | Moderate                 | Moderate                            | Very High                                      |
-| **Decentralization**          | High                    | High                     | Moderate                            | Moderate                                       |
-| **Implementation Complexity** | Moderate                | High                     | High                                | Very High                                      |
-| **Common Use Cases**          | Bitcoin, Litecoin       | Ethereum 2.0, Cardano    | EOS, TRON                           | Hyperledger Fabric, Zilliqa                    |
+| **Feature**                   | **PoW**           | **PoS**               | **DPoS**         | **PBFT**                    |
+| ----------------------------- | ----------------- | --------------------- | ---------------- | --------------------------- |
+| **Energy Efficiency**         | Low               | High                  | High             | High                        |
+| **Scalability**               | Moderate          | High                  | Very High        | Moderate                    |
+| **Security**                  | Very High         | High                  | Moderate to High | High                        |
+| **Throughput**                | Low               | High                  | Very High        | High                        |
+| **Latency**                   | High              | Moderate              | Low              | Low                         |
+| **Fault Tolerance**           | High              | Moderate              | Moderate         | Very High                   |
+| **Decentralization**          | High              | High                  | Moderate         | Moderate                    |
+| **Implementation Complexity** | Moderate          | High                  | High             | Very High                   |
+| **Common Use Cases**          | Bitcoin, Litecoin | Ethereum 2.0, Cardano | EOS, TRON        | Hyperledger Fabric, Zilliqa |
 
 ### Detailed Analysis
 
