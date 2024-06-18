@@ -1,13 +1,11 @@
 ---
 title: "Understanding Blockchain Blocks"
 summary: ""
-date: "Jun 17 2024"
+date: "Jun 14 2024"
 draft: false
 tags:
 - Blockchain
 ---
-
-**Understanding Blockchain Blocks**
 
 A blockchain block is a fundamental unit of the blockchain structure, serving as an immutable record within the distributed ledger. It acts like a container for transaction data on a blockchain network. Each block in a blockchain is a secured, verifiable data structure linked to its predecessor, forming a chain that is resistant to modification and provides a transparent and distributed record-keeping system.
 
