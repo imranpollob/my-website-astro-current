@@ -3,7 +3,8 @@ import type { Site, Page, Links, Socials } from "@types";
 // Global
 export const SITE: Site = {
   TITLE: "Imran Pollob",
-  DESCRIPTION: "Imran Pollob's portfolio website and tech blog.",
+  DESCRIPTION:
+    "Imran Pollob's portfolio and tech blog: Researching Blockchain Security and developing smart contract vulnerability detection tools. Over 5 years of experience as a software engineer with diverse tech stacks.",
   AUTHOR: "Imran Pollob",
 };
 
@@ -49,7 +50,6 @@ export const LINKS: Links = [
     TEXT: "Blog",
     HREF: "/blog",
   },
-
 ];
 
 // Socials
