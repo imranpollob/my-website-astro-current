@@ -30,4 +30,3 @@ Here are some key points about the mempool:
 
 In summary, the mempool plays a crucial role in ensuring the smooth flow of transactions on a blockchain network. It acts as a queue for unconfirmed transactions, and factors like fees influence how quickly your transaction gets processed. Understanding the mempool is crucial for optimizing transaction fees and confirmation times, as well as for maintaining the overall efficiency and security of the blockchain network.
 
-Thanks for reading Imran Pollob’s Substack! Subscribe for free to receive new posts and support my work.

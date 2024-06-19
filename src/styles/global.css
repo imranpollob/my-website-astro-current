@@ -163,3 +163,10 @@ table {
 table th {
   text-align: left;
 }
+
+.navbar-brand {
+  border: 1px solid #ff6601;
+  border-right: 2px dotted #ff6601;
+  padding: 1px 3px;
+  border-radius: 60% 40% 40% 20% / 70% 50% 30% 25%;
+}
