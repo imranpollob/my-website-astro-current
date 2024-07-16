@@ -1,13 +1,11 @@
 ---
-title: "Understanding Load Balancers"
+title: "System Design Interview: Understanding Load Balancers"
 summary: ""
 date: "Jun 26 2024"
 draft: false
 tags:
 - System Design
 ---
-
-### Understanding Load Balancers
 
 Load balancers are a crucial component in systems design, frequently encountered in interviews and essential for ensuring the efficiency and reliability of web applications. Let's discuss the concept of load balancers, their significance, and various strategies for implementing them.
 
