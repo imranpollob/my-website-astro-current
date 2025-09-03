@@ -205,3 +205,8 @@ table th {
   padding: 1px 3px;
   border-radius: 60% 40% 40% 20% / 70% 50% 30% 25%;
 }
+
+.glass-panel {
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
