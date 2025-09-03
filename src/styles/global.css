@@ -173,7 +173,7 @@ article img {
 }
 
 .copy-svg {
-  @apply w-full aspect-square text-white opacity-70 hover:opacity-90;
+  @apply w-2/3 aspect-square text-white opacity-70 hover:opacity-90;
 }
 
 /* Card transition */
