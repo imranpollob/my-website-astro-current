@@ -3,8 +3,7 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import TopLayout from "@layouts/TopLayout.astro";
 import BottomLayout from "@layouts/BottomLayout.astro";
-// import Search2 from "@components/Search";
-import Search from "astro-pagefind/components/Search";
+import Search from "@components/Search";
 import { SEARCH } from "@consts";
 
 const posts = (await getCollection("blog")).filter((post) => !post.data.draft);
@@ -26,18 +25,7 @@ const data = [...posts, ...projects] as CollectionEntry<"blog">[];
   </TopLayout>
   <BottomLayout>
     <div class="animate">
-      <div id="debug-output"></div>
-
-      <Search
-        id="search"
-        className="pollmix"
-        uiOptions={{
-          showImages: false,
-          excerptLength: 15,
-          resetStyles: false,
-          autofocus: true,
-        }}
-      />
+      <Search client:load data={data} />
     </div>
   </BottomLayout>
 </PageLayout>
