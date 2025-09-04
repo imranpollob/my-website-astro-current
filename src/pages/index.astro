@@ -6,330 +6,313 @@ import StackCard from "@components/StackCard.astro";
 import { SITE, SOCIALS } from "@consts";
 
 const posts = (await getCollection("blog"))
-  .filter((post) => !post.data.draft)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 3);
+	.filter((post) => !post.data.draft)
+	.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+	.slice(0, 3);
 
 const projects = (await getCollection("projects"))
-  .filter((project) => !project.data.draft)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 3);
+	.filter((project) => !project.data.draft)
+	.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+	.slice(0, 3);
 
 const stack = [
-  {
-    text: "Python",
-    icon: "python",
-  },
-  {
-    text: "JavaScript",
-    icon: "javascript",
-  },
-  {
-    text: "React",
-    icon: "react",
-  },
-  {
-    text: "Next.js",
-    icon: "nextjs",
-  },
-  {
-    text: "Vue.js",
-    icon: "vue",
-  },
-  {
-    text: "Node.js",
-    icon: "nodejs",
-  },
-  {
-    text: "PHP",
-    icon: "php",
-  },
-  {
-    text: "Laravel",
-    icon: "laravel",
-  },
-  {
-    text: "MySQL",
-    icon: "mysql",
-  },
-  {
-    text: "PostgreSQL",
-    icon: "postgresql",
-  },
-  {
-    text: "MongoDB",
-    icon: "mongodb",
-  },
-  {
-    text: "AWS",
-    icon: "aws",
-  },
-  {
-    text: "Solidity",
-    icon: "solidity",
-  },
+	{
+		category: "Web3",
+		items: [
+			{ text: "Blockchain", icon: "blockchain" },
+			{ text: "Ethereum", icon: "ethereum" },
+			{ text: "Solidity", icon: "solidity" },
+			{ text: "Smart Contract", icon: "contract" },
+		],
+	},
+	{
+		category: "Backend",
+		items: [
+			{ text: "Python", icon: "python" },
+			{ text: "JavaScript", icon: "javascript" },
+			{ text: "Node.js", icon: "nodejs" },
+			{ text: "PHP", icon: "php" },
+			{ text: "Laravel", icon: "laravel" },
+		],
+	},
+	{
+		category: "Frontend",
+		items: [
+			{ text: "React.js", icon: "react" },
+			{ text: "Next.js", icon: "nextjs" },
+			{ text: "Vue.js", icon: "vue" },
+		],
+	},
+	{
+		category: "Databases",
+		items: [
+			{ text: "MySQL", icon: "mysql" },
+			{ text: "PostgreSQL", icon: "postgresql" },
+			{ text: "MongoDB", icon: "mongodb" },
+		],
+	},
+	{
+		category: "AI",
+		items: [
+			{ text: "Machine Learning", icon: "ml" },
+			{ text: "Deep Learning", icon: "dl" },
+			{ text: "NLP", icon: "nlp" },
+			{ text: "LLM", icon: "llm" },
+		],
+	},
+	{
+		category: "DevOps",
+		items: [
+			{ text: "AWS", icon: "aws" },
+			{ text: "Docker", icon: "docker" },
+			{ text: "CI/CD", icon: "cicd" },
+		],
+	},
 ];
 ---
 
 <PageLayout title="Home" description={SITE.DESCRIPTION}>
-  <!-- HERO -->
-  <section class="relative h-screen w-full">
-    <div
-      id="planetcont"
-      class="animate absolute inset-0 top-1/4 overflow-hidden"
-    >
-      <div
-        id="crescent"
-        class="absolute top-0 left-1/2 -translate-x-1/2 w-[250vw] min-h-[100vh] aspect-square rounded-full p-[1px] bg-gradient-to-b from-black/25 dark:from-white/75 from-0% to-transparent to-5%"
-      >
-        <div
-          id="planet"
-          class="w-full h-full bg-white dark:bg-black rounded-full p-[1px] overflow-hidden flex justify-center"
-        >
-          <div
-            id="blur"
-            class="w-full h-20 rounded-full bg-neutral-900/25 dark:bg-white/25 blur-3xl"
-          >
-          </div>
-        </div>
-      </div>
-    </div>
+	<!-- HERO -->
+	<section class="relative h-screen w-full">
+		<div id="planetcont" class="animate absolute inset-0 top-1/4 overflow-hidden">
+			<div
+				id="crescent"
+				class="absolute top-0 left-1/2 -translate-x-1/2 w-[250vw] min-h-[100vh] aspect-square rounded-full p-[1px] bg-gradient-to-b from-black/25 dark:from-white/75 from-0% to-transparent to-5%"
+			>
+				<div
+					id="planet"
+					class="w-full h-full bg-white dark:bg-black rounded-full p-[1px] overflow-hidden flex justify-center"
+				>
+					<div id="blur" class="w-full h-20 rounded-full bg-neutral-900/25 dark:bg-white/25 blur-3xl"></div>
+				</div>
+			</div>
+		</div>
 
-    <div
-      class="animate absolute h-full w-full flex items-center justify-center"
-    >
-      <div class="relative w-full h-full flex items-center justify-center">
-        <div class="p-5 text-center">
-          <!-- Photo -->
-          <div class="flex items-center justify-center mb-5">
-            <img
-              src="/image/imran-pollob.jpg"
-              alt="Imran Pollob"
-              class="w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] lg:w-[13rem] lg:h-[13rem] rounded-full border-4 border-black dark:border-white"
-            />
-          </div>
+		<div class="animate absolute h-full w-full flex items-center justify-center">
+			<div class="relative w-full h-full flex items-center justify-center">
+				<div class="p-5 text-center">
+					<!-- Photo -->
+					<div class="flex items-center justify-center mb-5">
+						<img
+							src="/image/imran-pollob.jpg"
+							alt="Imran Pollob"
+							class="w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] lg:w-[13rem] lg:h-[13rem] rounded-full border-4 border-black dark:border-white"
+						/>
+					</div>
 
-          <!-- Introduction -->
-          <h1
-            class="animated text-lg md:text-xl lg:text-2xl font-semibold text-black dark:text-white"
-          >
-            👋 I'm Imran Pollob
-          </h1>
+					<!-- Introduction -->
+					<h1 class="animated text-lg md:text-xl lg:text-2xl font-semibold text-black dark:text-white">
+						👋 Hello there, I'm
+					</h1>
 
-          <!-- Main work -->
-          <h2
-            class="animated text-2xl md:text-3xl lg:text-4xl font-bold uppercase text-black dark:text-white"
-          >
-            Software Engineer
-          </h2>
+					<!-- Main work -->
+					<h2 class="animated text-2xl md:text-3xl lg:text-4xl font-bold text-black dark:text-white">
+						M M IMRAN (Pollob)
+					</h2>
 
-          <!-- Current work -->
-          <p class="animated text-sm md:text-base lg:text-lg opacity-75">
-            Currently doing research on Blockchain Security
-          </p>
+					<!-- Current work -->
+					<p class="animated text-sm md:text-base lg:text-lg opacity-75">
+						Former Software Engineer and Currently a PhD Candidate
+					</p>
 
-          <!-- CTA Buttons -->
-          <div
-            id="ctaButtons"
-            class="animated flex flex-wrap gap-4 justify-center mt-5 relative"
-          >
-            <a
-              href="/blog"
-              class="py-2 px-4 rounded uppercase truncate text-xs md:text-sm lg:text-base bg-black dark:bg-white text-white dark:text-black hover:opacity-75 blend"
-            >
-              Read my blog
-            </a>
-            <a
-              href="/projects"
-              class="py-2 px-4 truncate rounded uppercase text-xs md:text-sm lg:text-base border border-black/25 dark:border-white/25 hover:bg-black/5 hover:dark:bg-white/15 blend"
-            >
-              View my projects
-            </a>
+					<!-- CTA Buttons -->
+					<div id="ctaButtons" class="animated flex flex-wrap gap-4 justify-center mt-5 relative">
+						<a
+							href="/blog"
+							class="py-2 px-4 rounded uppercase truncate text-xs md:text-sm lg:text-base bg-black dark:bg-white text-white dark:text-black hover:opacity-75 blend"
+						>
+							Read my blog
+						</a>
+						<a
+							href="/projects"
+							class="py-2 px-4 truncate rounded uppercase text-xs md:text-sm lg:text-base border border-black/25 dark:border-white/25 hover:bg-black/5 hover:dark:bg-white/15 blend"
+						>
+							View my projects
+						</a>
 
-            <div class="absolute mt-20 animate-bounce">
-              <div class="flex flex-col justify-center items-center">
-                <span>Scroll</span>
-                <svg
-                  viewBox="0 0 16 16"
-                  class="rotate-90 size-[18px] min-w-[18px] fill-none stroke-[1.75] stroke-current group-hover:stroke-white transition-all duration-300 ease-in-out"
-                >
-                  <path
-                    d="M3.3335 8H12.6668"
-                    class="origin-right -translate-x-2 group-hover:-translate-x-0 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"
-                  ></path>
-                  <path
-                    d="M8 3.3335L12.6667 8.00016L8 12.6668"
-                    class="-translate-x-1 group-hover:translate-x-0 transition-transform duration-300 ease-in-out"
-                  ></path>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+						<div class="absolute mt-20 animate-bounce">
+							<div class="flex flex-col justify-center items-center">
+								<span>Scroll</span>
+								<svg
+									viewBox="0 0 16 16"
+									class="rotate-90 size-[18px] min-w-[18px] fill-none stroke-[1.75] stroke-current group-hover:stroke-white transition-all duration-300 ease-in-out"
+								>
+									<path
+										d="M3.3335 8H12.6668"
+										class="origin-right -translate-x-2 group-hover:-translate-x-0 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"
+									></path>
+									<path
+										d="M8 3.3335L12.6667 8.00016L8 12.6668"
+										class="-translate-x-1 group-hover:translate-x-0 transition-transform duration-300 ease-in-out"
+									></path>
+								</svg>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-  <div class="relative bg-white dark:bg-black">
-    <div class="mx-auto max-w-screen-md p-5 space-y-24 pb-16">
-      <!-- About Section -->
-      <section class="animate">
-        <article id="about" class="text-sm md:text-base lg:text-lg">
-          <h4>About Me</h4>
-          <p>
-            I'm a PhD student. I do research on Blockchain Security and trying
-            to build automated smart contract vulnerability detection tools.
-          </p>
+	<div class="relative bg-white dark:bg-black">
+		<div class="mx-auto max-w-screen-md p-5 space-y-24 pb-16">
+			<!-- About Section -->
+			<section class="animate">
+				<article id="about" class="text-sm md:text-base lg:text-lg">
+					<h4>About Me</h4>
+					<p>
+						I’m a PhD student researching Blockchain Security, with a focus on developing automated tools
+						for detecting smart contract vulnerabilities.
+					</p>
 
-          <h4>My Journey</h4>
-          <p>
-            Before starting my PhD journey, I spent over 5 years as a software
-            engineer, working with a variety of tech stacks. I collaborated with
-            talented teams to build impactful consumer-facing projects.
-          </p>
-          <h4>My Passion</h4>
-          <p>
-            I feel so attached to Web Development. Building side projects is my
-            favorite free time activity. I love to stay curious in tech field.
-          </p>
-        </article>
-      </section>
+					<h4>My Journey</h4>
+					<p>
+						Before my PhD, I worked for over five years as a software engineer, gaining hands-on experience
+						across diverse tech stacks and collaborating with talented teams to deliver impactful,
+						consumer-facing projects.
+					</p>
+					<h4>My Passion</h4>
+					<p>
+						I’m deeply passionate about building projects. In my free time, I enjoy working on side projects
+						and exploring new technologies. Exploring new ideas in tech always keeps me inspired.
+					</p>
+				</article>
+			</section>
 
-      <!-- Blog Preview Section -->
-      <section class="animate">
-        <div class="space-y-4">
-          <div class="flex justify-between">
-            <p
-              class="text-sm md:text-base lg:text-lg font-semibold text-black dark:text-white"
-            >
-              Recent posts
-            </p>
-            <a
-              href="/blog"
-              class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend"
-            >
-              <span
-                class="text-sm md:text-base lg:text-lg text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend"
-              >
-                All posts
-              </span>
-            </a>
-          </div>
-          <ul class="space-y-4">
-            {
-              posts.map((post) => (
-                <li>
-                  <ArrowCard entry={post} />
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-      </section>
+			<!-- Blog Preview Section -->
+			<section class="animate">
+				<div class="space-y-4">
+					<div class="flex justify-between">
+						<p class="text-sm md:text-base lg:text-lg font-semibold text-black dark:text-white">
+							Recent posts
+						</p>
+						<a
+							href="/blog"
+							class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend"
+						>
+							<span
+								class="text-sm md:text-base lg:text-lg text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend"
+							>
+								All posts
+							</span>
+						</a>
+					</div>
+					<ul class="space-y-4">
+						{
+							posts.map((post) => (
+								<li>
+									<ArrowCard entry={post} />
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</section>
 
-      <!-- Tech Stack Section -->
-      <section class="animate">
-        <div class="space-y-4">
-          <p
-            class="text-base md:text-lg lg:text-xl font-semibold text-black dark:text-white"
-          >
-            My Tech Stack
-          </p>
-          <div class="flex flex-wrap items-center gap-2 mt-5">
-            {
-              stack.map((item) => (
-                <StackCard text={item.text} icon={item.icon} />
-              ))
-            }
-          </div>
-        </div>
-      </section>
+			<!-- Tech Stack Section -->
+			<section class="animate">
+				<div class="space-y-6">
+					<p class="text-base md:text-lg lg:text-xl font-semibold text-black dark:text-white">
+						My Tech Stack
+					</p>
+					<div class="space-y-4 mt-5">
+						{
+							stack.map((group) => (
+								<div>
+									<h3 class="text-sm md:text-base font-semibold text-gray-700 dark:text-gray-300 mb-2">
+										{group.category}
+									</h3>
+									<div class="flex flex-wrap items-center gap-2">
+										{group.items.map((item) => (
+											<StackCard text={item.text} icon={item.icon} />
+										))}
+									</div>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
 
-      <!-- Project Preview Section -->
-      <section class="animate">
-        <div class="space-y-4">
-          <div class="flex justify-between">
-            <p
-              class="text-sm md:text-base lg:text-lg font-semibold text-black dark:text-white"
-            >
-              Recent projects
-            </p>
-            <a
-              href="/projects"
-              class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend"
-            >
-              <span
-                class="text-sm md:text-base lg:text-lg text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend"
-              >
-                All projects
-              </span>
-            </a>
-          </div>
-          <ul class="space-y-4">
-            {
-              projects.map((project) => (
-                <li>
-                  <ArrowCard entry={project} />
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-      </section>
+			<!-- Project Preview Section -->
+			<section class="animate">
+				<div class="space-y-4">
+					<div class="flex justify-between">
+						<p class="text-sm md:text-base lg:text-lg font-semibold text-black dark:text-white">
+							Recent projects
+						</p>
+						<a
+							href="/projects"
+							class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend"
+						>
+							<span
+								class="text-sm md:text-base lg:text-lg text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend"
+							>
+								All projects
+							</span>
+						</a>
+					</div>
+					<ul class="space-y-4">
+						{
+							projects.map((project) => (
+								<li>
+									<ArrowCard entry={project} />
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</section>
 
-      <section class="animate text-center">
-        <a
-          href="/experience"
-          class="py-2 px-4 rounded uppercase truncate text-xs md:text-sm lg:text-base bg-black dark:bg-white text-white dark:text-black hover:opacity-75 blend"
-        >
-          View my experience
-        </a>
-      </section>
+			<section class="animate text-center">
+				<a
+					href="/experience"
+					class="py-2 px-4 rounded uppercase truncate text-xs md:text-sm lg:text-base bg-black dark:bg-white text-white dark:text-black hover:opacity-75 blend"
+				>
+					View my experience
+				</a>
+			</section>
 
-      <!-- Contact Section -->
-      <section class="animate">
-        <div>
-          <p
-            class="text-base md:text-lg lg:text-xl font-semibold text-black dark:text-white"
-          >
-            Let's Connect
-          </p>
-          <p class="text-sm md:text-base lg:text-lg">
-            Reach out to me via email or on social media.
-          </p>
-          <div class="grid grid-cols-4 gap-y-2 mt-4 auto-cols-min">
-            {
-              SOCIALS.map((social) => (
-                <>
-                  <div class="col-span-1 flex items-center gap-1">
-                    <span class="text-sm md:text-base lg:text-lg whitespace-nowrap truncate">
-                      {social.NAME}
-                    </span>
-                  </div>
-                  <div class="col-span-3 truncate">
-                    <a
-                      href={social.HREF}
-                      target="_blank"
-                      class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend"
-                    >
-                      <span class="text-sm md:text-base lg:text-lg text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
-                        {social.TEXT}
-                      </span>
-                    </a>
-                  </div>
-                </>
-              ))
-            }
-          </div>
-        </div>
-      </section>
-    </div>
-  </div>
+			<!-- Contact Section -->
+			<section class="animate">
+				<div>
+					<p class="text-base md:text-lg lg:text-xl font-semibold text-black dark:text-white">
+						Let's Connect
+					</p>
+					<p class="text-sm md:text-base lg:text-lg">Reach out to me via email or on social media.</p>
+					<div class="grid grid-cols-4 gap-y-2 mt-4 auto-cols-min">
+						{
+							SOCIALS.map((social) => (
+								<>
+									<div class="col-span-1 flex items-center gap-1">
+										<span class="text-sm md:text-base lg:text-lg whitespace-nowrap truncate">
+											{social.NAME}
+										</span>
+									</div>
+									<div class="col-span-3 truncate">
+										<a
+											href={social.HREF}
+											target="_blank"
+											class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend"
+										>
+											<span class="text-sm md:text-base lg:text-lg text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
+												{social.TEXT}
+											</span>
+										</a>
+									</div>
+								</>
+							))
+						}
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
 </PageLayout>
 
 <style>
-  .scroll-ease-in-out {
-    scroll-behavior: smooth;
-    transition: scroll-top 0.5s ease-in-out; /* Adjust duration as needed */
-  }
+	.scroll-ease-in-out {
+		scroll-behavior: smooth;
+		transition: scroll-top 0.5s ease-in-out; /* Adjust duration as needed */
+	}
 </style>

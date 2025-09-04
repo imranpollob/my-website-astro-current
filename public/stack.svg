@@ -128,5 +128,186 @@
       <path d="M64.1 91.426H22.955l20.564 36.575h41.145z" opacity=".6"></path>
       <path d="M84.666 54.864L64.102 91.426l20.564 36.575 20.579-36.575z" opacity=".8"></path>
     </symbol>
+
+
+    <!-- blockchain icon -->
+    <symbol id="blockchain" viewBox="0 0 32 32">
+      <g fill="currentColor">
+        <!-- Left block -->
+        <rect x="3" y="9" width="8" height="8" rx="1.5"></rect>
+        <!-- Middle block -->
+        <rect x="12" y="9" width="8" height="8" rx="1.5"></rect>
+        <!-- Right block -->
+        <rect x="21" y="9" width="8" height="8" rx="1.5"></rect>
+
+        <!-- Connectors -->
+        <rect x="11" y="12.5" width="1.5" height="1"></rect>
+        <rect x="20" y="12.5" width="1.5" height="1"></rect>
+      </g>
+    </symbol>
+
+
+    <!-- smart contract icon -->
+    <symbol id="contract" viewBox="0 0 32 32">
+      <g fill="currentColor">
+        <!-- Document shape -->
+        <rect x="6" y="4" width="16" height="24" rx="2" ry="2"></rect>
+
+        <!-- Document lines -->
+        <rect x="9" y="8" width="10" height="2" rx="1"></rect>
+        <rect x="9" y="12" width="8" height="2" rx="1"></rect>
+        <rect x="9" y="16" width="6" height="2" rx="1"></rect>
+
+        <!-- Blockchain link (circle + chain) -->
+        <circle cx="24" cy="24" r="3"></circle>
+        <rect x="19" y="23.25" width="3" height="1.5" rx="0.5"></rect>
+      </g>
+    </symbol>
+
+
+    <!-- machine learning icon -->
+    <symbol id="ml" viewBox="0 0 32 32">
+      <g fill="currentColor">
+        <!-- Nodes -->
+        <circle cx="8" cy="8" r="2"></circle>
+        <circle cx="24" cy="8" r="2"></circle>
+        <circle cx="8" cy="24" r="2"></circle>
+        <circle cx="24" cy="24" r="2"></circle>
+        <circle cx="16" cy="16" r="2"></circle>
+
+        <!-- Connections -->
+        <line x1="8" y1="8" x2="16" y2="16" stroke="currentColor" stroke-width="1.5"></line>
+        <line x1="24" y1="8" x2="16" y2="16" stroke="currentColor" stroke-width="1.5"></line>
+        <line x1="8" y1="24" x2="16" y2="16" stroke="currentColor" stroke-width="1.5"></line>
+        <line x1="24" y1="24" x2="16" y2="16" stroke="currentColor" stroke-width="1.5"></line>
+      </g>
+    </symbol>
+
+
+
+    <!-- deep learning icon -->
+    <symbol id="dl" viewBox="0 0 32 32">
+      <g fill="currentColor" stroke="currentColor" stroke-width="1.2">
+        <!-- Input layer -->
+        <circle cx="6" cy="8" r="2"></circle>
+        <circle cx="6" cy="16" r="2"></circle>
+        <circle cx="6" cy="24" r="2"></circle>
+
+        <!-- Hidden layer -->
+        <circle cx="16" cy="8" r="2"></circle>
+        <circle cx="16" cy="16" r="2"></circle>
+        <circle cx="16" cy="24" r="2"></circle>
+
+        <!-- Output layer -->
+        <circle cx="26" cy="16" r="2"></circle>
+
+        <!-- Connections (input to hidden) -->
+        <line x1="6" y1="8" x2="16" y2="8"></line>
+        <line x1="6" y1="8" x2="16" y2="16"></line>
+        <line x1="6" y1="8" x2="16" y2="24"></line>
+
+        <line x1="6" y1="16" x2="16" y2="8"></line>
+        <line x1="6" y1="16" x2="16" y2="16"></line>
+        <line x1="6" y1="16" x2="16" y2="24"></line>
+
+        <line x1="6" y1="24" x2="16" y2="8"></line>
+        <line x1="6" y1="24" x2="16" y2="16"></line>
+        <line x1="6" y1="24" x2="16" y2="24"></line>
+
+        <!-- Connections (hidden to output) -->
+        <line x1="16" y1="8" x2="26" y2="16"></line>
+        <line x1="16" y1="16" x2="26" y2="16"></line>
+        <line x1="16" y1="24" x2="26" y2="16"></line>
+      </g>
+    </symbol>
+
+
+    <!-- NLP icon -->
+    <symbol id="nlp" viewBox="0 0 32 32">
+      <g fill="currentColor" stroke="currentColor" stroke-width="1">
+        <!-- Chat bubble -->
+        <path d="M6 6h20a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H12l-6 4v-4H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"></path>
+
+        <!-- "Processing" nodes inside -->
+        <circle cx="12" cy="14" r="1.5"></circle>
+        <circle cx="18" cy="14" r="1.5"></circle>
+        <circle cx="24" cy="14" r="1.5"></circle>
+      </g>
+    </symbol>
+
+
+    <!-- LLM icon -->
+    <symbol id="llm" viewBox="0 0 32 32">
+      <g fill="currentColor" stroke="currentColor" stroke-width="1">
+        <!-- Document / text block -->
+        <rect x="4" y="4" width="14" height="20" rx="2"></rect>
+        <rect x="7" y="8" width="8" height="1.5" rx="0.5"></rect>
+        <rect x="7" y="12" width="6" height="1.5" rx="0.5"></rect>
+        <rect x="7" y="16" width="5" height="1.5" rx="0.5"></rect>
+
+        <!-- Neural net nodes -->
+        <circle cx="24" cy="10" r="2"></circle>
+        <circle cx="24" cy="16" r="2"></circle>
+        <circle cx="24" cy="22" r="2"></circle>
+
+        <!-- Connections -->
+        <line x1="18" y1="10" x2="22" y2="10"></line>
+        <line x1="18" y1="14" x2="22" y2="16"></line>
+        <line x1="18" y1="18" x2="22" y2="22"></line>
+      </g>
+    </symbol>
+
+
+    <!-- ethereum icon -->
+    <symbol id="ethereum" viewBox="0 0 784.37 1277.39">
+      <g fill="currentColor">
+        <!-- top right facet -->
+        <polygon opacity=".9" points="392.07,0 383.5,29.11 383.5,873.74 392.07,882.29 784.13,650.54"></polygon>
+        <!-- top left facet -->
+        <polygon opacity=".55" points="392.07,0 0,650.54 392.07,882.29 392.07,472.33"></polygon>
+        <!-- bottom right facet -->
+        <polygon opacity=".8" points="392.07,956.52 387.24,962.41 387.24,1263.28 392.07,1277.38 784.37,724.89">
+        </polygon>
+        <!-- bottom left facet -->
+        <polygon opacity=".55" points="392.07,1277.38 392.07,956.52 0,724.89"></polygon>
+        <!-- center right facet -->
+        <polygon opacity="1" points="392.07,882.29 784.13,650.54 392.07,472.33"></polygon>
+        <!-- center left facet -->
+        <polygon opacity=".75" points="0,650.54 392.07,882.29 392.07,472.33"></polygon>
+      </g>
+    </symbol>
+
+
+    <!-- docker icon -->
+    <symbol id="docker" viewBox="0 0 756.26 596.9">
+      <path fill="currentColor"
+        d="M743.96,245.25c-18.54-12.48-67.26-17.81-102.68-8.27-1.91-35.28-20.1-65.01-53.38-90.95l-12.32-8.27-8.21,12.4c-16.14,24.5-22.94,57.14-20.53,86.81,1.9,18.28,8.26,38.83,20.53,53.74-46.1,26.74-88.59,20.67-276.77,20.67H.06c-.85,42.49,5.98,124.23,57.96,190.77,5.74,7.35,12.04,14.46,18.87,21.31,42.26,42.32,106.11,73.35,201.59,73.44,145.66.13,270.46-78.6,346.37-268.97,24.98.41,90.92,4.48,123.19-57.88.79-1.05,8.21-16.54,8.21-16.54l-12.3-8.27ZM189.67,206.39h-81.7v81.7h81.7v-81.7ZM295.22,206.39h-81.7v81.7h81.7v-81.7ZM400.77,206.39h-81.7v81.7h81.7v-81.7ZM506.32,206.39h-81.7v81.7h81.7v-81.7ZM84.12,206.39H2.42v81.7h81.7v-81.7ZM189.67,103.2h-81.7v81.7h81.7v-81.7ZM295.22,103.2h-81.7v81.7h81.7v-81.7ZM400.77,103.2h-81.7v81.7h81.7v-81.7ZM400.77,0h-81.7v81.7h81.7V0Z" />
+    </symbol>
+
+
+    <!-- ci/cd icon -->
+    <symbol id="cicd" viewBox="0 0 32 32">
+      <g fill="currentColor" stroke="currentColor" stroke-width="1">
+        <!-- CI: simple gear -->
+        <circle cx="10" cy="12" r="2"></circle>
+        <rect x="10" y="7.5" width="1.5" height="2.5" rx="0.5"></rect> <!-- top tooth -->
+        <rect x="10" y="14" width="1.5" height="2.5" rx="0.5"></rect> <!-- bottom tooth -->
+        <rect x="6.5" y="11.25" width="2.5" height="1.5" rx="0.5"></rect><!-- left tooth -->
+        <rect x="11.75" y="11.25" width="2.5" height="1.5" rx="0.5"></rect><!-- right tooth -->
+
+        <!-- Flow: CI -> CD (top arrow) -->
+        <line x1="14.5" y1="12" x2="21" y2="12"></line>
+        <polygon points="21,12 18.8,10.8 18.8,13.2" />
+
+        <!-- CD: deploy box -->
+        <rect x="22" y="8" width="8" height="8" rx="1.5"></rect>
+
+        <!-- Return path (continuous loop): CD -> CI (bottom arrow) -->
+        <path d="M26,18 H12 a4,4 0 0 0 -4,4 v2"></path>
+        <polygon points="8,24 6.5,22.5 6.5,25.5" />
+      </g>
+    </symbol>
+
+
   </defs>
 </svg>
