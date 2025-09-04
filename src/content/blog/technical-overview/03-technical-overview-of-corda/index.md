@@ -3,8 +3,7 @@ title: "Technical Overview of Corda"
 summary: ""
 date: "Jun 22 2024"
 draft: false
-tags:
-- Corda
+tags: ["Technical Overview"]
 ---
 
 Corda is a distributed ledger technology (DLT) platform designed primarily for the financial industry but is also applicable to other industries. Developed by R3, Corda aims to provide a secure, scalable, and interoperable environment for recording, managing, and executing complex agreements between regulated financial institutions. Here’s an in-depth look at how Corda works:

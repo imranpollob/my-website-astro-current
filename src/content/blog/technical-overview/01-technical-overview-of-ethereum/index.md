@@ -3,8 +3,7 @@ title: "Technical Overview of Ethereum"
 summary: ""
 date: "Jun 20 2024"
 draft: false
-tags:
-- Ethereum
+tags: ["Technical Overview"]
 ---
 
 Ethereum is a decentralized platform that enables developers to build and deploy smart contracts and decentralized applications (dApps). At its core, Ethereum operates on a blockchain, a distributed ledger technology that records transactions across a network of computers. Here's an in-depth technical explanation of how Ethereum works:

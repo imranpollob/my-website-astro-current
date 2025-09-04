@@ -4,7 +4,7 @@ summary: ""
 date: "Jun 1 2024"
 draft: false
 tags:
-- Blockchain
+- Smart Contract Security
 ---
 Front-running attacks in the context of blockchain and cryptocurrencies refer to the act of exploiting information about pending transactions to gain an unfair advantage. This typically involves observing a transaction that is about to be executed, and then quickly placing a transaction that benefits from the anticipated price movement or outcome of the original transaction. Front-running is particularly relevant in decentralized finance (DeFi) and blockchain systems where transactions are publicly visible before they are confirmed in a block.
 

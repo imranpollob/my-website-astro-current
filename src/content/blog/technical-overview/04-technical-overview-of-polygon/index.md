@@ -3,8 +3,7 @@ title: "Technical Overview of Polygon"
 summary: ""
 date: "Jun 23 2024"
 draft: false
-tags:
-- Polygon
+tags: ["Technical Overview"]
 ---
 
 Polygon, formerly known as Matic Network, is a protocol and a framework for building and connecting Ethereum-compatible blockchain networks. It aims to address Ethereum's limitations such as low throughput, high fees, and poor user experience without sacrificing security. Here's an in-depth look at how Polygon works and its key features:

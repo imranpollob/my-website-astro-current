@@ -4,8 +4,7 @@ summary: ""
 date: "May 25 2024"
 draft: false
 tags:
-- Blockchain
-- Smart Contract
+- Smart Contract Security
 ---
 
 A storage collision is a type of cross-contract vulnerability in smart contracts, particularly on the Ethereum blockchain. Here are the technical details:

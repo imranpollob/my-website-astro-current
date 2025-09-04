@@ -3,8 +3,7 @@ title: "Technical Overview of Hyperledger Fabric"
 summary: ""
 date: "Jun 21 2024"
 draft: false
-tags:
-- Hyperledger Fabric
+tags: ["Technical Overview"]
 ---
 
 Hyperledger Fabric is a modular and extensible open-source framework for building blockchain-based distributed ledgers. It provides a robust, scalable, and flexible platform for enterprise-level applications. Here's an in-depth technical explanation of how Hyperledger Fabric works:

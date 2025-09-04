@@ -5,7 +5,6 @@ date: "Jun 5 2024"
 draft: false
 tags:
 - Solidity
-- Smart Contract
 ---
 
 ### Solidity 0.6 to 0.7
