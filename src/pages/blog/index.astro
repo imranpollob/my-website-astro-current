@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import TopLayout from "@layouts/TopLayout.astro";
 import BottomLayout from "@layouts/BottomLayout.astro";
+import PinnedLayout from "@layouts/PinnedLayout.astro";
 import SearchCollection from "@components/SearchCollection";
 import { BLOG } from "@consts";
 
@@ -25,11 +26,11 @@ const estimated_initial_size = 28 + posts.length * 158 + (posts.length - 1) * 12
 		</div>
 	</TopLayout>
 
-	<BottomLayout>
+	<PinnedLayout>
 		<div class="animate">
 			{
 				pinnedPosts.length > 0 && (
-					<ul class="flex flex-col gap-1">
+					<ul class="">
 						{pinnedPosts.map((entry) => (
 							<li>
 								<a
@@ -71,7 +72,7 @@ const estimated_initial_size = 28 + posts.length * 158 + (posts.length - 1) * 12
 				)
 			}
 		</div>
-	</BottomLayout>
+	</PinnedLayout>
 
 	<BottomLayout>
 		<div id="search-collection-wrapper" class="animate" style={{ minHeight: `${estimated_initial_size}px` }}>

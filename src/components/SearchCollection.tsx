@@ -30,13 +30,15 @@ export default function SearchCollection({ entry_name, data, tags }: Props) {
     const filtered = (query().length < 2
       ? coerced
       : fuse.search(query()).map((result) => result.item)
-    ).filter((entry) =>
-      Array.from(filter()).every((value) =>
-        entry.data.tags.some((tag: string) =>
-          tag.toLowerCase() === String(value).toLowerCase()
-        )
-      )
-    );
+      ).filter((entry) => {
+        const selectedTags = Array.from(filter());
+        if (selectedTags.length === 0) return true;
+        return selectedTags.some((value) =>
+          entry.data.tags.some((tag: string) =>
+            tag.toLowerCase() === String(value).toLowerCase()
+          )
+        );
+      });
     setCollection(descending() ? filtered.toReversed() : filtered)
   })
 
