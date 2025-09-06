@@ -1,9 +1,14 @@
 ---
 import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
+import PinnedLayout from "@layouts/PinnedLayout.astro";
 import ArrowCard from "@components/ArrowCard";
 import StackCard from "@components/StackCard.astro";
 import { SITE, SOCIALS } from "@consts";
+
+const pinnedPosts = (await getCollection("blog"))
+	.filter((post) => post.data.pinned && !post.data.draft)
+	.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 const posts = (await getCollection("blog"))
 	.filter((post) => !post.data.draft)
@@ -11,7 +16,7 @@ const posts = (await getCollection("blog"))
 	.slice(0, 3);
 
 const projects = (await getCollection("projects"))
-	.filter((project) => !project.data.draft)
+	.filter((project) => project.data.pinned && !project.data.draft)
 	.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
 	.slice(0, 3);
 
@@ -117,7 +122,7 @@ const stack = [
 
 					<!-- CTA Buttons -->
 					<div id="ctaButtons" class="animated flex flex-wrap gap-4 justify-center mt-5 relative">
-						<a
+						<!-- <a
 							href="/blog"
 							class="py-2 px-4 rounded uppercase truncate text-xs md:text-sm lg:text-base bg-black dark:bg-white text-white dark:text-black hover:opacity-75 blend"
 						>
@@ -128,9 +133,9 @@ const stack = [
 							class="py-2 px-4 truncate rounded uppercase text-xs md:text-sm lg:text-base border border-black/25 dark:border-white/25 hover:bg-black/5 hover:dark:bg-white/15 blend"
 						>
 							View my projects
-						</a>
+						</a> -->
 
-						<div class="absolute mt-20 animate-bounce">
+						<div class="absolute mt-10 animate-bounce">
 							<div class="flex flex-col justify-center items-center">
 								<span>Scroll</span>
 								<svg
@@ -179,36 +184,6 @@ const stack = [
 				</article>
 			</section>
 
-			<!-- Blog Preview Section -->
-			<section class="animate">
-				<div class="space-y-4">
-					<div class="flex justify-between">
-						<p class="text-sm md:text-base lg:text-lg font-semibold text-black dark:text-white">
-							Recent posts
-						</p>
-						<a
-							href="/blog"
-							class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend"
-						>
-							<span
-								class="text-sm md:text-base lg:text-lg text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend"
-							>
-								All posts
-							</span>
-						</a>
-					</div>
-					<ul class="space-y-4">
-						{
-							posts.map((post) => (
-								<li>
-									<ArrowCard entry={post} />
-								</li>
-							))
-						}
-					</ul>
-				</div>
-			</section>
-
 			<!-- Tech Stack Section -->
 			<section class="animate">
 				<div class="space-y-6">
@@ -234,12 +209,61 @@ const stack = [
 				</div>
 			</section>
 
+			<!-- Blog Preview Section -->
+			<section class="animate">
+				<div class="space-y-4">
+					<div class="flex justify-between">
+						<p class="text-sm md:text-base lg:text-lg font-semibold text-black dark:text-white">
+							Featured posts
+						</p>
+						<a
+							href="/blog"
+							class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend"
+						>
+							<span
+								class="text-sm md:text-base lg:text-lg text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend"
+							>
+								All posts
+							</span>
+						</a>
+					</div>
+					<ul class="space-y-4">
+						{
+							pinnedPosts.map((post) => (
+								<li>
+									<ArrowCard entry={post} />
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</section>
+
+			<section class="animate text-center">
+				<a
+					href="/blog"
+					class="py-2 px-4 rounded uppercase truncate text-xs md:text-sm lg:text-base bg-black dark:bg-white text-white dark:text-black hover:opacity-75 blend"
+				>
+					View all posts
+				</a>
+			</section>
+
+			<!-- Project Preview Section -->
+			<section class="animate">
+				<div class="space-y-4"></div>
+					href="/experience"
+					class="py-2 px-4 rounded uppercase truncate text-xs md:text-sm lg:text-base bg-black dark:bg-white text-white dark:text-black hover:opacity-75 blend"
+				>
+					View my experience
+				</a>
+			</section>
+
 			<!-- Project Preview Section -->
 			<section class="animate">
 				<div class="space-y-4">
 					<div class="flex justify-between">
 						<p class="text-sm md:text-base lg:text-lg font-semibold text-black dark:text-white">
-							Recent projects
+							Featured projects
 						</p>
 						<a
 							href="/projects"
@@ -248,7 +272,7 @@ const stack = [
 							<span
 								class="text-sm md:text-base lg:text-lg text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend"
 							>
-								All projects
+								Featured projects
 							</span>
 						</a>
 					</div>
