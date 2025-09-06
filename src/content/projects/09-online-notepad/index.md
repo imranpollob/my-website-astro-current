@@ -3,6 +3,7 @@ title: "Note Online - Store and share notes"
 summary: ""
 date: "Apr 2 2023"
 draft: false
+pinned: true
 tags:
 - Python
 demoUrl: https://note.imranpollob.com/

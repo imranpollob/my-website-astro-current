@@ -3,42 +3,34 @@ import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import TopLayout from "@layouts/TopLayout.astro";
 import BottomLayout from "@layouts/BottomLayout.astro";
+import PinnedLayout from "@layouts/PinnedLayout.astro";
 import SearchCollection from "@components/SearchCollection";
 import { PROJECTS } from "@consts";
-import type { CollectionEntry } from "astro:content";
 
-const projects = (await getCollection("projects"))
-  .filter((project) => !project.data.draft)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const allProjects = await getCollection("projects");
+const projects = allProjects
+	.filter((project) => !project.data.draft)
+	.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
-const tags = [
-  ...new Set(projects.flatMap((project) => project.data.tags)),
-].sort((a, b) => a.localeCompare(b));
+const pinnedProjects = projects.filter((project) => project.data.pinned);
 
-const estimated_initial_size =
-  28 + projects.length * 158 + (projects.length - 1) * 12;
+const tags = [...new Set(projects.flatMap((project) => project.data.tags))].sort((a, b) => a.localeCompare(b));
+
+const estimated_initial_size = 28 + projects.length * 158 + (projects.length - 1) * 12;
 ---
 
 <PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
-  <TopLayout>
-    <div
-      class="text-xl md:text-2xl lg:text-3xl text-center animate page-heading"
-    >
-      {PROJECTS.TITLE}
-    </div>
-  </TopLayout>
-  <BottomLayout>
-    <div
-      id="search-collection-wrapper"
-      class="animate"
-      style={{ minHeight: `${estimated_initial_size}px` }}
-    >
-      <SearchCollection
-        client:load
-        entry_name={"projects"}
-        tags={tags}
-        data={projects}
-      />
-    </div>
-  </BottomLayout>
+	<TopLayout>
+		<div class="text-xl md:text-2xl lg:text-3xl text-center animate page-heading">
+			{PROJECTS.TITLE}
+		</div>
+	</TopLayout>
+
+	<PinnedLayout items={pinnedProjects} />
+
+	<BottomLayout>
+		<div id="search-collection-wrapper" class="animate" style={{ minHeight: `${estimated_initial_size}px` }}>
+			<SearchCollection client:load entry_name={"projects"} tags={tags} data={projects} />
+		</div>
+	</BottomLayout>
 </PageLayout>

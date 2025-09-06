@@ -3,6 +3,7 @@ title: "Solidity AST Generator"
 summary: "Generate AST from Solidity code"
 date: "Jun 10 2024"
 draft: false
+pinned: true
 tags:
 - Javascript
 demoUrl: https://ast.imranpollob.com/
