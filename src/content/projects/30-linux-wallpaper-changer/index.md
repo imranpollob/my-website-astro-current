@@ -5,6 +5,7 @@ date: "Oct 11 2018"
 draft: false
 tags:
 - Python
+- Utility & Productivity
 demoUrl: ""
 repoUrl: https://github.com/imranpollob/linux-wallpaper-changer
 ---

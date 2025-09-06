@@ -5,6 +5,8 @@ date: "May 13 2024"
 draft: false
 tags:
 - Python
+- Utility & Productivity
+- Terminal
 demoUrl: ""
 repoUrl: https://github.com/imranpollob/youtube-chapter-creator
 ---

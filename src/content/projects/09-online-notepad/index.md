@@ -5,7 +5,8 @@ date: "Apr 2 2023"
 draft: false
 pinned: true
 tags:
-- Python
+- PHP
+- Full-Stack App
 demoUrl: https://note.imranpollob.com/
 repoUrl: https://github.com/imranpollob/notepad
 ---

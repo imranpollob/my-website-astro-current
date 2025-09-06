@@ -4,7 +4,9 @@ summary: ""
 date: "May 29 2024"
 draft: false
 tags:
-- Python
+- Javascript
+- Next.js
+- Utility & Productivity
 demoUrl: https://tracker.imranpollob.com
 repoUrl: https://github.com/imranpollob/task-todo-tracker
 ---

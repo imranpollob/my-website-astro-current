@@ -4,7 +4,9 @@ summary: ""
 date: "Jan 4 2023"
 draft: false
 tags:
-- Python
+- Javascript
+- Vue
+- Utility & Productivity
 demoUrl: ""
 repoUrl: https://github.com/imranpollob/vue-quiz
 ---

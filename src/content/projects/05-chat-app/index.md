@@ -4,7 +4,9 @@ summary: ""
 date: "Jan 29 2024"
 draft: false
 tags:
-- Python
+- Javascript
+- Node.js
+- Full-Stack App
 demoUrl: ""
 repoUrl: https://github.com/imranpollob/chat-app
 ---

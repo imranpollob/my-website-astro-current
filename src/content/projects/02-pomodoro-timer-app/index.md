@@ -5,6 +5,8 @@ date: "Jun 10 2024"
 draft: false
 tags:
 - Python
+- Utility & Productivity
+- Desktop App
 demoUrl: ""
 repoUrl: https://github.com/imranpollob/pomodoro-timer
 ---

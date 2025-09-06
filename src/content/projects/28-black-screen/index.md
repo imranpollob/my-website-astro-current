@@ -4,7 +4,8 @@ summary: ""
 date: "May 20 2024"
 draft: false
 tags:
-- Python
+- Javascript
+- Utility & Productivity
 demoUrl: https://blackx.netlify.com/
 repoUrl: https://github.com/imranpollob/black-screen
 ---

@@ -4,7 +4,9 @@ summary: ""
 date: "Jul 8 2021"
 draft: false
 tags:
-- Python
+- Javascript
+- React
+- Demo
 demoUrl: ""
 repoUrl: https://github.com/imranpollob/react-recipes
 ---

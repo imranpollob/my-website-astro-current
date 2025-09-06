@@ -6,6 +6,8 @@ draft: false
 pinned: true
 tags:
 - Javascript
+- Web3 Development
+- Utility & Productivity
 demoUrl: https://ast.imranpollob.com/
 repoUrl: https://github.com/imranpollob/ast-generator
 ---
