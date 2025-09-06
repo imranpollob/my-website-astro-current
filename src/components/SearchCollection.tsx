@@ -19,11 +19,16 @@ export default function SearchCollection({ entry_name, data, tags }: Props) {
   const [collection, setCollection] = createSignal<CollectionEntry<'blog'>[]>([])
   const [descending, setDescending] = createSignal(false);
 
+  // Pagination state
+  const POSTS_PER_PAGE = 5;
+  const [currentPage, setCurrentPage] = createSignal(1);
+
   const fuse = new Fuse(coerced, {
     keys: ["slug", "data.title", "data.summary", "data.tags"],
     includeMatches: true,
     minMatchCharLength: 2,
-    threshold: 0.4,
+    threshold: 0.1, 
+    ignoreLocation: true,
   })
 
   createEffect(() => {
@@ -40,6 +45,7 @@ export default function SearchCollection({ entry_name, data, tags }: Props) {
         );
       });
     setCollection(descending() ? filtered.toReversed() : filtered)
+    setCurrentPage(1); // Reset to first page on filter/search change
   })
 
   function toggleDescending() {
@@ -62,6 +68,28 @@ export default function SearchCollection({ entry_name, data, tags }: Props) {
   const onSearchInput = (e: Event) => {
     const target = e.target as HTMLInputElement
     setQuery(target.value)
+  }
+
+  function goToPage(page: number) {
+    setCurrentPage(page);
+  }
+
+  function nextPage() {
+    if (currentPage() < Math.ceil(collection().length / POSTS_PER_PAGE)) {
+      setCurrentPage(currentPage() + 1);
+    }
+  }
+
+  function prevPage() {
+    if (currentPage() > 1) {
+      setCurrentPage(currentPage() - 1);
+    }
+  }
+
+  // Get posts for current page
+  const paginatedPosts = () => {
+    const start = (currentPage() - 1) * POSTS_PER_PAGE;
+    return collection().slice(start, start + POSTS_PER_PAGE);
   }
 
   onMount(() => {
@@ -154,12 +182,32 @@ export default function SearchCollection({ entry_name, data, tags }: Props) {
             </button>
           </div>
           <ul class="flex flex-col gap-3">
-            {collection().map((entry) => (
+            {paginatedPosts().map((entry) => (
               <li>
                 <ArrowCard entry={entry} />
               </li>
             ))}
           </ul>
+          {/* Pagination Controls */}
+          <div class="flex justify-center items-center gap-2 mt-4">
+            <button
+              onClick={prevPage}
+              disabled={currentPage() === 1}
+              class="px-3 py-1 rounded bg-black/5 dark:bg-white/10 disabled:opacity-50"
+            >
+              Previous
+            </button>
+            <span class="mx-2 text-sm">
+              Page {currentPage()} of {Math.max(1, Math.ceil(collection().length / POSTS_PER_PAGE))}
+            </span>
+            <button
+              onClick={nextPage}
+              disabled={currentPage() === Math.ceil(collection().length / POSTS_PER_PAGE) || collection().length === 0}
+              class="px-3 py-1 rounded bg-black/5 dark:bg-white/10 disabled:opacity-50"
+            >
+              Next
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -16,7 +16,8 @@ export default function Search({ data }: Props) {
     keys: ["slug", "data.title", "data.summary", "data.tags"],
     includeMatches: true,
     minMatchCharLength: 2,
-    threshold: 0.4,
+    threshold: 0.1, 
+    ignoreLocation: true,
   })
 
   createEffect(() => {
