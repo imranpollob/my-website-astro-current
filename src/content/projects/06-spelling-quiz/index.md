@@ -6,7 +6,7 @@ draft: false
 tags:
 - Javascript
 - React
-- Productivity
+- Utility & Productivity
 demoUrl: https://spelling-test.netlify.app/
 repoUrl: https://github.com/imranpollob/react-spelling-quiz
 ---

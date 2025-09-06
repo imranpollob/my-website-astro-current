@@ -5,7 +5,7 @@ date: " Jan 4 2023"
 draft: false
 tags:
 - PHP
-- Full-Stack Apps
+- Full-Stack App
 demoUrl: ""
 repoUrl: https://github.com/imranpollob/link-sharer
 ---

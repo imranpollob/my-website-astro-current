@@ -6,7 +6,7 @@ draft: false
 tags:
 - Javascript
 - Next.js
-- Productivity
+- Utility & Productivity
 demoUrl: ""
 repoUrl: https://github.com/imranpollob/code-ui
 ---
