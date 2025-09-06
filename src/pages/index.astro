@@ -250,16 +250,6 @@ const stack = [
 
 			<!-- Project Preview Section -->
 			<section class="animate">
-				<div class="space-y-4"></div>
-					href="/experience"
-					class="py-2 px-4 rounded uppercase truncate text-xs md:text-sm lg:text-base bg-black dark:bg-white text-white dark:text-black hover:opacity-75 blend"
-				>
-					View my experience
-				</a>
-			</section>
-
-			<!-- Project Preview Section -->
-			<section class="animate">
 				<div class="space-y-4">
 					<div class="flex justify-between">
 						<p class="text-sm md:text-base lg:text-lg font-semibold text-black dark:text-white">
@@ -297,39 +287,49 @@ const stack = [
 				</a>
 			</section>
 
+			<!-- Cool Ice -->
+			<hr class="my-10 h-1 w-full bg-gradient-to-r from-sky-300 via-slate-300 to-gray-400 border-0 rounded-full" />
+
 			<!-- Contact Section -->
 			<section class="animate">
-				<div>
-					<p class="text-base md:text-lg lg:text-xl font-semibold text-black dark:text-white">
+				<div class="text-center">
+					<p class="text-base md:text-lg lg:text-xl font-semibold text-black dark:text-white uppercase">
 						Let's Connect
 					</p>
-					<p class="text-sm md:text-base lg:text-lg">Reach out to me via email or on social media.</p>
-					<div class="grid grid-cols-4 gap-y-2 mt-4 auto-cols-min">
-						{
-							SOCIALS.map((social) => (
+					<p class="text-sm md:text-base lg:text-lg">
+						Reach out to me via email or on social media
+					</p>
+
+					<div class="mt-6 max-w-md mx-auto">
+						<div class="grid grid-cols-2 gap-4 text-left">
+							{SOCIALS.map((social) => (
 								<>
-									<div class="col-span-1 flex items-center gap-1">
-										<span class="text-sm md:text-base lg:text-lg whitespace-nowrap truncate">
+									<!-- Left column: NAME -->
+									<div class="flex items-center justify-end pr-2">
+										<span class="text-sm md:text-base lg:text-lg font-medium whitespace-nowrap">
 											{social.NAME}
 										</span>
 									</div>
-									<div class="col-span-3 truncate">
+
+									<!-- Right column: LINK -->
+									<div class="flex items-center pl-2">
 										<a
 											href={social.HREF}
 											target="_blank"
-											class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend"
+											class="group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2"
 										>
-											<span class="text-sm md:text-base lg:text-lg text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
+											<span class="text-sm md:text-base lg:text-lg text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white">
 												{social.TEXT}
 											</span>
 										</a>
 									</div>
 								</>
-							))
-						}
+							))}
+						</div>
 					</div>
 				</div>
 			</section>
+
 		</div>
 	</div>
 </PageLayout>
