@@ -1,0 +1,22 @@
+---
+title: "Blockchain & Ethereum Fundamentals: Learn Step by Step"
+summary: ""
+date: "Sep 6 2025"
+draft: false
+pinned: true
+tags:
+- Blockchain
+- Ethereum
+---
+
+
+Getting started with blockchain and cryptocurrencies can feel like stepping into a whole new world—there’s a lot of jargon, new concepts, and technical details to digest. That’s why I’ve created this step-by-step blog series to walk you through blockchain and Ethereum fundamentals in a clear and structured way.
+
+Think of this page as your hub. All the lessons will be linked here as individual blog posts so you can follow along at your own pace.
+
+## Topics
+* **[Blockchain Accounting Models: Account-Based and UTXO-Based](/blog/blockchain-and-ethereum-fundamentals/01-blockchain-accounting-models-account-based-and-utxo-based)**
+* **[Understanding the Mempool in Blockchain](/blog/blockchain-and-ethereum-fundamentals/02-understanding-the-mempool-in-blockchain)**
+* **[Understanding Blockchain Blocks](/blog/blockchain-and-ethereum-fundamentals/03-understanding-blockchain-blocks)**
+* **[Blockchain Consensus Mechanisms](/blog/blockchain-and-ethereum-fundamentals/04-blockchain-consensus-mechanisms)**
+
