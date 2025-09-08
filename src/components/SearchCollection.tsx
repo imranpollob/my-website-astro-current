@@ -20,7 +20,7 @@ export default function SearchCollection({ entry_name, data, tags }: Props) {
   const [descending, setDescending] = createSignal(false);
 
   // Pagination state
-  const POSTS_PER_PAGE = 5;
+  const POSTS_PER_PAGE = 10;
   const [currentPage, setCurrentPage] = createSignal(1);
 
   const fuse = new Fuse(coerced, {

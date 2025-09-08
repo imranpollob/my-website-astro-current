@@ -17,7 +17,6 @@ Think of this page as your hub. All the lessons will be linked here as individua
 ## Blockchain Fundamentals Series
 * **[The Evolution of the Web: Web1 → Web2 → Web3](/blog/blockchain-and-ethereum-fundamentals/01-the-evolution-of-the-web-web1-web2-web3)**
 * **[Blockchain Accounting Models: Account-Based and UTXO-Based](/blog/blockchain-and-ethereum-fundamentals/01-blockchain-accounting-models-account-based-and-utxo-based)**
-* **[Understanding the Mempool in Blockchain](/blog/blockchain-and-ethereum-fundamentals/02-understanding-the-mempool-in-blockchain)**
 * **[Understanding Blockchain Blocks](/blog/blockchain-and-ethereum-fundamentals/03-understanding-blockchain-blocks)**
-* **[Blockchain Consensus Mechanisms](/blog/blockchain-and-ethereum-fundamentals/04-blockchain-consensus-mechanisms)**
+
 
