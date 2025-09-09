@@ -99,6 +99,6 @@ Photo by [wikimedia.org](https://commons.wikimedia.org/wiki/File:Blockchain-Proc
 * **Web3 = Read, write & own** (decentralized and user-controlled).
 * Blockchain is the backbone of Web3, ensuring **security, transparency, and decentralization.**
 
-This is just the beginning! In the next posts, we’ll dive deeper into the building blocks of blockchain: ledgers, wallets, transactions, and more.
+---
 
-Stay tuned for **Part 2: Centralized vs Decentralized** 🔗
+👉 Read next: [Centralized vs Decentralized: Understanding the Core Difference](/blog/blockchain-and-ethereum-fundamentals/02-centralized-vs-decentralized-understanding-the-core-difference)
