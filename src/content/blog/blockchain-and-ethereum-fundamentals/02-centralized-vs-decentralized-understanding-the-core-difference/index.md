@@ -6,7 +6,6 @@ draft: false
 pinned: false
 tags:
 - Blockchain
-- Ethereum
 ---
 
 In our previous post, [we introduced the evolution of web from web1 to web3](/blog/blockchain-and-ethereum-fundamentals/01-the-evolution-of-the-web-web1-web2-web3). Today, let’s dig into one of the most important concepts that makes blockchain unique — **decentralization**. To understand why decentralization matters, we first need to look at what centralized systems are and how they differ from decentralized ones.
@@ -111,4 +110,4 @@ And this is exactly why blockchain networks are designed to be decentralized —
 
 ---
 
-👉 In the next post, we’ll dive into **Ledgers**, the foundation of how blockchains record and maintain data securely.
+👉 In the next post, we’ll dive into [**Ledgers**, the foundation of how blockchains record and maintain data securely](/blog/blockchain-and-ethereum-fundamentals/03-ledgers-in-blockchain-how-transactions-are-tracked)                                                                                     .

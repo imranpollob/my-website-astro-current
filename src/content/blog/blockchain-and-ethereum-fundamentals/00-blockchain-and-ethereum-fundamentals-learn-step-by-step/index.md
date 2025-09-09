@@ -14,11 +14,13 @@ Getting started with blockchain and cryptocurrencies can feel like stepping into
 
 Think of this page as your hub. All the lessons will be linked here as individual blog posts so you can follow along at your own pace.
 
+
 ## Blockchain Fundamentals Series
 * **[The Evolution of the Web: Web1 → Web2 → Web3](/blog/blockchain-and-ethereum-fundamentals/01-the-evolution-of-the-web-web1-web2-web3)**
 * **[Centralized vs Decentralized: Understanding the Core Difference](/blog/blockchain-and-ethereum-fundamentals/02-centralized-vs-decentralized-understanding-the-core-difference)**
-* **[Understanding Blockchain Blocks](/blog/blockchain-and-ethereum-fundamentals/03-understanding-blockchain-blocks)**
+* **[Ledgers in Blockchain: How Transactions Are Tracked](/blog/blockchain-and-ethereum-fundamentals/03-ledgers-in-blockchain-how-transactions-are-tracked)**
 
 
 ## Read Additional Related Articles
 * **[Blockchain Accounting Models: Account-Based and UTXO-Based](/blog/blockchain-and-ethereum-fundamentals/01-blockchain-accounting-models-account-based-and-utxo-based)**
+* **[Understanding Blockchain Blocks](/blog/blockchain-and-ethereum-fundamentals/03-understanding-blockchain-blocks)**
