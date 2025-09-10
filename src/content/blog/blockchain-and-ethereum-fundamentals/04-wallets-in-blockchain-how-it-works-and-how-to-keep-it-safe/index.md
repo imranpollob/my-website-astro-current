@@ -2,7 +2,7 @@
 title: "Wallets in Blockchain: How It Works and How to Keep It Safe"
 summary: ""
 date: "Sep 10 2025"
-draft: true
+draft: false
 pinned: false
 tags: ["Blockchain"]
 ---
@@ -11,7 +11,8 @@ tags: ["Blockchain"]
 
 ---
 
-
+![Web3 wallet](Solana-phantom-wallet-e1636413752168-gID_7.avif)
+Photo by [decrypt.co](https://decrypt.co/138536/phantom-solana-wallet-ethereum-polygon-support)
 
 ## What you’ll learn
 
@@ -48,6 +49,9 @@ A **wallet** is best thought of as your **bank account credentials** on a blockc
    * Different chains use different encodings (e.g., Base58, Bech32, hex with checksum).
 
 
+![Key derivation diagram](Public-Key-and-Private-Key.avif)
+Photo by [mycryptopedia.com](https://mycryptopedia.com/public-key-private-key-explained/)
+
 ---
 
 ## Why this is secure: Hash functions in plain English
@@ -62,6 +66,8 @@ Hash functions are special algorithms with properties that make wallets viable:
 
 This is why sharing an **address** (or public key) doesn’t risk your private key.
 
+![Hash function illustration](Cryptographic_Hash_Function.svg.avif)
+Photo by [wikipedia.org](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
 
 ---
 
@@ -89,7 +95,8 @@ Most modern wallets are **HD wallets** (hierarchical deterministic). Instead of 
 
 > 🔒 **Rule #1:** Write your seed phrase on paper/steel. Store **offline**. Never type it into a website, Google Doc, email, or screenshot.
 
-\[Image placeholder: photo-style “seed card” with blurred 24 words and a physical safe]
+![Seed phrase example](1-4o0R_RCB3mRtROwD21Eqqw-jpeg.avif)
+Photo by [bringin.xyz](https://bringin.xyz/blog/learn/what-are-bip39-seed-words/)
 
 ---
 
@@ -101,7 +108,7 @@ HD wallets can derive **many addresses** from the same seed (via derivation path
 * Improve privacy (avoid reusing addresses).
 * Manage multi-asset portfolios under one backup (the seed).
 
-\[Image placeholder: small tree diagram “Seed → Account 0/1/2 → Receiving Address #0/#1/…”]
+
 
 ---
 
@@ -122,7 +129,8 @@ HD wallets can derive **many addresses** from the same seed (via derivation path
   * **Hot:** Connected to the internet (convenient, higher risk).
   * **Cold:** Fully offline (max security, less convenient).
 
-\[Image placeholder: comparison table “Custodial vs Non-custodial vs Hardware”]
+![Wallet types infographic](original_imageshttpsg.foolcdn.comeditorialimag.width-880_6tZrxht.avif)
+Photo by [fool.com](https://www.fool.com/terms/b/blockchain-wallet/)
 
 ---
 
@@ -134,43 +142,20 @@ HD wallets can derive **many addresses** from the same seed (via derivation path
 4. The network verifies your **signature** using your **public key** and broadcasts it.
 5. Miners/validators include it in a block; your balance updates on-chain.
 
-\[Image placeholder: sequence diagram “User → Wallet (sign) → Node → Mempool → Block”]
 
 ---
 
-## Hands-on: Safe wallet setup checklist
+## Hands-on: Safe wallet setup checklist 📝
 
-1. **Choose wallet type**
+1. Choose the right wallet type for your needs.
+2. Create your wallet offline if possible.
+3. Write down your seed phrase and store it in two safe places.
+4. Set a strong, unique password for your wallet.
+5. Enable extra security features like PIN, biometrics, and disk encryption.
+6. Test your backup by restoring the wallet on a spare device.
+7. Start with a small amount and test
 
-   * Small daily funds: reputable software wallet.
-   * Savings/long-term: **hardware wallet** + passphrase.
 
-2. **Create the wallet offline if possible**
-
-   * For hardware: initialize on the device itself.
-
-3. **Record the seed phrase**
-
-   * Write clearly, verify word order. Consider a steel backup.
-   * Store in **two physically separate** safe places.
-
-4. **Set a strong wallet password**
-
-   * Long (16+), unique. Consider a reputable password manager (but don’t store the seed there).
-
-5. **Enable extras**
-
-   * Device PIN/biometrics, full-disk encryption, and (optionally) a **BIP-39 passphrase** for duress protection (advanced).
-
-6. **Test recovery**
-
-   * On a spare device, restore using your seed (with no funds) to confirm your backup works.
-
-7. **Fund small, test send**
-
-   * Start with a tiny amount. Send in/out once. Then scale.
-
-\[Image placeholder: checklist graphic “7 Steps to a Robust Wallet Setup”]
 
 ---
 
@@ -194,7 +179,7 @@ HD wallets can derive **many addresses** from the same seed (via derivation path
 * **Single-point storage:** Only one copy of the seed.
   → Use a **3-2-1** strategy: 3 copies, 2 media types, 1 offsite.
 
-\[Image placeholder: warning icons “Phishing / SIM Swap / Clipboard Malware”]
+
 
 ---
 
@@ -211,17 +196,17 @@ HD wallets can derive **many addresses** from the same seed (via derivation path
 
 ## Mini-FAQ
 
-**Q: Can I recover without my private key if I still have the seed phrase?**
-**A:** Yes—that’s the point of the seed. It regenerates your private keys.
+* **Q: Can I recover without my private key if I still have the seed phrase?**
+* **A:** Yes—that’s the point of the seed. It regenerates your private keys.
 
-**Q: Is it safer to share my public key or my address?**
-**A:** Share your **address**. It’s shorter, checksummed (on many chains), and better for UX/privacy.
+* **Q: Is it safer to share my public key or my address?**
+* **A:** Share your **address**. It’s shorter, checksummed (on many chains), and better for UX/privacy.
 
-**Q: Can two people have the same address?**
-**A:** With proper cryptography, the odds are effectively zero.
+* **Q: Can two people have the same address?**
+* **A:** With proper cryptography, the odds are effectively zero.
 
-**Q: I forgot my wallet password but have the seed.**
-**A:** Restore from seed into a fresh wallet; set a new password.
+* **Q: I forgot my wallet password but have the seed.**
+* **A:** Restore from seed into a fresh wallet; set a new password.
 
 ---
 
@@ -232,7 +217,6 @@ HD wallets can derive **many addresses** from the same seed (via derivation path
 3. Confirm derived addresses match your main wallet’s receive addresses.
 4. Delete the test environment if it’s not a permanent secondary device.
 
-\[Image placeholder: step-by-step “Restore from Seed” screenshots (blurred)]
 
 ---
 
@@ -250,4 +234,3 @@ HD wallets can derive **many addresses** from the same seed (via derivation path
 
 In the next post, we’ll get hands-on with **Transactions**—format, signing, fees, UTXOs vs account models, and how wallets build and broadcast them.
 
-\[Image placeholder: teaser graphic “Next: Transactions—From Click to Chain”]
