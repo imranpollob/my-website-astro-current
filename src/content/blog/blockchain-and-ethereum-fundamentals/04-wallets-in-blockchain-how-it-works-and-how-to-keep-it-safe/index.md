@@ -66,7 +66,7 @@ Hash functions are special algorithms with properties that make wallets viable:
 
 This is why sharing an **address** (or public key) doesn’t risk your private key.
 
-![Hash function illustration](Cryptographic_Hash_Function.svg.avif)
+![Hash function illustration](cryptographic%20hash%20function.avif)
 Photo by [wikipedia.org](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
 
 ---
@@ -97,18 +97,6 @@ Most modern wallets are **HD wallets** (hierarchical deterministic). Instead of 
 
 ![Seed phrase example](1-4o0R_RCB3mRtROwD21Eqqw-jpeg.avif)
 Photo by [bringin.xyz](https://bringin.xyz/blog/learn/what-are-bip39-seed-words/)
-
----
-
-## Multiple addresses, same wallet
-
-HD wallets can derive **many addresses** from the same seed (via derivation paths). This lets you:
-
-* Separate funds (salaries vs savings vs testing).
-* Improve privacy (avoid reusing addresses).
-* Manage multi-asset portfolios under one backup (the seed).
-
-
 
 ---
 
@@ -155,9 +143,26 @@ Photo by [fool.com](https://www.fool.com/terms/b/blockchain-wallet/)
 6. Test your backup by restoring the wallet on a spare device.
 7. Start with a small amount and test
 
+---
+
+## Mini-FAQ
+
+**Q: Can I recover without my private key if I still have the seed phrase?** <br />
+**A:** Yes—that’s the point of the seed. It regenerates your private keys.
+
+**Q: Is it safer to share my public key or my address?** <br />
+**A:** Share your **address**. It’s shorter, checksummed (on many chains), and better for UX/privacy.
+
+**Q: Can two people have the same address?** <br />
+  **A:** The odds are astronomically low (practically zero) due to the vast keyspace.
+**A:** With proper cryptography, the odds are effectively zero.
+
+**Q: I forgot my wallet password but have the seed.** <br />
+  **A:** Restore from seed into a fresh wallet; set a new password.
 
 
 ---
+
 
 ## Common mistakes & attacks (and how to avoid them)
 
@@ -178,45 +183,6 @@ Photo by [fool.com](https://www.fool.com/terms/b/blockchain-wallet/)
 
 * **Single-point storage:** Only one copy of the seed.
   → Use a **3-2-1** strategy: 3 copies, 2 media types, 1 offsite.
-
-
-
----
-
-## Quick reference: Terms you’ll see
-
-* **Private Key:** Secret used to sign transactions. Never share.
-* **Public Key:** Derived from private key; used to verify signatures.
-* **Address:** Public identifier you share to receive funds.
-* **Seed Phrase (BIP-39):** 12/24 words that regenerate all keys.
-* **Derivation Path (BIP-32/44):** Map from seed to accounts/addresses.
-* **EPK:** Encrypted private key (requires your password to decrypt).
-
----
-
-## Mini-FAQ
-
-* **Q: Can I recover without my private key if I still have the seed phrase?**
-* **A:** Yes—that’s the point of the seed. It regenerates your private keys.
-
-* **Q: Is it safer to share my public key or my address?**
-* **A:** Share your **address**. It’s shorter, checksummed (on many chains), and better for UX/privacy.
-
-* **Q: Can two people have the same address?**
-* **A:** With proper cryptography, the odds are effectively zero.
-
-* **Q: I forgot my wallet password but have the seed.**
-* **A:** Restore from seed into a fresh wallet; set a new password.
-
----
-
-## A realistic recovery drill (do it now—before you need it)
-
-1. Install a reputable wallet on a spare device (or use a hardware wallet’s second slot).
-2. Choose **“Recover/Restore”**, enter your **seed phrase** (and BIP-39 passphrase if you set one).
-3. Confirm derived addresses match your main wallet’s receive addresses.
-4. Delete the test environment if it’s not a permanent secondary device.
-
 
 ---
 
