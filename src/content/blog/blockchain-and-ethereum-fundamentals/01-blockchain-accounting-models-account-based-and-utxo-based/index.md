@@ -9,6 +9,8 @@ tags:
 
 Blockchain accounting models dictate how transactions are recorded, validated, and processed on the blockchain. The two primary models are the **account-based** model and the **UTXO (Unspent Transaction Output) based** model. Each model has its own mechanisms for managing balances and ensuring the integrity of transactions.
 
+---
+
 ### Account-Based Model
 
 #### Overview:
@@ -26,6 +28,9 @@ The account-based model is similar to traditional banking systems, where each ac
 3. **User A's** balance is updated to 8 ETH.
 4. **User B's** balance is updated to 2 ETH.
 
+![Account Model](1-eff93a0f-788f-43d1-93ef-f918d7e53f43.avif)
+Photo by [xangle.io](https://xangle.io/en/research/detail/720)
+
 #### Pros:
 - **Simplicity**: Easier to understand and implement, similar to conventional financial systems.
 - **Efficiency**: Direct balance updates reduce data overhead.
@@ -33,6 +38,8 @@ The account-based model is similar to traditional banking systems, where each ac
 #### Cons:
 - **Privacy**: Easier to trace transactions since balances are directly linked to accounts.
 - **Potential for Double Spending**: Requires careful management to prevent double spending, often managed by account nonce in systems like Ethereum.
+
+---
 
 ### UTXO-Based Model
 
@@ -51,6 +58,9 @@ The UTXO model is used by Bitcoin and many other cryptocurrencies. It is based o
    - Inputs: 3 BTC and 5 BTC UTXOs from **User A**.
    - Outputs: 4 BTC to **User B** and 4 BTC back to **User A** (as change).
 
+![UTXO Model](2-c023ccc2-a302-4d24-bf2d-e404c80d07f2.avif)
+Photo by [xangle.io](https://xangle.io/en/research/detail/720)
+
 #### Pros:
 - **Security**: Naturally resistant to double spending because each UTXO can only be used once.
 - **Privacy**: Improved privacy as UTXOs are not directly linked to a single account and can be mixed and split.
@@ -58,6 +68,8 @@ The UTXO model is used by Bitcoin and many other cryptocurrencies. It is based o
 #### Cons:
 - **Complexity**: More complex to manage and understand compared to account-based systems.
 - **Efficiency**: Can result in larger transaction sizes and increased data overhead.
+
+---
 
 ### Comparison
 
@@ -69,6 +81,9 @@ The UTXO model is used by Bitcoin and many other cryptocurrencies. It is based o
 | **Privacy**                    | Lower, accounts are linked       | Higher, UTXOs can be mixed         |
 | **Complexity**                 | Simpler                          | More complex                       |
 | **Efficiency**                 | More efficient                   | Less efficient, more data overhead |
+
+
+---
 
 ### Use Cases
 - **Account-Based Model**: Ethereum, NEO, EOS.

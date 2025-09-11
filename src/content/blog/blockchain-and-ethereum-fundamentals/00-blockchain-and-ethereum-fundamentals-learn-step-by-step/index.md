@@ -16,9 +16,11 @@ Think of this page as your hub. All the lessons will be linked here as individua
 
 
 ## Blockchain Fundamentals Series
-* **[The Evolution of the Web: Web1 → Web2 → Web3](/blog/blockchain-and-ethereum-fundamentals/01-the-evolution-of-the-web-web1-web2-web3)**
-* **[Centralized vs Decentralized: Understanding the Core Difference](/blog/blockchain-and-ethereum-fundamentals/02-centralized-vs-decentralized-understanding-the-core-difference)**
-* **[Ledgers in Blockchain: How Transactions Are Tracked](/blog/blockchain-and-ethereum-fundamentals/03-ledgers-in-blockchain-how-transactions-are-tracked)**
+1. [The Evolution of the Web: Web1 → Web2 → Web3](/blog/blockchain-and-ethereum-fundamentals/01-the-evolution-of-the-web-web1-web2-web3)
+2. [Centralized vs Decentralized: Understanding the Core Difference](/blog/blockchain-and-ethereum-fundamentals/02-centralized-vs-decentralized-understanding-the-core-difference)
+3. [Ledgers in Blockchain: How Transactions Are Tracked](/blog/blockchain-and-ethereum-fundamentals/03-ledgers-in-blockchain-how-transactions-are-tracked)
+4. [Wallets in Blockchain: How It Works and How to Keep It Safe](/blog/blockchain-and-ethereum-fundamentals/04-wallets-in-blockchain-how-it-works-and-how-to-keep-it-safe)
+5. [Blockchain Transactions: Structure, Verification, and Security](/blog/blockchain-and-ethereum-fundamentals/05-blockchain-transactions-structure-verification-and-security)
 
 
 ## Read Additional Related Articles
