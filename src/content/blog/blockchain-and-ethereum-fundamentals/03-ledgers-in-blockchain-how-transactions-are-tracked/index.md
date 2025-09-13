@@ -67,6 +67,8 @@ In other words, the trust problem hasn’t disappeared—it’s just been shifte
 
 Blockchain was invented to solve exactly this issue. Instead of relying on one person (Bob), or one authority (the bank), blockchain spreads the ledger across many participants (nodes).
 
+![Distributed Ledger Technology](distributed-ledger-technology.avif)
+Photo by [corporatefinanceinstitute.com](https://corporatefinanceinstitute.com/resources/cryptocurrency/distributed-ledger-technology/)
 
 ### Key Properties of Blockchain Ledgers
 
@@ -93,4 +95,4 @@ Of course, not all blockchains are the same—some sacrifice decentralization or
 
 Ledgers are the foundation of blockchain technology. What started as a simple way for Bob and Alice to track who owes whom has evolved into a **global, tamper-proof system** that powers cryptocurrencies and much more.
 
-👉 Next up, we’ll dive into **Wallets**, where we’ll see how individuals interact with this ledger and manage their digital assets.
+👉 Next up, we’ll dive into [Wallets in Blockchain: How It Works and How to Keep It Safe](/blog/blockchain-and-ethereum-fundamentals/04-wallets-in-blockchain-how-it-works-and-how-to-keep-it-safe)

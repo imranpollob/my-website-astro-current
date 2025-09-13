@@ -196,7 +196,5 @@ Photo by [fool.com](https://www.fool.com/terms/b/blockchain-wallet/)
 
 ---
 
-## Coming up next
 
-In the next post, we’ll get hands-on with **Transactions**—format, signing, fees, UTXOs vs account models, and how wallets build and broadcast them.
-
+👉 In the next post, we’ll dive into [Blockchain Transactions: Structure, Verification, and Security](/blog/blockchain-and-ethereum-fundamentals/05-blockchain-transactions-structure-verification-and-security).

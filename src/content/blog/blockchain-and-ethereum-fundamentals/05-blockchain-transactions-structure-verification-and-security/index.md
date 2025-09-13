@@ -100,6 +100,10 @@ Read in more detail: [Blockchain Accounting Models: Account-Based and UTXO-Based
 > Wallets usually suggest a fee. You can speed up confirmation by offering more.
 
 
+![Fee Priority](gas.avif)
+Source: [blocknative.com](https://www.blocknative.com/gas-estimator)
+
+
 ---
 
 ## Transaction Lifecycle (End-to-End)
