@@ -21,6 +21,9 @@ Think of this page as your hub. All the lessons will be linked here as individua
 3. [Ledgers in Blockchain: How Transactions Are Tracked](/blog/blockchain-fundamentals/03-ledgers-in-blockchain-how-transactions-are-tracked)
 4. [Wallets in Blockchain: How It Works and How to Keep It Safe](/blog/blockchain-fundamentals/04-wallets-in-blockchain-how-it-works-and-how-to-keep-it-safe)
 5. [Blockchain Transactions: Structure, Verification, and Security](/blog/blockchain-fundamentals/05-blockchain-transactions-structure-verification-and-security)
+6. [The Anatomy of a Block: How Blockchain Stores and Secures Data](/blog/blockchain-fundamentals/06-the-anatomy-of-a-block-how-blockchain-stores-and-secures-data)
+7. [Blockchain Security: Common Threats and How They’re Prevented](/blog/blockchain-fundamentals/07-blockchain-security-common-threats-and-how-they-re-prevented)
+
 
 
 ## Read Additional Related Articles
