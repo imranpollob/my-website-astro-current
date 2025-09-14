@@ -23,6 +23,7 @@ Think of this page as your hub. All the lessons will be linked here as individua
 5. [Blockchain Transactions: Structure, Verification, and Security](/blog/blockchain-fundamentals/05-blockchain-transactions-structure-verification-and-security)
 6. [The Anatomy of a Block: How Blockchain Stores and Secures Data](/blog/blockchain-fundamentals/06-the-anatomy-of-a-block-how-blockchain-stores-and-secures-data)
 7. [Blockchain Security: Common Threats and How They’re Prevented](/blog/blockchain-fundamentals/07-blockchain-security-common-threats-and-how-they-re-prevented)
+8. [Proof of Work Explained](/blog/blockchain-fundamentals/08-proof-of-work-explained)
 
 
 

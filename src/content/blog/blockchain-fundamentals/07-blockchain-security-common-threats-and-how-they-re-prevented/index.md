@@ -101,5 +101,5 @@ Together, these features make blockchain remarkably resilient—but not invincib
 
 Blockchain security isn’t just about cryptography; it’s about the **economic and game-theoretic design** that makes attacks impractical or too expensive to pull off. The bigger and more decentralized a blockchain, the harder it is to compromise.
 
-As we continue in this series, we’ll dive into **Proof of Work** and **Proof of Stake**—the consensus mechanisms that give blockchain its resilience against many of the threats we just covered.
+As we continue in this series, we’ll dive into [Proof of Work](src/content/blog/blockchain-fundamentals/08-proof-of-work-explained) and [Proof of Stake](src/content/blog/blockchain-fundamentals/09-proof-of-stake-explained)—the consensus mechanisms that give blockchain its resilience against many of the threats we just covered.
 
