@@ -2,7 +2,7 @@
 title: "Simple Forum"
 summary: ""
 date: "Jan 4 2023"
-draft: false
+draft: true
 tags:
 - Javascript
 - Vue

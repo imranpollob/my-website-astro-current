@@ -5,7 +5,8 @@ date: "Mar 25 2023"
 draft: false
 pinned: true
 tags:
-- Full-Stack App
+- Javascript
+- Utility & Productivity
 demoUrl: "https://banglaquran.app/"
 repoUrl: https://github.com/imranpollob/bangla-quran
 ---

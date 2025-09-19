@@ -7,6 +7,7 @@ pinned: true
 tags:
 - Javascript
 - Web3 Development
+- Full-Stack App
 - Utility & Productivity
 demoUrl: https://ast.imranpollob.com/
 repoUrl: https://github.com/imranpollob/ast-generator

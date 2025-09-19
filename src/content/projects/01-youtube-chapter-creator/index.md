@@ -2,7 +2,7 @@
 title: "YouTube Chapter Creator"
 summary: "Automated YouTube Chapter Creation for Combined Videos"
 date: "May 13 2024"
-draft: false
+draft: true
 tags:
 - Python
 - Utility & Productivity

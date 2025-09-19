@@ -2,7 +2,7 @@
 title: "Movie Scrapper and Rating API"
 summary: ""
 date: "Dec 8, 2022"
-draft: false
+draft: true
 tags:
 - Python
 - Demo
