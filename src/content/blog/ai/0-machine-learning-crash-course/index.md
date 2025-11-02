@@ -8,7 +8,7 @@ tags:
 - AI
 ---
 
-Welcome to the **ML Experts: Machine Learning Crash Course** — your one-stop guide to understanding how modern machine learning systems work, step by step.
+
 
 This series walks you through the **foundations, algorithms, and real-world applications** of machine learning — from simple classifiers to deep neural networks and ranking systems used by search engines and social feeds.
 

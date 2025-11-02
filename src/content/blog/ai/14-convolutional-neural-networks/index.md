@@ -9,7 +9,7 @@ tags:
 ---
 
 
-Welcome back to **MLExpert’s Machine Learning Crash Course**!
+
 In this episode, we’re diving into one of the most powerful and widely used architectures in deep learning — the **Convolutional Neural Network (CNN)**.
 
 CNNs are the foundation of modern computer vision — the technology behind facial recognition, autonomous driving, medical imaging, and even the camera filters on your phone. Let’s unpack how they work, why they’re so effective, and how you can build one from scratch.

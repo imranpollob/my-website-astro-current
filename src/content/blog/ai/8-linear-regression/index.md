@@ -234,5 +234,5 @@ As you move forward, remember:
 
 > A well-fitted line can reveal powerful insights — but only when you understand what the data truly represents.
 
-Stay tuned for the next episode in the ML Experts Crash Course as we continue exploring the fascinating world of machine learning!
+
 

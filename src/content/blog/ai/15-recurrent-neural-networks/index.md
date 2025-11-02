@@ -9,7 +9,7 @@ tags:
 ---
 
 
-Welcome back to **ML Experts’ Machine Learning Crash Course!**
+
 In today’s episode, we’re diving into a key architecture in deep learning — the **Recurrent Neural Network (RNN)**.
 
 If you’ve ever wondered how chatbots can hold a conversation or how your phone predicts the next word in a sentence, this is the magic behind it.
@@ -100,10 +100,10 @@ LSTMs add *gates* — mechanisms that control what information to **remember**, 
 
 Let’s break it down:
 
-| Gate               | Purpose                                  | Function                                                |
-| ------------------ | ---------------------------------------- | ------------------------------------------------------- |
+| Gate              | Purpose                                  | Function                                                |
+| ----------------- | ---------------------------------------- | ------------------------------------------------------- |
 | 🧹 **Forget Gate** | Decides what old information to discard. | Uses a sigmoid layer (0–1 scale) to partially forget.   |
-| ➕ **Input Gate**   | Decides what new information to store.   | Combines sigmoid (for control) and tanh (for new info). |
+| ➕ **Input Gate**  | Decides what new information to store.   | Combines sigmoid (for control) and tanh (for new info). |
 | 🔓 **Output Gate** | Decides what part of memory to output.   | Regulates final hidden state for the next time step.    |
 
 These gates make LSTMs far more **memory-stable**, allowing them to capture long-term dependencies.

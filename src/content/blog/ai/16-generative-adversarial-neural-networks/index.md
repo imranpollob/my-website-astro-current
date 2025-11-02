@@ -9,7 +9,7 @@ tags:
 ---
 
 
-**Welcome back to MLExperts — Machine Learning Crash Course!**
+
 In this episode, we dive into one of the most fascinating architectures in deep learning: **Generative Adversarial Networks (GANs)**.
 
 ---

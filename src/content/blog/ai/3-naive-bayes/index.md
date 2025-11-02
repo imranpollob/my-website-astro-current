@@ -9,7 +9,7 @@ tags:
 ---
 
 
-Welcome back, everyone — this is *ML Experts: Machine Learning Crash Course*!
+
 In this episode, we’ll dive deep into one of the most fundamental yet surprisingly effective models in machine learning: the **Naive Bayes Classifier**.
 
 To make things interesting, let’s start with a real-world example you can relate to.

@@ -9,7 +9,7 @@ tags:
 ---
 
 
-Welcome back to **ML Experts: Machine Learning Crash Course**!
+
 
 In the previous session, we used **linear regression** to predict future power demand for California ISO. But what if our task shifts from predicting *how much* power is needed to *whether* a power outage will occur? That’s where **logistic regression** comes in — a workhorse for **classification problems**.
 
@@ -247,4 +247,4 @@ It’s simple, interpretable, and powerful — a foundation upon which many mode
 
 In the next video, we’ll keep building on this foundation and explore more advanced algorithms.
 
-Stay tuned and keep learning with ML Experts!
+

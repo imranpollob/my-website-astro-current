@@ -9,7 +9,7 @@ tags:
 ---
 
 
-Welcome back to **ML Experts: Machine Learning Crash Course!**
+
 In this session, we’re diving into a fascinating concept that helps us **uncover hidden patterns** within data — **Singular Value Decomposition (SVD)**.
 
 ---

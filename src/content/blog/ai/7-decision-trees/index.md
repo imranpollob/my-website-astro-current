@@ -9,7 +9,7 @@ tags:
 ---
 
 
-Welcome back to **MLExperts’ Machine Learning Crash Course**!
+
 In this episode, we’ll explore one of the most intuitive and widely used algorithms in machine learning — **Decision Trees**.
 
 Decision Trees might sound fancy, but think of them as a series of simple **yes/no questions** that help us make decisions — just like how we might decide what movie to watch or which restaurant to go to.

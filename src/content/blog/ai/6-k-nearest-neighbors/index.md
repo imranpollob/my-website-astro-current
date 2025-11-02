@@ -9,7 +9,7 @@ tags:
 ---
 
 
-Welcome back to **ML Experts Machine Learning Crash Course**.
+
 In today’s session, we’ll explore one of the most intuitive yet powerful algorithms in machine learning — the **K-Nearest Neighbors (KNN)** model.
 
 KNN might sound simple at first, but behind that simplicity lies a versatile tool that can be applied across industries — from **detecting cybersecurity threats** to **predicting alumni donations**.

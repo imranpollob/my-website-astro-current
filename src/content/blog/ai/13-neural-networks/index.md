@@ -9,7 +9,7 @@ tags:
 ---
 
 
-Welcome back to **MLExpert’s Machine Learning Crash Course!**
+
 In this session, we dive into one of the most powerful ideas in modern machine learning — **Neural Networks**.
 
 So far, we’ve explored supervised learning models like **Logistic Regression** and **Support Vector Machines (SVMs)**. Both could handle non-linear data to some extent — SVMs through *kernels*, and Logistic Regression through *sigmoid activation*. But when patterns in data get deeply complex, we need something more flexible and expressive. That’s where **neural networks** come in.

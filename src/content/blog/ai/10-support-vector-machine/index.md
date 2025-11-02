@@ -9,7 +9,7 @@ tags:
 ---
 
 
-Welcome back to **ML Experts — Machine Learning Crash Course**!
+
 In our previous session, we explored **logistic regression**, which helps us estimate the probability of a class — for example, predicting whether or not a region will experience a power outage given certain weather features.
 
 But what if we *don’t* care about the exact probability? What if all we want is to **correctly classify** our data points?

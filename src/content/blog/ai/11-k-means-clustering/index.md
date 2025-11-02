@@ -9,7 +9,7 @@ tags:
 ---
 
 
-Welcome back to **ML Experts — Machine Learning Crash Course**!
+
 In our previous lessons, we explored **supervised learning**, where models learned from labeled examples — “this is spam” vs “this is not spam,” or “power outage” vs “no outage.”
 
 But what if we don’t have any labels at all? What if we just have raw data and want to **discover structure** within it?

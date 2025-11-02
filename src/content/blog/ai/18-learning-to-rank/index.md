@@ -10,7 +10,7 @@ tags:
 
 
 Welcome back, everyone!
-This is **ML Experts: Machine Learning Crash Course** — and today we’re diving into one of the most powerful ideas behind recommendation systems used by apps like YouTube, Netflix, and LinkedIn: **Learning to Rank**.
+Today we’re diving into one of the most powerful ideas behind recommendation systems used by apps like YouTube, Netflix, and LinkedIn: **Learning to Rank**.
 
 Earlier, in our recommender systems discussion, we talked about how to recommend a *single* item — like whether to show a user one particular post.
 But now, we’ll tackle something much more dynamic: **how to rank multiple items** to create a personalized, engaging feed.
