@@ -1,7 +1,7 @@
 ---
-title: "Understanding Linear Regression"
+title: "8. Understanding Linear Regression"
 summary: ""
-date: "Nov 2 2025"
+date: "Oct 8 2025"
 draft: false
 pinned: false
 tags:

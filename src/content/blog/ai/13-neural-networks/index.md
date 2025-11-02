@@ -1,7 +1,7 @@
 ---
-title: "Understanding Neural Networks"
+title: "13. Understanding Neural Networks"
 summary: ""
-date: "Nov 2 2025"
+date: "Oct 13 2025"
 draft: false
 pinned: false
 tags:

@@ -1,7 +1,7 @@
 ---
-title: "Recommender Systems – Collaborative vs. Content Filtering"
+title: "17. Recommender Systems – Collaborative vs. Content Filtering"
 summary: ""
-date: "Nov 2 2025"
+date: "Oct 17 2025"
 draft: false
 pinned: false
 tags:

@@ -1,7 +1,7 @@
 ---
-title: "Machine Learning Crash Course: An Introduction"
+title: "1. Machine Learning Crash Course Introduction"
 summary: ""
-date: "Nov 1 2025"
+date: "Oct 1 2025"
 draft: false
 pinned: false
 tags:

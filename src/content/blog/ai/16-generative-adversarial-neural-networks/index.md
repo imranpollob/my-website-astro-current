@@ -1,7 +1,7 @@
 ---
-title: "Generative Adversarial Networks (GANs)"
+title: "16. Generative Adversarial Networks (GANs)"
 summary: ""
-date: "Nov 2 2025"
+date: "Oct 16 2025"
 draft: false
 pinned: false
 tags:

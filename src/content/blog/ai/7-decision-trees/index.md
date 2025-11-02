@@ -1,7 +1,7 @@
 ---
-title: "Decision Trees Explained"
+title: "7. Decision Trees Explained"
 summary: ""
-date: "Nov 2 2025"
+date: "Oct 7 2025"
 draft: false
 pinned: false
 tags:

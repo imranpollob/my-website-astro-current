@@ -1,7 +1,7 @@
 ---
-title: "Machine Learning Crash Course: Prerequisites"
+title: "2. Prerequisites for Machine Learning Crash Course"
 summary: ""
-date: "Nov 2 2025"
+date: "Oct 2 2025"
 draft: false
 pinned: false
 tags:

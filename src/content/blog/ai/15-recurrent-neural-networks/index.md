@@ -1,7 +1,7 @@
 ---
-title: "Understanding Recurrent Neural Networks (RNNs)"
+title: "15. Understanding Recurrent Neural Networks (RNNs)"
 summary: ""
-date: "Nov 2 2025"
+date: "Oct 15 2025"
 draft: false
 pinned: false
 tags:

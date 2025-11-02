@@ -1,7 +1,7 @@
 ---
-title: "Discovering Hidden Patterns with Singular Value Decomposition (SVD)"
+title: "12 Discovering Hidden Patterns with Singular Value Decomposition (SVD)"
 summary: ""
-date: "Nov 2 2025"
+date: "Oct 12 2025"
 draft: false
 pinned: false
 tags:

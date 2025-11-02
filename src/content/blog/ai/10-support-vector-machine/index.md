@@ -1,7 +1,7 @@
 ---
-title: "Understanding Support Vector Machines (SVM)"
+title: "10. Understanding Support Vector Machines (SVM)"
 summary: ""
-date: "Nov 2 2025"
+date: "Oct 10 2025"
 draft: false
 pinned: false
 tags:

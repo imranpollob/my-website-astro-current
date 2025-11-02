@@ -1,7 +1,7 @@
 ---
-title: "Logistic Regression: Predicting Power Outages with Probabilities"
+title: "9. Logistic Regression: Predicting Power Outages with Probabilities"
 summary: ""
-date: "Nov 2 2025"
+date: "Oct 9 2025"
 draft: false
 pinned: false
 tags:

@@ -1,7 +1,7 @@
 ---
-title: "Understanding the Naive Bayes Classifier"
+title: "3. Understanding the Naive Bayes Classifier"
 summary: ""
-date: "Nov 2 2025"
+date: "Oct 3 2025"
 draft: false
 pinned: false
 tags:

@@ -1,7 +1,7 @@
 ---
-title: "Understanding K-Nearest Neighbors (KNN)"
+title: "6. Understanding K-Nearest Neighbors (KNN)"
 summary: ""
-date: "Nov 2 2025"
+date: "Oct 6 2025"
 draft: false
 pinned: false
 tags:

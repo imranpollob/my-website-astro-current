@@ -1,7 +1,7 @@
 ---
-title: "Seeing the World Through Convolutional Neural Networks"
+title: "14. Seeing the World Through Convolutional Neural Networks"
 summary: ""
-date: "Nov 2 2025"
+date: "Oct 14 2025"
 draft: false
 pinned: false
 tags:

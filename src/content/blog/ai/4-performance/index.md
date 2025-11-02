@@ -1,14 +1,13 @@
 ---
-title: "Understanding Model Performance in Machine Learning"
+title: "4. Understanding Model Performance in Machine Learning"
 summary: ""
-date: "Nov 2 2025"
+date: "Oct 4 2025"
 draft: false
 pinned: false
 tags:
 - AI
 ---
 
-**Welcome back to ML Experts’ Machine Learning Crash Course!**
 In the previous session, we built our first model. Now, it’s time to ask a critical question: **How do we know if our model is actually better** than our old rule-based approach or heuristic filter?
 
 This post is all about that — measuring **model performance**. By the end, you’ll understand why metrics like *accuracy* aren’t always trustworthy, what *sensitivity*, *specificity*, and *precision* actually mean, and how to tune your model to make smarter decisions.

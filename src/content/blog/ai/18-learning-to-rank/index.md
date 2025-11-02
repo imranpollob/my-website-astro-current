@@ -1,7 +1,7 @@
 ---
-title: "Learning to Rank — Building Smarter Personalized Feeds"
+title: "18. Learning to Rank — Building Smarter Personalized Feeds"
 summary: ""
-date: "Nov 2 2025"
+date: "Oct 18 2025"
 draft: false
 pinned: false
 tags:

@@ -1,7 +1,7 @@
 ---
-title: "Understanding Multinomial and Gaussian Naive Bayes"
+title: "5. Understanding Multinomial and Gaussian Naive Bayes"
 summary: ""
-date: "Nov 2 2025"
+date: "Oct 5 2025"
 draft: false
 pinned: false
 tags:

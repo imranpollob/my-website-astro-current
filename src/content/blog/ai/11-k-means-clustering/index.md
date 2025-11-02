@@ -1,7 +1,7 @@
 ---
-title: "K-Means Clustering Explained"
+title: "11. K-Means Clustering Explained"
 summary: ""
-date: "Nov 2 2025"
+date: "Oct 11 2025"
 draft: false
 pinned: false
 tags:
