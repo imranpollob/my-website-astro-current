@@ -1,5 +1,5 @@
 ---
-title: "Machine Learning Crash Course: Introduction"
+title: "Machine Learning Crash Course: An Introduction"
 summary: ""
 date: "Nov 1 2025"
 draft: false
