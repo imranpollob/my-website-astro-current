@@ -62,7 +62,7 @@ Let’s break down the training process:
    [
    w := w - \eta \frac{\partial L}{\partial w}
    ]
-   where ( \eta ) is the learning rate.
+   where ( $\eta$ ) is the learning rate.
 
 This repetitive process gradually reduces the loss, helping the model learn the optimal parameters.
 
