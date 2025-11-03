@@ -1,102 +1,93 @@
-![Astro Sphere Lighthouse Score](_astrosphere.jpg)
+# Imran Pollob — Portfolio & Blog
 
-Astro Sphere is a static, minimalist, lightweight, lightning fast portfolio and blog theme based on my personal website.
+Welcome to my personal website and portfolio: [imranpollob.com](https://imranpollob.com)
 
-It is primarily Astro, Tailwind and Typescript, with a very small amount of SolidJS for stateful components.
+This site showcases my professional overview, work experiences, projects, and technical blogs. Built with [Astro](https://astro.build/), [Tailwind CSS](https://tailwindcss.com/), and [TypeScript](https://www.typescriptlang.org/), it is fast, minimalist, and fully responsive.
 
-## 🚀 Deploy your own
+---
 
-[![Deploy with Vercel](_deploy_vercel.svg)](https://vercel.com/new/clone?repository-url=https://github.com/markhorn-dev/astro-sphere)  [![Deploy with Netlify](_deploy_netlify.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/markhorn-dev/astro-sphere)
+## 🚀 About This Project
 
-## 📋 Features
+- **Live Site:** [imranpollob.com](https://imranpollob.com)
+- **Base Template:** [astro-sphere](https://github.com/markhorn-dev/astro-sphere) by [markhorn-dev](https://github.com/markhorn-dev)
+- **Tech Stack:** Astro, Tailwind CSS, TypeScript, SolidJS (for stateful components)
 
-- ✅ 100/100 Lighthouse performance
-- ✅ Responsive
-- ✅ Accessible
-- ✅ SEO-friendly
-- ✅ Typesafe
-- ✅ Minimal style
-- ✅ Light/Dark Theme
-- ✅ Animated UI
-- ✅ Tailwind styling
-- ✅ Auto generated sitemap
-- ✅ Auto generated RSS Feed
-- ✅ Markdown support
-- ✅ MDX Support (components in your markdown)
-- ✅ Searchable content (posts and projects)
-- ✅ Code Blocks - copy to clipboard
+## ✨ Features
 
-## 💯 Lighthouse score
-![Astro Sphere Lighthouse Score](_lighthouse.png)
-
-## 🕊️ Lightweight
-All pages under 100kb (including fonts)
-
-## ⚡︎ Fast
-Rendered in ~40ms on localhost
-
-## 📄 Configuration
-
-The blog posts on the demo serve as the documentation and configuration.
-
-## 💻 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-Replace npm with your package manager of choice. `npm`, `pnpm`, `yarn`, `bun`, etc
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run dev:network`     | Starts dev server on local network               |
-| `npm run sync`            | Generates TypeScript types for all Astro modules.|
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run preview:network` | Starts preview server on local network           |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-| `npm run lint`            | Run ESLint                                       |
-| `npm run lint:fix`        | Auto-fix ESLint issues                           |
-
-## 🗺️ Roadmap
-
-A few features I plan to implement
-- ⬜ Article Pages - Table of Contents
-- ⬜ Article Pages - Share on social media
-
-## ✨ Acknowledgement
-
-Theme inspired by [Paco Coursey](https://paco.me/), [Lee Robinson](https://leerob.io/) and [Hayden Bleasel](https://www.haydenbleasel.com/)
+- ⚡️ Lightning fast performance (100/100 Lighthouse)
+- 📱 Fully responsive & accessible
+- 🌗 Light/Dark theme toggle
+- 📝 Markdown & MDX support
+- 🔍 Searchable posts & projects
+- 🗂️ Auto-generated sitemap & RSS feed
+- 💻 Code blocks with copy-to-clipboard
+- 🎨 Minimal, clean design
+- 🧩 Animated UI (stars, meteors, etc.)
+- 🔒 SEO-friendly & typesafe
 
 
-## 🏛️ License
 
-MIT
+## 🛠️ Getting Started
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start development server:
+
+```bash
+npm run dev
+or
+npm start
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Preview production build:
+
+```bash
+npm run preview
+```
+
+For network access:
+
+- Development: `npm run dev:network`
+- Preview: `npm run preview:network`
+
+Other commands:
+
+- Lint: `npm run lint`
+- Fix lint issues: `npm run lint:fix`
+- Create blog post: `npm run blog`
+
+---
+
+### 🔄 Keeping Up to Date with Base Template
+
+To keep your project updated with the latest changes from the base template ([astro-sphere](https://github.com/markhorn-dev/astro-sphere)):
+
+1. Add the base repo as a remote:
+   ```bash
+   git remote add upstream https://github.com/markhorn-dev/astro-sphere.git
+   ```
+2. Fetch and merge updates:
+   ```bash
+   git fetch upstream
+   git merge upstream/main
+   ```
+
+Resolve any conflicts as needed to keep your customizations.
 
 
-# 1.0.1 Update
+## 📝 Customization
 
-Added ability to run dev and preview on local network.
-added npm run dev:network
-added npm run preview:network
+- All content (projects, blogs, experience) is managed via Markdown/MDX in the `src/content/` directory.
+- Components and layouts are in `src/components/` and `src/layouts/`.
+- Styles are managed with Tailwind CSS (`styles/global.css`).
 
-Added slightly more particle density in both light and dark mode.
-
-Added subtle dark mode star and meteor animations.
-
-Removed eslint config
-
-
-Text classes
-18px date
-text-xs md:text-sm lg:text-base 
-
-20px summary text
-text-sm md:text-base lg:text-lg 
-
-24px heading
-text-base md:text-lg lg:text-xl 
-
-36px big text
-text-xl md:text-2xl lg:text-3xl text-center 
