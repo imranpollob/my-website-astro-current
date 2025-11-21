@@ -1,339 +1,435 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
+import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
-import PinnedLayout from "@layouts/PinnedLayout.astro";
-import ArrowCard from "@components/ArrowCard";
-import StackCard from "@components/StackCard.astro";
 import { SITE, SOCIALS } from "@consts";
 
-const pinnedPosts = (await getCollection("blog"))
-	.filter((post) => post.data.pinned && !post.data.draft)
-	.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const publishedPosts = (await getCollection("blog"))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
-const posts = (await getCollection("blog"))
-	.filter((post) => !post.data.draft)
-	.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-	.slice(0, 3);
-
-const projects = (await getCollection("projects"))
-	.filter((project) => project.data.pinned && !project.data.draft)
-	.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-	.slice(0, 3);
-
-const stack = [
-	{
-		category: "Web3",
-		items: [
-			{ text: "Blockchain", icon: "blockchain" },
-			{ text: "Ethereum", icon: "ethereum" },
-			{ text: "Solidity", icon: "solidity" },
-			{ text: "Smart Contract", icon: "contract" },
-		],
-	},
-	{
-		category: "Backend",
-		items: [
-			{ text: "Python", icon: "python" },
-			{ text: "JavaScript", icon: "javascript" },
-			{ text: "Node.js", icon: "nodejs" },
-			{ text: "PHP", icon: "php" },
-			{ text: "Laravel", icon: "laravel" },
-		],
-	},
-	{
-		category: "Frontend",
-		items: [
-			{ text: "React.js", icon: "react" },
-			{ text: "Next.js", icon: "nextjs" },
-			{ text: "Vue.js", icon: "vue" },
-		],
-	},
-	{
-		category: "Databases",
-		items: [
-			{ text: "MySQL", icon: "mysql" },
-			{ text: "PostgreSQL", icon: "postgresql" },
-			{ text: "MongoDB", icon: "mongodb" },
-		],
-	},
-	{
-		category: "AI",
-		items: [
-			{ text: "Machine Learning", icon: "ml" },
-			{ text: "Deep Learning", icon: "dl" },
-			{ text: "NLP", icon: "nlp" },
-			{ text: "LLM", icon: "llm" },
-		],
-	},
-	{
-		category: "DevOps",
-		items: [
-			{ text: "AWS", icon: "aws" },
-			{ text: "Docker", icon: "docker" },
-			{ text: "CI/CD", icon: "cicd" },
-		],
-	},
+const featuredBlogSelections = [
+  {
+    slug: "ai/13-neural-networks",
+    blurb: "An intuitive walkthrough of how neural networks learn from data.",
+  },
+  {
+    slug: "ai/16-generative-adversarial-neural-networks",
+    blurb: "How two networks compete to generate realistic data.",
+  },
+  {
+    slug: "ai/18-learning-to-rank",
+    blurb: "How learning-to-rank models power feeds and search results.",
+  },
 ];
+
+type BlogPreview = { post: CollectionEntry<"blog">; blurb?: string };
+
+const selectedBlogs = featuredBlogSelections
+  .map((item): BlogPreview | null => {
+    const post = publishedPosts.find((entry) => entry.slug === item.slug);
+    if (!post) return null;
+    return { post, blurb: item.blurb };
+  })
+  .filter((entry): entry is BlogPreview => entry !== null);
+
+const blogPreviews: BlogPreview[] =
+  selectedBlogs.length > 0
+    ? selectedBlogs
+    : publishedPosts.slice(0, 3).map((post) => ({ post }));
+
+const stats = [
+  {
+    title: "🎓 PhD in Blockchain Security",
+    detail: "Wayne State University (in progress)",
+  },
+  {
+    title: "💼 5+ Years Industry Experience",
+    detail: "Full-stack software engineer",
+  },
+  {
+    title: "🧪 190+ GitHub Repos",
+    detail: "20+ CV-grade projects",
+  },
+  {
+    title: "✍️ 30+ Technical Blog Posts",
+    detail: "ML, blockchain & system design",
+  },
+];
+
+const skillAreas = [
+  {
+    title: "Blockchain & Web3",
+    bullets: [
+      "Solidity, Ethereum, smart contracts",
+      "DeFi protocols (DAO, stablecoin, NFT marketplace)",
+      "Smart contract security & common vulnerabilities",
+      "Foundry, Hardhat, Ethers.js",
+    ],
+  },
+  {
+    title: "AI & Machine Learning",
+    bullets: [
+      "Python, ML pipelines, model training & evaluation",
+      "LLMs, retrieval-augmented generation, agentic assistants",
+      "Generative AI, computer vision",
+      "Time-series forecasting (e.g., crypto price prediction)",
+    ],
+  },
+  {
+    title: "Software Engineering",
+    bullets: [
+      "React, Next.js, Vue.js, Node.js, Laravel",
+      "REST APIs, authentication, clean architectures",
+      "PostgreSQL, MySQL, MongoDB",
+      "Docker, CI/CD, AWS",
+    ],
+  },
+];
+
+const featuredProjects = [
+  {
+    id: "nft-rental-marketplace",
+    title: "NFT Rental Marketplace",
+    subtitle: "Time-based NFT rental protocol with royalty support",
+    description:
+      "Solidity-based marketplace where users rent NFTs for fixed periods with automatic return and creator royalties.",
+    stack: "Solidity · Hardhat · Ethers.js · Next.js",
+    href: "/projects#nft-rental-marketplace",
+  },
+  {
+    id: "dao-grants-governance",
+    title: "DAO Grants Governance",
+    subtitle: "On-chain governance for community grants",
+    description:
+      "Token-based voting with transparent proposals, quorum rules, and clear treasury separation.",
+    stack: "Solidity · Hardhat · TypeScript · React",
+    href: "/projects#dao-grants-governance",
+  },
+  {
+    id: "solidity-ast-generator",
+    title: "Solidity AST Generator",
+    subtitle: "Static analysis tooling for Solidity",
+    description:
+      "Parses Solidity contracts and emits ASTs for deeper analysis, visualization, and security research.",
+    stack: "JavaScript · Node.js",
+    href: "/projects#solidity-ast-generator",
+  },
+  {
+    id: "multi-pdf-rag-chatbot",
+    title: "Multi-PDF RAG Chatbot",
+    subtitle: "LLM-powered assistant for documents",
+    description:
+      "Answers questions across multiple PDFs using chunking, embeddings, similarity search, and grounded responses.",
+    stack: "Python · Vector search · LLM API",
+    href: "/projects#multi-pdf-rag-chatbot",
+  },
+];
+
+const certificationSummary =
+  "Selected Certifications: IBM – Generative AI Engineering · IBM – RAG & Agentic AI · Microsoft – AI & ML Engineering · Coursera – Blockchain Solution Architecture · LearnQuest – Security for Blockchain & DApps";
+
+const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777@gmail.com";
 ---
 
 <PageLayout title="Home" description={SITE.DESCRIPTION}>
-	<!-- HERO -->
-	<section class="relative h-screen w-full">
-		<div id="planetcont" class="animate absolute inset-0 top-1/4 overflow-hidden">
-			<div
-				id="crescent"
-				class="absolute top-0 left-1/2 -translate-x-1/2 w-[250vw] min-h-[100vh] aspect-square rounded-full p-[1px] bg-gradient-to-b from-black/25 dark:from-white/75 from-0% to-transparent to-5%"
-			>
-				<div
-					id="planet"
-					class="w-full h-full bg-white dark:bg-black rounded-full p-[1px] overflow-hidden flex justify-center"
-				>
-					<div id="blur" class="w-full h-20 rounded-full bg-neutral-900/25 dark:bg-white/25 blur-3xl"></div>
-				</div>
-			</div>
-		</div>
+  <section class="relative pt-28 pb-16">
+    <Container size="xl">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div class="space-y-6 animate">
+          <p class="text-sm uppercase tracking-wide">Blockchain Security & AI Engineer</p>
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white leading-tight">
+            Blockchain Security & AI Engineer
+            <br />
+            PhD Candidate • 5+ Years Software Engineering
+          </h1>
+          <p class="text-base md:text-lg text-black/75 dark:text-white/75">
+            I design and build secure blockchain systems and intelligent applications—from smart-contract
+            security tooling to AI-powered apps for real users.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a
+              href="/resume.pdf"
+              class="py-3 px-5 rounded-full bg-black text-white dark:bg-white dark:text-black text-sm md:text-base font-semibold hover:opacity-80 transition"
+            >
+              Download Resume
+            </a>
+            <a
+              href="#contact"
+              class="py-3 px-5 rounded-full border border-black/20 dark:border-white/25 text-sm md:text-base font-semibold hover:bg-black/5 hover:dark:bg-white/15 transition"
+            >
+              Hire me for Blockchain / AI / Software Engineering
+            </a>
+          </div>
+          <p class="text-sm text-black/60 dark:text-white/60">
+            Based in Detroit, MI · Open to remote and on-site roles
+          </p>
+        </div>
 
-		<div class="animate absolute h-full w-full flex items-center justify-center">
-			<div class="relative w-full h-full flex items-center justify-center">
-				<div class="p-5 text-center">
-					<!-- Photo -->
-					<div class="flex items-center justify-center mb-5">
-						<img
-							src="/image/imran-pollob.jpg"
-							alt="Imran Pollob"
-							class="w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] lg:w-[13rem] lg:h-[13rem] rounded-full border-4 border-black dark:border-white"
-						/>
-					</div>
+        <div class="animate flex justify-center lg:justify-end">
+          <div class="relative">
+            <div class="absolute -inset-4 bg-gradient-to-tr from-black/5 via-transparent to-black/10 dark:from-white/10 dark:to-white/5 rounded-[32px] blur-2xl"></div>
+            <div class="relative p-1 rounded-[32px] border border-black/10 dark:border-white/15 bg-white/70 dark:bg-black/70 glass-panel">
+              <img
+                src="/image/imran-pollob.jpg"
+                alt="Imran Pollob"
+                class="w-[16rem] h-[16rem] md:w-[18rem] md:h-[18rem] rounded-[28px] object-cover border-4 border-black/70 dark:border-white/70"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
 
-					<!-- Introduction -->
-					<h1 class="animated text-lg md:text-xl lg:text-2xl font-semibold text-black dark:text-white">
-						👋 Hello there, I'm
-					</h1>
+  <section class="pb-16">
+    <Container size="xl">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {
+          stats.map((item) => (
+            <div class="animate p-5 rounded-2xl border border-black/10 dark:border-white/15 bg-white/70 dark:bg-black/70 glass-panel">
+              <p class="text-base font-semibold text-black dark:text-white">{item.title}</p>
+              <p class="text-sm text-black/70 dark:text-white/70 mt-2">{item.detail}</p>
+            </div>
+          ))
+        }
+      </div>
+    </Container>
+  </section>
 
-					<!-- Main work -->
-					<h2 class="animated text-2xl md:text-3xl lg:text-4xl font-bold text-black dark:text-white">
-						M M IMRAN (Pollob)
-					</h2>
+  <section class="pb-16">
+    <Container size="xl">
+      <div class="animate space-y-4">
+        <h2 class="text-2xl font-bold text-black dark:text-white">About Me</h2>
+        <div class="space-y-4 text-base md:text-lg">
+          <p>
+            I’m M M Imran (Pollob), a PhD candidate specializing in <strong>blockchain security</strong>.
+          </p>
+          <p>
+            Before my PhD, I worked for over five years as a <strong>software engineer</strong>, building production
+            systems in PHP, JavaScript, Python and modern web frameworks.
+          </p>
+          <p>
+            I’m most excited about the intersection of <strong>secure blockchain design</strong>, <strong>AI/ML</strong>, and
+            <strong>practical software engineering</strong>—turning research ideas into tools that people can actually use.
+          </p>
+        </div>
+        <a
+          href="/experience"
+          class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-black/30 dark:decoration-white/40 hover:text-black dark:hover:text-white"
+        >
+          View my experience →
+        </a>
+      </div>
+    </Container>
+  </section>
 
-					<!-- Current work -->
-					<p class="animated text-sm md:text-base lg:text-lg opacity-75">
-						Former Software Engineer and Currently a PhD Candidate
-					</p>
+  <section class="pb-16">
+    <Container size="xl">
+      <div class="animate space-y-6">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+          <h2 class="text-2xl font-bold text-black dark:text-white">Core Skill Areas</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {
+            skillAreas.map((area) => (
+              <div class="p-6 rounded-2xl border border-black/10 dark:border-white/15 bg-white/70 dark:bg-black/70 glass-panel">
+                <h3 class="text-lg font-semibold text-black dark:text-white mb-3">{area.title}</h3>
+                <ul class="space-y-2 text-sm md:text-base text-black/80 dark:text-white/80">
+                  {area.bullets.map((item) => (
+                    <li class="flex gap-2">
+                      <span class="mt-1 h-1.5 w-1.5 rounded-full bg-black dark:bg-white"></span>
+                      <span class="leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </Container>
+  </section>
 
-					<!-- CTA Buttons -->
-					<div id="ctaButtons" class="animated flex flex-wrap gap-4 justify-center mt-5 relative">
-						<a
-							href="/blog"
-							class="py-2 px-4 rounded uppercase truncate text-xs md:text-sm lg:text-base bg-black dark:bg-white text-white dark:text-black hover:opacity-75 blend"
-						>
-							Read my blog
-						</a>
-						<a
-							href="/projects"
-							class="py-2 px-4 truncate rounded uppercase text-xs md:text-sm lg:text-base border border-black/25 dark:border-white/25 hover:bg-black/5 hover:dark:bg-white/15 blend"
-						>
-							View my projects
-						</a>
+  <section class="pb-16">
+    <Container size="xl">
+      <div class="animate flex flex-col gap-6">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+          <div>
+            <p class="text-sm uppercase tracking-wide">Projects</p>
+            <h2 class="text-2xl font-bold text-black dark:text-white">Featured Projects</h2>
+          </div>
+          <a
+            href="/projects"
+            class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-black/30 dark:decoration-white/40 hover:text-black dark:hover:text-white"
+          >
+            View all projects →
+          </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {
+            featuredProjects.map((project) => (
+              <a
+                href={project.href}
+                class="p-6 rounded-2xl border border-black/10 dark:border-white/15 bg-white/70 dark:bg-black/70 glass-panel hover:-translate-y-1 transition-transform"
+              >
+                <div class="flex items-start justify-between gap-3">
+                  <div>
+                    <p class="text-xs uppercase text-black/60 dark:text-white/60">{project.subtitle}</p>
+                    <h3 class="text-xl font-semibold text-black dark:text-white mt-1">{project.title}</h3>
+                  </div>
+                  <span class="text-xs px-2 py-1 rounded-full border border-black/10 dark:border-white/20">
+                    {project.stack}
+                  </span>
+                </div>
+                <p class="mt-3 text-sm md:text-base text-black/80 dark:text-white/80 leading-relaxed">
+                  {project.description}
+                </p>
+                <p class="mt-4 text-sm font-semibold underline decoration-[.5px] underline-offset-4">
+                  View project →
+                </p>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </Container>
+  </section>
 
-						<div class="absolute mt-20 animate-bounce">
-							<div class="flex flex-col justify-center items-center">
-								<span>Scroll</span>
-								<svg
-									viewBox="0 0 16 16"
-									class="rotate-90 size-[18px] min-w-[18px] fill-none stroke-[1.75] stroke-current group-hover:stroke-white transition-all duration-300 ease-in-out"
-								>
-									<path
-										d="M3.3335 8H12.6668"
-										class="origin-right -translate-x-2 group-hover:-translate-x-0 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"
-									></path>
-									<path
-										d="M8 3.3335L12.6667 8.00016L8 12.6668"
-										class="-translate-x-1 group-hover:translate-x-0 transition-transform duration-300 ease-in-out"
-									></path>
-								</svg>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+  <section class="pb-16">
+    <Container size="xl">
+      <div class="animate flex flex-col gap-6">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+          <div>
+            <p class="text-sm uppercase tracking-wide">Blog</p>
+            <h2 class="text-2xl font-bold text-black dark:text-white">Featured Blog Posts</h2>
+          </div>
+          <a
+            href="/blog"
+            class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-black/30 dark:decoration-white/40 hover:text-black dark:hover:text-white"
+          >
+            Read the blog →
+          </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {
+            blogPreviews.map(({ post, blurb }) => (
+              <a
+                href={`/blog/${post.slug}`}
+                class="p-6 rounded-2xl border border-black/10 dark:border-white/15 bg-white/70 dark:bg-black/70 glass-panel hover:-translate-y-1 transition-transform"
+              >
+                <p class="text-xs uppercase text-black/60 dark:text-white/60">{post.data.tags.join(", ")}</p>
+                <h3 class="text-lg font-semibold text-black dark:text-white mt-2">
+                  {post.data.title}
+                </h3>
+                <p class="mt-3 text-sm md:text-base text-black/80 dark:text-white/80 leading-relaxed">
+                  {blurb || post.data.summary || "Explore the full post for details."}
+                </p>
+                <p class="mt-4 text-sm font-semibold underline decoration-[.5px] underline-offset-4">
+                  Read post →
+                </p>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </Container>
+  </section>
 
-	<div class="relative bg-white dark:bg-black">
-		<div class="mx-auto max-w-screen-md p-5 space-y-24 pb-16">
-			<!-- About Section -->
-			<section class="animate">
-				<article id="about" class="text-sm md:text-base lg:text-lg">
-					<h4>About Me</h4>
-					<p>
-						I’m a PhD student researching Blockchain Security, with a focus on developing automated tools
-						for detecting smart contract vulnerabilities.
-					</p>
+  <section class="pb-16">
+    <Container size="xl">
+      <div class="animate p-6 rounded-2xl border border-black/10 dark:border-white/15 bg-white/70 dark:bg-black/70 glass-panel flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div class="space-y-2">
+          <p class="text-sm uppercase tracking-wide">Certifications Preview</p>
+          <p class="text-base md:text-lg text-black dark:text-white">
+            {certificationSummary}
+          </p>
+        </div>
+        <a
+          href="/experience#certifications"
+          class="inline-flex items-center justify-center px-4 py-2 rounded-full border border-black/20 dark:border-white/25 font-semibold text-sm md:text-base hover:bg-black/5 hover:dark:bg-white/15 transition"
+        >
+          See details →
+        </a>
+      </div>
+    </Container>
+  </section>
 
-					<h4>My Journey</h4>
-					<p>
-						Before my PhD, I worked for over five years as a software engineer, gaining hands-on experience
-						across diverse tech stacks and collaborating with talented teams to deliver impactful,
-						consumer-facing projects.
-					</p>
-					<h4>My Passion</h4>
-					<p>
-						I’m deeply passionate about building projects. In my free time, I enjoy working on side projects
-						and exploring new technologies. Exploring new ideas in tech always keeps me inspired.
-					</p>
-				</article>
-			</section>
+  <section id="contact" class="pb-20">
+    <Container size="xl">
+      <div class="animate p-8 rounded-2xl border border-black/10 dark:border-white/15 bg-white/70 dark:bg-black/70 glass-panel space-y-6">
+        <div class="space-y-2">
+          <p class="text-sm uppercase tracking-wide">Contact</p>
+          <h2 class="text-2xl font-bold text-black dark:text-white">Let’s build something secure and intelligent.</h2>
+          <p class="text-base md:text-lg text-black/80 dark:text-white/80">
+            I’m looking for opportunities in:
+          </p>
+          <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm md:text-base text-black/80 dark:text-white/80">
+            <li>• Blockchain / Smart Contract Engineering</li>
+            <li>• Blockchain Security</li>
+            <li>• AI / ML Engineering (LLMs, RAG, applied ML)</li>
+            <li>• Full-Stack Software Engineering</li>
+          </ul>
+        </div>
 
-			<!-- Tech Stack Section -->
-			<section class="animate">
-				<div class="space-y-6">
-					<p class="text-base md:text-lg lg:text-xl font-semibold text-black dark:text-white">
-						My Tech Stack
-					</p>
-					<div class="space-y-4 mt-5">
-						{
-							stack.map((group) => (
-								<div>
-									<h3 class="text-sm md:text-base font-semibold text-gray-700 dark:text-gray-300 mb-2">
-										{group.category}
-									</h3>
-									<div class="flex flex-wrap items-center gap-2">
-										{group.items.map((item) => (
-											<StackCard text={item.text} icon={item.icon} />
-										))}
-									</div>
-								</div>
-							))
-						}
-					</div>
-				</div>
-			</section>
-
-			<!-- Blog Preview Section -->
-			<section class="animate">
-				<div class="space-y-4">
-					<div class="flex justify-between">
-						<p class="text-sm md:text-base lg:text-lg font-semibold text-black dark:text-white">
-							Featured posts
-						</p>
-						<a
-							href="/blog"
-							class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend"
-						>
-							<span
-								class="text-sm md:text-base lg:text-lg text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend"
-							>
-								All posts
-							</span>
-						</a>
-					</div>
-					<ul class="space-y-4">
-						{
-							pinnedPosts.map((post) => (
-								<li>
-									<ArrowCard entry={post} />
-								</li>
-							))
-						}
-					</ul>
-				</div>
-			</section>
-
-			<section class="animate text-center">
-				<a
-					href="/blog"
-					class="py-2 px-4 rounded uppercase truncate text-xs md:text-sm lg:text-base bg-black dark:bg-white text-white dark:text-black hover:opacity-75 blend"
-				>
-					View all posts
-				</a>
-			</section>
-
-			<!-- Project Preview Section -->
-			<section class="animate">
-				<div class="space-y-4">
-					<div class="flex justify-between">
-						<p class="text-sm md:text-base lg:text-lg font-semibold text-black dark:text-white">
-							Featured projects
-						</p>
-						<a
-							href="/projects"
-							class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend"
-						>
-							<span
-								class="text-sm md:text-base lg:text-lg text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend"
-							>
-								Featured projects
-							</span>
-						</a>
-					</div>
-					<ul class="space-y-4">
-						{
-							projects.map((project) => (
-								<li>
-									<ArrowCard entry={project} />
-								</li>
-							))
-						}
-					</ul>
-				</div>
-			</section>
-
-			<section class="animate text-center">
-				<a
-					href="/experience"
-					class="py-2 px-4 rounded uppercase truncate text-xs md:text-sm lg:text-base bg-black dark:bg-white text-white dark:text-black hover:opacity-75 blend"
-				>
-					View my experience
-				</a>
-			</section>
-
-			<!-- Cool Ice -->
-			<hr class="my-10 h-1 w-full bg-gradient-to-r from-sky-300 via-slate-300 to-gray-400 border-0 rounded-full" />
-
-			<!-- Contact Section -->
-			<section class="animate">
-				<div class="text-center">
-					<p class="text-base md:text-lg lg:text-xl font-semibold text-black dark:text-white uppercase">
-						Let's Connect
-					</p>
-
-					<div class="mt-6 max-w-md mx-auto">
-						<div class="grid grid-cols-2 gap-4 text-left">
-							{SOCIALS.map((social) => (
-								<>
-									<!-- Left column: NAME -->
-									<div class="flex items-center justify-end pr-2">
-										<span class="text-sm md:text-base lg:text-lg font-medium whitespace-nowrap">
-											{social.NAME}
-										</span>
-									</div>
-
-									<!-- Right column: LINK -->
-									<div class="flex items-center pl-2">
-										<a
-											href={social.HREF}
-											target="_blank"
-											class="group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2"
-										>
-											<span class="text-sm md:text-base lg:text-lg text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white">
-												{social.TEXT}
-											</span>
-										</a>
-									</div>
-								</>
-							))}
-						</div>
-					</div>
-				</div>
-			</section>
-
-		</div>
-	</div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="col-span-2 space-y-4">
+            <form
+              class="space-y-3"
+              action={`mailto:${email}`}
+              method="GET"
+            >
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <input
+                  type="text"
+                  name="subject"
+                  placeholder="Subject"
+                  class="w-full rounded-lg border border-black/10 dark:border-white/20 bg-white/80 dark:bg-black/60 px-3 py-2"
+                  required
+                />
+                <input
+                  type="email"
+                  value={email}
+                  class="w-full rounded-lg border border-black/10 dark:border-white/20 bg-white/80 dark:bg-black/60 px-3 py-2"
+                  readonly
+                />
+              </div>
+              <textarea
+                name="body"
+                rows="4"
+                placeholder="Tell me about your project or role..."
+                class="w-full rounded-lg border border-black/10 dark:border-white/20 bg-white/80 dark:bg-black/60 px-3 py-2"
+              ></textarea>
+              <button
+                type="submit"
+                class="inline-flex items-center px-4 py-2 rounded-full bg-black text-white dark:bg-white dark:text-black font-semibold hover:opacity-80 transition"
+              >
+                Send an email
+              </button>
+            </form>
+          </div>
+          <div class="col-span-1 space-y-3 text-sm md:text-base text-black/80 dark:text-white/80">
+            <div>
+              <p class="font-semibold text-black dark:text-white">📧 Email</p>
+              <a href={`mailto:${email}`} class="underline decoration-[.5px] underline-offset-4 hover:text-black dark:hover:text-white">
+                {email}
+              </a>
+            </div>
+            <div>
+              <p class="font-semibold text-black dark:text-white">🔗 GitHub</p>
+              <a href="https://github.com/imranpollob" target="_blank" class="underline decoration-[.5px] underline-offset-4 hover:text-black dark:hover:text-white">
+                imranpollob
+              </a>
+            </div>
+            <div>
+              <p class="font-semibold text-black dark:text-white">🔗 LinkedIn</p>
+              <a href="https://www.linkedin.com/in/imranpollob/" target="_blank" class="underline decoration-[.5px] underline-offset-4 hover:text-black dark:hover:text-white">
+                imranpollob
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
 </PageLayout>
-
-<style>
-	.scroll-ease-in-out {
-		scroll-behavior: smooth;
-		transition: scroll-top 0.5s ease-in-out; /* Adjust duration as needed */
-	}
-</style>

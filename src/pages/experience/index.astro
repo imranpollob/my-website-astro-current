@@ -1,74 +1,232 @@
 ---
-import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
-import TopLayout from "@layouts/TopLayout.astro";
-import BottomLayout from "@layouts/BottomLayout.astro";
+import Container from "@components/Container.astro";
 import { EXPERIENCE } from "@consts";
 
-const collection = await getCollection("experience");
+const intro = `Over the last few years I’ve worked both as a **professional software engineer** and a **graduate teaching assistant**, while pursuing a PhD in blockchain security.  \n\nHere’s what I’ve built, taught, and learned along the way.`;
 
-collection.sort(
-  (a, b) =>
-    new Date(b.data.dateStart).getTime() - new Date(a.data.dateStart).getTime()
-);
+const professionalExperience = [
+  {
+    company: "Wayne State University",
+    role: "Graduate Teaching Assistant",
+    duration: "Aug 2021 – Present · Detroit, MI",
+    bullets: [
+      "Mentor student teams in Software Engineering to plan, build, test, and deploy full-stack applications using Agile practices and Git.",
+      "Teach programming in Java and C++, emphasizing problem-solving, clean code, and debugging strategies.",
+      "Run labs in Bioinformatics with R and Computer Architecture, helping students connect theory to real tools.",
+    ],
+  },
+  {
+    company: "Cefalo",
+    role: "Software Engineer",
+    duration: "Sep 2019 – Jul 2021",
+    bullets: [
+      "Built an internal Python-based scraping framework to collect and process data from multiple sources, reducing manual data collection effort.",
+      "Developed and maintained an e-commerce platform and internal tools.",
+      "Collaborated directly with clients to clarify requirements and deliver technical solutions.",
+    ],
+  },
+  {
+    company: "Rapid Web Services",
+    role: "Full-Stack Software Engineer",
+    duration: "May 2018 – Sep 2019",
+    bullets: [
+      "Developed and maintained scalable web applications using Laravel, JavaScript, and React.",
+      "Designed RESTful APIs and integrated them into an inventory management system.",
+      "Improved application performance and reliability by profiling and resolving bottlenecks.",
+    ],
+  },
+  {
+    company: "Codalo",
+    role: "Software Engineer",
+    duration: "Nov 2016 – Apr 2018",
+    bullets: [
+      "Built school management and parcel delivery systems used by multiple institutions across Bangladesh.",
+      "Gathered client feedback and iterated on product workflows and features.",
+    ],
+  },
+];
 
-const experience = await Promise.all(
-  collection.map(async (item) => {
-    const { Content } = await item.render();
-    return { ...item, Content };
-  })
-);
+const education = [
+  {
+    school: "Wayne State University",
+    program: "Doctor of Philosophy – PhD, Computer Science",
+    status: "In progress",
+    timeframe: "Aug 2021 – Aug 2026",
+    detail: "Focus: smart contract security, graph/hypergraph representations, ML-based vulnerability detection.",
+  },
+  {
+    school: "Jahangirnagar University",
+    program: "Master of Science – MS, Information Technology",
+    status: "",
+    timeframe: "2016 – 2017",
+    detail: "Grade: 3.65 out of 4.00",
+  },
+  {
+    school: "Jahangirnagar University",
+    program: "Bachelor of Science – BSc, Information Technology",
+    status: "",
+    timeframe: "2011 – 2015",
+    detail: "Grade: 3.62 out of 4.00",
+  },
+];
 
-function formatWorkDate(input: Date | string) {
-  if (typeof input === "string") return input;
+const certifications = [
+  {
+    title: "Blockchain & Security",
+    items: [
+      {
+        name: "Blockchain Solution Architecture – Coursera (2025)",
+        detail: "Designing end-to-end blockchain solutions, consensus choices, and architecture patterns.",
+      },
+      {
+        name: "Security for Blockchain and DApps – LearnQuest (2025)",
+        detail: "Threat models for smart contracts, common vulnerabilities, and secure design patterns.",
+      },
+    ],
+  },
+  {
+    title: "AI & Machine Learning",
+    items: [
+      {
+        name: "IBM Generative AI Engineering – IBM (2025)",
+        detail: "LLM lifecycle, prompt engineering, evaluation, and deployment of generative AI apps.",
+      },
+      {
+        name: "IBM RAG and Agentic AI: Build Next-Gen AI Assistants – IBM (2025)",
+        detail: "Retrieval-augmented generation, tool-using agents, orchestration and evaluation.",
+      },
+      {
+        name: "Microsoft AI & ML Engineering – Microsoft (2025)",
+        detail: "Classical ML, deep learning foundations, and Azure ML workflows.",
+      },
+    ],
+  },
+];
 
-  const month = input.toLocaleDateString("en-US", {
-    month: "short",
-  });
-
-  const year = new Date(input).getFullYear();
-  return `${month} ${year}`;
-}
+const skills = [
+  { label: "Languages", values: ["Python", "JavaScript/TypeScript", "PHP", "Solidity", "Java", "C++"] },
+  { label: "Frameworks", values: ["React", "Next.js", "Vue.js", "Node.js/Express", "Laravel"] },
+  { label: "Blockchain", values: ["Solidity", "Hardhat", "Foundry", "Ethers.js", "Web3.js"] },
+  { label: "AI/ML", values: ["scikit-learn", "LLM APIs", "vector search", "RAG patterns"] },
+  { label: "DevOps & Tools", values: ["Docker", "AWS", "Git", "CI/CD", "Linux", "VS Code"] },
+];
 ---
 
 <PageLayout title={EXPERIENCE.TITLE} description={EXPERIENCE.DESCRIPTION}>
-  <TopLayout>
-    <div
-      class="text-xl md:text-2xl lg:text-3xl text-center animate page-heading"
-    >
-      {EXPERIENCE.TITLE}
-    </div>
-  </TopLayout>
-  <BottomLayout>
-    <ul>
-      {
-        experience.map((entry) => (
-          <li class="animate border-b border-black/10 dark:border-white/25 mt-4 py-8 first-of-type:mt-0 first-of-type:pt-0 last-of-type:border-none">
-            <div class="text-xs md:text-sm lg:text-base uppercase mb-4">
-              {formatWorkDate(entry.data.dateStart)} -{" "}
-              {formatWorkDate(entry.data.dateEnd)}
-            </div>
-            <div class="text-base md:text-lg lg:text-xl text-black dark:text-white font-semibold">
-              {entry.data.company}
-            </div>
-            <div class="text-base md:text-lg lg:text-xl font-semibold">
-              {entry.data.role}
-            </div>
-            <article class="text-sm md:text-base lg:text-lg prose dark:prose-invert pt-5">
-              <entry.Content />
-            </article>
-          </li>
-        ))
-      }
-    </ul>
+  <section class="pt-28 pb-10">
+    <Container size="xl">
+      <div class="animate space-y-4 text-center">
+        <div class="text-xl md:text-2xl lg:text-3xl page-heading">
+          {EXPERIENCE.TITLE}
+        </div>
+        <article class="prose dark:prose-invert max-w-3xl mx-auto">
+          <p set:html={intro}></p>
+        </article>
+      </div>
+    </Container>
+  </section>
 
-    <section class="animate text-center m-5">
-      <a
-        href="/projects"
-        class="py-2 px-4 rounded uppercase truncate text-xs md:text-sm lg:text-base bg-black dark:bg-white text-white dark:text-black hover:opacity-75 blend"
-      >
-        View my Projects
-      </a>
-    </section>
-  </BottomLayout>
+  <section class="pb-16">
+    <Container size="xl">
+      <div class="animate space-y-6">
+        <div>
+          <p class="text-sm uppercase tracking-wide">Professional Experience</p>
+          <h2 class="text-2xl font-bold text-black dark:text-white">Timeline</h2>
+        </div>
+        <div class="relative pl-4 md:pl-6">
+          <div class="absolute left-1 md:left-2 top-2 bottom-2 w-px bg-black/10 dark:bg-white/20"></div>
+          <ul class="space-y-8">
+            {professionalExperience.map((item) => (
+              <li class="relative pl-6 md:pl-8">
+                <span class="absolute left-0 top-2 inline-block h-3 w-3 rounded-full bg-black dark:bg-white"></span>
+                <div class="p-6 rounded-2xl border border-black/10 dark:border-white/15 bg-white/70 dark:bg-black/70 glass-panel space-y-2">
+                  <p class="text-xs uppercase text-black/60 dark:text-white/60">{item.duration}</p>
+                  <h3 class="text-xl font-semibold text-black dark:text-white">{item.company}</h3>
+                  <p class="text-base font-semibold">{item.role}</p>
+                  <ul class="list-disc ml-5 space-y-2 text-sm md:text-base text-black/80 dark:text-white/80">
+                    {item.bullets.map((point) => (
+                      <li>{point}</li>
+                    ))}
+                  </ul>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <section class="pb-16" id="education">
+    <Container size="xl">
+      <div class="animate space-y-4">
+        <div>
+          <p class="text-sm uppercase tracking-wide">Education</p>
+          <h2 class="text-2xl font-bold text-black dark:text-white">Academic Background</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {education.map((item) => (
+            <div class="p-6 rounded-2xl border border-black/10 dark:border-white/15 bg-white/70 dark:bg-black/70 glass-panel space-y-2">
+              <h3 class="text-lg font-semibold text-black dark:text-white">{item.school}</h3>
+              <p class="text-sm md:text-base text-black/80 dark:text-white/80">{item.program}{item.status && ` — ${item.status}`}</p>
+              <p class="text-xs md:text-sm uppercase text-black/60 dark:text-white/60">{item.timeframe}</p>
+              <p class="text-sm md:text-base text-black/80 dark:text-white/80">{item.detail}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <section class="pb-16" id="certifications">
+    <Container size="xl">
+      <div class="animate space-y-6">
+        <div>
+          <p class="text-sm uppercase tracking-wide">Certifications</p>
+          <h2 class="text-2xl font-bold text-black dark:text-white">Credentials</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {certifications.map((group) => (
+            <div class="p-6 rounded-2xl border border-black/10 dark:border-white/15 bg-white/70 dark:bg-black/70 glass-panel space-y-3">
+              <h3 class="text-lg font-semibold text-black dark:text-white">{group.title}</h3>
+              <ul class="space-y-3 text-sm md:text-base text-black/80 dark:text-white/80">
+                {group.items.map((item) => (
+                  <li>
+                    <p class="font-semibold text-black dark:text-white">{item.name}</p>
+                    <p>{item.detail}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <section class="pb-20">
+    <Container size="xl">
+      <div class="animate space-y-4">
+        <div>
+          <p class="text-sm uppercase tracking-wide">Skills Overview</p>
+          <h2 class="text-2xl font-bold text-black dark:text-white">Tools & Strengths</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {skills.map((skill) => (
+            <div class="p-4 rounded-2xl border border-black/10 dark:border-white/15 bg-white/70 dark:bg-black/70 glass-panel flex flex-col gap-2">
+              <p class="text-sm font-semibold text-black dark:text-white uppercase">{skill.label}</p>
+              <div class="flex flex-wrap gap-2">
+                {skill.values.map((value) => (
+                  <span class="px-3 py-1 rounded-full border border-black/10 dark:border-white/25 text-sm bg-black/5 dark:bg-white/15">
+                    {value}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
 </PageLayout>
