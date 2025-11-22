@@ -1,6 +1,6 @@
 ---
-title: "System Design Interview Series: Learn Step by Step"
-summary: ""
+title: "System Design Interview Series"
+summary: "Crack the System Design Interview with Real-World Solutions"
 date: "Sep 4 2025"
 draft: false
 pinned: true

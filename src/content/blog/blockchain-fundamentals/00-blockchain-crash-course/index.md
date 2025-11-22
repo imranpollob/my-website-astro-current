@@ -1,6 +1,6 @@
 ---
-title: "Blockchain & Ethereum Fundamentals: Learn Step by Step"
-summary: ""
+title: "Blockchain Crash Course"
+summary: "Learn Blockchain, Ethereum, Smart Contracts, and core DeFi concepts"
 date: "Sep 6 2025"
 draft: false
 pinned: true

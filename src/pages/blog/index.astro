@@ -21,9 +21,9 @@ const estimated_initial_size = 28 + posts.length * 158 + (posts.length - 1) * 12
       <div class="animate space-y-4 text-center">
         <div class="text-xl md:text-2xl lg:text-3xl page-heading">{BLOG.TITLE}</div>
         <p class="text-base md:text-lg text-black/80 dark:text-white/80 max-w-3xl mx-auto">
-          I write about topics I’m learning and teaching—mainly <strong>machine learning</strong>,
-          <strong> blockchain & Ethereum</strong>, and <strong>system design</strong>. My goal is to explain complex ideas
-          in a way that a busy engineer (or my past self) can understand quickly.
+          I write about topics I’m learning and teaching—mainly <strong>Machine Learning</strong>,
+          <strong> Blockchain & Ethereum</strong>, and <strong>System Design</strong>. My goal is to explain complex ideas
+          in a way that a busy engineer (or my past self) can understand quickly
         </p>
       </div>
     </Container>
@@ -33,8 +33,8 @@ const estimated_initial_size = 28 + posts.length * 158 + (posts.length - 1) * 12
     <Container size="xl">
       <div class="animate space-y-6">
         <div>
-          <p class="text-sm uppercase tracking-wide">Pinned Posts</p>
-          <h2 class="text-2xl font-bold text-black dark:text-white">Start here</h2>
+          <p class="text-sm uppercase tracking-wide">Pinned Series</p>
+          <h2 class="text-2xl font-bold text-black dark:text-white">Start a Crash Course</h2>
         </div>
         {pinnedPosts.length > 0 ? (
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -48,12 +48,12 @@ const estimated_initial_size = 28 + posts.length * 158 + (posts.length - 1) * 12
                 <p class="text-sm md:text-base text-black/80 dark:text-white/80 leading-relaxed">
                   {post.data.summary || "Explore the full post for details."}
                 </p>
-                <p class="text-sm font-semibold underline decoration-[.5px] underline-offset-4">Read post →</p>
+                <p class="text-sm font-semibold underline decoration-[.5px] underline-offset-4">Open series →</p>
               </a>
             ))}
           </div>
         ) : (
-          <p class="text-sm text-black/70 dark:text-white/70">Pinned posts will appear here once available.</p>
+          <p class="text-sm text-black/70 dark:text-white/70">Pinned series hubs will appear here once available.</p>
         )}
       </div>
     </Container>

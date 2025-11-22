@@ -10,16 +10,16 @@ const publishedPosts = (await getCollection("blog"))
 
 const featuredBlogSelections = [
   {
-    slug: "ai/13-neural-networks",
-    blurb: "An intuitive walkthrough of how neural networks learn from data.",
+    slug: "ai/0-machine-learning-crash-course",
+    blurb: "The complete ML series, from regression to deep learning",
   },
   {
-    slug: "ai/16-generative-adversarial-neural-networks",
-    blurb: "How two networks compete to generate realistic data.",
+    slug: "blockchain-fundamentals/00-blockchain-crash-course",
+    blurb: "Learn Blockchain, Ethereum, Smart Contracts, and core DeFi concepts",
   },
   {
-    slug: "ai/18-learning-to-rank",
-    blurb: "How learning-to-rank models power feeds and search results.",
+    slug: "system-design/00-system-design-interview-series",
+    blurb: "Crack the System Design Interview with Real-World Solutions",
   },
 ];
 
@@ -49,7 +49,7 @@ const stats = [
   },
   {
     title: "🧪 190+ GitHub Repos",
-    detail: "20+ CV-grade projects",
+    detail: "20+ live projects",
   },
   {
     title: "✍️ 30+ Technical Blog Posts",
@@ -305,7 +305,7 @@ const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
           <div>
             <p class="text-sm uppercase tracking-wide">Blog</p>
-            <h2 class="text-2xl font-bold text-black dark:text-white">Featured Blog Posts</h2>
+            <h2 class="text-2xl font-bold text-black dark:text-white">Start a Crash Course</h2>
           </div>
           <a
             href="/blog"

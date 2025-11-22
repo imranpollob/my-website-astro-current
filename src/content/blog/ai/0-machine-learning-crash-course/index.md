@@ -1,6 +1,6 @@
 ---
 title: "Machine Learning Crash Course"
-summary: ""
+summary: "The complete ML series, from regression to deep learning"
 date: "Sep 30 2025"
 draft: false
 pinned: true
