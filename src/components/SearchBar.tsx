@@ -7,7 +7,7 @@ type Props = {
 };
 
 export default function SearchBar({ onSearchInput, query, setQuery, placeholderText, autoFocus = false }: Props) {
-    return (<div class="relative">
+    return (<div class="relative glass-panel">
         <svg class="absolute size-6 left-2 top-[0.45rem] stroke-neutral-400 dark:stroke-neutral-500 pointer-events-none">
             <use href={`/ui.svg#search`} />
         </svg>

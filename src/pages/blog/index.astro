@@ -6,8 +6,8 @@ import SearchCollection from "@components/SearchCollection";
 import { BLOG } from "@consts";
 
 const posts = (await getCollection("blog"))
-  .filter((post) => !post.data.draft)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+    .filter((post) => !post.data.draft)
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 const pinnedPosts = posts.filter((post) => post.data.pinned);
 const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort((a, b) => a.localeCompare(b));
@@ -16,62 +16,70 @@ const estimated_initial_size = 28 + posts.length * 158 + (posts.length - 1) * 12
 ---
 
 <PageLayout title={BLOG.TITLE} description={BLOG.DESCRIPTION}>
-  <section class="pt-28 pb-12">
-    <Container size="xl">
-      <div class="animate space-y-4 text-center">
-        <div class="text-xl md:text-2xl lg:text-3xl page-heading">{BLOG.TITLE}</div>
-        <p class="text-base md:text-lg text-black/80 dark:text-white/80 max-w-3xl mx-auto">
-          I write about topics I’m learning and teaching—mainly <strong>Machine Learning</strong>,
-          <strong> Blockchain & Ethereum</strong>, and <strong>System Design</strong>. My goal is to explain complex ideas
-          in a way that a busy engineer (or my past self) can understand quickly
-        </p>
-      </div>
-    </Container>
-  </section>
-
-  <section class="pb-16">
-    <Container size="xl">
-      <div class="animate space-y-6">
-        <div>
-          <p class="text-sm uppercase tracking-wide">Pinned Series</p>
-          <h2 class="text-2xl font-bold text-black dark:text-white">Start a Crash Course</h2>
-        </div>
-        {pinnedPosts.length > 0 ? (
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {pinnedPosts.map((post) => (
-              <a
-                href={`/blog/${post.slug}`}
-                class="p-6 rounded-2xl border border-black/10 dark:border-white/15 bg-white/70 dark:bg-black/70 glass-panel hover:-translate-y-1 transition-transform space-y-3"
-              >
-                <p class="text-xs uppercase text-black/60 dark:text-white/60">{post.data.tags.join(", ")}</p>
-                <h3 class="text-lg font-semibold text-black dark:text-white">{post.data.title}</h3>
-                <p class="text-sm md:text-base text-black/80 dark:text-white/80 leading-relaxed">
-                  {post.data.summary || "Explore the full post for details."}
+    <section class="pt-28 pb-12">
+        <Container size="xl">
+            <div class="animate space-y-4 text-center">
+                <div class="text-xl md:text-2xl lg:text-3xl page-heading">{BLOG.TITLE}</div>
+                <p class="text-base md:text-lg text-black/80 dark:text-white/80 max-w-3xl mx-auto">
+                    I write about topics I’m learning and teaching—mainly <strong>Machine Learning</strong>,
+                    <strong> Blockchain & Ethereum</strong>, and <strong>System Design</strong>. My goal is to explain
+                    complex ideas in a way that a busy engineer (or my past self) can understand quickly
                 </p>
-                <p class="text-sm font-semibold underline decoration-[.5px] underline-offset-4">Open series →</p>
-              </a>
-            ))}
-          </div>
-        ) : (
-          <p class="text-sm text-black/70 dark:text-white/70">Pinned series hubs will appear here once available.</p>
-        )}
-      </div>
-    </Container>
-  </section>
+            </div>
+        </Container>
+    </section>
 
-  <section class="pb-20" id="posts">
-    <Container size="xl">
-      <div class="animate space-y-4">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-          <div>
-            <p class="text-sm uppercase tracking-wide">Posts List</p>
-            <h2 class="text-2xl font-bold text-black dark:text-white">Browse the blog</h2>
-          </div>
-        </div>
-        <div id="search-collection-wrapper" style={{ minHeight: `${estimated_initial_size}px` }}>
-          <SearchCollection client:load entry_name={"posts"} tags={tags} data={posts} />
-        </div>
-      </div>
-    </Container>
-  </section>
+    <section class="pb-16">
+        <Container size="xl">
+            <div class="animate space-y-6">
+                <div>
+                    <p class="text-sm uppercase tracking-wide">Pinned Series</p>
+                    <h2 class="text-2xl font-bold text-black dark:text-white">Start a Crash Course</h2>
+                </div>
+                {
+                    pinnedPosts.length > 0 ? (
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            {pinnedPosts.map((post) => (
+                                <a
+                                    href={`/blog/${post.slug}`}
+                                    class="p-6 rounded-2xl border border-black/10 dark:border-white/15 glass-panel hover:-translate-y-1 transition-transform space-y-3"
+                                >
+                                    <p class="text-xs uppercase text-black/60 dark:text-white/60">
+                                        {post.data.tags.join(", ")}
+                                    </p>
+                                    <h3 class="text-lg font-semibold text-black dark:text-white">{post.data.title}</h3>
+                                    <p class="text-sm md:text-base text-black/80 dark:text-white/80 leading-relaxed">
+                                        {post.data.summary || "Explore the full post for details."}
+                                    </p>
+                                    <p class="text-sm font-semibold underline decoration-[.5px] underline-offset-4">
+                                        Open series →
+                                    </p>
+                                </a>
+                            ))}
+                        </div>
+                    ) : (
+                        <p class="text-sm text-black/70 dark:text-white/70">
+                            Pinned series hubs will appear here once available.
+                        </p>
+                    )
+                }
+            </div>
+        </Container>
+    </section>
+
+    <section class="pb-20" id="posts">
+        <Container size="xl">
+            <div class="animate space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                    <div>
+                        <p class="text-sm uppercase tracking-wide">Posts List</p>
+                        <h2 class="text-2xl font-bold text-black dark:text-white">Browse the blog</h2>
+                    </div>
+                </div>
+                <div id="search-collection-wrapper" style={{ minHeight: `${estimated_initial_size}px` }}>
+                    <SearchCollection client:load entry_name={"posts"} tags={tags} data={posts} />
+                </div>
+            </div>
+        </Container>
+    </section>
 </PageLayout>

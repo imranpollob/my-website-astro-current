@@ -4,369 +4,401 @@ import Container from "@components/Container.astro";
 import { EXPERIENCE } from "@consts";
 
 const professionalExperience = [
-  {
-    company: "Wayne State University",
-    role: "Graduate Teaching Assistant",
-    duration: "Aug 2021 – Present · Detroit, MI",
-    bullets: [
-      "Mentor student teams in Software Engineering to plan, build, test, and deploy full-stack applications using Agile practices and Git.",
-      "Teach programming in Java and C++, emphasizing problem-solving, clean code, and debugging strategies.",
-      "Run labs in Bioinformatics with R and Computer Architecture, helping students connect theory to real tools.",
-    ],
-  },
-  {
-    company: "Cefalo",
-    role: "Software Engineer",
-    duration: "Sep 2019 – Jul 2021",
-    bullets: [
-      "Built an internal Python-based scraping framework to collect and process data from multiple sources, reducing manual data collection effort.",
-      "Developed and maintained an e-commerce platform and internal tools.",
-      "Collaborated directly with clients to clarify requirements and deliver technical solutions.",
-    ],
-  },
-  {
-    company: "Rapid Web Services",
-    role: "Full-Stack Software Engineer",
-    duration: "May 2018 – Sep 2019",
-    bullets: [
-      "Developed and maintained scalable web applications using Laravel, JavaScript, and React.",
-      "Designed RESTful APIs and integrated them into an inventory management system.",
-      "Improved application performance and reliability by profiling and resolving bottlenecks.",
-    ],
-  },
-  {
-    company: "Codalo",
-    role: "Software Engineer",
-    duration: "Nov 2016 – Apr 2018",
-    bullets: [
-      "Built school management and parcel delivery systems used by multiple institutions across Bangladesh.",
-      "Gathered client feedback and iterated on product workflows and features.",
-    ],
-  },
+    {
+        company: "Wayne State University",
+        role: "Graduate Teaching Assistant",
+        duration: "Aug 2021 – Present · Detroit, MI",
+        bullets: [
+            "Mentor student teams in Software Engineering to plan, build, test, and deploy full-stack applications using Agile practices and Git.",
+            "Teach programming in Java and C++, emphasizing problem-solving, clean code, and debugging strategies.",
+            "Run labs in Bioinformatics with R and Computer Architecture, helping students connect theory to real tools.",
+        ],
+    },
+    {
+        company: "Cefalo",
+        role: "Software Engineer",
+        duration: "Sep 2019 – Jul 2021",
+        bullets: [
+            "Built an internal Python-based scraping framework to collect and process data from multiple sources, reducing manual data collection effort.",
+            "Developed and maintained an e-commerce platform and internal tools.",
+            "Collaborated directly with clients to clarify requirements and deliver technical solutions.",
+        ],
+    },
+    {
+        company: "Rapid Web Services",
+        role: "Full-Stack Software Engineer",
+        duration: "May 2018 – Sep 2019",
+        bullets: [
+            "Developed and maintained scalable web applications using Laravel, JavaScript, and React.",
+            "Designed RESTful APIs and integrated them into an inventory management system.",
+            "Improved application performance and reliability by profiling and resolving bottlenecks.",
+        ],
+    },
+    {
+        company: "Codalo",
+        role: "Software Engineer",
+        duration: "Nov 2016 – Apr 2018",
+        bullets: [
+            "Built school management and parcel delivery systems used by multiple institutions across Bangladesh.",
+            "Gathered client feedback and iterated on product workflows and features.",
+        ],
+    },
 ];
 
 const education = [
-  {
-    school: "Wayne State University",
-    program: "Doctor of Philosophy – PhD, Computer Science",
-    status: "In progress",
-    timeframe: "Aug 2021 – Aug 2026",
-    detail: "Focus: smart contract security, graph/hypergraph representations, ML-based vulnerability detection.",
-  },
-  {
-    school: "Jahangirnagar University",
-    program: "Master of Science – MS, Information Technology",
-    status: "",
-    timeframe: "2016 – 2017",
-    detail: "Grade: 3.65 out of 4.00",
-  },
-  {
-    school: "Jahangirnagar University",
-    program: "Bachelor of Science – BSc, Information Technology",
-    status: "",
-    timeframe: "2011 – 2015",
-    detail: "Grade: 3.62 out of 4.00",
-  },
+    {
+        school: "Wayne State University",
+        program: "Doctor of Philosophy – PhD, Computer Science",
+        status: "In progress",
+        timeframe: "Aug 2021 – Aug 2026",
+        detail: "Focus: smart contract security, graph/hypergraph representations, ML-based vulnerability detection.",
+    },
+    {
+        school: "Jahangirnagar University",
+        program: "Master of Science – MS, Information Technology",
+        status: "",
+        timeframe: "2016 – 2017",
+        detail: "Grade: 3.65 out of 4.00",
+    },
+    {
+        school: "Jahangirnagar University",
+        program: "Bachelor of Science – BSc, Information Technology",
+        status: "",
+        timeframe: "2011 – 2015",
+        detail: "Grade: 3.62 out of 4.00",
+    },
 ];
 
 const certifications = [
-  {
-    title: "Blockchain & Security",
-    items: [
-      {
-        name: "Security for Blockchain and DApps",
-        thumbnail: "/image/certifications/security-for-blockchain-dapps-thumb.jpg",
-        fullImage: "/image/certifications/security-for-blockchain-dapps-full.jpg",
-        credentialUrl: "https://coursera.org/verify/specialization/G1LIT7430K3Q",
-        detail: "Developed skills in identifying and mitigating blockchain vulnerabilities, understanding DeFi risks, applying cryptographic methods, securing smart contracts, and designing secure DApp architectures end-to-end.",
-      },
-      {
-        name: "Blockchain Solution Architecture",
-        thumbnail: "/image/certifications/blockchain-solution-architecture-thumb.jpg",
-        fullImage: "/image/certifications/blockchain-solution-architecture-full.jpg",
-        credentialUrl: "https://coursera.org/verify/specialization/OSQ7CG1SRKM5",
-        detail: "Learned to design scalable blockchain solutions, evaluate architecture decisions, manage risk, integrate privacy and security, and build end-to-end blockchain systems from conceptual design to technical implementation.",
-      },
-      {
-        name: "Blockchain Security",
-        thumbnail: "/image/certifications/blockchain-security-thumb.jpg",
-        fullImage: "/image/certifications/blockchain-security-full.jpg",
-        credentialUrl: "https://consensys.net/academy/certificates/ethereum-smart-contract-development-5f6b1c1d-6e4e-4d3e-9f3a-2e8f4e6c9d3a",
-        detail: "Learned foundational blockchain security concepts, including threats, attack surfaces, cryptography basics, and best practices for securing blockchain systems and transactions.",
-      }
-    ],
-  },
-  {
-    title: "AI & Machine Learning",
-    items: [
-      {
-        name: "IBM Generative AI Engineering",
-        thumbnail: "/image/certifications/ibm-generative-ai-engineering-thumb.jpg",
-        fullImage: "/image/certifications/ibm-generative-ai-engineering-full.jpg",
-        credentialUrl: "https://coursera.org/verify/professional-cert/VCI5IYJT40UL",
-        detail: "Learned foundational blockchain security concepts, including threats, attack surfaces, cryptography basics, and best practices for securing blockchain systems and transactions.",
-      },
-      {
-        name: "IBM RAG and Agentic AI",
-        thumbnail: "/image/certifications/ibm-rag-agentic-ai-thumb.jpg",
-        fullImage: "/image/certifications/ibm-rag-agentic-ai-full.jpg",
-        credentialUrl: "https://coursera.org/verify/professional-cert/9T9ZY7QU9A4G",
-        detail: "Mastered retrieval-augmented generation (RAG), vector databases, multimodal AI systems, and agentic AI frameworks. Learned to build autonomous, tool-using, multi-agent systems with LangChain, LangGraph, CrewAI, and modern agent-orchestration libraries.",
-      },
-      {
-        name: "Microsoft AI & ML Engineering",
-        thumbnail: "/image/certifications/microsoft-ai-ml-thumb.jpg",
-        fullImage: "/image/certifications/microsoft-ai-ml-full.jpg",
-        credentialUrl: "https://coursera.org/verify/professional-cert/9ZRl7NJNJCIO",
-        detail: "Learned core AI/ML algorithms, deep learning concepts, cloud-based AI deployment, intelligent agent design, and applied machine learning workflows using Microsoft Azure and modern ML tooling.",
-      },
-    ],
-  },
+    {
+        title: "Blockchain & Security",
+        items: [
+            {
+                name: "Security for Blockchain and DApps",
+                thumbnail: "/image/certifications/security-for-blockchain-dapps-thumb.jpg",
+                fullImage: "/image/certifications/security-for-blockchain-dapps-full.jpg",
+                credentialUrl: "https://coursera.org/verify/specialization/G1LIT7430K3Q",
+                detail: "Developed skills in identifying and mitigating blockchain vulnerabilities, understanding DeFi risks, applying cryptographic methods, securing smart contracts, and designing secure DApp architectures end-to-end.",
+            },
+            {
+                name: "Blockchain Solution Architecture",
+                thumbnail: "/image/certifications/blockchain-solution-architecture-thumb.jpg",
+                fullImage: "/image/certifications/blockchain-solution-architecture-full.jpg",
+                credentialUrl: "https://coursera.org/verify/specialization/OSQ7CG1SRKM5",
+                detail: "Learned to design scalable blockchain solutions, evaluate architecture decisions, manage risk, integrate privacy and security, and build end-to-end blockchain systems from conceptual design to technical implementation.",
+            },
+            {
+                name: "Blockchain Security",
+                thumbnail: "/image/certifications/blockchain-security-thumb.jpg",
+                fullImage: "/image/certifications/blockchain-security-full.jpg",
+                credentialUrl:
+                    "https://consensys.net/academy/certificates/ethereum-smart-contract-development-5f6b1c1d-6e4e-4d3e-9f3a-2e8f4e6c9d3a",
+                detail: "Learned foundational blockchain security concepts, including threats, attack surfaces, cryptography basics, and best practices for securing blockchain systems and transactions.",
+            },
+        ],
+    },
+    {
+        title: "AI & Machine Learning",
+        items: [
+            {
+                name: "IBM Generative AI Engineering",
+                thumbnail: "/image/certifications/ibm-generative-ai-engineering-thumb.jpg",
+                fullImage: "/image/certifications/ibm-generative-ai-engineering-full.jpg",
+                credentialUrl: "https://coursera.org/verify/professional-cert/VCI5IYJT40UL",
+                detail: "Learned foundational blockchain security concepts, including threats, attack surfaces, cryptography basics, and best practices for securing blockchain systems and transactions.",
+            },
+            {
+                name: "IBM RAG and Agentic AI",
+                thumbnail: "/image/certifications/ibm-rag-agentic-ai-thumb.jpg",
+                fullImage: "/image/certifications/ibm-rag-agentic-ai-full.jpg",
+                credentialUrl: "https://coursera.org/verify/professional-cert/9T9ZY7QU9A4G",
+                detail: "Mastered retrieval-augmented generation (RAG), vector databases, multimodal AI systems, and agentic AI frameworks. Learned to build autonomous, tool-using, multi-agent systems with LangChain, LangGraph, CrewAI, and modern agent-orchestration libraries.",
+            },
+            {
+                name: "Microsoft AI & ML Engineering",
+                thumbnail: "/image/certifications/microsoft-ai-ml-thumb.jpg",
+                fullImage: "/image/certifications/microsoft-ai-ml-full.jpg",
+                credentialUrl: "https://coursera.org/verify/professional-cert/9ZRl7NJNJCIO",
+                detail: "Learned core AI/ML algorithms, deep learning concepts, cloud-based AI deployment, intelligent agent design, and applied machine learning workflows using Microsoft Azure and modern ML tooling.",
+            },
+        ],
+    },
 ];
 
 const skills = [
-  { label: "Languages", values: ["Python", "JavaScript", "PHP", "Solidity", "Java", "C++"] },
-  { label: "Frameworks", values: ["React", "Next.js", "Node.js", "Laravel"] },
-  { label: "Blockchain", values: ["Solidity", "Hardhat", "Foundry", "Ethers.js", "Web3.js"] },
-  { label: "AI/ML", values: ["LLM APIs", "LangChain", "RAG", "Vector DB", "Multimodal AI"] },
-  { label: "Security", values: ["Smart contract security", "DeFi risk analysis", "Secure architectures"] },
-  { label: "Cloud & Ops", values: ["Azure ML", "Docker", "AWS", "CI/CD", "Linux", "Git"] },
+    { label: "Languages", values: ["Python", "JavaScript", "PHP", "Solidity", "Java", "C++"] },
+    { label: "Frameworks", values: ["React", "Next.js", "Node.js", "Laravel"] },
+    { label: "Blockchain", values: ["Solidity", "Hardhat", "Foundry", "Ethers.js", "Web3.js"] },
+    { label: "AI/ML", values: ["LLM APIs", "LangChain", "RAG", "Vector DB", "Multimodal AI"] },
+    { label: "Security", values: ["Smart contract security", "DeFi risk analysis", "Secure architectures"] },
+    { label: "Cloud & Ops", values: ["Azure ML", "Docker", "AWS", "CI/CD", "Linux", "Git"] },
 ];
 ---
 
 <PageLayout title={EXPERIENCE.TITLE} description={EXPERIENCE.DESCRIPTION}>
-  <section class="pt-28 pb-10">
-    <Container size="xl">
-      <div class="animate space-y-4 text-center">
-        <div class="text-xl md:text-2xl lg:text-3xl page-heading">
-          {EXPERIENCE.TITLE}
-        </div>
-        <article class="prose dark:prose-invert max-w-3xl mx-auto">
-          <p>
-            Over the last few years I’ve worked both as a <strong>professional software engineer</strong> and a
-            <strong> graduate teaching assistant</strong>, while pursuing a PhD in blockchain security
-          </p>
-          <p>Here’s what I’ve built, taught, and learned along the way</p>
-        </article>
-      </div>
-    </Container>
-  </section>
-
-  <section class="pb-16">
-    <Container size="xl">
-      <div class="animate space-y-6">
-        <div>
-          <p class="text-sm uppercase tracking-wide">Professional Experience</p>
-          <h2 class="text-2xl font-bold text-black dark:text-white">Timeline</h2>
-        </div>
-        <div class="relative pl-4 md:pl-6">
-          <div class="absolute left-1 md:left-2 top-2 bottom-2 w-px bg-black/10 dark:bg-white/20"></div>
-          <ul class="space-y-8">
-            {professionalExperience.map((item) => (
-              <li class="relative pl-6 md:pl-8">
-                <span class="absolute left-0 top-2 inline-block h-3 w-3 rounded-full bg-black dark:bg-white"></span>
-                <div class="p-6 rounded-2xl border border-black/10 dark:border-white/15 bg-white/70 dark:bg-black/70 glass-panel space-y-2">
-                  <p class="text-xs uppercase text-black/60 dark:text-white/60">{item.duration}</p>
-                  <h3 class="text-xl font-semibold text-black dark:text-white">{item.company}</h3>
-                  <p class="text-base font-semibold">{item.role}</p>
-                  <ul class="list-disc ml-5 space-y-2 text-sm md:text-base text-black/80 dark:text-white/80">
-                    {item.bullets.map((point) => (
-                      <li>{point}</li>
-                    ))}
-                  </ul>
+    <section class="pt-28 pb-10">
+        <Container size="xl">
+            <div class="animate space-y-4 text-center">
+                <div class="text-xl md:text-2xl lg:text-3xl page-heading">
+                    {EXPERIENCE.TITLE}
                 </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </Container>
-  </section>
-
-  <section class="pb-16" id="education">
-    <Container size="xl">
-      <div class="animate space-y-4">
-        <div>
-          <p class="text-sm uppercase tracking-wide">Education</p>
-          <h2 class="text-2xl font-bold text-black dark:text-white">Academic Background</h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {education.map((item) => (
-            <div class="p-6 rounded-2xl border border-black/10 dark:border-white/15 bg-white/70 dark:bg-black/70 glass-panel space-y-2">
-              <h3 class="text-lg font-semibold text-black dark:text-white">{item.school}</h3>
-              <p class="text-sm md:text-base text-black/80 dark:text-white/80">{item.program}{item.status && ` — ${item.status}`}</p>
-              <p class="text-xs md:text-sm uppercase text-black/60 dark:text-white/60">{item.timeframe}</p>
-              <p class="text-sm md:text-base text-black/80 dark:text-white/80">{item.detail}</p>
+                <article class="prose dark:prose-invert max-w-3xl mx-auto">
+                    <p>
+                        Over the last few years I’ve worked both as a <strong>professional software engineer</strong> and
+                        a
+                        <strong> graduate teaching assistant</strong>, while pursuing a PhD in blockchain security
+                    </p>
+                    <p>Here’s what I’ve built, taught, and learned along the way</p>
+                </article>
             </div>
-          ))}
-        </div>
-      </div>
-    </Container>
-  </section>
+        </Container>
+    </section>
 
-  <section class="pb-16" id="certifications">
-    <Container size="xl">
-      <div class="animate space-y-6">
-        <div>
-          <p class="text-sm uppercase tracking-wide">Certifications</p>
-          <h2 class="text-2xl font-bold text-black dark:text-white">Credentials</h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {certifications.map((group) => (
-            <div class="p-6 rounded-2xl border border-black/10 dark:border-white/15 bg-white/70 dark:bg-black/70 glass-panel space-y-3">
-              <h3 class="text-lg font-semibold text-black dark:text-white">{group.title}</h3>
-              <ul class="space-y-3 text-sm md:text-base text-black/80 dark:text-white/80">
-                {group.items.map((item) => (
-                  <li class="flex gap-4 items-start">
-                    {item.thumbnail && (
-                      <button
-                        type="button"
-                        class="shrink-0 rounded-lg border border-black/10 dark:border-white/20 overflow-hidden bg-white/70 dark:bg-black/60 hover:shadow-md transition"
-                        data-cert-image={item.fullImage || item.thumbnail}
-                        data-cert-title={item.name}
-                        data-cert-link={item.credentialUrl}
-                        aria-label={`Open full image for ${item.name}`}
-                      >
-                        <img
-                          src={item.thumbnail}
-                          alt={`${item.name} thumbnail`}
-                          class="w-16 h-16 object-cover"
-                          loading="lazy"
-                        />
-                      </button>
-                    )}
-                    <div class="space-y-1">
-                      <p class="font-semibold text-black dark:text-white">{item.name}</p>
-                      <p>{item.detail}</p>
-                      {item.credentialUrl && (
-                        <a
-                          href={item.credentialUrl}
-                          target="_blank"
-                          class="inline-flex items-center gap-1 text-sm font-semibold underline decoration-[.5px] underline-offset-4 cert-open"
-                          rel="noreferrer"
-                          data-cert-image={item.fullImage || item.thumbnail}
-                          data-cert-title={item.name}
-                          data-cert-link={item.credentialUrl}
-                        >
-                          View credential →
-                        </a>
-                      )}
-                    </div>
-                  </li>
-                ))}
-              </ul>
+    <section class="pb-16">
+        <Container size="xl">
+            <div class="animate space-y-6">
+                <div>
+                    <p class="text-sm uppercase tracking-wide">Professional Experience</p>
+                    <h2 class="text-2xl font-bold text-black dark:text-white">Timeline</h2>
+                </div>
+                <div class="relative pl-4 md:pl-6">
+                    <div class="absolute left-1 md:left-2 top-2 bottom-2 w-px bg-black/10 dark:bg-white/20"></div>
+                    <ul class="space-y-8">
+                        {
+                            professionalExperience.map((item) => (
+                                <li class="relative pl-6 md:pl-8">
+                                    <span class="absolute left-0 top-2 inline-block h-3 w-3 rounded-full bg-black dark:bg-white" />
+                                    <div class="p-6 rounded-2xl border border-black/10 dark:border-white/15 glass-panel space-y-2">
+                                        <p class="text-xs uppercase text-black/60 dark:text-white/60">
+                                            {item.duration}
+                                        </p>
+                                        <h3 class="text-xl font-semibold text-black dark:text-white">{item.company}</h3>
+                                        <p class="text-base font-semibold">{item.role}</p>
+                                        <ul class="list-disc ml-5 space-y-2 text-sm md:text-base text-black/80 dark:text-white/80">
+                                            {item.bullets.map((point) => (
+                                                <li>{point}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
             </div>
-          ))}
+        </Container>
+    </section>
+
+    <section class="pb-16" id="education">
+        <Container size="xl">
+            <div class="animate space-y-4">
+                <div>
+                    <p class="text-sm uppercase tracking-wide">Education</p>
+                    <h2 class="text-2xl font-bold text-black dark:text-white">Academic Background</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {
+                        education.map((item) => (
+                            <div class="p-6 rounded-2xl border border-black/10 dark:border-white/15 glass-panel space-y-2">
+                                <h3 class="text-lg font-semibold text-black dark:text-white">{item.school}</h3>
+                                <p class="text-sm md:text-base text-black/80 dark:text-white/80">
+                                    {item.program}
+                                    {item.status && ` — ${item.status}`}
+                                </p>
+                                <p class="text-xs md:text-sm uppercase text-black/60 dark:text-white/60">
+                                    {item.timeframe}
+                                </p>
+                                <p class="text-sm md:text-base text-black/80 dark:text-white/80">{item.detail}</p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </Container>
+    </section>
+
+    <section class="pb-16" id="certifications">
+        <Container size="xl">
+            <div class="animate space-y-6">
+                <div>
+                    <p class="text-sm uppercase tracking-wide">Certifications</p>
+                    <h2 class="text-2xl font-bold text-black dark:text-white">Credentials</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {
+                        certifications.map((group) => (
+                            <div class="p-6 rounded-2xl border border-black/10 dark:border-white/15 glass-panel space-y-3">
+                                <h3 class="text-lg font-semibold text-black dark:text-white">{group.title}</h3>
+                                <ul class="space-y-3 text-sm md:text-base text-black/80 dark:text-white/80">
+                                    {group.items.map((item) => (
+                                        <li class="flex gap-4 items-start">
+                                            {item.thumbnail && (
+                                                <button
+                                                    type="button"
+                                                    class="shrink-0 rounded-lg border border-black/10 dark:border-white/20 overflow-hidden bg-white/70 dark:bg-black/60 hover:shadow-md transition"
+                                                    data-cert-image={item.fullImage || item.thumbnail}
+                                                    data-cert-title={item.name}
+                                                    data-cert-link={item.credentialUrl}
+                                                    aria-label={`Open full image for ${item.name}`}
+                                                >
+                                                    <img
+                                                        src={item.thumbnail}
+                                                        alt={`${item.name} thumbnail`}
+                                                        class="w-16 h-16 object-cover"
+                                                        loading="lazy"
+                                                    />
+                                                </button>
+                                            )}
+                                            <div class="space-y-1">
+                                                <p class="font-semibold text-black dark:text-white">{item.name}</p>
+                                                <p>{item.detail}</p>
+                                                {item.credentialUrl && (
+                                                    <a
+                                                        href={item.credentialUrl}
+                                                        target="_blank"
+                                                        class="inline-flex items-center gap-1 text-sm font-semibold underline decoration-[.5px] underline-offset-4 cert-open"
+                                                        rel="noreferrer"
+                                                        data-cert-image={item.fullImage || item.thumbnail}
+                                                        data-cert-title={item.name}
+                                                        data-cert-link={item.credentialUrl}
+                                                    >
+                                                        View credential →
+                                                    </a>
+                                                )}
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </Container>
+    </section>
+
+    <dialog id="cert-modal" class="backdrop:bg-black/40 rounded-2xl p-0 border border-black/20 dark:border-white/20">
+        <div class="bg-white dark:bg-black rounded-2xl overflow-hidden max-w-3xl">
+            <div class="flex items-center justify-between px-4 py-3 border-b border-black/10 dark:border-white/15">
+                <p id="cert-modal-title" class="font-semibold text-black dark:text-white text-base md:text-lg"></p>
+                <button
+                    id="cert-modal-close"
+                    class="p-2 rounded-full border border-black/10 dark:border-white/20 hover:bg-black/5 hover:dark:bg-white/10"
+                    aria-label="Close certification image"
+                >
+                    <svg class="size-4" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M6 6l12 12"></path>
+                        <path d="M6 18L18 6"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="bg-black/5 dark:bg-white/5 flex flex-col justify-center items-center p-4 gap-3">
+                <img
+                    id="cert-modal-img"
+                    src=""
+                    alt=""
+                    class="max-h-[70vh] w-auto rounded-lg border border-black/10 dark:border-white/15"
+                />
+                <a
+                    id="cert-modal-link"
+                    href="#"
+                    target="_blank"
+                    rel="noreferrer"
+                    class="inline-flex items-center gap-1 text-sm font-semibold underline decoration-[.5px] underline-offset-4"
+                >
+                    Verify credential →
+                </a>
+            </div>
         </div>
-      </div>
-    </Container>
-  </section>
+    </dialog>
 
-  <dialog id="cert-modal" class="backdrop:bg-black/40 rounded-2xl p-0 border border-black/20 dark:border-white/20">
-    <div class="bg-white dark:bg-black rounded-2xl overflow-hidden max-w-3xl">
-      <div class="flex items-center justify-between px-4 py-3 border-b border-black/10 dark:border-white/15">
-        <p id="cert-modal-title" class="font-semibold text-black dark:text-white text-base md:text-lg"></p>
-        <button id="cert-modal-close" class="p-2 rounded-full border border-black/10 dark:border-white/20 hover:bg-black/5 hover:dark:bg-white/10" aria-label="Close certification image">
-          <svg class="size-4" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2">
-            <path d="M6 6l12 12" />
-            <path d="M6 18L18 6" />
-          </svg>
-        </button>
-      </div>
-      <div class="bg-black/5 dark:bg-white/5 flex flex-col justify-center items-center p-4 gap-3">
-        <img id="cert-modal-img" src="" alt="" class="max-h-[70vh] w-auto rounded-lg border border-black/10 dark:border-white/15" />
-        <a id="cert-modal-link" href="#" target="_blank" rel="noreferrer" class="inline-flex items-center gap-1 text-sm font-semibold underline decoration-[.5px] underline-offset-4">
-          Verify credential →
-        </a>
-      </div>
-    </div>
-  </dialog>
+    <script is:inline>
+        function attachCertificationModal() {
+            const modal = document.getElementById("cert-modal");
+            const modalImg = document.getElementById("cert-modal-img");
+            const modalTitle = document.getElementById("cert-modal-title");
+            const closeBtn = document.getElementById("cert-modal-close");
+            const modalLink = document.getElementById("cert-modal-link");
 
-  <script is:inline>
-    function attachCertificationModal() {
-      const modal = document.getElementById("cert-modal");
-      const modalImg = document.getElementById("cert-modal-img");
-      const modalTitle = document.getElementById("cert-modal-title");
-      const closeBtn = document.getElementById("cert-modal-close");
-      const modalLink = document.getElementById("cert-modal-link");
+            function openModal(src, title, link) {
+                if (!modal || !modalImg || !modalTitle || !modalLink) return;
+                modalImg.src = src;
+                modalTitle.textContent = title;
+                modalLink.href = link || "#";
+                modalLink.style.display = link ? "inline-flex" : "none";
+                // Some browsers require showModal to exist on dialog
+                if (typeof modal.showModal === "function") {
+                    modal.showModal();
+                } else {
+                    modal.setAttribute("open", "true");
+                }
+            }
 
-      function openModal(src, title, link) {
-        if (!modal || !modalImg || !modalTitle || !modalLink) return;
-        modalImg.src = src;
-        modalTitle.textContent = title;
-        modalLink.href = link || "#";
-        modalLink.style.display = link ? "inline-flex" : "none";
-        // Some browsers require showModal to exist on dialog
-        if (typeof modal.showModal === "function") {
-          modal.showModal();
-        } else {
-          modal.setAttribute("open", "true");
+            function closeModal() {
+                if (!modal) return;
+                if (typeof modal.close === "function") {
+                    modal.close();
+                } else {
+                    modal.removeAttribute("open");
+                }
+            }
+
+            function attachTriggers() {
+                document.querySelectorAll("[data-cert-image]").forEach((trigger) => {
+                    trigger.addEventListener("click", (event) => {
+                        event.preventDefault();
+                        const src = trigger.getAttribute("data-cert-image");
+                        const title = trigger.getAttribute("data-cert-title") || "Certification";
+                        const link = trigger.getAttribute("data-cert-link") || "";
+                        if (src) openModal(src, title, link);
+                    });
+                });
+            }
+
+            attachTriggers();
+
+            document.addEventListener("astro:after-swap", attachTriggers);
+            document.addEventListener("astro:after-swap", () => {
+                closeBtn?.addEventListener("click", closeModal);
+                modal?.addEventListener("click", (event) => {
+                    if (event.target === modal) closeModal();
+                });
+            });
+
+            closeBtn?.addEventListener("click", closeModal);
+            modal?.addEventListener("click", (event) => {
+                if (event.target === modal) closeModal();
+            });
         }
-      }
 
-      function closeModal() {
-        if (!modal) return;
-        if (typeof modal.close === "function") {
-          modal.close();
-        } else {
-          modal.removeAttribute("open");
-        }
-      }
+        document.addEventListener("astro:after-swap", attachCertificationModal);
+        attachCertificationModal();
+    </script>
 
-      function attachTriggers() {
-        document.querySelectorAll("[data-cert-image]").forEach((trigger) => {
-          trigger.addEventListener("click", (event) => {
-            event.preventDefault();
-            const src = trigger.getAttribute("data-cert-image");
-            const title = trigger.getAttribute("data-cert-title") || "Certification";
-            const link = trigger.getAttribute("data-cert-link") || "";
-            if (src) openModal(src, title, link);
-          });
-        });
-      }
-
-      attachTriggers();
-
-      document.addEventListener("astro:after-swap", attachTriggers);
-      document.addEventListener("astro:after-swap", () => {
-        closeBtn?.addEventListener("click", closeModal);
-        modal?.addEventListener("click", (event) => {
-          if (event.target === modal) closeModal();
-        });
-      });
-
-      closeBtn?.addEventListener("click", closeModal);
-      modal?.addEventListener("click", (event) => {
-        if (event.target === modal) closeModal();
-      });
-    }
-
-    document.addEventListener("astro:after-swap", attachCertificationModal);
-    attachCertificationModal();
-  </script>
-
-  <section class="pb-20">
-    <Container size="xl">
-      <div class="animate space-y-4">
-        <div>
-          <p class="text-sm uppercase tracking-wide">Skills Overview</p>
-          <h2 class="text-2xl font-bold text-black dark:text-white">Tools & Strengths</h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {skills.map((skill) => (
-            <div class="p-4 rounded-2xl border border-black/10 dark:border-white/15 bg-white/70 dark:bg-black/70 glass-panel flex flex-col gap-2">
-              <p class="text-sm font-semibold text-black dark:text-white uppercase">{skill.label}</p>
-              <div class="flex flex-wrap gap-2">
-                {skill.values.map((value) => (
-                  <span class="px-3 py-1 rounded-full border border-black/10 dark:border-white/25 text-sm bg-black/5 dark:bg-white/15">
-                    {value}
-                  </span>
-                ))}
-              </div>
+    <section class="pb-20">
+        <Container size="xl">
+            <div class="animate space-y-4">
+                <div>
+                    <p class="text-sm uppercase tracking-wide">Skills Overview</p>
+                    <h2 class="text-2xl font-bold text-black dark:text-white">Tools & Strengths</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {
+                        skills.map((skill) => (
+                            <div class="p-4 rounded-2xl border border-black/10 dark:border-white/15 glass-panel flex flex-col gap-2">
+                                <p class="text-sm font-semibold text-black dark:text-white uppercase">{skill.label}</p>
+                                <div class="flex flex-wrap gap-2">
+                                    {skill.values.map((value) => (
+                                        <span class="px-3 py-1 rounded-full border border-black/10 dark:border-white/25 text-sm bg-black/5 dark:bg-white/15">
+                                            {value}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
             </div>
-          ))}
-        </div>
-      </div>
-    </Container>
-  </section>
+        </Container>
+    </section>
 </PageLayout>

@@ -121,7 +121,7 @@ export default function SearchCollection({ entry_name, data, tags }: Props) {
           <ul class="flex flex-wrap sm:flex-col gap-1.5">
             <For each={tags}>
               {(tag) => (
-                <li class="sm:w-full">
+                <li class="sm:w-full glass-panel">
                   <button
                     onClick={() => toggleTag(tag)}
                     class={cn(
