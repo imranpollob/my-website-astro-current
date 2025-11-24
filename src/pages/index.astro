@@ -127,7 +127,7 @@ const featuredProjects = [
 ];
 
 const certificationSummary =
-  "Selected Certifications: IBM – Generative AI Engineering · IBM – RAG & Agentic AI · Microsoft – AI & ML Engineering · Coursera – Blockchain Solution Architecture · LearnQuest – Security for Blockchain & DApps";
+  "Security for Blockchain and DApps · Blockchain Solution Architecture · Blockchain Security · IBM Generative AI Engineering · IBM RAG and Agentic AI · Microsoft AI & ML Engineering";
 
 const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777@gmail.com";
 ---
@@ -343,7 +343,7 @@ const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777
     <Container size="xl">
       <div class="animate p-6 rounded-2xl border border-black/10 dark:border-white/15 bg-white/70 dark:bg-black/70 glass-panel flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div class="space-y-2">
-          <p class="text-sm uppercase tracking-wide">Certifications Preview</p>
+          <p class="text-sm uppercase tracking-wide">Certifications</p>
           <p class="text-base md:text-lg text-black dark:text-white">
             {certificationSummary}
           </p>
@@ -375,62 +375,22 @@ const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777
           </ul>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div class="col-span-2 space-y-4">
-            <form
-              class="space-y-3"
-              action={`mailto:${email}`}
-              method="GET"
+        <div class="flex flex-col md:flex-row flex-wrap md:items-center gap-4 text-sm md:text-base text-black/80 dark:text-white/80">
+          {SOCIALS.map((social) => (
+            <a
+              href={social.HREF}
+              target="_blank"
+              rel="noreferrer"
+              class="flex items-center gap-2 px-3 py-2 rounded-full border border-black/10 dark:border-white/20 bg-white/70 dark:bg-black/60 hover:bg-black/5 hover:dark:bg-white/10 transition"
             >
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <input
-                  type="text"
-                  name="subject"
-                  placeholder="Subject"
-                  class="w-full rounded-lg border border-black/10 dark:border-white/20 bg-white/80 dark:bg-black/60 px-3 py-2"
-                  required
-                />
-                <input
-                  type="email"
-                  value={email}
-                  class="w-full rounded-lg border border-black/10 dark:border-white/20 bg-white/80 dark:bg-black/60 px-3 py-2"
-                  readonly
-                />
-              </div>
-              <textarea
-                name="body"
-                rows="4"
-                placeholder="Tell me about your project or role..."
-                class="w-full rounded-lg border border-black/10 dark:border-white/20 bg-white/80 dark:bg-black/60 px-3 py-2"
-              ></textarea>
-              <button
-                type="submit"
-                class="inline-flex items-center px-4 py-2 rounded-full bg-black text-white dark:bg-white dark:text-black font-semibold hover:opacity-80 transition"
-              >
-                Send an email
-              </button>
-            </form>
-          </div>
-          <div class="col-span-1 space-y-3 text-sm md:text-base text-black/80 dark:text-white/80">
-            <div>
-              <p class="font-semibold text-black dark:text-white">📧 Email</p>
-              <a href={`mailto:${email}`} class="underline decoration-[.5px] underline-offset-4 hover:text-black dark:hover:text-white">
-                {email}
-              </a>
-            </div>
-            <div>
-              <p class="font-semibold text-black dark:text-white">🔗 GitHub</p>
-              <a href="https://github.com/imranpollob" target="_blank" class="underline decoration-[.5px] underline-offset-4 hover:text-black dark:hover:text-white">
-                imranpollob
-              </a>
-            </div>
-            <div>
-              <p class="font-semibold text-black dark:text-white">🔗 LinkedIn</p>
-              <a href="https://www.linkedin.com/in/imranpollob/" target="_blank" class="underline decoration-[.5px] underline-offset-4 hover:text-black dark:hover:text-white">
-                imranpollob
-              </a>
-            </div>
-          </div>
+              <span class="inline-flex items-center justify-center rounded-full border border-black/10 dark:border-white/20 p-1">
+                <svg class="size-4 fill-current">
+                  <use href={`/social.svg#${social.ICON}`} />
+                </svg>
+              </span>
+              <span class="font-semibold text-black dark:text-white">{social.TEXT}</span>
+            </a>
+          ))}
         </div>
       </div>
     </Container>
