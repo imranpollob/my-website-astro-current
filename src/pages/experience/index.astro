@@ -77,10 +77,16 @@ const certifications = [
     items: [
       {
         name: "Blockchain Solution Architecture – Coursera (2025)",
+        thumbnail: "/image/certifications/certification-thumbnail.png",
+        fullImage: "/image/certifications/certification-large.jpg",
+        credentialUrl: "https://example.com/credential/coursera-blockchain-architecture",
         detail: "Designing end-to-end blockchain solutions, consensus choices, and architecture patterns.",
       },
       {
         name: "Security for Blockchain and DApps – LearnQuest (2025)",
+        thumbnail: "/image/certifications/certification-thumbnail.png",
+        fullImage: "/image/certifications/certification-large.jpg",
+        credentialUrl: "https://example.com/credential/learnquest-blockchain-security",
         detail: "Threat models for smart contracts, common vulnerabilities, and secure design patterns.",
       },
     ],
@@ -90,14 +96,23 @@ const certifications = [
     items: [
       {
         name: "IBM Generative AI Engineering – IBM (2025)",
+        thumbnail: "/image/certifications/certification-thumbnail.png",
+        fullImage: "/image/certifications/certification-large.jpg",
+        credentialUrl: "https://example.com/credential/ibm-generative-ai",
         detail: "LLM lifecycle, prompt engineering, evaluation, and deployment of generative AI apps.",
       },
       {
         name: "IBM RAG and Agentic AI: Build Next-Gen AI Assistants – IBM (2025)",
+        thumbnail: "/image/certifications/certification-thumbnail.png",
+        fullImage: "/image/certifications/certification-large.jpg",
+        credentialUrl: "https://example.com/credential/ibm-rag-agentic-ai",
         detail: "Retrieval-augmented generation, tool-using agents, orchestration and evaluation.",
       },
       {
         name: "Microsoft AI & ML Engineering – Microsoft (2025)",
+        thumbnail: "/image/certifications/certification-thumbnail.png",
+        fullImage: "/image/certifications/certification-large.jpg",
+        credentialUrl: "https://example.com/credential/microsoft-ai-ml-engineering",
         detail: "Classical ML, deep learning foundations, and Azure ML workflows.",
       },
     ],
@@ -192,9 +207,37 @@ const skills = [
               <h3 class="text-lg font-semibold text-black dark:text-white">{group.title}</h3>
               <ul class="space-y-3 text-sm md:text-base text-black/80 dark:text-white/80">
                 {group.items.map((item) => (
-                  <li>
-                    <p class="font-semibold text-black dark:text-white">{item.name}</p>
-                    <p>{item.detail}</p>
+                  <li class="flex gap-4 items-start">
+                    {item.thumbnail && (
+                      <button
+                        type="button"
+                        class="shrink-0 rounded-lg border border-black/10 dark:border-white/20 overflow-hidden bg-white/70 dark:bg-black/60 hover:shadow-md transition"
+                        data-cert-image={item.fullImage || item.thumbnail}
+                        data-cert-title={item.name}
+                        aria-label={`Open full image for ${item.name}`}
+                      >
+                        <img
+                          src={item.thumbnail}
+                          alt={`${item.name} thumbnail`}
+                          class="w-16 h-16 object-cover"
+                          loading="lazy"
+                        />
+                      </button>
+                    )}
+                    <div class="space-y-1">
+                      <p class="font-semibold text-black dark:text-white">{item.name}</p>
+                      <p>{item.detail}</p>
+                      {item.credentialUrl && (
+                        <a
+                          href={item.credentialUrl}
+                          target="_blank"
+                          class="inline-flex items-center gap-1 text-sm font-semibold underline decoration-[.5px] underline-offset-4"
+                          rel="noreferrer"
+                        >
+                          View credential →
+                        </a>
+                      )}
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -204,6 +247,69 @@ const skills = [
       </div>
     </Container>
   </section>
+
+  <dialog id="cert-modal" class="backdrop:bg-black/40 rounded-2xl p-0 border border-black/20 dark:border-white/20">
+    <div class="bg-white dark:bg-black rounded-2xl overflow-hidden max-w-3xl">
+      <div class="flex items-center justify-between px-4 py-3 border-b border-black/10 dark:border-white/15">
+        <p id="cert-modal-title" class="font-semibold text-black dark:text-white text-base md:text-lg"></p>
+        <button id="cert-modal-close" class="p-2 rounded-full border border-black/10 dark:border-white/20 hover:bg-black/5 hover:dark:bg-white/10" aria-label="Close certification image">
+          <svg class="size-4" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2">
+            <path d="M6 6l12 12" />
+            <path d="M6 18L18 6" />
+          </svg>
+        </button>
+      </div>
+      <div class="bg-black/5 dark:bg-white/5 flex justify-center items-center p-4">
+        <img id="cert-modal-img" src="" alt="" class="max-h-[70vh] w-auto rounded-lg border border-black/10 dark:border-white/15" />
+      </div>
+    </div>
+  </dialog>
+
+  <script is:inline>
+    function attachCertificationModal() {
+      const modal = document.getElementById("cert-modal");
+      const modalImg = document.getElementById("cert-modal-img");
+      const modalTitle = document.getElementById("cert-modal-title");
+      const closeBtn = document.getElementById("cert-modal-close");
+
+      function openModal(src, title) {
+        if (!modal || !modalImg || !modalTitle) return;
+        modalImg.src = src;
+        modalTitle.textContent = title;
+        // Some browsers require showModal to exist on dialog
+        if (typeof modal.showModal === "function") {
+          modal.showModal();
+        } else {
+          modal.setAttribute("open", "true");
+        }
+      }
+
+      function closeModal() {
+        if (!modal) return;
+        if (typeof modal.close === "function") {
+          modal.close();
+        } else {
+          modal.removeAttribute("open");
+        }
+      }
+
+      document.querySelectorAll("[data-cert-image]").forEach((trigger) => {
+        trigger.addEventListener("click", () => {
+          const src = trigger.getAttribute("data-cert-image");
+          const title = trigger.getAttribute("data-cert-title") || "Certification";
+          if (src) openModal(src, title);
+        });
+      });
+
+      closeBtn?.addEventListener("click", closeModal);
+      modal?.addEventListener("click", (event) => {
+        if (event.target === modal) closeModal();
+      });
+    }
+
+    document.addEventListener("astro:after-swap", attachCertificationModal);
+    attachCertificationModal();
+  </script>
 
   <section class="pb-20">
     <Container size="xl">
