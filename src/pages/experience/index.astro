@@ -77,22 +77,36 @@ const certifications = [
                 name: "Security for Blockchain and DApps",
                 thumbnail: "/image/certifications/security-for-blockchain-dapps-thumb.jpg",
                 fullImage: "/image/certifications/security-for-blockchain-dapps-full.jpg",
-                credentialUrl: "https://www.coursera.org/account/accomplishments/specialization/certificate/G1LITZ430K3Q",
-                detail: "Developed skills in identifying and mitigating blockchain vulnerabilities, understanding DeFi risks, applying cryptographic methods, securing smart contracts, and designing secure DApp architectures end-to-end.",
+                credentialUrl:
+                    "https://www.coursera.org/account/accomplishments/specialization/certificate/G1LITZ430K3Q",
+                detail: [
+                    "Identified and mitigated blockchain vulnerabilities",
+                    "Understood DeFi risks and cryptographic methods",
+                    "Secured smart contracts and DApp architectures",
+                ],
             },
             {
                 name: "Blockchain Solution Architecture",
                 thumbnail: "/image/certifications/blockchain-solution-architecture-thumb.jpg",
                 fullImage: "/image/certifications/blockchain-solution-architecture-full.jpg",
-                credentialUrl: "https://www.coursera.org/account/accomplishments/specialization/certificate/O3Q7CG1SRKM5",
-                detail: "Learned to design scalable blockchain solutions, evaluate architecture decisions, manage risk, integrate privacy and security, and build end-to-end blockchain systems from conceptual design to technical implementation.",
+                credentialUrl:
+                    "https://www.coursera.org/account/accomplishments/specialization/certificate/O3Q7CG1SRKM5",
+                detail: [
+                    "Explored scalable blockchain solutions",
+                    "Evaluated architecture decisions and managed risk",
+                    "Integrated privacy and security in end-to-end systems",
+                ],
             },
             {
                 name: "Blockchain Security",
                 thumbnail: "/image/certifications/blockchain-security-thumb.jpg",
                 fullImage: "/image/certifications/blockchain-security-full.jpg",
                 credentialUrl: "https://www.coursera.org/account/accomplishments/certificate/3BN6UAX4MZDZ",
-                detail: "Learned foundational blockchain security concepts, including threats, attack surfaces, cryptography basics, and best practices for securing blockchain systems and transactions.",
+                detail: [
+                    "Mastered blockchain security concepts and threats",
+                    "Explored attack surfaces and cryptography basics",
+                    "Applied best practices for securing systems",
+                ],
             },
         ],
     },
@@ -103,22 +117,37 @@ const certifications = [
                 name: "IBM Generative AI Engineering",
                 thumbnail: "/image/certifications/ibm-generative-ai-engineering-thumb.jpg",
                 fullImage: "/image/certifications/ibm-generative-ai-engineering-full.jpg",
-                credentialUrl: "https://www.coursera.org/account/accomplishments/specialization/certificate/VCI51YJT40UL",
-                detail: "Learned foundational blockchain security concepts, including threats, attack surfaces, cryptography basics, and best practices for securing blockchain systems and transactions.",
+                credentialUrl:
+                    "https://www.coursera.org/account/accomplishments/specialization/certificate/VCI51YJT40UL",
+                detail: [
+                    "Learned foundational AI/ML security concepts",
+                    "Explored threats, attack surfaces, and cryptography",
+                    "Applied best practices for securing AI systems",
+                ],
             },
             {
                 name: "IBM RAG and Agentic AI",
                 thumbnail: "/image/certifications/ibm-rag-agentic-ai-thumb.jpg",
                 fullImage: "/image/certifications/ibm-rag-agentic-ai-full.jpg",
-                credentialUrl: "https://www.coursera.org/account/accomplishments/specialization/certificate/9T9ZY7QU9A4G",
-                detail: "Mastered retrieval-augmented generation (RAG), vector databases, multimodal AI systems, and agentic AI frameworks. Learned to build autonomous, tool-using, multi-agent systems with LangChain, LangGraph, CrewAI, and modern agent-orchestration libraries.",
+                credentialUrl:
+                    "https://www.coursera.org/account/accomplishments/specialization/certificate/9T9ZY7QU9A4G",
+                detail: [
+                    "Mastered retrieval-augmented generation (RAG)",
+                    "Worked with vector databases and multimodal AI",
+                    "Built agentic multi-agent systems with LangChain, CrewAI",
+                ],
             },
             {
                 name: "Microsoft AI & ML Engineering",
                 thumbnail: "/image/certifications/microsoft-ai-ml-thumb.jpg",
                 fullImage: "/image/certifications/microsoft-ai-ml-full.jpg",
-                credentialUrl: "https://www.coursera.org/account/accomplishments/specialization/certificate/9ZRZI7NIJCI0",
-                detail: "Learned core AI/ML algorithms, deep learning concepts, cloud-based AI deployment, intelligent agent design, and applied machine learning workflows using Microsoft Azure and modern ML tooling.",
+                credentialUrl:
+                    "https://www.coursera.org/account/accomplishments/specialization/certificate/9ZRZI7NIJCI0",
+                detail: [
+                    "Learned core AI/ML algorithms and deep learning",
+                    "Deployed cloud-based AI and designed intelligent agents",
+                    "Applied ML workflows with Azure and modern tooling",
+                ],
             },
         ],
     },
@@ -226,15 +255,15 @@ const skills = [
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {
                         certifications.map((group) => (
-                            <div class="p-6 rounded-2xl border border-black/10 dark:border-white/15 glass-panel space-y-3">
+                            <div class="p-6 rounded-2xl border border-black/10 dark:border-white/15 glass-panel space-y-4">
                                 <h3 class="text-lg font-semibold text-black dark:text-white">{group.title}</h3>
-                                <ul class="space-y-3 text-sm md:text-base text-black/80 dark:text-white/80">
+                                <div class="flex flex-col gap-8">
                                     {group.items.map((item) => (
-                                        <li class="flex gap-4 items-start">
+                                        <div class="rounded-lg flex gap-4 items-start">
                                             {item.thumbnail && (
                                                 <button
                                                     type="button"
-                                                    class="shrink-0 rounded-lg border border-black/10 dark:border-white/20 overflow-hidden bg-white/70 dark:bg-black/60 hover:shadow-md transition"
+                                                    class="shrink-0 rounded-lg border border-black/10 dark:border-white/20 overflow-hidden bg-white/70 dark:bg-black/60 hover:shadow-md transition cursor-pointer"
                                                     data-cert-image={item.fullImage || item.thumbnail}
                                                     data-cert-title={item.name}
                                                     data-cert-link={item.credentialUrl}
@@ -243,19 +272,23 @@ const skills = [
                                                     <img
                                                         src={item.thumbnail}
                                                         alt={`${item.name} thumbnail`}
-                                                        class="w-16 h-16 object-cover"
+                                                        class="w-20 h-20 object-cover"
                                                         loading="lazy"
                                                     />
                                                 </button>
                                             )}
-                                            <div class="space-y-1">
+                                            <div class="flex-1">
                                                 <p class="font-semibold text-black dark:text-white">{item.name}</p>
-                                                <p>{item.detail}</p>
+                                                <ul class="list-disc ml-5 space-y-1 text-sm md:text-base text-black/80 dark:text-white/80">
+                                                    {item.detail.slice(0, 4).map((point) => (
+                                                        <li>{point}</li>
+                                                    ))}
+                                                </ul>
                                                 {item.credentialUrl && (
                                                     <a
                                                         href={item.credentialUrl}
                                                         target="_blank"
-                                                        class="inline-flex items-center gap-1 text-sm font-semibold underline decoration-[.5px] underline-offset-4 cert-open"
+                                                        class="inline-flex items-center gap-1 mt-2 text-sm font-semibold underline decoration-[.5px] underline-offset-4 cert-open"
                                                         rel="noreferrer"
                                                         data-cert-image={item.fullImage || item.thumbnail}
                                                         data-cert-title={item.name}
@@ -265,9 +298,9 @@ const skills = [
                                                     </a>
                                                 )}
                                             </div>
-                                        </li>
+                                        </div>
                                     ))}
-                                </ul>
+                                </div>
                             </div>
                         ))
                     }
