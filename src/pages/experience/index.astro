@@ -8,39 +8,51 @@ const professionalExperience = [
         company: "Wayne State University",
         role: "Graduate Teaching Assistant",
         duration: "Aug 2021 – Present · Detroit, MI",
+        logo: "/image/company-logos/wayne-state-university.png",
         bullets: [
-            "Mentor student teams in Software Engineering to plan, build, test, and deploy full-stack applications using Agile practices and Git.",
-            "Teach programming in Java and C++, emphasizing problem-solving, clean code, and debugging strategies.",
-            "Run labs in Bioinformatics with R and Computer Architecture, helping students connect theory to real tools.",
+            "Mentored student teams in Software Engineering using Agile — planning, development, testing, and deployment of projects.",
+            "Developed and delivered Java Programming course materials and a final project to build foundational and advanced Java skills.",
+            "Designed and taught Problem Solving & Programming (C++) with emphasis on algorithmic thinking and practical coding exercises.",
+            "Facilitated Bioinformatics Programming labs using R, guiding hands-on use of bioinformatics tools and techniques.",
+            "Led Computer Architecture & Organization lab sections, connecting theory to practical lab implementations.",
         ],
     },
     {
         company: "Cefalo",
         role: "Software Engineer",
         duration: "Sep 2019 – Jul 2021",
+        logo: "/image/company-logos/cefalo.png",
         bullets: [
-            "Built an internal Python-based scraping framework to collect and process data from multiple sources, reducing manual data collection effort.",
-            "Developed and maintained an e-commerce platform and internal tools.",
-            "Collaborated directly with clients to clarify requirements and deliver technical solutions.",
+            "Collaborated with data analysts to programmatically collect and process data from numerous sources using Python.",
+            "Developed and maintained an e-commerce site and other internal tools.",
+            "Consulted directly with clients to gather requirements and recommend technical solutions.",
+            "Maintained cloud servers and integrated third-party cloud services.",
+            "Contributed to an internal recruitment application built with Laravel and Vue.js.",
         ],
     },
     {
         company: "Rapid Web Services",
         role: "Full-Stack Software Engineer",
         duration: "May 2018 – Sep 2019",
+        logo: "/image/company-logos/rapid-web-services.png",
         bullets: [
-            "Developed and maintained scalable web applications using Laravel, JavaScript, and React.",
-            "Designed RESTful APIs and integrated them into an inventory management system.",
-            "Improved application performance and reliability by profiling and resolving bottlenecks.",
+            "Developed and maintained the SeeBiz inventory management system, following Agile methodologies for disciplined task execution.",
+            "Worked primarily with PHP (Laravel), JavaScript (Node, React) to implement features and maintain the codebase.",
+            "Developed RESTful APIs and integrated them into the existing inventory system.",
+            "Fixed bugs, profiled performance, and improved application reliability and scalability.",
+            "Implemented CI/CD pipelines and continuously evaluated and adopted new tools to maximize development efficiency.",
         ],
     },
     {
         company: "Codalo",
         role: "Software Engineer",
         duration: "Nov 2016 – Apr 2018",
+        logo: "/image/company-logos/codalo.png",
         bullets: [
-            "Built school management and parcel delivery systems used by multiple institutions across Bangladesh.",
-            "Gathered client feedback and iterated on product workflows and features.",
+            "Worked on several prototypes, including a school management system and a parcel delivery system; the school management system is now running in multiple schools across Bangladesh.",
+            "Brainstormed product workflows and planned work procedures to align with client requirements.",
+            "Regularly tested the product, gathered feedback from clients, and provided ongoing support.",
+            "Provided bug fixes, refactored code, and revised product workflows based on client feedback.",
         ],
     },
 ];
@@ -197,16 +209,29 @@ const skills = [
                                 <li class="relative pl-6 md:pl-8">
                                     <span class="absolute left-0 top-2 inline-block h-3 w-3 rounded-full bg-black dark:bg-white" />
                                     <div class="p-6 rounded-2xl border border-black/10 dark:border-white/15 glass-panel space-y-2">
-                                        <p class="text-xs uppercase text-black/60 dark:text-white/60">
-                                            {item.duration}
-                                        </p>
-                                        <h3 class="text-xl font-semibold text-black dark:text-white">{item.company}</h3>
-                                        <p class="text-base font-semibold">{item.role}</p>
-                                        <ul class="list-disc ml-5 space-y-2 text-sm md:text-base text-black/80 dark:text-white/80">
-                                            {item.bullets.map((point) => (
-                                                <li>{point}</li>
-                                            ))}
-                                        </ul>
+                                        <div class="flex items-start gap-6">
+                                            <div class="flex-shrink-0">
+                                                <img
+                                                    src={item.logo}
+                                                    alt={`${item.company} logo`}
+                                                    class="w-20 h-20 md:w-24 md:h-24 object-contain rounded-md bg-white/60 dark:bg-black/60"
+                                                />
+                                            </div>
+                                            <div class="flex-1">
+                                                <p class="text-xs uppercase text-black/60 dark:text-white/60">
+                                                    {item.duration}
+                                                </p>
+                                                <h3 class="text-xl font-semibold text-black dark:text-white">
+                                                    {item.company}
+                                                </h3>
+                                                <p class="text-base font-semibold">{item.role}</p>
+                                                <ul class="pt-3 list-disc ml-5 space-y-2 text-sm md:text-base text-black/80 dark:text-white/80">
+                                                    {item.bullets.map((point) => (
+                                                        <li>{point}</li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </li>
                             ))
