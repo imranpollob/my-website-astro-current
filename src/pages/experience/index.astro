@@ -60,22 +60,22 @@ const professionalExperience = [
 const education = [
     {
         school: "Wayne State University",
-        program: "Doctor of Philosophy – PhD, Computer Science",
-        status: "In progress",
-        timeframe: "Aug 2021 – Aug 2026",
-        detail: "Focus: smart contract security, graph/hypergraph representations, ML-based vulnerability detection.",
+        degree: "PhD Candidate",
+        department: "Computer Science",
+        timeframe: "2021 – 2026",
+        detail: "Grade: 3.87 out of 4.00",
     },
     {
         school: "Jahangirnagar University",
-        program: "Master of Science – MS, Information Technology",
-        status: "",
+        degree: "Master of Science",
+        department: "Information Technology",
         timeframe: "2016 – 2017",
         detail: "Grade: 3.65 out of 4.00",
     },
     {
         school: "Jahangirnagar University",
-        program: "Bachelor of Science – BSc, Information Technology",
-        status: "",
+        degree: "Bachelor of Science",
+        department: "Information Technology",
         timeframe: "2011 – 2015",
         detail: "Grade: 3.62 out of 4.00",
     },
@@ -209,12 +209,12 @@ const skills = [
                                 <li class="relative pl-6 md:pl-8">
                                     <span class="absolute left-0 top-2 inline-block h-3 w-3 rounded-full bg-black dark:bg-white" />
                                     <div class="p-6 rounded-2xl border border-black/10 dark:border-white/15 glass-panel space-y-2">
-                                        <div class="flex items-start gap-6">
-                                            <div class="flex-shrink-0">
+                                        <div class="flex flex-col md:flex-row items-start gap-4 md:gap-6">
+                                            <div class="flex-shrink-0 flex justify-center md:justify-start">
                                                 <img
                                                     src={item.logo}
                                                     alt={`${item.company} logo`}
-                                                    class="w-20 h-20 md:w-24 md:h-24 object-contain rounded-md bg-white/60 dark:bg-black/60"
+                                                    class="w-16 h-16 md:w-24 md:h-24 object-contain rounded-md bg-white/60 dark:bg-black/60 mx-auto md:mx-0"
                                                 />
                                             </div>
                                             <div class="flex-1">
@@ -225,7 +225,7 @@ const skills = [
                                                     {item.company}
                                                 </h3>
                                                 <p class="text-base font-semibold">{item.role}</p>
-                                                <ul class="pt-3 list-disc ml-5 space-y-2 text-sm md:text-base text-black/80 dark:text-white/80">
+                                                <ul class="pt-2 md:pt-3 list-disc ml-5 md:ml-6 space-y-2 text-sm md:text-base text-black/80 dark:text-white/80">
                                                     {item.bullets.map((point) => (
                                                         <li>{point}</li>
                                                     ))}
@@ -249,19 +249,19 @@ const skills = [
                     <p class="text-sm uppercase tracking-wide glass-panel">Education</p>
                     <h2 class="text-2xl font-bold text-black dark:text-white glass-panel">Academic Background</h2>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {
                         education.map((item) => (
-                            <div class="p-6 rounded-2xl border border-black/10 dark:border-white/15 glass-panel space-y-2">
+                            <div class="p-6 rounded-2xl border border-black/10 dark:border-white/15 glass-panel space-y-1">
                                 <h3 class="text-lg font-semibold text-black dark:text-white">{item.school}</h3>
-                                <p class="text-sm md:text-base text-black/80 dark:text-white/80">
-                                    {item.program}
-                                    {item.status && ` — ${item.status}`}
-                                </p>
+                                <p class="text-sm md:text-base text-black/80 dark:text-white/80">{item.degree}</p>
+                                <p class="text-sm md:text-base text-black/80 dark:text-white/80">{item.department}</p>
                                 <p class="text-xs md:text-sm uppercase text-black/60 dark:text-white/60">
                                     {item.timeframe}
                                 </p>
-                                <p class="text-sm md:text-base text-black/80 dark:text-white/80">{item.detail}</p>
+                                <p class="text-xs md:text-sm uppercase text-black/60 dark:text-white/60">
+                                    {item.detail}
+                                </p>
                             </div>
                         ))
                     }
