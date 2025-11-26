@@ -6,7 +6,6 @@ import Footer from "@components/Footer.astro"
 import Drawer from "@components/Drawer.astro"
 const { title, description } = Astro.props
 import { SITE } from "@consts"
-import Background from "@components/Background.astro";
 ---
 
 <!doctype html>
@@ -18,7 +17,6 @@ import Background from "@components/Background.astro";
     <Header />
     <Drawer />
     <main>
-      <Background />
       <slot />
     </main>
     <Footer />
