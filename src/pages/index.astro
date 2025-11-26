@@ -126,6 +126,17 @@ const featuredProjects = [
 const certificationSummary =
     "Security for Blockchain and DApps · Blockchain Solution Architecture · Blockchain Security · IBM Generative AI Engineering · IBM RAG and Agentic AI · Microsoft AI & ML Engineering";
 
+const certifications = [
+    {
+        label: "Blockchain",
+        values: ["Security for Blockchain and DApps", "Blockchain Solution Architecture", "Blockchain Security"],
+    },
+    {
+        label: "AI & Machine Learning",
+        values: ["IBM Generative AI Engineering", "IBM RAG and Agentic AI", "Microsoft AI & ML Engineering"],
+    },
+];
+
 const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777@gmail.com";
 ---
 
@@ -220,8 +231,8 @@ const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777
                     </p>
                     <p>
                         I’m most excited about the intersection of <strong>secure Blockchain design</strong>,
-                        <strong>AI/ML</strong>, and <strong>practical Software Engineering</strong>—turning 
-                        research ideas into tools that people can actually use.
+                        <strong>AI/ML</strong>, and <strong>practical Software Engineering</strong>—turning research
+                        ideas into tools that people can actually use.
                     </p>
                 </div>
                 <a
@@ -352,21 +363,35 @@ const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777
 
     <section class="pb-16">
         <Container size="xl">
-            <div
-                class="animate p-6 rounded-2xl border border-black/10 dark:border-white/15 glass-panel flex flex-col md:flex-row md:items-center md:justify-between gap-4"
-            >
-                <div class="space-y-2">
-                    <p class="text-sm uppercase tracking-wide">Certifications</p>
-                    <p class="text-base md:text-lg text-black dark:text-white">
-                        {certificationSummary}
-                    </p>
+            <div class="animate space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                    <div>
+                        <p class="text-sm uppercase tracking-wide glass-panel">Certifications</p>
+                        <h2 class="text-2xl font-bold text-black dark:text-white glass-panel">Credentials</h2>
+                    </div>
+                    <a
+                        href="/experience#certifications"
+                        class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-black/30 dark:decoration-white/40 hover:text-black dark:hover:text-white glass-panel"
+                    >
+                        View all certifications →
+                    </a>
                 </div>
-                <a
-                    href="/experience#certifications"
-                    class="inline-flex items-center justify-center px-4 py-2 rounded-full border border-black/20 dark:border-white/25 font-semibold text-sm md:text-base hover:bg-black/5 hover:dark:bg-white/15 transition"
-                >
-                    See details →
-                </a>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {
+                        certifications.map((cert) => (
+                            <div class="p-4 rounded-2xl border border-black/10 dark:border-white/15 glass-panel flex flex-col gap-2">
+                                <p class="text-sm font-semibold text-black dark:text-white uppercase">{cert.label}</p>
+                                <div class="flex flex-wrap gap-2">
+                                    {cert.values.map((value) => (
+                                        <span class="px-3 py-1 rounded-full border border-black/10 dark:border-white/25 text-sm bg-black/5 dark:bg-white/15">
+                                            {value}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
             </div>
         </Container>
     </section>
