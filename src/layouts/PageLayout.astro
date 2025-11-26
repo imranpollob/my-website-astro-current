@@ -10,15 +10,15 @@ import { SITE } from "@consts";
 
 <!doctype html>
 <html lang="en">
-    <head>
-        <BaseHead title={`${title} | ${SITE.TITLE}`} description={description} />
-    </head>
-    <body>
-        <Header />
-        <Drawer />
-        <main>
-            <slot />
-        </main>
-        <Footer />
-    </body>
+  <head>
+    <BaseHead title={`${title} | ${SITE.TITLE}`} description={description} />
+  </head>
+  <body>
+    <Header />
+    <Drawer />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
 </html>
