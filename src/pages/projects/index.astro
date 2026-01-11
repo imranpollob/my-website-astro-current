@@ -4,105 +4,264 @@ import PageLayout from "@layouts/PageLayout.astro";
 import ProjectCard from "@components/ProjectCard.astro";
 import { PROJECTS } from "@consts";
 
-const projectLink = (slug: string) => `/projects/${slug}`;
+const projectsData = {
+    portfolio: {
+        owner: "imranpollob",
+        generatedDate: "2026-01-11",
+        totalProjects: 23,
+        categories: ["Web3 & Blockchain", "AI & Machine Learning", "Full-Stack Applications", "Productivity & Tools"],
+        projects: {
+            "Web3 & Blockchain": [
+                {
+                    title: "NFT Rentals & Sales Protocol",
+                    repo: "imranpollob/nft-rentals-and-sales",
+                    url: "https://github.com/imranpollob/nft-rentals-and-sales",
+                    description:
+                        "On-chain time-based rentals and atomic sales for ERC-721 NFTs using ERC-4907 standard",
+                    shortDescription: "EVM protocol for renting & selling NFTs with time-locked access & escrow",
+                    tags: ["Solidity", "Foundry", "ERC-721", "ERC-4907", "DeFi", "NFT"],
+                    liveUrl: "",
+                    image: "/images/nft-rentals.png",
+                },
+                {
+                    title: "DAO - Community Grants Governance",
+                    repo: "imranpollob/dao",
+                    url: "https://github.com/imranpollob/dao",
+                    description:
+                        "Decentralized governance for community grant proposals, voting & timelocked execution",
+                    shortDescription: "OpenZeppelin Governor-based DAO with vote escrow & treasury management",
+                    tags: ["Solidity", "Foundry", "OpenZeppelin", "DAO", "Governance"],
+                    liveUrl: "",
+                    image: "/images/dao-governance.png",
+                },
+                {
+                    title: "Foundry Fund Me - Crowdfunding",
+                    repo: "imranpollob/foundry-fund-me",
+                    url: "https://github.com/imranpollob/foundry-fund-me",
+                    description: "DeFi crowdfunding with Chainlink USD price feed minimum contribution",
+                    shortDescription: "Secure ETH crowdfunding dApp with oracle-protected $5 min & React frontend",
+                    tags: ["Solidity", "Foundry", "Chainlink", "React", "DeFi"],
+                    liveUrl: "",
+                    image: "/images/fund-me.png",
+                },
+                {
+                    title: "Overcollateralized Stablecoin (DSC)",
+                    repo: "imranpollob/stablecoin",
+                    url: "https://github.com/imranpollob/stablecoin",
+                    description: "MakerDAO-inspired protocol issuing DSC stablecoin backed by WETH/WBTC",
+                    shortDescription: "Decentralized stablecoin with 200% collateral, liquidations & oracles",
+                    tags: ["Solidity", "Foundry", "Chainlink", "Stablecoin", "DeFi"],
+                    liveUrl: "",
+                    image: "/images/stablecoin-dsc.png",
+                },
+                {
+                    title: "Swap - Decentralized Exchange",
+                    repo: "imranpollob/swap",
+                    url: "https://github.com/imranpollob/swap",
+                    description: "CPMM-based DEX protocol for token swaps, liquidity provision & flash loans",
+                    shortDescription: "Uniswap-style AMM with 0.3% fees, TWAP oracle & flash swaps",
+                    tags: ["Solidity", "Foundry", "AMM", "DEX", "DeFi"],
+                    liveUrl: "",
+                    image: "/images/swap-dex.png",
+                },
+            ],
+            "AI & Machine Learning": [
+                {
+                    title: "Multi-PDF RAG Chatbot",
+                    repo: "imranpollob/multi-pdf-rag-chatbot",
+                    url: "https://github.com/imranpollob/multi-pdf-rag-chatbot",
+                    description: "Retrieval-Augmented Generation chatbot for chatting with multiple uploaded PDFs",
+                    shortDescription: "Intelligent document Q&A with citations using LangChain & vector DB",
+                    tags: ["Python", "LangChain", "RAG", "Streamlit", "OpenAI", "AI"],
+                    liveUrl: "",
+                    image: "/images/pdf-rag-chatbot.png",
+                },
+                {
+                    title: "AI Multi-Agent Trading System",
+                    repo: "imranpollob/ai-trading",
+                    url: "https://github.com/imranpollob/ai-trading",
+                    description: "Autonomous multi-agent equity trading simulation with evolving strategies",
+                    shortDescription: "Modular AI trading floor with researcher agents & real-time dashboard",
+                    tags: ["Python", "AI Agents", "Gradio", "Trading", "LLM", "Simulation"],
+                    liveUrl: "",
+                    image: "/images/ai-trading.png",
+                },
+                {
+                    title: "Deal Finder AI - Multi-Agent",
+                    repo: "imranpollob/deal-finder-ai",
+                    url: "https://github.com/imranpollob/deal-finder-ai",
+                    description: "AI agents that find, evaluate & notify about best online deals",
+                    shortDescription: "Ensemble deal hunter with price prediction & Gradio UI",
+                    tags: ["Python", "AI Agents", "Gradio", "Scraping", "LLM", "Deals"],
+                    liveUrl: "",
+                    image: "/images/deal-finder.png",
+                },
+                {
+                    title: "Bitcoin Price Prediction AI",
+                    repo: "imranpollob/bitcoin-price-prediction-ai",
+                    url: "https://github.com/imranpollob/bitcoin-price-prediction-ai",
+                    description: "Deep learning models comparison for BTC price forecasting",
+                    shortDescription: "Train & compare 7 DL models with 7-day forecasts & Gradio interface",
+                    tags: ["Python", "TensorFlow", "Keras", "Time Series", "Gradio", "Crypto"],
+                    liveUrl: "",
+                    image: "/images/btc-prediction.png",
+                },
+                {
+                    title: "Food Detector AI",
+                    repo: "imranpollob/food-detector-ai",
+                    url: "https://github.com/imranpollob/food-detector-ai",
+                    description: "CNN vs Transformer model comparison for classifying pizza/steak/sushi",
+                    shortDescription: "Real-time food image classification benchmark with Gradio app",
+                    tags: ["Python", "Deep Learning", "Computer Vision", "Gradio", "Classification"],
+                    liveUrl: "",
+                    image: "/images/food-detector.png",
+                },
+            ],
+            "Full-Stack Applications": [
+                {
+                    title: "Task Time Tracker",
+                    repo: "imranpollob/task-time-tracker",
+                    url: "https://github.com/imranpollob/task-time-tracker",
+                    description: "Daily task management & time tracking app with backend API",
+                    shortDescription: "Modern task dashboard with auth & real-time tracking",
+                    tags: ["Next.js", "TypeScript", "Tailwind", "React Context", "Full-Stack"],
+                    liveUrl: "https://tracker.imranpollob.com",
+                    image: "/images/task-tracker.png",
+                },
+                {
+                    title: "Multi-Room Chat App",
+                    repo: "imranpollob/chat-app",
+                    url: "https://github.com/imranpollob/chat-app",
+                    description: "Real-time group chat with rooms, privacy & Socket.IO",
+                    shortDescription: "MERN real-time chat with public/private rooms & presence",
+                    tags: ["React", "Node.js", "Express", "MongoDB", "Socket.IO", "MERN"],
+                    liveUrl: "",
+                    image: "/images/chat-app.png",
+                },
+                {
+                    title: "Bangla Quran - Audio & Translation",
+                    repo: "imranpollob/bangla-quran",
+                    url: "https://github.com/imranpollob/bangla-quran",
+                    description: "Full Quran with Arabic/Bangla translation & audio, PWA-ready",
+                    shortDescription: "SEO-friendly Quran reader with search, themes & bookmarks",
+                    tags: ["Next.js", "TypeScript", "PWA", "Supabase", "Quran"],
+                    liveUrl: "https://banglaquran.app",
+                    image: "/images/bangla-quran.png",
+                },
+                {
+                    title: "Document Echo - TTS PDF Reader",
+                    repo: "imranpollob/document-echo",
+                    url: "https://github.com/imranpollob/document-echo",
+                    description: "PDF reader with sentence-highlighting text-to-speech",
+                    shortDescription: "Accessible PDF experience with OpenAI/browser TTS & themes",
+                    tags: ["Next.js", "PDF.js", "TTS", "Zustand", "Tailwind"],
+                    liveUrl: "https://document-echo.vercel.app",
+                    image: "/images/document-echo.png",
+                },
+                {
+                    title: "React Spelling Quiz",
+                    repo: "imranpollob/react-spelling-quiz",
+                    url: "https://github.com/imranpollob/react-spelling-quiz",
+                    description: "Spelling practice app with 800+ words, audio & Firebase backend",
+                    shortDescription: "Educational quiz with difficulty levels & pronunciation audio",
+                    tags: ["React", "Firebase", "Tailwind", "Education"],
+                    liveUrl: "https://spelling-test.netlify.app",
+                    image: "/images/spelling-quiz.png",
+                },
+            ],
+            "Productivity & Tools": [
+                {
+                    title: "Code Snippet Manager",
+                    repo: "imranpollob/snippet-app",
+                    url: "https://github.com/imranpollob/snippet-app",
+                    description: "Capture, save & search code snippets easily",
+                    shortDescription: "Developer tool for organizing & searching code pieces",
+                    tags: ["JavaScript", "Productivity", "Snippets"],
+                    liveUrl: "",
+                    image: "/images/snippet-app.png",
+                },
+                {
+                    title: "Reactive GitHub Explorer",
+                    repo: "imranpollob/reactive-github",
+                    url: "https://github.com/imranpollob/reactive-github",
+                    description: "Search GitHub users & view profile stats, repos & language breakdown",
+                    shortDescription: "Fast GitHub profile viewer with charts & repo sorting",
+                    tags: ["React", "TypeScript", "TanStack Query", "Recharts"],
+                    liveUrl: "https://gitlens7.netlify.app",
+                    image: "/images/reactive-github.png",
+                },
+                {
+                    title: "Mental Math Trainer",
+                    repo: "imranpollob/mental-math",
+                    url: "https://github.com/imranpollob/mental-math",
+                    description: "Adaptive arithmetic quizzes to improve mental calculation speed",
+                    shortDescription: "Vue app for practicing math with timers & session tracking",
+                    tags: ["Vue 3", "Vite", "Education", "Math"],
+                    liveUrl: "https://mentalmath7.netlify.app",
+                    image: "/images/mental-math.png",
+                },
+                {
+                    title: "Vue Trivia Quiz",
+                    repo: "imranpollob/vue-quiz",
+                    url: "https://github.com/imranpollob/vue-quiz",
+                    description: "Customizable trivia quiz using Open Trivia Database API",
+                    shortDescription: "Fun quiz app with filters, progress & score summary",
+                    tags: ["Vue 3", "Vite", "API", "Quiz"],
+                    liveUrl: "https://quizx.netlify.app",
+                    image: "/images/vue-quiz.png",
+                },
+                {
+                    title: "Solidity AST Generator",
+                    repo: "imranpollob/ast-generator",
+                    url: "https://github.com/imranpollob/ast-generator",
+                    description: "Web tool to parse Solidity & visualize Abstract Syntax Tree",
+                    shortDescription: "Interactive Solidity AST explorer with highlighting & traversal",
+                    tags: ["JavaScript", "Solidity", "AST", "Developer Tool"],
+                    liveUrl: "https://ast.imranpollob.com",
+                    image: "/images/ast-generator.png",
+                },
+                {
+                    title: "Always-On-Top Pomodoro Timer",
+                    repo: "imranpollob/pomodoro-timer",
+                    url: "https://github.com/imranpollob/pomodoro-timer",
+                    description: "Minimal Pomodoro timer that stays on top of windows",
+                    shortDescription: "Customizable, resizable desktop productivity timer in Python",
+                    tags: ["Python", "Pomodoro", "Productivity"],
+                    liveUrl: "",
+                    image: "/images/pomodoro.png",
+                },
+                {
+                    title: "Anonymous Notepad",
+                    repo: "imranpollob/notepad",
+                    url: "https://github.com/imranpollob/notepad",
+                    description: "Free web notepad for storing & sharing notes without login",
+                    shortDescription: "Autosave, password-protected, rich-text sharing tool",
+                    tags: ["PHP", "Laravel", "Vue", "Productivity"],
+                    liveUrl: "https://note.imranpollob.com",
+                    image: "/images/notepad.png",
+                },
+            ],
+        },
+    },
+};
 
-const blockchainProjects = [
-    {
-        id: "nft-rental-marketplace",
-        title: "NFT Rental Marketplace",
-        tagline: "Time-based NFT rentals with royalty support",
-        image: "",
-        stack: "Solidity · Foundry · React",
-        bullets: [
-            "Smart contracts allow NFTs to be rented for fixed periods with automatic return.",
-            "Royalty support for creators and safety checks against double-renting.",
-            "Frontend for minting, listing, and renting NFTs.",
-        ],
-        links: [{ label: "GitHub", href: "https://github.com/imranpollob" }],
-    },
-    {
-        id: "dao-grants-governance",
-        title: "DAO – Community Grants Governance",
-        tagline: "On-chain governance for community grants",
-        image: "",
-        stack: "Solidity · Foundry · React",
-        bullets: [
-            "Token-based voting with proposal submission and quorum rules.",
-            "Separation of proposal, voting, and treasury logic.",
-            "Designed to be transparent and auditable.",
-        ],
-        links: [{ label: "GitHub", href: "https://github.com/imranpollob" }],
-    },
-    {
-        id: "stablecoin-protocol",
-        title: "Stablecoin Protocol",
-        tagline: "Over-collateralized stablecoin experiment",
-        image: "",
-        stack: "Solidity · Foundry",
-        bullets: [
-            "Implements mint/burn flows with collateral ratios.",
-            "Basic liquidation mechanism for under-collateralized positions.",
-            "Focuses on safe arithmetic and security-aware design.",
-        ],
-        links: [{ label: "GitHub", href: "https://github.com/imranpollob" }],
-    },
-    {
-        id: "solidity-ast-generator",
-        title: "Solidity AST Generator",
-        tagline: "Static analysis tooling for Solidity",
-        image: "",
-        stack: "JavaScript · Node.js",
-        bullets: [
-            "Parses Solidity contracts and emits ASTs.",
-            "Used as a foundation for graph/hypergraph-based analysis.",
-            "Demo highlights traversal and visualization paths.",
-        ],
-        links: [
-            { label: "Project page", href: projectLink("03-solidity-ast-generator") },
-            { label: "Demo", href: "https://ast.imranpollob.com/" },
-            { label: "GitHub", href: "https://github.com/imranpollob/ast-generator" },
-        ],
-    },
+const categories = [
+    { name: "Web3 & Blockchain", id: "blockchain" },
+    { name: "AI & Machine Learning", id: "ai" },
+    { name: "Full-Stack Applications", id: "fullstack" },
+    { name: "Productivity & Tools", id: "tools" },
 ];
 
-const aiProjects = [
-    {
-        id: "multi-pdf-rag-chatbot",
-        title: "Multi-PDF RAG Chatbot",
-        image: "",
-        stack: "LLM · LangChain · Vector DBs",
-        bullets: [
-            "Lets users upload multiple PDFs and ask questions across all documents.",
-            "Implements chunking, embedding, similarity search, and answer generation.",
-            "Focus on prompt design and grounding answers in source text.",
-        ],
-        links: [{ label: "GitHub", href: "https://github.com/imranpollob" }],
-    },
-    {
-        id: "ai-trading-suite",
-        title: "AI Trading / Deal Finder / Bitcoin Price Prediction Suite",
-        image: "",
-        stack: "Time-series analysis",
-        bullets: [
-            "Experiments with models for price prediction and opportunity detection.",
-            "Includes data preprocessing, feature engineering, and backtesting.",
-            "Demonstrates work with time-series data and evaluation metrics.",
-        ],
-        links: [{ label: "GitHub", href: "https://github.com/imranpollob" }],
-    },
-    {
-        id: "food-detector-ai",
-        title: "Food Detector AI",
-        image: "",
-        stack: "Deep Learning",
-        bullets: [
-            "Classifies images of food into categories.",
-            "End-to-end CV pipeline: dataset handling, training, evaluation, inference.",
-            "Built to test model deployment patterns for lightweight CV apps.",
-        ],
-        links: [{ label: "GitHub", href: "https://github.com/imranpollob" }],
-    },
-];
+const getProjectLinks = (project: any) => {
+    const links = [];
+    if (project.liveUrl) {
+        links.push({ label: "Live Demo", href: project.liveUrl });
+    }
+    if (project.url) {
+        links.push({ label: "GitHub", href: project.url });
+    }
+    return links;
+};
 ---
 
 <PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
@@ -112,62 +271,42 @@ const aiProjects = [
                 <div class="text-xl md:text-2xl lg:text-3xl page-heading glass-panel">{PROJECTS.TITLE}</div>
                 <article class="prose dark:prose-invert max-w-3xl mx-auto glass-panel">
                     <p>
-                        I like to learn by building. These projects represent my work in blockchain, AI/ML, and
-                        developer productivity. Many more are available on my GitHub.
+                        I like to learn by building. These projects represent my work in blockchain, AI/ML, full-stack
+                        applications, and developer productivity. Explore {projectsData.portfolio.totalProjects}+
+                        projects across {projectsData.portfolio.categories.length} categories.
                     </p>
                 </article>
             </div>
         </Container>
     </section>
 
-    <section class="pb-16" id="blockchain-projects">
-        <Container size="xl">
-            <div class="animate space-y-6">
-                <div>
-                    <p class="text-sm uppercase tracking-wide glass-panel">Blockchain & Web3 Projects</p>
-                    <h2 class="text-2xl font-bold text-black dark:text-white glass-panel">On-chain builds</h2>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {
-                        blockchainProjects.map((project) => (
-                            <ProjectCard
-                                id={project.id}
-                                title={project.title}
-                                tagline={project.tagline}
-                                image={project.image}
-                                stack={project.stack}
-                                description={project.bullets[0]}
-                                links={project.links}
-                            />
-                        ))
-                    }
-                </div>
-            </div>
-        </Container>
-    </section>
+    {
+        categories.map((category) => {
+            const projects = projectsData.portfolio.projects[category.name as keyof typeof projectsData.portfolio.projects] || [];
+            if (projects.length === 0) return null;
 
-    <section class="pb-16" id="ai-projects">
-        <Container size="xl">
-            <div class="animate space-y-6">
-                <div>
-                    <p class="text-sm uppercase tracking-wide glass-panel">AI & ML Projects</p>
-                    <h2 class="text-2xl font-bold text-black dark:text-white glass-panel">Applied intelligence</h2>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {
-                        aiProjects.map((project) => (
-                            <ProjectCard
-                                id={project.id}
-                                title={project.title}
-                                image={project.image}
-                                stack={project.stack}
-                                description={project.bullets[0]}
-                                links={project.links}
-                            />
-                        ))
-                    }
-                </div>
-            </div>
-        </Container>
-    </section>
+            return (
+                <section class="pb-16" id={category.id}>
+                    <Container size="xl">
+                        <div class="animate space-y-6">
+                            <div>
+                                <h2 class="text-2xl font-bold text-black dark:text-white glass-panel">{category.name}</h2>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                {projects.map((project) => (
+                                    <ProjectCard
+                                        id={project.repo.split("/")[1]}
+                                        title={project.title}
+                                        stack={project.tags.slice(0, 3).join(" · ")}
+                                        description={project.description}
+                                        links={getProjectLinks(project)}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    </Container>
+                </section>
+            );
+        })
+    }
 </PageLayout>
