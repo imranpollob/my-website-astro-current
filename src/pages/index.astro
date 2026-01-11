@@ -2,6 +2,7 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
+import ProjectCard from "@components/ProjectCard.astro";
 import { SITE, SOCIALS } from "@consts";
 
 const publishedPosts = (await getCollection("blog"))
@@ -89,37 +90,33 @@ const featuredProjects = [
     {
         id: "nft-rental-marketplace",
         title: "NFT Rental Marketplace",
-        subtitle: "Time-based NFT rental protocol with royalty support",
         description:
             "Solidity-based marketplace where users rent NFTs for fixed periods with automatic return and creator royalties.",
         stack: "Solidity · Hardhat · Ethers.js · Next.js",
-        href: "/projects#nft-rental-marketplace",
+        links: [{ label: "GitHub", href: "https://github.com/imranpollob" }],
     },
     {
         id: "dao-grants-governance",
         title: "DAO Grants Governance",
-        subtitle: "On-chain governance for community grants",
         description: "Token-based voting with transparent proposals, quorum rules, and clear treasury separation.",
         stack: "Solidity · Hardhat · TypeScript · React",
-        href: "/projects#dao-grants-governance",
+        links: [{ label: "GitHub", href: "https://github.com/imranpollob" }],
     },
     {
         id: "solidity-ast-generator",
         title: "Solidity AST Generator",
-        subtitle: "Static analysis tooling for Solidity",
         description:
             "Parses Solidity contracts and emits ASTs for deeper analysis, visualization, and security research.",
         stack: "JavaScript · Node.js",
-        href: "/projects#solidity-ast-generator",
+        links: [{ label: "GitHub", href: "https://github.com/imranpollob" }],
     },
     {
         id: "multi-pdf-rag-chatbot",
         title: "Multi-PDF RAG Chatbot",
-        subtitle: "LLM-powered assistant for documents",
         description:
             "Answers questions across multiple PDFs using chunking, embeddings, similarity search, and grounded responses.",
         stack: "Python · Vector search · LLM API",
-        href: "/projects#multi-pdf-rag-chatbot",
+        links: [{ label: "GitHub", href: "https://github.com/imranpollob" }],
     },
 ];
 
@@ -295,30 +292,14 @@ const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {
                         featuredProjects.map((project) => (
-                            <a
-                                href={project.href}
-                                class="p-6 rounded-2xl border border-black/10 dark:border-white/15 glass-panel hover:-translate-y-1 hover:bg-black/5 dark:hover:bg-white/10 transition-all duration-200"
-                            >
-                                <div class="flex items-start justify-between gap-3">
-                                    <div>
-                                        <p class="text-xs uppercase text-black/60 dark:text-white/60">
-                                            {project.subtitle}
-                                        </p>
-                                        <h3 class="text-xl font-semibold text-black dark:text-white mt-1">
-                                            {project.title}
-                                        </h3>
-                                    </div>
-                                    <span class="text-xs px-2 py-1 rounded-full border border-black/10 dark:border-white/20">
-                                        {project.stack}
-                                    </span>
-                                </div>
-                                <p class="mt-3 text-sm md:text-base text-black/80 dark:text-white/80 leading-relaxed">
-                                    {project.description}
-                                </p>
-                                <p class="mt-4 text-sm font-semibold underline decoration-[.5px] underline-offset-4">
-                                    View project →
-                                </p>
-                            </a>
+                            <ProjectCard
+                                id={project.id}
+                                title={project.title}
+                                tagline={project.tagline}
+                                stack={project.stack}
+                                description={project.description}
+                                links={project.links}
+                            />
                         ))
                     }
                 </div>
