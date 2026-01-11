@@ -210,3 +210,7 @@ table th {
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
 }
+
+span.bold {
+  @apply font-bold;
+}
