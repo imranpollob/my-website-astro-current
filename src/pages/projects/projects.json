@@ -1,0 +1,708 @@
+{
+  "portfolio": {
+    "owner": "imranpollob",
+    "generatedDate": "2026-01-11",
+    "totalProjects": 37,
+    "categories": [
+      "Blockchain Engineering",
+      "AI & Intelligent Systems",
+      "Full-Stack & Software Architecture",
+      "Developer Tools & Utilities",
+      "Mini Apps"
+    ],
+    "projects": {
+      "Blockchain Engineering": [
+        {
+          "title": "NFT Rentals & Sales Protocol",
+          "repo": "imranpollob/nft-rentals-and-sales",
+          "url": "https://github.com/imranpollob/nft-rentals-and-sales",
+          "description": "On-chain time-based rentals and atomic sales for ERC-721 NFTs using ERC-4907 standard",
+          "shortDescription": "EVM protocol for renting & selling NFTs with time-locked access & escrow",
+          "primaryLanguage": "Solidity",
+          "stars": 1,
+          "lastUpdated": "2026-01-08",
+          "tags": [
+            "Solidity",
+            "Foundry",
+            "ERC-721",
+            "ERC-4907",
+            "DeFi",
+            "NFT"
+          ],
+          "category": "Blockchain Engineering",
+          "liveUrl": "",
+          "image": "/images/nft-rentals.png"
+        },
+        {
+          "title": "DAO - Community Grants Governance",
+          "repo": "imranpollob/dao",
+          "url": "https://github.com/imranpollob/dao",
+          "description": "Decentralized governance for community grant proposals, voting & timelocked execution",
+          "shortDescription": "OpenZeppelin Governor-based DAO with vote escrow & treasury management",
+          "primaryLanguage": "Solidity",
+          "stars": 1,
+          "lastUpdated": "2026-01-09",
+          "tags": [
+            "Solidity",
+            "Foundry",
+            "OpenZeppelin",
+            "DAO",
+            "Governance"
+          ],
+          "category": "Blockchain Engineering",
+          "liveUrl": "",
+          "image": "/images/dao-governance.png"
+        },
+        {
+          "title": "Overcollateralized Stablecoin (DSC)",
+          "repo": "imranpollob/stablecoin",
+          "url": "https://github.com/imranpollob/stablecoin",
+          "description": "MakerDAO-inspired protocol issuing DSC stablecoin backed by WETH/WBTC",
+          "shortDescription": "Decentralized stablecoin with 200% collateral, liquidations & oracles",
+          "primaryLanguage": "Solidity",
+          "stars": 1,
+          "lastUpdated": "2026-01-09",
+          "tags": [
+            "Solidity",
+            "Foundry",
+            "Chainlink",
+            "Stablecoin",
+            "DeFi"
+          ],
+          "category": "Blockchain Engineering",
+          "liveUrl": "",
+          "image": "/images/stablecoin-dsc.png"
+        },
+        {
+          "title": "Swap - Decentralized Exchange",
+          "repo": "imranpollob/swap",
+          "url": "https://github.com/imranpollob/swap",
+          "description": "CPMM-based DEX protocol for token swaps, liquidity provision & flash loans",
+          "shortDescription": "Uniswap-style AMM with 0.3% fees, TWAP oracle & flash swaps",
+          "primaryLanguage": "Solidity",
+          "stars": 1,
+          "lastUpdated": "2026-01-09",
+          "tags": [
+            "Solidity",
+            "Foundry",
+            "AMM",
+            "DEX",
+            "DeFi"
+          ],
+          "category": "Blockchain Engineering",
+          "liveUrl": "",
+          "image": "/images/swap-dex.png"
+        },
+        {
+          "title": "Foundry Fund Me - Crowdfunding",
+          "repo": "imranpollob/foundry-fund-me",
+          "url": "https://github.com/imranpollob/foundry-fund-me",
+          "description": "DeFi crowdfunding with Chainlink USD price feed minimum contribution",
+          "shortDescription": "Secure ETH crowdfunding dApp with oracle-protected $5 min & React frontend",
+          "primaryLanguage": "TypeScript",
+          "stars": 2,
+          "lastUpdated": "2025-09-23",
+          "tags": [
+            "Solidity",
+            "Foundry",
+            "Chainlink",
+            "React",
+            "DeFi"
+          ],
+          "category": "Blockchain Engineering",
+          "liveUrl": "",
+          "image": "/images/fund-me.png"
+        },
+        {
+          "title": "Solidity AST Generator",
+          "repo": "imranpollob/ast-generator",
+          "url": "https://github.com/imranpollob/ast-generator",
+          "description": "Web tool to parse Solidity & visualize Abstract Syntax Tree",
+          "shortDescription": "Interactive Solidity AST explorer with highlighting & traversal",
+          "primaryLanguage": "JavaScript",
+          "stars": 1,
+          "lastUpdated": "2024-08-19",
+          "tags": [
+            "JavaScript",
+            "Solidity",
+            "AST",
+            "Developer Tool"
+          ],
+          "category": "Blockchain Engineering",
+          "liveUrl": "https://ast.imranpollob.com",
+          "image": "/images/ast-generator.png"
+        }
+      ],
+      "AI & Intelligent Systems": [
+        {
+          "title": "Multi-PDF RAG Chatbot",
+          "repo": "imranpollob/multi-pdf-rag-chatbot",
+          "url": "https://github.com/imranpollob/multi-pdf-rag-chatbot",
+          "description": "Retrieval-Augmented Generation chatbot for chatting with multiple uploaded PDFs",
+          "shortDescription": "Intelligent document Q&A with citations using LangChain & vector DB",
+          "primaryLanguage": "Python",
+          "stars": 2,
+          "lastUpdated": "2025-10-20",
+          "tags": [
+            "Python",
+            "LangChain",
+            "RAG",
+            "Streamlit",
+            "OpenAI",
+            "AI"
+          ],
+          "category": "AI & Intelligent Systems",
+          "liveUrl": "",
+          "image": "/images/pdf-rag-chatbot.png"
+        },
+        {
+          "title": "AI Multi-Agent Trading System",
+          "repo": "imranpollob/ai-trading",
+          "url": "https://github.com/imranpollob/ai-trading",
+          "description": "Autonomous multi-agent equity trading simulation with evolving strategies",
+          "shortDescription": "Modular AI trading floor with researcher agents & real-time dashboard",
+          "primaryLanguage": "Python",
+          "stars": 1,
+          "lastUpdated": "2025-10-31",
+          "tags": [
+            "Python",
+            "AI Agents",
+            "Gradio",
+            "Trading",
+            "LLM",
+            "Simulation"
+          ],
+          "category": "AI & Intelligent Systems",
+          "liveUrl": "",
+          "image": "/images/ai-trading.png"
+        },
+        {
+          "title": "Deal Finder AI - Multi-Agent",
+          "repo": "imranpollob/deal-finder-ai",
+          "url": "https://github.com/imranpollob/deal-finder-ai",
+          "description": "AI agents that find, evaluate & notify about best online deals",
+          "shortDescription": "Ensemble deal hunter with price prediction & Gradio UI",
+          "primaryLanguage": "Python",
+          "stars": 1,
+          "lastUpdated": "2025-10-31",
+          "tags": [
+            "Python",
+            "AI Agents",
+            "Gradio",
+            "Scraping",
+            "LLM",
+            "Deals"
+          ],
+          "category": "AI & Intelligent Systems",
+          "liveUrl": "",
+          "image": "/images/deal-finder.png"
+        },
+        {
+          "title": "Bitcoin Price Prediction AI",
+          "repo": "imranpollob/bitcoin-price-prediction-ai",
+          "url": "https://github.com/imranpollob/bitcoin-price-prediction-ai",
+          "description": "Deep learning models comparison for BTC price forecasting",
+          "shortDescription": "Train & compare 7 DL models with 7-day forecasts & Gradio interface",
+          "primaryLanguage": "Python",
+          "stars": 1,
+          "lastUpdated": "2025-10-22",
+          "tags": [
+            "Python",
+            "TensorFlow",
+            "Keras",
+            "Time Series",
+            "Gradio",
+            "Crypto"
+          ],
+          "category": "AI & Intelligent Systems",
+          "liveUrl": "",
+          "image": "/images/btc-prediction.png"
+        },
+        {
+          "title": "Food Detector AI",
+          "repo": "imranpollob/food-detector-ai",
+          "url": "https://github.com/imranpollob/food-detector-ai",
+          "description": "CNN vs Transformer model comparison for classifying pizza/steak/sushi",
+          "shortDescription": "Real-time food image classification benchmark with Gradio app",
+          "primaryLanguage": "Python",
+          "stars": 2,
+          "lastUpdated": "2025-10-20",
+          "tags": [
+            "Python",
+            "Deep Learning",
+            "Computer Vision",
+            "Gradio",
+            "Classification"
+          ],
+          "category": "AI & Intelligent Systems",
+          "liveUrl": "",
+          "image": "/images/food-detector.png"
+        },
+        {
+          "title": "Tiny Diffusion Model",
+          "repo": "imranpollob/tiny-diffusion",
+          "url": "https://github.com/imranpollob/tiny-diffusion",
+          "description": "Generate images using a small-scale diffusion model",
+          "shortDescription": "Lightweight diffusion model for image generation experiments",
+          "primaryLanguage": "Python",
+          "stars": 1,
+          "lastUpdated": "2025-11-13",
+          "tags": [
+            "Python",
+            "Diffusion",
+            "Generative AI",
+            "PyTorch",
+            "ML"
+          ],
+          "category": "AI & Intelligent Systems",
+          "liveUrl": "",
+          "image": "/images/tiny-diffusion.png"
+        },
+        {
+          "title": "Name Classifier & Generator",
+          "repo": "imranpollob/name-classifier-and-generator",
+          "url": "https://github.com/imranpollob/name-classifier-and-generator",
+          "description": "Train a model using PyTorch to predict the language/origin of a given name",
+          "shortDescription": "PyTorch-based name language classifier and generator",
+          "primaryLanguage": "Python",
+          "stars": 1,
+          "lastUpdated": "2025-12-01",
+          "tags": [
+            "Python",
+            "PyTorch",
+            "Classification",
+            "NLP",
+            "ML"
+          ],
+          "category": "AI & Intelligent Systems",
+          "liveUrl": "",
+          "image": "/images/name-classifier.png"
+        }
+      ],
+      "Full-Stack & Software Architecture": [
+        {
+          "title": "Bangla Quran - Audio & Translation",
+          "repo": "imranpollob/bangla-quran",
+          "url": "https://github.com/imranpollob/bangla-quran",
+          "description": "Full Quran with Arabic/Bangla translation & audio, PWA-ready",
+          "shortDescription": "SEO-friendly Quran reader with search, themes & bookmarks",
+          "primaryLanguage": "TypeScript",
+          "stars": 8,
+          "lastUpdated": "2026-01-04",
+          "tags": [
+            "Next.js",
+            "TypeScript",
+            "PWA",
+            "Supabase",
+            "Quran"
+          ],
+          "category": "Full-Stack & Software Architecture",
+          "liveUrl": "https://banglaquran.app",
+          "image": "/images/bangla-quran.png"
+        },
+        {
+          "title": "Reactive GitHub Explorer",
+          "repo": "imranpollob/reactive-github",
+          "url": "https://github.com/imranpollob/reactive-github",
+          "description": "Search GitHub users & view profile stats, repos & language breakdown",
+          "shortDescription": "Fast GitHub profile viewer with charts & repo sorting",
+          "primaryLanguage": "TypeScript",
+          "stars": 6,
+          "lastUpdated": "2025-09-17",
+          "tags": [
+            "React",
+            "TypeScript",
+            "TanStack Query",
+            "Recharts"
+          ],
+          "category": "Full-Stack & Software Architecture",
+          "liveUrl": "https://gitlens7.netlify.app",
+          "image": "/images/reactive-github.png"
+        },
+        {
+          "title": "Multi-Room Chat App",
+          "repo": "imranpollob/chat-app",
+          "url": "https://github.com/imranpollob/chat-app",
+          "description": "Real-time group chat with rooms, privacy & Socket.IO",
+          "shortDescription": "MERN real-time chat with public/private rooms & presence",
+          "primaryLanguage": "JavaScript",
+          "stars": 3,
+          "lastUpdated": "2025-10-24",
+          "tags": [
+            "React",
+            "Node.js",
+            "Express",
+            "MongoDB",
+            "Socket.IO",
+            "MERN"
+          ],
+          "category": "Full-Stack & Software Architecture",
+          "liveUrl": "",
+          "image": "/images/chat-app.png"
+        },
+        {
+          "title": "Task Time Tracker",
+          "repo": "imranpollob/task-time-tracker",
+          "url": "https://github.com/imranpollob/task-time-tracker",
+          "description": "Daily task management & time tracking app with backend API",
+          "shortDescription": "Modern task dashboard with auth & real-time tracking",
+          "primaryLanguage": "TypeScript",
+          "stars": 1,
+          "lastUpdated": "2025-09-21",
+          "tags": [
+            "Next.js",
+            "TypeScript",
+            "Tailwind",
+            "React Context",
+            "Full-Stack"
+          ],
+          "category": "Full-Stack & Software Architecture",
+          "liveUrl": "https://tracker.imranpollob.com",
+          "image": "/images/task-tracker.png"
+        },
+        {
+          "title": "Document Echo - TTS PDF Reader",
+          "repo": "imranpollob/document-echo",
+          "url": "https://github.com/imranpollob/document-echo",
+          "description": "PDF reader with sentence-highlighting text-to-speech",
+          "shortDescription": "Accessible PDF experience with OpenAI/browser TTS & themes",
+          "primaryLanguage": "JavaScript",
+          "stars": 1,
+          "lastUpdated": "2026-01-08",
+          "tags": [
+            "Next.js",
+            "PDF.js",
+            "TTS",
+            "Zustand",
+            "Tailwind"
+          ],
+          "category": "Full-Stack & Software Architecture",
+          "liveUrl": "https://document-echo.vercel.app",
+          "image": "/images/document-echo.png"
+        },
+        {
+          "title": "Anonymous Notepad",
+          "repo": "imranpollob/notepad",
+          "url": "https://github.com/imranpollob/notepad",
+          "description": "Free web notepad for storing & sharing notes without login",
+          "shortDescription": "Autosave, password-protected, rich-text sharing tool",
+          "primaryLanguage": "PHP",
+          "stars": 14,
+          "lastUpdated": "2024-04-02",
+          "tags": [
+            "PHP",
+            "Laravel",
+            "Vue",
+            "Productivity"
+          ],
+          "category": "Full-Stack & Software Architecture",
+          "liveUrl": "https://note.imranpollob.com",
+          "image": "/images/notepad.png"
+        }
+      ],
+      "Developer Tools & Utilities": [
+        {
+          "title": "Google Colab Torrent Downloader",
+          "repo": "imranpollob/google-colab-torrent-downloader",
+          "url": "https://github.com/imranpollob/google-colab-torrent-downloader",
+          "description": "Download torrent files directly using Google Colab",
+          "shortDescription": "Popular notebook for torrent downloading in free Colab environment",
+          "primaryLanguage": "Jupyter Notebook",
+          "stars": 45,
+          "lastUpdated": "2026-01-12",
+          "tags": [
+            "Jupyter",
+            "Torrent",
+            "Google Colab",
+            "Downloader"
+          ],
+          "category": "Developer Tools & Utilities",
+          "liveUrl": "",
+          "image": "/images/colab-torrent.png"
+        },
+        {
+          "title": "GitStar - GitHub Stars Counter",
+          "repo": "imranpollob/gitstar",
+          "url": "https://github.com/imranpollob/gitstar",
+          "description": "Find out the total stars earned by a GitHub user across all repos",
+          "shortDescription": "Quick Python tool to sum a user's total GitHub stars",
+          "primaryLanguage": "Python",
+          "stars": 3,
+          "lastUpdated": "2026-01-12",
+          "tags": [
+            "Python",
+            "GitHub API",
+            "Utility"
+          ],
+          "category": "Developer Tools & Utilities",
+          "liveUrl": "",
+          "image": "/images/gitstar.png"
+        },
+        {
+          "title": "Node Note CLI",
+          "repo": "imranpollob/node-note-cli",
+          "url": "https://github.com/imranpollob/node-note-cli",
+          "description": "Simple command line note taking application built with Node.js",
+          "shortDescription": "Lightweight CLI for quick note management",
+          "primaryLanguage": "JavaScript",
+          "stars": 2,
+          "lastUpdated": "2025-09-15",
+          "tags": [
+            "Node.js",
+            "CLI",
+            "JavaScript",
+            "Productivity"
+          ],
+          "category": "Developer Tools & Utilities",
+          "liveUrl": "",
+          "image": "/images/node-note-cli.png"
+        },
+        {
+          "title": "Crypto Trading Profit Calculator CLI",
+          "repo": "imranpollob/crypto-trading-profit-calculator-cli",
+          "url": "https://github.com/imranpollob/crypto-trading-profit-calculator-cli",
+          "description": "Calculate desired sell limits and profit scenarios for crypto trades",
+          "shortDescription": "Python CLI to compute crypto trade profits and targets",
+          "primaryLanguage": "Python",
+          "stars": 1,
+          "lastUpdated": "2025-01-13",
+          "tags": [
+            "Python",
+            "CLI",
+            "Crypto",
+            "Finance"
+          ],
+          "category": "Developer Tools & Utilities",
+          "liveUrl": "",
+          "image": "/images/crypto-calculator.png"
+        },
+        {
+          "title": "BibTeX to Bibitem Converter",
+          "repo": "imranpollob/BibTeX-to-Bibitem",
+          "url": "https://github.com/imranpollob/BibTeX-to-Bibitem",
+          "description": "Convert BibTeX entries to \\bibitem format for LaTeX",
+          "shortDescription": "Simple tool to transform BibTeX to LaTeX bibitem entries",
+          "primaryLanguage": "TeX",
+          "stars": 1,
+          "lastUpdated": "2025-12-15",
+          "tags": [
+            "TeX",
+            "LaTeX",
+            "Converter",
+            "Academic"
+          ],
+          "category": "Developer Tools & Utilities",
+          "liveUrl": "",
+          "image": "/images/bibtex-converter.png"
+        },
+        {
+          "title": "Slugcopy - Slugify & Copy",
+          "repo": "imranpollob/slugcopy",
+          "url": "https://github.com/imranpollob/slugcopy",
+          "description": "Slugify strings and copy the result to clipboard",
+          "shortDescription": "Handy tool for generating and copying URL-friendly slugs",
+          "primaryLanguage": "JavaScript",
+          "stars": 1,
+          "lastUpdated": "2026-01-12",
+          "tags": [
+            "JavaScript",
+            "Utility",
+            "Clipboard"
+          ],
+          "category": "Developer Tools & Utilities",
+          "liveUrl": "",
+          "image": "/images/slugcopy.png"
+        }
+      ],
+      "Mini Apps": [
+        {
+          "title": "Bangladesh District Map",
+          "repo": "imranpollob/bangladesh-district-map",
+          "url": "https://github.com/imranpollob/bangladesh-district-map",
+          "description": "Interactive or highlighted map showing each district of Bangladesh",
+          "shortDescription": "District-level map visualization for Bangladesh",
+          "primaryLanguage": "Unknown",
+          "stars": 2,
+          "lastUpdated": "2025-11-26",
+          "tags": [
+            "Map",
+            "Visualization",
+            "Geo",
+            "Data"
+          ],
+          "category": "Mini Apps",
+          "liveUrl": "",
+          "image": "/images/bd-district-map.png"
+        },
+        {
+          "title": "Coins - Crypto Price Dashboard",
+          "repo": "imranpollob/coins",
+          "url": "https://github.com/imranpollob/coins",
+          "description": "View favorite cryptocurrency prices and charts in one page",
+          "shortDescription": "Simple one-page crypto price tracker and chart viewer",
+          "primaryLanguage": "JavaScript",
+          "stars": 1,
+          "lastUpdated": "2026-01-12",
+          "tags": [
+            "JavaScript",
+            "Crypto",
+            "Dashboard",
+            "Charts"
+          ],
+          "category": "Mini Apps",
+          "liveUrl": "",
+          "image": "/images/coins-dashboard.png"
+        },
+        {
+          "title": "React Spelling Quiz",
+          "repo": "imranpollob/react-spelling-quiz",
+          "url": "https://github.com/imranpollob/react-spelling-quiz",
+          "description": "Spelling practice app with 800+ words, audio & Firebase backend",
+          "shortDescription": "Educational quiz with difficulty levels & pronunciation audio",
+          "primaryLanguage": "JavaScript",
+          "stars": 4,
+          "lastUpdated": "2025-12-06",
+          "tags": [
+            "React",
+            "Firebase",
+            "Tailwind",
+            "Education"
+          ],
+          "category": "Mini Apps",
+          "liveUrl": "https://spelling-test.netlify.app",
+          "image": "/images/spelling-quiz.png"
+        },
+        {
+          "title": "Mental Math Trainer",
+          "repo": "imranpollob/mental-math",
+          "url": "https://github.com/imranpollob/mental-math",
+          "description": "Adaptive arithmetic quizzes to improve mental calculation speed",
+          "shortDescription": "Vue app for practicing math with timers & session tracking",
+          "primaryLanguage": "Vue",
+          "stars": 1,
+          "lastUpdated": "2025-09-17",
+          "tags": [
+            "Vue 3",
+            "Vite",
+            "Education",
+            "Math"
+          ],
+          "category": "Mini Apps",
+          "liveUrl": "https://mentalmath7.netlify.app",
+          "image": "/images/mental-math.png"
+        },
+        {
+          "title": "Color Shades Generator",
+          "repo": "imranpollob/color-shades",
+          "url": "https://github.com/imranpollob/color-shades",
+          "description": "Generate harmonious color shades from a base color",
+          "shortDescription": "Web tool for creating color palettes and shades",
+          "primaryLanguage": "JavaScript",
+          "stars": 1,
+          "lastUpdated": "2025-09-20",
+          "tags": [
+            "JavaScript",
+            "Color",
+            "Generator",
+            "UI"
+          ],
+          "category": "Mini Apps",
+          "liveUrl": "",
+          "image": "/images/color-shades.png"
+        },
+        {
+          "title": "React Lorem Ipsum Generator",
+          "repo": "imranpollob/react-lorem-ipsum",
+          "url": "https://github.com/imranpollob/react-lorem-ipsum",
+          "description": "A simple lorem ipsum text generator built with React",
+          "shortDescription": "React component for generating placeholder text",
+          "primaryLanguage": "JavaScript",
+          "stars": 1,
+          "lastUpdated": "2025-09-15",
+          "tags": [
+            "React",
+            "JavaScript",
+            "Generator",
+            "UI"
+          ],
+          "category": "Mini Apps",
+          "liveUrl": "",
+          "image": "/images/react-lorem.png"
+        },
+        {
+          "title": "Vue Trivia Quiz",
+          "repo": "imranpollob/vue-quiz",
+          "url": "https://github.com/imranpollob/vue-quiz",
+          "description": "Customizable trivia quiz using Open Trivia Database API",
+          "shortDescription": "Fun quiz app with filters, progress & score summary",
+          "primaryLanguage": "Vue",
+          "stars": 1,
+          "lastUpdated": "2025-09-15",
+          "tags": [
+            "Vue 3",
+            "Vite",
+            "API",
+            "Quiz"
+          ],
+          "category": "Mini Apps",
+          "liveUrl": "https://quizx.netlify.app",
+          "image": "/images/vue-quiz.png"
+        },
+        {
+          "title": "Always-On-Top Pomodoro Timer",
+          "repo": "imranpollob/pomodoro-timer",
+          "url": "https://github.com/imranpollob/pomodoro-timer",
+          "description": "Minimal Pomodoro timer that stays on top of windows",
+          "shortDescription": "Customizable, resizable desktop productivity timer in Python",
+          "primaryLanguage": "Python",
+          "stars": 2,
+          "lastUpdated": "2024-06-10",
+          "tags": [
+            "Python",
+            "Pomodoro",
+            "Productivity"
+          ],
+          "category": "Mini Apps",
+          "liveUrl": "",
+          "image": "/images/pomodoro.png"
+        },
+        {
+          "title": "Black Screen Alternative",
+          "repo": "imranpollob/black-screen",
+          "url": "https://github.com/imranpollob/black-screen",
+          "description": "A simple full black screen (alternative to turning off monitor)",
+          "shortDescription": "Minimal black screen web page for presentations or breaks",
+          "primaryLanguage": "HTML",
+          "stars": 1,
+          "lastUpdated": "2024-05-20",
+          "tags": [
+            "HTML",
+            "Utility",
+            "Fun"
+          ],
+          "category": "Mini Apps",
+          "liveUrl": "",
+          "image": "/images/black-screen.png"
+        },
+        {
+          "title": "Code UI - Coding Solutions Collection",
+          "repo": "imranpollob/code-ui",
+          "url": "https://github.com/imranpollob/code-ui",
+          "description": "Collection of solutions from LeetCode, HackerRank, Codewars, CodeSignal",
+          "shortDescription": "Personal archive of competitive programming & coding challenge solutions",
+          "primaryLanguage": "JavaScript",
+          "stars": 1,
+          "lastUpdated": "2022-09-29",
+          "tags": [
+            "JavaScript",
+            "LeetCode",
+            "Competitive Programming"
+          ],
+          "category": "Mini Apps",
+          "liveUrl": "",
+          "image": "/images/code-solutions.png"
+        }
+      ]
+    }
+  }
+}
