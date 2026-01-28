@@ -214,3 +214,9 @@ table th {
 span.bold {
   @apply font-bold;
 }
+
+/* Remove backticks from inline code */
+article :not(pre)>code::before,
+article :not(pre)>code::after {
+  content: none;
+}
