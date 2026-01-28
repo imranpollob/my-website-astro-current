@@ -53,17 +53,8 @@ main {
 
 header {
   @apply border-b;
-  @apply transition-all duration-300 ease-in-out;
-}
-
-header:not(.scrolled) {
-  @apply bg-transparent border-transparent;
-}
-
-header.scrolled {
-  @apply bg-white/75 dark:bg-black/50;
+  @apply bg-white/90 dark:bg-black/75;
   @apply border-black/10 dark:border-white/25;
-  @apply backdrop-blur-sm saturate-200;
 }
 
 article {
@@ -80,9 +71,10 @@ article {
   @apply font-semibold text-black dark:text-white;
 }
 
-.blend {
+/* Removed .blend transition-all for performance */
+/* .blend {
   @apply transition-all duration-300 ease-in-out;
-}
+} */
 
 /** Light theme particles on home page */
 @keyframes animateParticle {
@@ -206,10 +198,11 @@ table th {
   border-radius: 60% 40% 40% 20% / 70% 50% 30% 25%;
 }
 
-.glass-panel {
+/* Removed for performance - backdrop-filter causes expensive repaints */
+/* .glass-panel {
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
-}
+} */
 
 span.bold {
   @apply font-bold;

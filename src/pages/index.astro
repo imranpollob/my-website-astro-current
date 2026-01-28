@@ -143,17 +143,17 @@ const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                 <div class="space-y-6 animate">
                     <h1
-                        class="text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white leading-tight glass-panel"
+                        class="text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white leading-tight"
                     >
                         Blockchain & AI Software Engineer
                     </h1>
-                    <h2 class="text-2xl md:text-3xl font-semibold text-black dark:text-white glass-panel">
+                    <h2 class="text-2xl md:text-3xl font-semibold text-black dark:text-white">
                         PhD Candidate
                     </h2>
-                    <h2 class="text-xl md:text-2xl font-semibold text-black dark:text-white glass-panel">
+                    <h2 class="text-xl md:text-2xl font-semibold text-black dark:text-white">
                         5+ Years of Software Engineering Experience
                     </h2>
-                    <p class="text-base md:text-lg text-black/75 dark:text-white/75 glass-panel">
+                    <p class="text-base md:text-lg text-black/75 dark:text-white/75">
                         I love building blockchain applications and making the web more open for everyone. I’m
                         fascinated by how AI is reshaping the world, and I enjoy experimenting with it and shaping it
                         through my own code. Side projects are my weakness—once an idea hits, I can’t let it go.
@@ -169,12 +169,12 @@ const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777
                         </a>
                         <a
                             href="#contact"
-                            class="py-3 px-5 rounded-full border border-black/20 dark:border-white/25 glass-panel text-sm md:text-base font-semibold hover:bg-black/5 hover:dark:bg-white/15 transition"
+                            class="py-3 px-5 rounded-full border border-black/20 dark:border-white/25 text-sm md:text-base font-semibold hover:bg-black/5 hover:dark:bg-white/15 transition"
                         >
                             Hire me for Blockchain / AI / Software Engineering
                         </a>
                     </div>
-                    <p class="text-sm text-black/60 dark:text-white/60 glass-panel">
+                    <p class="text-sm text-black/60 dark:text-white/60">
                         📍Detroit, MI · Open to remote and on-site roles
                     </p>
                 </div>
@@ -186,7 +186,7 @@ const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777
                         >
                         </div>
                         <div
-                            class="relative p-1 rounded-[32px] border border-black/10 dark:border-white/15 glass-panel"
+                            class="relative p-1 rounded-[32px] border border-black/10 dark:border-white/15"
                         >
                             <img
                                 src="/image/imran-pollob.jpg"
@@ -205,7 +205,7 @@ const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777
             <div class="animate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {
                     stats.map((item) => (
-                        <div class="p-5 rounded-2xl border border-black/10 dark:border-white/15 glass-panel hover:-translate-y-1 hover:bg-black/5 dark:hover:bg-white/10 transition-all">
+                        <div class="p-5 rounded-2xl border border-black/10 dark:border-white/15 hover:bg-black/5 dark:hover:bg-white/10 ">
                             <p class="text-base font-semibold text-black dark:text-white">{item.title}</p>
                             <p class="text-sm text-black/70 dark:text-white/70 mt-2">{item.detail}</p>
                         </div>
@@ -217,7 +217,7 @@ const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777
 
     <section class="pb-16">
         <Container size="xl">
-            <div class="animate space-y-4 glass-panel">
+            <div class="animate space-y-4">
                 <h2 class="text-2xl font-bold text-black dark:text-white">About Me</h2>
                 <div class="space-y-4 text-base md:text-lg">
                     <p>
@@ -251,12 +251,12 @@ const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777
         <Container size="xl">
             <div class="animate space-y-6">
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-                    <h2 class="text-2xl font-bold text-black dark:text-white glass-panel">Core Skill Areas</h2>
+                    <h2 class="text-2xl font-bold text-black dark:text-white">Core Skill Areas</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {
                         skillAreas.map((area) => (
-                            <div class="p-6 rounded-2xl border border-black/10 dark:border-white/15 glass-panel hover:-translate-y-1 hover:bg-black/5 dark:hover:bg-white/10 transition-all duration-200">
+                            <div class="p-6 rounded-2xl border border-black/10 dark:border-white/15 hover:bg-black/5 dark:hover:bg-white/10 ">
                                 <h3 class="text-lg font-semibold text-black dark:text-white mb-3">{area.title}</h3>
                                 <ul class="space-y-2 text-sm md:text-base text-black/80 dark:text-white/80">
                                     {area.bullets.map((item) => (
@@ -279,12 +279,12 @@ const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777
             <div class="animate flex flex-col gap-6">
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                     <div>
-                        <p class="text-sm uppercase tracking-wide glass-panel">Projects</p>
-                        <h2 class="text-2xl font-bold text-black dark:text-white glass-panel">Featured Projects</h2>
+                        <p class="text-sm uppercase tracking-wide">Projects</p>
+                        <h2 class="text-2xl font-bold text-black dark:text-white">Featured Projects</h2>
                     </div>
                     <a
                         href="/projects"
-                        class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-black/30 dark:decoration-white/40 hover:text-black dark:hover:text-white glass-panel"
+                        class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-black/30 dark:decoration-white/40 hover:text-black dark:hover:text-white"
                     >
                         View all projects →
                     </a>
@@ -311,12 +311,12 @@ const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777
             <div class="animate flex flex-col gap-6">
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                     <div>
-                        <p class="text-sm uppercase tracking-wide glass-panel">Blog</p>
-                        <h2 class="text-2xl font-bold text-black dark:text-white glass-panel">Start a Crash Course</h2>
+                        <p class="text-sm uppercase tracking-wide">Blog</p>
+                        <h2 class="text-2xl font-bold text-black dark:text-white">Start a Crash Course</h2>
                     </div>
                     <a
                         href="/blog"
-                        class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-black/30 dark:decoration-white/40 hover:text-black dark:hover:text-white glass-panel"
+                        class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-black/30 dark:decoration-white/40 hover:text-black dark:hover:text-white"
                     >
                         Read the blog →
                     </a>
@@ -326,7 +326,7 @@ const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777
                         blogPreviews.map(({ post, blurb }) => (
                             <a
                                 href={`/blog/${post.slug}`}
-                                class="p-6 rounded-2xl border border-black/10 dark:border-white/15 glass-panel hover:-translate-y-1 hover:bg-black/5 dark:hover:bg-white/10 transition-all duration-200"
+                                class="p-6 rounded-2xl border border-black/10 dark:border-white/15 hover:bg-black/5 dark:hover:bg-white/10 "
                             >
                                 <p class="text-xs uppercase text-black/60 dark:text-white/60">
                                     {post.data.tags.join(", ")}
@@ -351,12 +351,12 @@ const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777
             <div class="animate space-y-4">
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                     <div>
-                        <p class="text-sm uppercase tracking-wide glass-panel">Certifications</p>
-                        <h2 class="text-2xl font-bold text-black dark:text-white glass-panel">Credentials</h2>
+                        <p class="text-sm uppercase tracking-wide">Certifications</p>
+                        <h2 class="text-2xl font-bold text-black dark:text-white">Credentials</h2>
                     </div>
                     <a
                         href="/experience#certifications"
-                        class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-black/30 dark:decoration-white/40 hover:text-black dark:hover:text-white glass-panel"
+                        class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-black/30 dark:decoration-white/40 hover:text-black dark:hover:text-white"
                     >
                         View all certifications →
                     </a>
@@ -364,7 +364,7 @@ const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {
                         certifications.map((cert) => (
-                            <div class="p-4 rounded-2xl border border-black/10 dark:border-white/15 glass-panel flex flex-col gap-2 hover:-translate-y-1 hover:bg-black/5 dark:hover:bg-white/10 transition-all duration-200">
+                            <div class="p-4 rounded-2xl border border-black/10 dark:border-white/15 flex flex-col gap-2 hover:bg-black/5 dark:hover:bg-white/10 ">
                                 <p class="text-sm font-semibold text-black dark:text-white uppercase">{cert.label}</p>
                                 <div class="flex flex-wrap gap-2">
                                     {cert.values.map((value) => (
@@ -384,7 +384,7 @@ const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777
     <section id="contact" class="pb-20 animate">
         <Container size="xl">
             <div
-                class="p-8 rounded-2xl border border-black/10 dark:border-white/15 glass-panel space-y-6 hover:-translate-y-1 hover:bg-black/5 dark:hover:bg-white/10 transition-all duration-200"
+                class="p-8 rounded-2xl border border-black/10 dark:border-white/15 space-y-6 hover:bg-black/5 dark:hover:bg-white/10 "
             >
                 <div class="space-y-2">
                     <p class="text-sm uppercase tracking-wide">Contact</p>
