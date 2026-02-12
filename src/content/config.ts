@@ -14,10 +14,10 @@ const blog = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
-    summary: z.string(),
+    summary: z.string().optional(),
     date: z.coerce.date(),
     tags: z.array(z.string()),
-    draft: z.boolean().optional(),
+    draft: z.boolean().optional().default(false),
     pinned: z.boolean().optional().default(false),
   }),
 })
