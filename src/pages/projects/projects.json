@@ -2,7 +2,7 @@
   "portfolio": {
     "owner": "imranpollob",
     "generatedDate": "2026-01-11",
-    "totalProjects": 37,
+    "totalProjects": 21,
     "categories": [
       "Blockchain Engineering",
       "AI & Intelligent Systems",
@@ -257,29 +257,28 @@
           "category": "AI & Intelligent Systems",
           "liveUrl": "",
           "image": "/images/tiny-diffusion.png"
-        },
-        {
-          "title": "Name Classifier & Generator",
-          "repo": "imranpollob/name-classifier-and-generator",
-          "url": "https://github.com/imranpollob/name-classifier-and-generator",
-          "description": "Train a model using PyTorch to predict the language/origin of a given name",
-          "shortDescription": "PyTorch-based name language classifier and generator",
-          "primaryLanguage": "Python",
-          "stars": 1,
-          "lastUpdated": "2025-12-01",
-          "tags": [
-            "Python",
-            "PyTorch",
-            "Classification",
-            "NLP",
-            "ML"
-          ],
-          "category": "AI & Intelligent Systems",
-          "liveUrl": "",
-          "image": "/images/name-classifier.png"
         }
       ],
       "Full-Stack & Software Architecture": [
+        {
+          "title": "Notebase - Personal Knowledge Base",
+          "repo": "imranpollob/notebase",
+          "url": "https://github.com/imranpollob/notebase",
+          "description": "Full-stack personal knowledge base with rich text editing, tagging, and fast full-text search",
+          "shortDescription": "Organized note-taking app with markdown, tags & fast local search",
+          "primaryLanguage": "TypeScript",
+          "stars": 1,
+          "lastUpdated": "2026-01-12",
+          "tags": [
+            "Next.js",
+            "TypeScript",
+            "Tailwind",
+            "Full-Stack"
+          ],
+          "category": "Full-Stack & Software Architecture",
+          "liveUrl": "",
+          "image": "/images/notebase.png"
+        },
         {
           "title": "Bangla Quran - Audio & Translation",
           "repo": "imranpollob/bangla-quran",
@@ -299,25 +298,6 @@
           "category": "Full-Stack & Software Architecture",
           "liveUrl": "https://banglaquran.app",
           "image": "/images/bangla-quran.png"
-        },
-        {
-          "title": "Reactive GitHub Explorer",
-          "repo": "imranpollob/reactive-github",
-          "url": "https://github.com/imranpollob/reactive-github",
-          "description": "Search GitHub users & view profile stats, repos & language breakdown",
-          "shortDescription": "Fast GitHub profile viewer with charts & repo sorting",
-          "primaryLanguage": "TypeScript",
-          "stars": 6,
-          "lastUpdated": "2025-09-17",
-          "tags": [
-            "React",
-            "TypeScript",
-            "TanStack Query",
-            "Recharts"
-          ],
-          "category": "Full-Stack & Software Architecture",
-          "liveUrl": "https://gitlens7.netlify.app",
-          "image": "/images/reactive-github.png"
         },
         {
           "title": "Multi-Room Chat App",
@@ -379,122 +359,9 @@
           "category": "Full-Stack & Software Architecture",
           "liveUrl": "https://document-echo.vercel.app",
           "image": "/images/document-echo.png"
-        },
-        {
-          "title": "Anonymous Notepad",
-          "repo": "imranpollob/notepad",
-          "url": "https://github.com/imranpollob/notepad",
-          "description": "Free web notepad for storing & sharing notes without login",
-          "shortDescription": "Autosave, password-protected, rich-text sharing tool",
-          "primaryLanguage": "PHP",
-          "stars": 14,
-          "lastUpdated": "2024-04-02",
-          "tags": [
-            "PHP",
-            "Laravel",
-            "Vue",
-            "Productivity"
-          ],
-          "category": "Full-Stack & Software Architecture",
-          "liveUrl": "https://note.imranpollob.com",
-          "image": "/images/notepad.png"
         }
       ],
       "Developer Tools & Utilities": [
-        {
-          "title": "Google Colab Torrent Downloader",
-          "repo": "imranpollob/google-colab-torrent-downloader",
-          "url": "https://github.com/imranpollob/google-colab-torrent-downloader",
-          "description": "Download torrent files directly using Google Colab",
-          "shortDescription": "Popular notebook for torrent downloading in free Colab environment",
-          "primaryLanguage": "Jupyter Notebook",
-          "stars": 45,
-          "lastUpdated": "2026-01-12",
-          "tags": [
-            "Jupyter",
-            "Torrent",
-            "Google Colab",
-            "Downloader"
-          ],
-          "category": "Developer Tools & Utilities",
-          "liveUrl": "",
-          "image": "/images/colab-torrent.png"
-        },
-        {
-          "title": "GitStar - GitHub Stars Counter",
-          "repo": "imranpollob/gitstar",
-          "url": "https://github.com/imranpollob/gitstar",
-          "description": "Find out the total stars earned by a GitHub user across all repos",
-          "shortDescription": "Quick Python tool to sum a user's total GitHub stars",
-          "primaryLanguage": "Python",
-          "stars": 3,
-          "lastUpdated": "2026-01-12",
-          "tags": [
-            "Python",
-            "GitHub API",
-            "Utility"
-          ],
-          "category": "Developer Tools & Utilities",
-          "liveUrl": "",
-          "image": "/images/gitstar.png"
-        },
-        {
-          "title": "Node Note CLI",
-          "repo": "imranpollob/node-note-cli",
-          "url": "https://github.com/imranpollob/node-note-cli",
-          "description": "Simple command line note taking application built with Node.js",
-          "shortDescription": "Lightweight CLI for quick note management",
-          "primaryLanguage": "JavaScript",
-          "stars": 2,
-          "lastUpdated": "2025-09-15",
-          "tags": [
-            "Node.js",
-            "CLI",
-            "JavaScript",
-            "Productivity"
-          ],
-          "category": "Developer Tools & Utilities",
-          "liveUrl": "",
-          "image": "/images/node-note-cli.png"
-        },
-        {
-          "title": "Crypto Trading Profit Calculator CLI",
-          "repo": "imranpollob/crypto-trading-profit-calculator-cli",
-          "url": "https://github.com/imranpollob/crypto-trading-profit-calculator-cli",
-          "description": "Calculate desired sell limits and profit scenarios for crypto trades",
-          "shortDescription": "Python CLI to compute crypto trade profits and targets",
-          "primaryLanguage": "Python",
-          "stars": 1,
-          "lastUpdated": "2025-01-13",
-          "tags": [
-            "Python",
-            "CLI",
-            "Crypto",
-            "Finance"
-          ],
-          "category": "Developer Tools & Utilities",
-          "liveUrl": "",
-          "image": "/images/crypto-calculator.png"
-        },
-        {
-          "title": "BibTeX to Bibitem Converter",
-          "repo": "imranpollob/BibTeX-to-Bibitem",
-          "url": "https://github.com/imranpollob/BibTeX-to-Bibitem",
-          "description": "Convert BibTeX entries to \\bibitem format for LaTeX",
-          "shortDescription": "Simple tool to transform BibTeX to LaTeX bibitem entries",
-          "primaryLanguage": "TeX",
-          "stars": 1,
-          "lastUpdated": "2025-12-15",
-          "tags": [
-            "TeX",
-            "LaTeX",
-            "Converter",
-            "Academic"
-          ],
-          "category": "Developer Tools & Utilities",
-          "liveUrl": "",
-          "image": "/images/bibtex-converter.png"
-        },
         {
           "title": "Slugcopy - Slugify & Copy",
           "repo": "imranpollob/slugcopy",
@@ -515,44 +382,6 @@
         }
       ],
       "Mini Apps": [
-        {
-          "title": "Bangladesh District Map",
-          "repo": "imranpollob/bangladesh-district-map",
-          "url": "https://github.com/imranpollob/bangladesh-district-map",
-          "description": "Interactive or highlighted map showing each district of Bangladesh",
-          "shortDescription": "District-level map visualization for Bangladesh",
-          "primaryLanguage": "Unknown",
-          "stars": 2,
-          "lastUpdated": "2025-11-26",
-          "tags": [
-            "Map",
-            "Visualization",
-            "Geo",
-            "Data"
-          ],
-          "category": "Mini Apps",
-          "liveUrl": "",
-          "image": "/images/bd-district-map.png"
-        },
-        {
-          "title": "Coins - Crypto Price Dashboard",
-          "repo": "imranpollob/coins",
-          "url": "https://github.com/imranpollob/coins",
-          "description": "View favorite cryptocurrency prices and charts in one page",
-          "shortDescription": "Simple one-page crypto price tracker and chart viewer",
-          "primaryLanguage": "JavaScript",
-          "stars": 1,
-          "lastUpdated": "2026-01-12",
-          "tags": [
-            "JavaScript",
-            "Crypto",
-            "Dashboard",
-            "Charts"
-          ],
-          "category": "Mini Apps",
-          "liveUrl": "",
-          "image": "/images/coins-dashboard.png"
-        },
         {
           "title": "React Spelling Quiz",
           "repo": "imranpollob/react-spelling-quiz",
@@ -592,63 +421,6 @@
           "image": "/images/mental-math.png"
         },
         {
-          "title": "Color Shades Generator",
-          "repo": "imranpollob/color-shades",
-          "url": "https://github.com/imranpollob/color-shades",
-          "description": "Generate harmonious color shades from a base color",
-          "shortDescription": "Web tool for creating color palettes and shades",
-          "primaryLanguage": "JavaScript",
-          "stars": 1,
-          "lastUpdated": "2025-09-20",
-          "tags": [
-            "JavaScript",
-            "Color",
-            "Generator",
-            "UI"
-          ],
-          "category": "Mini Apps",
-          "liveUrl": "",
-          "image": "/images/color-shades.png"
-        },
-        {
-          "title": "React Lorem Ipsum Generator",
-          "repo": "imranpollob/react-lorem-ipsum",
-          "url": "https://github.com/imranpollob/react-lorem-ipsum",
-          "description": "A simple lorem ipsum text generator built with React",
-          "shortDescription": "React component for generating placeholder text",
-          "primaryLanguage": "JavaScript",
-          "stars": 1,
-          "lastUpdated": "2025-09-15",
-          "tags": [
-            "React",
-            "JavaScript",
-            "Generator",
-            "UI"
-          ],
-          "category": "Mini Apps",
-          "liveUrl": "",
-          "image": "/images/react-lorem.png"
-        },
-        {
-          "title": "Vue Trivia Quiz",
-          "repo": "imranpollob/vue-quiz",
-          "url": "https://github.com/imranpollob/vue-quiz",
-          "description": "Customizable trivia quiz using Open Trivia Database API",
-          "shortDescription": "Fun quiz app with filters, progress & score summary",
-          "primaryLanguage": "Vue",
-          "stars": 1,
-          "lastUpdated": "2025-09-15",
-          "tags": [
-            "Vue 3",
-            "Vite",
-            "API",
-            "Quiz"
-          ],
-          "category": "Mini Apps",
-          "liveUrl": "https://quizx.netlify.app",
-          "image": "/images/vue-quiz.png"
-        },
-        {
           "title": "Always-On-Top Pomodoro Timer",
           "repo": "imranpollob/pomodoro-timer",
           "url": "https://github.com/imranpollob/pomodoro-timer",
@@ -665,42 +437,6 @@
           "category": "Mini Apps",
           "liveUrl": "",
           "image": "/images/pomodoro.png"
-        },
-        {
-          "title": "Black Screen Alternative",
-          "repo": "imranpollob/black-screen",
-          "url": "https://github.com/imranpollob/black-screen",
-          "description": "A simple full black screen (alternative to turning off monitor)",
-          "shortDescription": "Minimal black screen web page for presentations or breaks",
-          "primaryLanguage": "HTML",
-          "stars": 1,
-          "lastUpdated": "2024-05-20",
-          "tags": [
-            "HTML",
-            "Utility",
-            "Fun"
-          ],
-          "category": "Mini Apps",
-          "liveUrl": "",
-          "image": "/images/black-screen.png"
-        },
-        {
-          "title": "Code UI - Coding Solutions Collection",
-          "repo": "imranpollob/code-ui",
-          "url": "https://github.com/imranpollob/code-ui",
-          "description": "Collection of solutions from LeetCode, HackerRank, Codewars, CodeSignal",
-          "shortDescription": "Personal archive of competitive programming & coding challenge solutions",
-          "primaryLanguage": "JavaScript",
-          "stars": 1,
-          "lastUpdated": "2022-09-29",
-          "tags": [
-            "JavaScript",
-            "LeetCode",
-            "Competitive Programming"
-          ],
-          "category": "Mini Apps",
-          "liveUrl": "",
-          "image": "/images/code-solutions.png"
         }
       ]
     }

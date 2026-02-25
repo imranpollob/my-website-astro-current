@@ -6,72 +6,145 @@ import { PROJECTS } from "@consts";
 
 import projectsData from "./projects.json";
 
-const categories = [
-    { name: "Blockchain Engineering", id: "blockchain" },
-    { name: "AI & Intelligent Systems", id: "ai" },
-    { name: "Full-Stack & Software Architecture", id: "software" },
-    { name: "Developer Tools & Utilities", id: "tools" },
-    { name: "Mini Apps", id: "creative" },
-];
+type Project = (typeof projectsData.portfolio.projects)["Blockchain Engineering"][number];
 
-const getProjectLinks = (project: any) => {
+// Flatten all projects into a lookup map by repo slug
+const allProjects: Project[] = (Object.values(projectsData.portfolio.projects) as Project[][]).flat();
+
+const bySlug = (slug: string): Project | undefined => allProjects.find((p) => p.repo === `imranpollob/${slug}`);
+
+const getLinks = (project: Project) => {
     const links = [];
-    if (project.liveUrl) {
-        links.push({ label: "Live Demo", href: project.liveUrl });
-    }
-    if (project.url) {
-        links.push({ label: "GitHub", href: project.url });
-    }
+    if (project.liveUrl) links.push({ label: "Live Demo", href: project.liveUrl });
+    if (project.url) links.push({ label: "GitHub", href: project.url });
     return links;
 };
+
+// ── Featured sections ────────────────────────────────────────────────────────
+const featuredSections = [
+    {
+        label: "Blockchain Engineering",
+        id: "blockchain",
+        projects: ["nft-rentals-and-sales", "stablecoin", "swap"].map(bySlug).filter(Boolean) as Project[],
+    },
+    {
+        label: "AI & Intelligent Systems",
+        id: "ai",
+        projects: ["ai-trading", "multi-pdf-rag-chatbot", "deal-finder-ai"].map(bySlug).filter(Boolean) as Project[],
+    },
+    {
+        label: "Full-Stack & Software Architecture",
+        id: "fullstack",
+        projects: ["notebase", "chat-app", "bangla-quran"].map(bySlug).filter(Boolean) as Project[],
+    },
+];
+
+// ── Supporting sections ──────────────────────────────────────────────────────
+const supportingSections = [
+    {
+        label: "Other Web3 Projects",
+        id: "web3-more",
+        projects: ["dao", "foundry-fund-me", "ast-generator"].map(bySlug).filter(Boolean) as Project[],
+    },
+    {
+        label: "Other AI Projects",
+        id: "ai-more",
+        projects: ["bitcoin-price-prediction-ai", "food-detector-ai", "tiny-diffusion"]
+            .map(bySlug)
+            .filter(Boolean) as Project[],
+    },
+    {
+        label: "Mini Tools & Apps",
+        id: "tools",
+        projects: [
+            "task-time-tracker",
+            "document-echo",
+            "react-spelling-quiz",
+            "mental-math",
+            "slugcopy",
+            "pomodoro-timer",
+        ]
+            .map(bySlug)
+            .filter(Boolean) as Project[],
+    },
+];
 ---
 
 <PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
+    <!-- Page header -->
     <section class="pt-28 pb-12">
         <Container size="xl">
             <div class="animate space-y-4 text-center">
                 <div class="text-xl md:text-2xl lg:text-3xl page-heading glass-panel">{PROJECTS.TITLE}</div>
                 <article class="prose dark:prose-invert max-w-3xl mx-auto glass-panel">
                     <p>
-                        I like to learn by building. These projects represent my work in blockchain, AI/ML, full-stack
-                        applications, and developer productivity. Explore {projectsData.portfolio.totalProjects}+
-                        projects across {projectsData.portfolio.categories.length} categories.
+                        I learn by building. Below are my flagship projects in Blockchain, AI, and Full-Stack
+                        engineering, followed by a full catalogue of {projectsData.portfolio.totalProjects}+ projects.
                     </p>
                 </article>
             </div>
         </Container>
     </section>
 
+    <!-- ── Featured Projects ───────────────────────────────────────────────── -->
     {
-        categories.map((category) => {
-            const projects =
-                projectsData.portfolio.projects[category.name as keyof typeof projectsData.portfolio.projects] || [];
-            if (projects.length === 0) return null;
-
-            return (
-                <section class="pb-16" id={category.id}>
-                    <Container size="xl">
-                        <div class="animate space-y-6">
-                            <div>
-                                <h2 class="text-2xl font-bold text-black dark:text-white glass-panel">
-                                    {category.name}
-                                </h2>
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                {projects.map((project) => (
-                                    <ProjectCard
-                                        id={project.repo.split("/")[1]}
-                                        title={project.title}
-                                        stack={project.tags.slice(0, 3).join(" · ")}
-                                        description={project.description}
-                                        links={getProjectLinks(project)}
-                                    />
-                                ))}
-                            </div>
+        featuredSections.map((section) => (
+            <section class="pb-16" id={section.id}>
+                <Container size="xl">
+                    <div class="animate space-y-6">
+                        <h2 class="text-2xl font-bold text-black dark:text-white glass-panel">{section.label}</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            {section.projects.map((project) => (
+                                <ProjectCard
+                                    id={project.repo.split("/")[1]}
+                                    title={project.title}
+                                    stack={project.tags.slice(0, 3).join(" · ")}
+                                    description={project.description}
+                                    image={project.image || undefined}
+                                    links={getLinks(project)}
+                                />
+                            ))}
                         </div>
-                    </Container>
-                </section>
-            );
-        })
+                    </div>
+                </Container>
+            </section>
+        ))
     }
+
+    <!-- ── Supporting Projects ─────────────────────────────────────────────── -->
+    <section class="pb-20">
+        <Container size="xl">
+            <div class="animate space-y-10">
+                <h2 class="text-2xl font-bold text-black dark:text-white glass-panel">More Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    {
+                        supportingSections.map((section) => (
+                            <div id={section.id} class="space-y-4">
+                                <h3 class="text-base font-semibold text-black/60 dark:text-white/60 uppercase tracking-widest">
+                                    {section.label}
+                                </h3>
+                                <ul class="space-y-3">
+                                    {section.projects.map((project) => (
+                                        <li class="flex flex-col gap-0.5">
+                                            <a
+                                                href={project.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="font-medium text-black dark:text-white hover:underline underline-offset-2"
+                                            >
+                                                {project.title}
+                                            </a>
+                                            <span class="text-sm text-black/60 dark:text-white/60 leading-snug">
+                                                {project.shortDescription}
+                                            </span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </Container>
+    </section>
 </PageLayout>
