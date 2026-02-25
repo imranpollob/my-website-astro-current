@@ -4,6 +4,7 @@ import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import ProjectCard from "@components/ProjectCard.astro";
 import { SITE, SOCIALS } from "@consts";
+import projectsData from "./projects/projects.json";
 
 const publishedPosts = (await getCollection("blog"))
     .filter((post) => !post.data.draft)
@@ -25,6 +26,7 @@ const featuredBlogSelections = [
 ];
 
 type BlogPreview = { post: CollectionEntry<"blog">; blurb?: string };
+type Project = (typeof projectsData.portfolio.projects)["Blockchain Engineering"][number];
 
 const selectedBlogs = featuredBlogSelections
     .map((item): BlogPreview | null => {
@@ -37,23 +39,42 @@ const selectedBlogs = featuredBlogSelections
 const blogPreviews: BlogPreview[] =
     selectedBlogs.length > 0 ? selectedBlogs : publishedPosts.slice(0, 3).map((post) => ({ post }));
 
+const allProjects: Project[] = (Object.values(projectsData.portfolio.projects) as Project[][]).flat();
+
+const bySlug = (slug: string): Project | undefined => allProjects.find((project) => project.repo === `imranpollob/${slug}`);
+
+const getLinks = (project: Project) => {
+    const links = [];
+    if (project.liveUrl) links.push({ label: "Live Demo", href: project.liveUrl });
+    if (project.url) links.push({ label: "GitHub", href: project.url });
+    return links;
+};
+
 const stats = [
     {
-        title: "🎓 PhD Researcher",
+        title: "PhD Research",
         detail: "Wayne State University",
     },
     {
-        title: "💼 Software Engineer",
+        title: "Industry Experience",
         detail: "5+ years of industry experience",
     },
     {
-        title: "🧪 Active Builder",
-        detail: "15+ deployed projects · 50+ repositories",
+        title: "Hands-on Portfolio",
+        detail: "21 featured projects · 50+ repositories",
     },
     {
-        title: "✍️ Technical Writer",
+        title: "Technical Writing",
         detail: "ML, Blockchain & System Design",
     },
+];
+
+const quickLinks = [
+    { label: "Resume", href: "/resume.pdf", external: true },
+    { label: "Projects", href: "#projects" },
+    { label: "Experience", href: "#experience" },
+    { label: "Skills", href: "#skills" },
+    { label: "Contact", href: "#contact" },
 ];
 
 const skillAreas = [
@@ -87,41 +108,42 @@ const skillAreas = [
 ];
 
 const featuredProjects = [
+    "stablecoin",
+    "swap",
+    "ai-trading",
+    "multi-pdf-rag-chatbot",
+    "notebase",
+    "bangla-quran",
+]
+    .map(bySlug)
+    .filter(Boolean) as Project[];
+
+const experienceHighlights = [
     {
-        id: "nft-rental-marketplace",
-        title: "NFT Rental Marketplace",
-        description:
-            "Solidity-based marketplace where users rent NFTs for fixed periods with automatic return and creator royalties.",
-        stack: "Solidity · Hardhat · Ethers.js · Next.js",
-        links: [{ label: "GitHub", href: "https://github.com/imranpollob" }],
+        company: "Wayne State University",
+        role: "Graduate Teaching Assistant",
+        duration: "2021 - Present",
+        logo: "/image/company-logos/wayne-state-university.png",
+        summary:
+            "Mentored Software Engineering teams and taught Java, C++, and R-focused lab sections while pursuing blockchain security research.",
     },
     {
-        id: "dao-grants-governance",
-        title: "DAO Grants Governance",
-        description: "Token-based voting with transparent proposals, quorum rules, and clear treasury separation.",
-        stack: "Solidity · Hardhat · TypeScript · React",
-        links: [{ label: "GitHub", href: "https://github.com/imranpollob" }],
+        company: "Cefalo",
+        role: "Software Engineer",
+        duration: "2019 - 2021",
+        logo: "/image/company-logos/cefalo.png",
+        summary:
+            "Built data collection pipelines, shipped product features, and supported Laravel/Vue internal tools with direct client collaboration.",
     },
     {
-        id: "solidity-ast-generator",
-        title: "Solidity AST Generator",
-        description:
-            "Parses Solidity contracts and emits ASTs for deeper analysis, visualization, and security research.",
-        stack: "JavaScript · Node.js",
-        links: [{ label: "GitHub", href: "https://github.com/imranpollob" }],
-    },
-    {
-        id: "multi-pdf-rag-chatbot",
-        title: "Multi-PDF RAG Chatbot",
-        description:
-            "Answers questions across multiple PDFs using chunking, embeddings, similarity search, and grounded responses.",
-        stack: "Python · Vector search · LLM API",
-        links: [{ label: "GitHub", href: "https://github.com/imranpollob" }],
+        company: "Rapid Web Services",
+        role: "Full-Stack Software Engineer",
+        duration: "2018 - 2019",
+        logo: "/image/company-logos/rapid-web-services.png",
+        summary:
+            "Developed Laravel/Node/React features, integrated REST APIs, and improved reliability through debugging and CI/CD workflows.",
     },
 ];
-
-const certificationSummary =
-    "Security for Blockchain and DApps · Blockchain Solution Architecture · Blockchain Security · IBM Generative AI Engineering · IBM RAG and Agentic AI · Microsoft AI & ML Engineering";
 
 const certifications = [
     {
@@ -134,7 +156,6 @@ const certifications = [
     },
 ];
 
-const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777@gmail.com";
 ---
 
 <PageLayout title="Home" description={SITE.DESCRIPTION}>
@@ -177,6 +198,7 @@ const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777
                     <p class="text-sm text-black/60 dark:text-white/60">
                         📍Detroit, MI · Open to remote and on-site roles
                     </p>
+                   
                 </div>
 
                 <div class="animate flex justify-center lg:justify-end">
@@ -200,7 +222,7 @@ const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777
         </Container>
     </section>
 
-    <section class="pb-16">
+    <section class="pb-16" id="snapshot">
         <Container size="xl">
             <div class="animate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {
@@ -215,39 +237,43 @@ const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777
         </Container>
     </section>
 
-    <section class="pb-16">
+    <section class="pb-16" id="experience">
         <Container size="xl">
-            <div class="animate space-y-4">
-                <h2 class="text-2xl font-bold text-black dark:text-white">About Me</h2>
-                <div class="space-y-4 text-base md:text-lg">
-                    <p>
-                        I’m <span class="bold">M M Imran (Pollob)</span> — a PhD student at Wayne State researching the resilience
-                        of decentralized systems. I approach security like an engineer: finding where protocols break under
-                        pressure and building tools developers can trust in production.
-                    </p>
-                    <p>
-                        Before academia, I spent five years in the industry, shipping full-stack systems in PHP,
-                        JavaScript, and Python. That experience taught me that security isn’t just about theory — it’s
-                        about scaling and performing under real-world pressure.
-                    </p>
-                    <p>
-                        I live in this loop: <span class="bold">build → break → learn → share</span>. You’ll find 50+
-                        GitHub repositories of my experiments (blockchain, ML, web), plus long-form blog posts designed
-                        to give other engineers the fastest path to understanding. I love the moment someone says, “Oh…
-                        now I get it” — just like my past self.
-                    </p>
+            <div class="animate space-y-6">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                    <div>
+                        <p class="text-sm uppercase tracking-wide">Experience</p>
+                        <h2 class="text-2xl font-bold text-black dark:text-white">Selected Roles</h2>
+                    </div>
+                    <a
+                        href="/experience"
+                        class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-black/30 dark:decoration-white/40 hover:text-black dark:hover:text-white"
+                    >
+                        View full timeline →
+                    </a>
                 </div>
-                <a
-                    href="/experience"
-                    class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-black/30 dark:decoration-white/40 hover:text-black dark:hover:text-white"
-                >
-                    View my experience →
-                </a>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {
+                        experienceHighlights.map((item) => (
+                            <article class="p-6 rounded-2xl border border-black/10 dark:border-white/15 space-y-2 hover:bg-black/5 dark:hover:bg-white/10">
+                                <img
+                                    src={item.logo}
+                                    alt={`${item.company} logo`}
+                                    class="w-16 h-16 md:w-24 md:h-24 object-contain rounded-md bg-white/60 dark:bg-black/60 border border-black/10 dark:border-white/20 p-1"
+                                />
+                                <p class="text-xs uppercase text-black/60 dark:text-white/60">{item.duration}</p>
+                                <h3 class="text-lg font-semibold text-black dark:text-white">{item.company}</h3>
+                                <p class="text-sm font-semibold text-black/80 dark:text-white/80">{item.role}</p>
+                                <p class="text-sm text-black/75 dark:text-white/75 leading-relaxed">{item.summary}</p>
+                            </article>
+                        ))
+                    }
+                </div>
             </div>
         </Container>
     </section>
 
-    <section class="pb-16">
+    <section class="pb-16" id="skills">
         <Container size="xl">
             <div class="animate space-y-6">
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
@@ -274,13 +300,13 @@ const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777
         </Container>
     </section>
 
-    <section class="pb-16">
+    <section class="pb-16" id="projects">
         <Container size="xl">
             <div class="animate flex flex-col gap-6">
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                     <div>
                         <p class="text-sm uppercase tracking-wide">Projects</p>
-                        <h2 class="text-2xl font-bold text-black dark:text-white">Featured Projects</h2>
+                        <h2 class="text-2xl font-bold text-black dark:text-white">Flagship Projects</h2>
                     </div>
                     <a
                         href="/projects"
@@ -289,15 +315,16 @@ const email = SOCIALS.find((item) => item.ICON === "email")?.TEXT || "polboy7777
                         View all projects →
                     </a>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {
                         featuredProjects.map((project) => (
                             <ProjectCard
-                                id={project.id}
+                                id={project.repo.split("/")[1]}
                                 title={project.title}
-                                stack={project.stack}
+                                stack={project.tags.slice(0, 3).join(" · ")}
                                 description={project.description}
-                                links={project.links}
+                                image={project.image || undefined}
+                                links={getLinks(project)}
                             />
                         ))
                     }
