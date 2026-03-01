@@ -7,7 +7,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Atkinson", ...defaultTheme.fontFamily.sans],
+        sans: ["Lora", ...defaultTheme.fontFamily.serif],
+        body: ["Lora", ...defaultTheme.fontFamily.serif],
+        heading: ["Arsenal", ...defaultTheme.fontFamily.sans],
+        mono: ["Fira Code", ...defaultTheme.fontFamily.mono],
       },
       // font-size
       // fontSize: {
@@ -26,6 +29,12 @@ export default {
         DEFAULT: {
           css: {
             maxWidth: "full",
+            code: {
+              fontFamily: "Fira Code, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace",
+            },
+            pre: {
+              fontFamily: "Fira Code, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace",
+            },
           },
         },
       },

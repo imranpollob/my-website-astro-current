@@ -4,31 +4,16 @@
 
 :root {
   --copy-btn-margin: 10px;
-}
-
-@layer base {
-  @font-face {
-    font-family: "Atkinson";
-    src: url("/fonts/atkinson-regular.woff") format("woff");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "Atkinson";
-    src: url("/fonts/atkinson-bold.woff") format("woff");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
+  --font-heading: "Arsenal", "Segoe UI", sans-serif;
+  --font-body: "Lora", "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+  --font-code: "Fira Code", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 }
 
 html {
   overflow-y: scroll;
   color-scheme: light;
   background-color: white;
-  font-family: "Atkinson", sans-serif;
+  font-family: var(--font-body);
 }
 
 html.dark {
@@ -45,6 +30,25 @@ body {
 
 body {
   @apply relative flex flex-col;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.page-heading,
+header,
+nav {
+  font-family: var(--font-heading);
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--font-code);
 }
 
 main {
@@ -212,4 +216,9 @@ span.bold {
 article :not(pre)>code::before,
 article :not(pre)>code::after {
   content: none;
+}
+
+article :not(pre)>code,
+article pre code {
+  font-family: var(--font-code);
 }
