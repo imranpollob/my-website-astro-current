@@ -28,12 +28,12 @@ const featuredSections = [
         projects: ["nft-rentals-and-sales", "stablecoin", "swap"].map(bySlug).filter(Boolean) as Project[],
     },
     {
-        label: "AI & Intelligent Systems",
+        label: "AI Projects",
         id: "ai",
         projects: ["ai-trading", "multi-pdf-rag-chatbot", "deal-finder-ai"].map(bySlug).filter(Boolean) as Project[],
     },
     {
-        label: "Full-Stack & Software Architecture",
+        label: "Full-Stack Applications",
         id: "fullstack",
         projects: ["notebase", "chat-app", "bangla-quran"].map(bySlug).filter(Boolean) as Project[],
     },
@@ -76,12 +76,6 @@ const supportingSections = [
         <Container size="xl">
             <div class="animate space-y-4 text-center">
                 <div class="text-xl md:text-2xl lg:text-3xl page-heading glass-panel">{PROJECTS.TITLE}</div>
-                <article class="prose dark:prose-invert max-w-3xl mx-auto glass-panel">
-                    <p>
-                        I learn by building. Below are my flagship projects in Blockchain, AI, and Full-Stack
-                        engineering, followed by a full catalogue of {projectsData.portfolio.totalProjects}+ projects.
-                    </p>
-                </article>
             </div>
         </Container>
     </section>
@@ -92,7 +86,7 @@ const supportingSections = [
             <section class="pb-16" id={section.id}>
                 <Container size="xl">
                     <div class="animate space-y-6">
-                        <h2 class="text-2xl font-bold text-black dark:text-white glass-panel">{section.label}</h2>
+                        <h2 class="text-2xl font-bold text-black dark:text-white glass-panel uppercase">{section.label}</h2>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                             {section.projects.map((project) => (
                                 <ProjectCard
@@ -115,7 +109,7 @@ const supportingSections = [
     <section class="pb-20">
         <Container size="xl">
             <div class="animate space-y-10">
-                <h2 class="text-2xl font-bold text-black dark:text-white glass-panel">More Projects</h2>
+                <h2 class="text-2xl font-bold text-black dark:text-white glass-panel uppercase">More Projects</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                     {
                         supportingSections.map((section) => (

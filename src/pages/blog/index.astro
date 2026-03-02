@@ -10,7 +10,9 @@ const posts = (await getCollection("blog"))
     .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 const pinnedPosts = posts.filter((post) => post.data.pinned);
-const tags = [...new Set(posts.flatMap((post) => post.data.tags.map(tag => tag.toLowerCase())))].sort((a, b) => a.localeCompare(b));
+const tags = [...new Set(posts.flatMap((post) => post.data.tags.map((tag) => tag.toLowerCase())))].sort((a, b) =>
+    a.localeCompare(b),
+);
 
 const estimated_initial_size = 28 + posts.length * 158 + (posts.length - 1) * 12;
 ---
@@ -20,13 +22,6 @@ const estimated_initial_size = 28 + posts.length * 158 + (posts.length - 1) * 12
         <Container size="xl">
             <div class="animate space-y-4 text-center">
                 <div class="text-xl md:text-2xl lg:text-3xl page-heading">{BLOG.TITLE}</div>
-                <article class="prose dark:prose-invert max-w-3xl mx-auto">
-                    <p class="text-base md:text-lg text-black/80 dark:text-white/80 max-w-3xl mx-auto">
-                        I write about topics I’m learning and teaching—mainly <strong>Machine Learning</strong>,
-                        <strong> Blockchain & Ethereum</strong>, and <strong>System Design</strong>. My goal is to
-                        explain complex ideas in a way that a busy engineer (or my past self) can understand quickly
-                    </p>
-                </article>
             </div>
         </Container>
     </section>
@@ -35,8 +30,7 @@ const estimated_initial_size = 28 + posts.length * 158 + (posts.length - 1) * 12
         <Container size="xl">
             <div class="animate space-y-6">
                 <div>
-                    <p class="text-sm uppercase tracking-wide">Pinned Series</p>
-                    <h2 class="text-2xl font-bold text-black dark:text-white">Start a Crash Course</h2>
+                    <h2 class="text-2xl font-bold text-black dark:text-white uppercase">Start a Crash Course</h2>
                 </div>
                 {
                     pinnedPosts.length > 0 ? (
@@ -74,8 +68,7 @@ const estimated_initial_size = 28 + posts.length * 158 + (posts.length - 1) * 12
             <div class="animate space-y-4">
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                     <div>
-                        <p class="text-sm uppercase tracking-wide">Posts List</p>
-                        <h2 class="text-2xl font-bold text-black dark:text-white">Browse the blog</h2>
+                        <h2 class="text-2xl font-bold text-black dark:text-white uppercase">Browse all posts</h2>
                     </div>
                 </div>
                 <div id="search-collection-wrapper" style={{ minHeight: `${estimated_initial_size}px` }}>
