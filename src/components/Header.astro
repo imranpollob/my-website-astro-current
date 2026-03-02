@@ -22,15 +22,15 @@ import Container from "@components/Container.astro";
         </a>
       </div>
 
-      <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-        <nav class="hidden md:flex items-center justify-center text-sm gap-1">
+      <div class="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <nav class="flex items-center justify-center text-sm gap-0.5 md:gap-1">
           {
             LINKS.map((LINK) => (
               <a
                 href={LINK.HREF}
                 class={cn(
-                  "text-base lg:text-lg",
-                  "h-8 rounded-full px-3 text-current",
+                  "text-sm md:text-base lg:text-lg",
+                  "h-7 md:h-8 rounded-full px-1.5 md:px-3 text-current",
                   "flex items-center justify-center",
                   "transition-colors duration-300 ease-in-out",
                   pathname === LINK.HREF || "/" + subpath?.[0] === LINK.HREF
@@ -45,7 +45,27 @@ import Container from "@components/Container.astro";
         </nav>
       </div>
 
-      <div class="buttons absolute right-0 top-1/2 -translate-y-1/2 flex gap-1">
+      <div class="buttons absolute right-0 top-1/2 -translate-y-1/2 flex gap-0.5 md:gap-1">
+        <nav class="flex md:hidden items-center text-sm gap-0.5">
+          {
+            LINKS.map((LINK) => (
+              <a
+                href={LINK.HREF}
+                class={cn(
+                  "text-sm",
+                  "h-7 rounded-full px-1.5 text-current",
+                  "flex items-center justify-center",
+                  "transition-colors duration-300 ease-in-out",
+                  pathname === LINK.HREF || "/" + subpath?.[0] === LINK.HREF
+                    ? "bg-black dark:bg-white text-white dark:text-black"
+                    : "hover:bg-black/5 dark:hover:bg-white/20 hover:text-black dark:hover:text-white"
+                )}
+              >
+                {LINK.TEXT}
+              </a>
+            ))
+          }
+        </nav>
         <a
           href="/resume.pdf"
           target="_blank"
@@ -65,8 +85,8 @@ import Container from "@components/Container.astro";
           href="/search"
           aria-label={`Search blog posts and projects on ${SITE.TITLE}`}
           class={cn(
-            "hidden md:flex",
-            "size-9 rounded-full p-2 items-center justify-center",
+            "flex",
+            "size-7 md:size-9 rounded-full p-1.5 md:p-2 items-center justify-center",
             "bg-transparent hover:bg-black/5 dark:hover:bg-white/20",
             "stroke-current hover:stroke-black hover:dark:stroke-white",
             "border border-black/10 dark:border-white/25",
@@ -85,8 +105,8 @@ import Container from "@components/Container.astro";
           id="header-theme-button"
           aria-label={`Toggle light and dark theme`}
           class={cn(
-            "hidden md:flex",
-            "size-9 rounded-full p-2 items-center justify-center",
+            "flex",
+            "size-7 md:size-9 rounded-full p-1.5 md:p-2 items-center justify-center",
             "bg-transparent hover:bg-black/5 dark:hover:bg-white/20",
             "stroke-current hover:stroke-black hover:dark:stroke-white",
             "border border-black/10 dark:border-white/25",
@@ -105,7 +125,7 @@ import Container from "@components/Container.astro";
           id="header-drawer-button"
           aria-label={`Toggle drawer open and closed`}
           class={cn(
-            "flex md:hidden",
+            "hidden",
             "size-9 rounded-full p-2 items-center justify-center",
             "bg-transparent hover:bg-black/5 dark:hover:bg-white/20",
             "stroke-current hover:stroke-black hover:dark:stroke-white",
