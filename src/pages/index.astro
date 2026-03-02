@@ -185,6 +185,44 @@ const certifications = [
     },
 ];
 
+const researchPapers = [
+    {
+        title: "A generic efficient scientific workflow engine for the optimizations of run-time execution",
+        venue: "2023 IEEE International Conference on Software Services Engineering (SSE)",
+        year: 2023,
+        citations: 2,
+        url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-K7OkFUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=-K7OkFUAAAAJ:ufrVoPGSRksC",
+    },
+    {
+        title: "Supervised machine learning based liver disease prediction approach with LASSO feature selection",
+        venue: "Bulletin of Electrical Engineering and Informatics, 10(6), 3369-3376",
+        year: 2021,
+        citations: 66,
+        url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-K7OkFUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=-K7OkFUAAAAJ:9yKSN-GCB0IC",
+    },
+    {
+        title: "An automated smart embedded system on fire detection and prevention for ensuring safety",
+        venue: "2021 2nd International Conference on Smart Electronics and Communication Technologies (ICSECT)",
+        year: 2021,
+        citations: 8,
+        url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-K7OkFUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=-K7OkFUAAAAJ:2osOgNQ5qMEC",
+    },
+    {
+        title: "Sentiment analysis on twitter tweets about COVID-19 vaccines using NLP and supervised KNN classification algorithm",
+        venue: "Indonesian Journal of Electrical Engineering and Computer Science, 23(1)",
+        year: 2021,
+        citations: 175,
+        url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-K7OkFUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=-K7OkFUAAAAJ:u-x6o8ySG0sC",
+    },
+    {
+        title: "An adaptive routing algorithm for on-chip 2D mesh network with an efficient buffer allocation scheme",
+        venue: "2018 International Conference on Computer, Communication, Chemical, Material and Electronic Engineering (IC4ME2)",
+        year: 2018,
+        citations: 9,
+        url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-K7OkFUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=-K7OkFUAAAAJ:u5HHmVD_uO8C",
+    },
+];
+
 const skills = [
     { label: "Languages", values: ["Python", "JavaScript", "PHP", "Solidity", "Java", "C++"] },
     { label: "Frameworks & Databases", values: ["React", "Next.js", "Node.js", "Laravel", "MySQL", "MongoDB"] },
@@ -385,13 +423,51 @@ const skills = [
         </Container>
     </section>
 
-    <section class="pb-16" id="projects">
+    <section class="pb-16" id="research">
         <Container size="xl">
-            <div class="animate flex flex-col gap-6">
+            <div class="animate space-y-6">
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                     <div>
                         <h2 class="text-2xl font-bold text-black dark:text-white uppercase">Research Works</h2>
                     </div>
+                    <a
+                        href="https://scholar.google.com/citations?user=-K7OkFUAAAAJ&hl=en"
+                        target="_blank"
+                        rel="noreferrer"
+                        class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-black/30 dark:decoration-white/40 hover:text-black dark:hover:text-white"
+                    >
+                        View Google Scholar →
+                    </a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {
+                        researchPapers.map((paper) => (
+                            <div class="p-6 rounded-2xl border border-black/10 dark:border-white/15 space-y-2 hover:bg-black/5 dark:hover:bg-white/10 ">
+                                <h3 class="text-lg font-semibold text-black dark:text-white">
+                                    <a
+                                        href={paper.url}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        class="hover:text-black dark:hover:text-white"
+                                    >
+                                        {paper.title}
+                                    </a>
+                                </h3>
+                                <p class="text-sm md:text-base text-black/80 dark:text-white/80">{paper.venue}</p>
+                                <p class="text-xs md:text-sm uppercase text-black/60 dark:text-white/60">
+                                    {paper.year} · {paper.citations} citations ·{" "}
+                                    <a
+                                        href={paper.url}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        class="underline decoration-[.5px] underline-offset-4 decoration-black/30 dark:decoration-white/40 hover:text-black dark:hover:text-white"
+                                    >
+                                        Link
+                                    </a>
+                                </p>
+                            </div>
+                        ))
+                    }
                 </div>
             </div>
         </Container>
