@@ -68,4 +68,10 @@ export const SOCIALS: Socials = [
     TEXT: "imranpollob",
     HREF: "https://www.linkedin.com/in/imranpollob/",
   },
+  {
+    NAME: "Google Scholar",
+    ICON: "google-scholar",
+    TEXT: "M M Imran",
+    HREF: "https://scholar.google.com/citations?user=-K7OkFUAAAAJ&hl=en",
+  },
 ];
