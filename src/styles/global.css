@@ -4,9 +4,20 @@
 
 :root {
   --copy-btn-margin: 10px;
-  --font-heading: "Arsenal", "Segoe UI", sans-serif;
-  --font-body: "Lora", "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+  --font-heading: "Outfit", system-ui, -apple-system, sans-serif;
+  --font-body: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
   --font-code: "Fira Code", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --color-primary: #0d9488;
+  --color-primary-hover: #0f766e;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+:focus-visible {
+  outline-color: var(--color-primary);
 }
 
 html {
@@ -18,14 +29,16 @@ html {
 
 html.dark {
   color-scheme: dark;
-  background-color: black;
+  background-color: #020617;
+  --color-primary: #14b8a6;
+  --color-primary-hover: #2dd4bf;
 }
 
 html,
 body {
   @apply h-full w-full antialiased;
-  @apply bg-white dark:bg-slate-900;
-  @apply text-black/75 dark:text-white/75;
+  @apply bg-white dark:bg-slate-950;
+  @apply text-slate-700/90 dark:text-slate-300/90;
 }
 
 body {
@@ -52,13 +65,13 @@ samp {
 }
 
 main {
-  @apply flex flex-col flex-1 bg-white dark:bg-slate-900;
+  @apply flex flex-col flex-1 bg-white dark:bg-slate-950;
 }
 
 header {
   @apply border-b;
-  @apply bg-white/90 dark:bg-black/75;
-  @apply border-black/10 dark:border-white/25;
+  @apply bg-white/90 dark:bg-slate-950/80;
+  @apply border-slate-200 dark:border-slate-800;
 }
 
 article {
@@ -72,23 +85,7 @@ article {
 }
 
 .page-heading {
-  @apply font-semibold text-black dark:text-white;
-}
-
-/* Removed .blend transition-all for performance */
-/* .blend {
-  @apply transition-all duration-300 ease-in-out;
-} */
-
-/** Light theme particles on home page */
-@keyframes animateParticle {
-  from {
-    transform: translateY(0px);
-  }
-
-  to {
-    transform: translateY(-2000px);
-  }
+  @apply font-semibold text-slate-900 dark:text-white tracking-tight;
 }
 
 /** styles for public /animation.js */
@@ -108,53 +105,6 @@ article img {
   padding-bottom: 20px;
   display: block;
   margin: 0 auto;
-}
-
-/**
- * TWINKLE STARS
- */
-
-#twinkle-star.template {
-  @apply absolute -left-full;
-  /* hide offscreen */
-}
-
-#twinkle-star.twinkle {
-  @apply animate-twinkle;
-  /* defined in tailwind.config */
-}
-
-/**
- * Meteors
- */
-
-#meteors .shower {
-  @apply absolute inset-0 top-0;
-  @apply left-1/2 -translate-x-1/2;
-  @apply w-screen aspect-square;
-}
-
-#meteors .meteor {
-  @apply animate-meteor;
-  /* defined in tailwind.config */
-  @apply absolute top-1/2 left-1/2 w-px h-[75vh];
-  @apply bg-gradient-to-b from-white to-transparent;
-}
-
-#meteors .shower.ur {
-  @apply rotate-45;
-}
-
-#meteors .shower.dr {
-  @apply rotate-135;
-}
-
-#meteors .shower.dl {
-  @apply rotate-225;
-}
-
-#meteors .shower.ul {
-  @apply rotate-315;
 }
 
 .copy-cnt {
@@ -193,13 +143,6 @@ table {
 
 table th {
   text-align: left;
-}
-
-.navbar-brand {
-  border: 1px solid #ff6601;
-  border-right: 2px dotted #ff6601;
-  padding: 1px 3px;
-  border-radius: 60% 40% 40% 20% / 70% 50% 30% 25%;
 }
 
 /* Removed for performance - backdrop-filter causes expensive repaints */

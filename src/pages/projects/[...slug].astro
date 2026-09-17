@@ -18,10 +18,10 @@ export async function getStaticPaths() {
 // Get the requested project
 type Props = CollectionEntry<"projects">
 const project = Astro.props
-const { title, summary } = project.data
+const { title, summary, image } = project.data
 ---
 
-<PageLayout title={title} description={summary}>
+<PageLayout title={title} description={summary} image={image}>
   <TopLayout>
     <div class="animate">
       <ArticleTopLayout entry={project} />

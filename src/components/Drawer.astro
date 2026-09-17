@@ -9,7 +9,7 @@ const subpath = pathname.match(/[^/]+/g)
   <nav class="flex flex-col items-center space-y-2">
     {
       LINKS.map((LINK) => (
-        <a href={LINK.HREF} class={cn("flex items-center justify-center px-3 py-1 rounded-full", "text-current hover:text-black dark:hover:text-white", "hover:bg-black/5 dark:hover:bg-white/20", "transition-colors duration-300 ease-in-out", pathname === LINK.HREF || "/" + subpath?.[0] === LINK.HREF ? "pointer-events-none bg-black dark:bg-white text-white dark:text-black" : "")}>
+        <a href={LINK.HREF} class={cn("flex items-center justify-center px-3 py-1 rounded-full", "text-current hover:text-brand-600 dark:hover:text-brand-400", "hover:bg-brand-50 dark:hover:bg-brand-500/10", "transition-colors duration-300 ease-in-out", pathname === LINK.HREF || "/" + subpath?.[0] === LINK.HREF ? "pointer-events-none bg-brand-600 dark:bg-brand-500 text-white" : "")}>
           {LINK.TEXT}
         </a>
       ))
@@ -20,19 +20,19 @@ const subpath = pathname.match(/[^/]+/g)
     href="/resume.pdf"
     target="_blank"
     rel="noopener noreferrer"
-    class="mt-4 inline-flex items-center justify-center px-4 py-2 rounded-full text-sm font-semibold bg-black text-white dark:bg-white dark:text-black"
+    class="mt-4 inline-flex items-center justify-center px-4 py-2 rounded-full text-sm font-semibold bg-brand-600 text-white dark:bg-brand-500"
   >
     Download Resume
   </a>
 
   <div class="flex gap-1 mt-5">
-    <a href="/search" aria-label={`Search blog posts and projects on ${SITE.TITLE}`} class={cn("size-9 rounded-full p-2 items-center justify-center bg-transparent hover:bg-black/5 dark:hover:bg-white/20 stroke-current hover:stroke-black hover:dark:stroke-white border border-black/10 dark:border-white/25 transition-colors duration-300 ease-in-out", pathname === "/search" || "/" + subpath?.[0] === "search" ? "pointer-events-none bg-black dark:bg-white text-white dark:text-black" : "")}>
+    <a href="/search" aria-label={`Search blog posts and projects on ${SITE.TITLE}`} class={cn("size-9 rounded-full p-2 items-center justify-center bg-transparent hover:bg-brand-50 dark:hover:bg-brand-500/10 stroke-current hover:stroke-brand-600 hover:dark:stroke-brand-400 border border-slate-200 dark:border-slate-800 transition-colors duration-300 ease-in-out", pathname === "/search" || "/" + subpath?.[0] === "search" ? "pointer-events-none bg-brand-600 dark:bg-brand-500 text-white border-transparent" : "")}>
       <svg class="size-full">
         <use href="/ui.svg#search"></use>
       </svg>
     </a>
 
-    <button id="drawer-theme-button" aria-label={`Toggle light and dark theme`} class="size-9 rounded-full p-2 items-center justify-center bg-transparent hover:bg-black/5 dark:hover:bg-white/20 stroke-current hover:stroke-black hover:dark:stroke-white border border-black/10 dark:border-white/25 transition-colors duration-300 ease-in-out">
+    <button id="drawer-theme-button" aria-label={`Toggle light and dark theme`} class="size-9 rounded-full p-2 items-center justify-center bg-transparent hover:bg-brand-50 dark:hover:bg-brand-500/10 stroke-current hover:stroke-brand-600 hover:dark:stroke-brand-400 border border-slate-200 dark:border-slate-800 transition-colors duration-300 ease-in-out">
       <svg class="block dark:hidden size-full">
         <use href="/ui.svg#sun"></use>
       </svg>

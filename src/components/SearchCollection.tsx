@@ -107,7 +107,7 @@ export default function SearchCollection({ entry_name, data, tags }: Props) {
           {/* Search Bar */}
           <SearchBar onSearchInput={onSearchInput} query={query} setQuery={setQuery} placeholderText={`Search ${entry_name}`} />
           {/* Tag Filters */}
-          <div class="relative flex flex-row justify-between w-full"><p class="text-sm font-semibold uppercase my-4 text-black dark:text-white">Tags</p>
+          <div class="relative flex flex-row justify-between w-full"><p class="text-sm font-semibold uppercase my-4 text-slate-900 dark:text-white">Tags</p>
             {filter().size > 0 && (
               <button
                 onClick={clearFilters}
@@ -127,17 +127,19 @@ export default function SearchCollection({ entry_name, data, tags }: Props) {
                     class={cn(
                       "w-full px-2 py-1 rounded",
                       "flex gap-2 items-center",
-                      "bg-black/5 dark:bg-white/10",
-                      "hover:bg-black/10 hover:dark:bg-white/15",
+                      "bg-slate-100 dark:bg-slate-800/60",
+                      "hover:bg-slate-200/70 hover:dark:bg-slate-800",
                       "transition-colors duration-300 ease-in-out",
-                      filter().has(tag) && "text-black dark:text-white"
+                      filter().has(tag)
+                        ? "text-brand-700 dark:text-brand-400"
+                        : "text-slate-700 dark:text-slate-300"
                     )}
                   >
                     <svg
                       class={cn(
-                        "shrink-0 size-5 fill-black/50 dark:fill-white/50",
+                        "shrink-0 size-5 fill-slate-400 dark:fill-slate-500",
                         "transition-colors duration-300 ease-in-out",
-                        filter().has(tag) && "fill-black dark:fill-white"
+                        filter().has(tag) && "fill-brand-600 dark:fill-brand-400"
                       )}
                     >
                       <use
@@ -193,7 +195,7 @@ export default function SearchCollection({ entry_name, data, tags }: Props) {
             <button
               onClick={prevPage}
               disabled={currentPage() === 1}
-              class="px-3 py-1 rounded bg-black/5 dark:bg-white/10 disabled:opacity-50"
+              class="px-3 py-1 rounded bg-slate-100 dark:bg-slate-800/60 hover:bg-brand-50 dark:hover:bg-brand-500/10 hover:text-brand-600 dark:hover:text-brand-400 transition-colors disabled:opacity-50 disabled:hover:bg-slate-100 disabled:dark:hover:bg-slate-800/60 disabled:hover:text-current"
             >
               Previous
             </button>
@@ -203,7 +205,7 @@ export default function SearchCollection({ entry_name, data, tags }: Props) {
             <button
               onClick={nextPage}
               disabled={currentPage() === Math.ceil(collection().length / POSTS_PER_PAGE) || collection().length === 0}
-              class="px-3 py-1 rounded bg-black/5 dark:bg-white/10 disabled:opacity-50"
+              class="px-3 py-1 rounded bg-slate-100 dark:bg-slate-800/60 hover:bg-brand-50 dark:hover:bg-brand-500/10 hover:text-brand-600 dark:hover:text-brand-400 transition-colors disabled:opacity-50 disabled:hover:bg-slate-100 disabled:dark:hover:bg-slate-800/60 disabled:hover:text-current"
             >
               Next
             </button>

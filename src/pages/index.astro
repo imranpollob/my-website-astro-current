@@ -6,6 +6,15 @@ import ProjectCard from "@components/ProjectCard.astro";
 import { SITE, SOCIALS } from "@consts";
 import projectsData from "./projects/projects.json";
 
+const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: SITE.AUTHOR,
+    url: Astro.site,
+    jobTitle: "Blockchain & AI Software Engineer",
+    sameAs: SOCIALS.filter((social) => !social.HREF.startsWith("mailto:")).map((social) => social.HREF),
+};
+
 const publishedPosts = (await getCollection("blog"))
     .filter((post) => !post.data.draft)
     .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
@@ -235,18 +244,18 @@ const skills = [
 ---
 
 <PageLayout title="Home" description={SITE.DESCRIPTION}>
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
     <section class="relative pt-28 pb-16">
         <Container size="xl">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                 <div class="space-y-6 animate">
-                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white leading-tight">
+                    <p class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-brand-700 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10 border border-brand-200 dark:border-brand-800 rounded-full px-3 py-1">
+                        PhD Candidate · 5+ Years Experience
+                    </p>
+                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white leading-tight tracking-tight">
                         Blockchain & AI Software Engineer
                     </h1>
-                    <h2 class="text-2xl md:text-3xl font-semibold text-black dark:text-white">PhD Candidate</h2>
-                    <h2 class="text-xl md:text-2xl font-semibold text-black dark:text-white">
-                        5+ Years of Software Engineering Experience
-                    </h2>
-                    <p class="text-base md:text-lg text-black/75 dark:text-white/75">
+                    <p class="text-base md:text-lg text-slate-600 dark:text-slate-400">
                         I love building blockchain applications and making the web more open for everyone. I’m
                         fascinated by how AI is reshaping the world, and I enjoy experimenting with it and shaping it
                         through my own code. Side projects are my weakness—once an idea hits, I can’t let it go.
@@ -256,18 +265,18 @@ const skills = [
                             href="/resume.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="py-3 px-5 rounded-full bg-black text-white dark:bg-white dark:text-black text-sm md:text-base font-semibold hover:opacity-80 transition"
+                            class="py-3 px-5 rounded-full bg-brand-600 text-white text-sm md:text-base font-semibold hover:bg-brand-700 transition-colors"
                         >
                             Download Resume
                         </a>
                         <a
                             href="#contact"
-                            class="py-3 px-5 rounded-full border border-black/20 dark:border-white/25 text-sm md:text-base font-semibold hover:bg-black/5 hover:dark:bg-white/15 transition"
+                            class="py-3 px-5 rounded-full border border-slate-200 dark:border-slate-700 text-sm md:text-base font-semibold hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
                         >
                             Contact me
                         </a>
                     </div>
-                    <p class="text-sm text-black/60 dark:text-white/60">
+                    <p class="text-sm text-slate-500 dark:text-slate-400">
                         📍Detroit, MI · Open to remote and on-site roles
                     </p>
                 </div>
@@ -275,14 +284,14 @@ const skills = [
                 <div class="animate flex justify-center lg:justify-end">
                     <div class="relative">
                         <div
-                            class="absolute -inset-4 bg-gradient-to-tr from-black/5 via-transparent to-black/10 dark:from-white/10 dark:to-white/5 rounded-[32px] blur-2xl"
+                            class="absolute -inset-6 bg-gradient-to-tr from-brand-400/30 via-brand-500/10 to-transparent dark:from-brand-500/20 dark:via-brand-400/10 rounded-[32px] blur-2xl"
                         >
                         </div>
-                        <div class="relative p-1 rounded-[32px] border border-black/10 dark:border-white/15">
+                        <div class="relative p-1 rounded-[32px] border border-brand-200/60 dark:border-brand-800/60 bg-white dark:bg-slate-950">
                             <img
                                 src="/image/imran-pollob.jpg"
                                 alt="Imran Pollob"
-                                class="w-[16rem] h-[16rem] md:w-[18rem] md:h-[18rem] rounded-[28px] object-cover border-4 border-black/70 dark:border-white/70"
+                                class="w-[16rem] h-[16rem] md:w-[18rem] md:h-[18rem] rounded-[28px] object-cover border-4 border-white dark:border-slate-950"
                             />
                         </div>
                     </div>
@@ -295,16 +304,16 @@ const skills = [
         <Container size="xl">
             <div class="animate space-y-4">
                 <div>
-                    <h2 class="text-2xl font-bold text-black dark:text-white uppercase">Core Skills</h2>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">Core Skills</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {
                         skills.map((skill) => (
-                            <div class="p-4 rounded-2xl border border-black/10 dark:border-white/15 flex flex-col gap-2 hover:bg-black/5 dark:hover:bg-white/10 ">
-                                <p class="text-sm font-semibold text-black dark:text-white uppercase">{skill.label}</p>
+                            <div class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col gap-2 hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 transition-colors duration-300">
+                                <p class="text-sm font-semibold text-slate-900 dark:text-white uppercase">{skill.label}</p>
                                 <div class="flex flex-wrap gap-2">
                                     {skill.values.map((value) => (
-                                        <span class="px-3 py-1 rounded-full border border-black/10 dark:border-white/25 text-sm bg-black/5 dark:bg-white/15">
+                                        <span class="px-3 py-1 rounded-full border border-brand-200 dark:border-brand-800 text-sm text-brand-700 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10">
                                             {value}
                                         </span>
                                     ))}
@@ -321,34 +330,34 @@ const skills = [
         <Container size="xl">
             <div class="animate space-y-6">
                 <div>
-                    <p class="text-sm uppercase tracking-wide">Timeline of</p>
-                    <h2 class="text-2xl font-bold text-black dark:text-white uppercase">Professional Experience</h2>
+                    <p class="text-sm uppercase tracking-wide text-brand-600 dark:text-brand-400 font-semibold">Timeline of</p>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">Professional Experience</h2>
                 </div>
                 <div class="relative pl-4 md:pl-6">
-                    <div class="absolute left-1 md:left-2 top-2 bottom-2 w-px bg-black/10 dark:bg-white/20"></div>
+                    <div class="absolute left-1 md:left-2 top-2 bottom-2 w-px bg-slate-200 dark:bg-slate-800"></div>
                     <ul class="space-y-8">
                         {
                             professionalExperience.map((item) => (
                                 <li class="relative pl-6 md:pl-8">
-                                    <span class="absolute left-0 top-2 inline-block h-3 w-3 rounded-full bg-black dark:bg-white" />
-                                    <div class="p-6 rounded-2xl border border-black/10 dark:border-white/15 space-y-2 hover:bg-black/5 dark:hover:bg-white/10 ">
+                                    <span class="absolute left-0 top-2 inline-block h-3 w-3 rounded-full bg-brand-500" />
+                                    <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2 hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 transition-colors duration-300">
                                         <div class="flex flex-col md:flex-row items-start gap-4 md:gap-6">
                                             <div class="flex-shrink-0 flex justify-center md:justify-start">
                                                 <img
                                                     src={item.logo}
                                                     alt={`${item.company} logo`}
-                                                    class="w-16 h-16 md:w-24 md:h-24 object-contain rounded-md bg-white/60 dark:bg-black/60 mx-auto md:mx-0"
+                                                    class="w-16 h-16 md:w-24 md:h-24 object-contain rounded-md bg-white dark:bg-slate-900 mx-auto md:mx-0"
                                                 />
                                             </div>
                                             <div class="flex-1">
-                                                <p class="text-xs uppercase text-black/60 dark:text-white/60">
+                                                <p class="text-xs uppercase text-slate-500 dark:text-slate-400">
                                                     {item.duration}
                                                 </p>
-                                                <h3 class="text-xl font-semibold text-black dark:text-white">
+                                                <h3 class="text-xl font-semibold text-slate-900 dark:text-white">
                                                     {item.company}
                                                 </h3>
-                                                <p class="text-base font-semibold">{item.role}</p>
-                                                <ul class="pt-2 md:pt-3 list-disc ml-5 md:ml-6 space-y-2 text-sm md:text-base text-black/80 dark:text-white/80">
+                                                <p class="text-base font-semibold text-brand-700 dark:text-brand-400">{item.role}</p>
+                                                <ul class="pt-2 md:pt-3 list-disc ml-5 md:ml-6 space-y-2 text-sm md:text-base text-slate-600 dark:text-slate-400">
                                                     {item.bullets.map((point) => (
                                                         <li>{point}</li>
                                                     ))}
@@ -369,19 +378,19 @@ const skills = [
         <Container size="xl">
             <div class="animate space-y-4">
                 <div>
-                    <h2 class="text-2xl font-bold text-black dark:text-white uppercase">Academic Background</h2>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">Academic Background</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {
                         education.map((item) => (
-                            <div class="p-6 rounded-2xl border border-black/10 dark:border-white/15 space-y-1 hover:bg-black/5 dark:hover:bg-white/10 ">
-                                <h3 class="text-lg font-semibold text-black dark:text-white">{item.school}</h3>
-                                <p class="text-sm md:text-base text-black/80 dark:text-white/80">{item.degree}</p>
-                                <p class="text-sm md:text-base text-black/80 dark:text-white/80">{item.department}</p>
-                                <p class="text-xs md:text-sm uppercase text-black/60 dark:text-white/60">
+                            <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-1 hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 transition-colors duration-300">
+                                <h3 class="text-lg font-semibold text-slate-900 dark:text-white">{item.school}</h3>
+                                <p class="text-sm md:text-base text-slate-600 dark:text-slate-400">{item.degree}</p>
+                                <p class="text-sm md:text-base text-slate-600 dark:text-slate-400">{item.department}</p>
+                                <p class="text-xs md:text-sm uppercase text-slate-500 dark:text-slate-400">
                                     {item.timeframe}
                                 </p>
-                                <p class="text-xs md:text-sm uppercase text-black/60 dark:text-white/60">
+                                <p class="text-xs md:text-sm uppercase text-slate-500 dark:text-slate-400">
                                     {item.detail}
                                 </p>
                             </div>
@@ -397,11 +406,11 @@ const skills = [
             <div class="animate flex flex-col gap-6">
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                     <div>
-                        <h2 class="text-2xl font-bold text-black dark:text-white uppercase">Flagship Projects</h2>
+                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">Flagship Projects</h2>
                     </div>
                     <a
                         href="/projects"
-                        class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-black/30 dark:decoration-white/40 hover:text-black dark:hover:text-white"
+                        class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-brand-400/50 hover:text-brand-600 dark:hover:text-brand-400"
                     >
                         View all projects →
                     </a>
@@ -429,13 +438,13 @@ const skills = [
             <div class="animate space-y-6">
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                     <div>
-                        <h2 class="text-2xl font-bold text-black dark:text-white uppercase">Research Works</h2>
+                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">Research Works</h2>
                     </div>
                     <a
                         href="https://scholar.google.com/citations?user=-K7OkFUAAAAJ&hl=en"
                         target="_blank"
                         rel="noreferrer"
-                        class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-black/30 dark:decoration-white/40 hover:text-black dark:hover:text-white"
+                        class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-brand-400/50 hover:text-brand-600 dark:hover:text-brand-400"
                     >
                         View Google Scholar →
                     </a>
@@ -443,25 +452,25 @@ const skills = [
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {
                         researchPapers.map((paper) => (
-                            <div class="p-6 rounded-2xl border border-black/10 dark:border-white/15 space-y-2 hover:bg-black/5 dark:hover:bg-white/10 ">
-                                <h3 class="text-lg font-semibold text-black dark:text-white">
+                            <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2 hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 transition-colors duration-300">
+                                <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
                                     <a
                                         href={paper.url}
                                         target="_blank"
                                         rel="noreferrer"
-                                        class="hover:text-black dark:hover:text-white"
+                                        class="hover:text-brand-600 dark:hover:text-brand-400"
                                     >
                                         {paper.title}
                                     </a>
                                 </h3>
-                                <p class="text-sm md:text-base text-black/80 dark:text-white/80">{paper.venue}</p>
-                                <p class="text-xs md:text-sm uppercase text-black/60 dark:text-white/60">
+                                <p class="text-sm md:text-base text-slate-600 dark:text-slate-400">{paper.venue}</p>
+                                <p class="text-xs md:text-sm uppercase text-slate-500 dark:text-slate-400">
                                     {paper.year} · {paper.citations} citations ·{" "}
                                     <a
                                         href={paper.url}
                                         target="_blank"
                                         rel="noreferrer"
-                                        class="underline decoration-[.5px] underline-offset-4 decoration-black/30 dark:decoration-white/40 hover:text-black dark:hover:text-white"
+                                        class="underline decoration-[.5px] underline-offset-4 decoration-brand-400/50 hover:text-brand-600 dark:hover:text-brand-400"
                                     >
                                         Link
                                     </a>
@@ -478,20 +487,20 @@ const skills = [
         <Container size="xl">
             <div class="animate space-y-6">
                 <div>
-                    <h2 class="text-2xl font-bold text-black dark:text-white uppercase">Certifications</h2>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">Certifications</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {
                         certifications.map((group) => (
-                            <div class="p-6 rounded-2xl border border-black/10 dark:border-white/15 space-y-4 hover:bg-black/5 dark:hover:bg-white/10 ">
-                                <h3 class="text-lg font-semibold text-black dark:text-white">{group.title}</h3>
+                            <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4 hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 transition-colors duration-300">
+                                <h3 class="text-lg font-semibold text-slate-900 dark:text-white">{group.title}</h3>
                                 <div class="flex flex-col gap-8">
                                     {group.items.map((item) => (
                                         <div class="rounded-lg flex gap-4 items-start">
                                             {item.thumbnail && (
                                                 <button
                                                     type="button"
-                                                    class="shrink-0 rounded-lg border border-black/10 dark:border-white/20 overflow-hidden bg-white/70 dark:bg-black/60 hover:shadow-md transition cursor-pointer"
+                                                    class="shrink-0 rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden bg-white dark:bg-slate-900 hover:shadow-md hover:border-brand-400 transition cursor-pointer"
                                                     data-cert-image={item.fullImage || item.thumbnail}
                                                     data-cert-title={item.name}
                                                     data-cert-link={item.credentialUrl}
@@ -506,8 +515,8 @@ const skills = [
                                                 </button>
                                             )}
                                             <div class="flex-1">
-                                                <p class="font-semibold text-black dark:text-white">{item.name}</p>
-                                                <ul class="list-disc ml-5 space-y-1 text-sm md:text-base text-black/80 dark:text-white/80">
+                                                <p class="font-semibold text-slate-900 dark:text-white">{item.name}</p>
+                                                <ul class="list-disc ml-5 space-y-1 text-sm md:text-base text-slate-600 dark:text-slate-400">
                                                     {item.detail.slice(0, 4).map((point) => (
                                                         <li>{point}</li>
                                                     ))}
@@ -516,7 +525,7 @@ const skills = [
                                                     <a
                                                         href={item.credentialUrl}
                                                         target="_blank"
-                                                        class="inline-flex items-center gap-1 mt-2 text-sm font-semibold underline decoration-[.5px] underline-offset-4 cert-open"
+                                                        class="inline-flex items-center gap-1 mt-2 text-sm font-semibold text-brand-600 dark:text-brand-400 underline decoration-[.5px] underline-offset-4 cert-open"
                                                         rel="noreferrer"
                                                         data-cert-image={item.fullImage || item.thumbnail}
                                                         data-cert-title={item.name}
@@ -537,13 +546,13 @@ const skills = [
         </Container>
     </section>
 
-    <dialog id="cert-modal" class="backdrop:bg-black/40 rounded-2xl p-0 border border-black/20 dark:border-white/20">
-        <div class="bg-white dark:bg-black rounded-2xl overflow-hidden max-w-3xl">
-            <div class="flex items-center justify-between px-4 py-3 border-b border-black/10 dark:border-white/15">
-                <p id="cert-modal-title" class="font-semibold text-black dark:text-white text-base md:text-lg"></p>
+    <dialog id="cert-modal" class="backdrop:bg-slate-900/50 rounded-2xl p-0 border border-slate-200 dark:border-slate-700">
+        <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden max-w-3xl">
+            <div class="flex items-center justify-between px-4 py-3 border-b border-slate-200 dark:border-slate-800">
+                <p id="cert-modal-title" class="font-semibold text-slate-900 dark:text-white text-base md:text-lg"></p>
                 <button
                     id="cert-modal-close"
-                    class="p-2 rounded-full border border-black/10 dark:border-white/20 hover:bg-black/5 hover:dark:bg-white/10"
+                    class="p-2 rounded-full border border-slate-200 dark:border-slate-700 hover:border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-500/10"
                     aria-label="Close certification image"
                 >
                     <svg class="size-4" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2">
@@ -552,19 +561,19 @@ const skills = [
                     </svg>
                 </button>
             </div>
-            <div class="bg-black/5 dark:bg-white/5 flex flex-col justify-center items-center p-4 gap-3">
+            <div class="bg-slate-50 dark:bg-slate-950/50 flex flex-col justify-center items-center p-4 gap-3">
                 <img
                     id="cert-modal-img"
                     src=""
                     alt=""
-                    class="max-h-[70vh] w-auto rounded-lg border border-black/10 dark:border-white/15"
+                    class="max-h-[70vh] w-auto rounded-lg border border-slate-200 dark:border-slate-800"
                 />
                 <a
                     id="cert-modal-link"
                     href="#"
                     target="_blank"
                     rel="noreferrer"
-                    class="inline-flex items-center gap-1 text-sm font-semibold underline decoration-[.5px] underline-offset-4"
+                    class="inline-flex items-center gap-1 text-sm font-semibold text-brand-600 dark:text-brand-400 underline decoration-[.5px] underline-offset-4"
                 >
                     Verify credential →
                 </a>
@@ -640,11 +649,11 @@ const skills = [
             <div class="animate flex flex-col gap-6">
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                     <div>
-                        <h2 class="text-2xl font-bold text-black dark:text-white uppercase">Written Courses</h2>
+                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">Written Courses</h2>
                     </div>
                     <a
                         href="/blog"
-                        class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-black/30 dark:decoration-white/40 hover:text-black dark:hover:text-white"
+                        class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-brand-400/50 hover:text-brand-600 dark:hover:text-brand-400"
                     >
                         Read the blog →
                     </a>
@@ -654,16 +663,16 @@ const skills = [
                         blogPreviews.map(({ post, blurb }) => (
                             <a
                                 href={`/blog/${post.slug}`}
-                                class="p-6 rounded-2xl border border-black/10 dark:border-white/15 hover:bg-black/5 dark:hover:bg-white/10 "
+                                class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 transition-colors duration-300"
                             >
-                                <p class="text-xs uppercase text-black/60 dark:text-white/60">
+                                <p class="text-xs uppercase text-slate-500 dark:text-slate-400">
                                     {post.data.tags.join(", ")}
                                 </p>
-                                <h3 class="text-lg font-semibold text-black dark:text-white mt-2">{post.data.title}</h3>
-                                <p class="mt-3 text-sm md:text-base text-black/80 dark:text-white/80 leading-relaxed">
+                                <h3 class="text-lg font-semibold text-slate-900 dark:text-white mt-2">{post.data.title}</h3>
+                                <p class="mt-3 text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
                                     {blurb || post.data.summary || "Explore the full post for details."}
                                 </p>
-                                <p class="mt-4 text-sm font-semibold underline decoration-[.5px] underline-offset-4">
+                                <p class="mt-4 text-sm font-semibold text-brand-600 dark:text-brand-400 underline decoration-[.5px] underline-offset-4">
                                     Read post →
                                 </p>
                             </a>
@@ -677,20 +686,20 @@ const skills = [
     <section id="contact" class="pb-20 animate">
         <Container size="xl">
             <div
-                class="p-8 rounded-2xl border border-black/10 dark:border-white/15 space-y-6 hover:bg-black/5 dark:hover:bg-white/10"
+                class="relative overflow-hidden p-8 md:p-10 rounded-2xl border border-brand-700/20 bg-gradient-to-br from-brand-600 to-brand-800 space-y-6"
             >
                 <div class="space-y-2">
-                    <p class="text-sm uppercase tracking-wide">Contact</p>
-                    <h2 class="text-2xl font-bold text-black dark:text-white">
+                    <p class="text-sm uppercase tracking-widest text-brand-200 font-semibold">Contact</p>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">
                         Let’s build secure and intelligent systems
                     </h2>
-                    <p class="text-base md:text-lg text-black/80 dark:text-white/80">
+                    <p class="text-base md:text-lg text-brand-100">
                         Open to roles in Blockchain, AI/ML, and Software Engineering
                     </p>
                 </div>
 
                 <div
-                    class="flex flex-col md:flex-row flex-wrap md:items-center gap-4 text-sm md:text-base text-black/80 dark:text-white/80"
+                    class="flex flex-col md:flex-row flex-wrap md:items-center gap-4 text-sm md:text-base text-white"
                 >
                     {
                         SOCIALS.map((social) => (
@@ -698,14 +707,14 @@ const skills = [
                                 href={social.HREF}
                                 target="_blank"
                                 rel="noreferrer"
-                                class="flex items-center gap-2 px-3 py-2 rounded-full border border-black/10 dark:border-white/20 bg-white/70 dark:bg-black/60 hover:bg-black/5 hover:dark:bg-white/10 transition"
+                                class="flex items-center gap-2 px-3 py-2 rounded-full border border-white/20 bg-white/10 hover:bg-white/20 transition-colors"
                             >
-                                <span class="inline-flex items-center justify-center rounded-full border border-black/10 dark:border-white/20 p-1">
+                                <span class="inline-flex items-center justify-center rounded-full border border-white/20 p-1">
                                     <svg class="size-4 fill-current">
                                         <use href={`/social.svg#${social.ICON}`} />
                                     </svg>
                                 </span>
-                                <span class="font-semibold text-black dark:text-white">{social.TEXT}</span>
+                                <span class="font-semibold text-white">{social.TEXT}</span>
                             </a>
                         ))
                     }

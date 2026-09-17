@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { formatDate, readingTime } from "@lib/utils";
+import { SITE } from "@consts";
 
 type Props = {
     entry: CollectionEntry<"projects"> | CollectionEntry<"blog">;
@@ -12,12 +13,27 @@ const { title, summary, date } = data;
 
 const demoUrl = collection === "projects" ? data.demoUrl : null;
 const repoUrl = collection === "projects" ? data.repoUrl : null;
+
+const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: title,
+    description: summary ?? SITE.DESCRIPTION,
+    datePublished: date.toISOString(),
+    author: {
+        "@type": "Person",
+        name: SITE.AUTHOR,
+    },
+    url: new URL(`/${collection}/${entry.slug}`, Astro.site),
+};
 ---
+
+<script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
 
 <div>
     <a
         href={`/${collection}`}
-        class="group w-fit p-1.5 gap-1.5 text-sm flex items-center border rounded hover:bg-black/5 hover:dark:bg-white/10 border-black/15 dark:border-white/20"
+        class="group w-fit p-1.5 gap-1.5 text-sm flex items-center border rounded hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 border-slate-200 dark:border-slate-800 transition-colors duration-300"
     >
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +53,7 @@ const repoUrl = collection === "projects" ? data.repoUrl : null;
             Back to {collection}
         </div>
     </a>
-    <div class="text-xs md:text-sm lg:text-base flex flex-wrap uppercase mt-12 gap-3 opacity-75">
+    <div class="text-xs md:text-sm lg:text-base flex flex-wrap uppercase mt-12 gap-3 text-slate-500 dark:text-slate-400">
         <div class="flex items-center gap-2">
             <svg class="size-5 stroke-current">
                 <use href="/ui.svg#calendar"></use>
@@ -51,10 +67,10 @@ const repoUrl = collection === "projects" ? data.repoUrl : null;
             {readingTime(body)}
         </div>
     </div>
-    <h1 class="text-xl md:text-2xl lg:text-3xl font-semibold text-black dark:text-white mt-2">
+    <h1 class="text-xl md:text-2xl lg:text-3xl font-semibold text-slate-900 dark:text-white mt-2">
         {title}
     </h1>
-    <div class="text-base md:text-lg lg:text-xl mt-1">
+    <div class="text-base md:text-lg lg:text-xl mt-1 text-slate-600 dark:text-slate-400">
         {summary}
     </div>
     {
@@ -64,15 +80,15 @@ const repoUrl = collection === "projects" ? data.repoUrl : null;
                     <a
                         href={demoUrl}
                         target="_blank"
-                        class="group flex gap-2 items-center px-3 py-1.5 truncate rounded text-xs md:text-sm lg:text-base border border-black/25 dark:border-white/25 hover:bg-black/5 hover:dark:bg-white/15 blend"
+                        class="group flex gap-2 items-center px-3 py-1.5 truncate rounded text-xs md:text-sm lg:text-base border border-slate-200 dark:border-slate-700 hover:border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-500/10 transition-colors duration-300"
                     >
                         <svg class="size-4">
                             <use
                                 href="/ui.svg#globe"
-                                class="fill-current group-hover:fill-black group-hover:dark:fill-white blend"
+                                class="fill-current group-hover:fill-brand-600 group-hover:dark:fill-brand-400 transition-colors duration-300"
                             />
                         </svg>
-                        <span class="text-sm md:text-base lg:text-lg text-current group-hover:text-black group-hover:dark:text-white blend">
+                        <span class="text-sm md:text-base lg:text-lg text-current group-hover:text-brand-600 group-hover:dark:text-brand-400 transition-colors duration-300">
                             See Demo
                         </span>
                     </a>
@@ -81,15 +97,15 @@ const repoUrl = collection === "projects" ? data.repoUrl : null;
                     <a
                         href={repoUrl}
                         target="_blank"
-                        class="group flex gap-2 items-center px-3 py-1.5 truncate rounded text-xs md:text-sm lg:text-base border border-black/25 dark:border-white/25 hover:bg-black/5 hover:dark:bg-white/15 blend"
+                        class="group flex gap-2 items-center px-3 py-1.5 truncate rounded text-xs md:text-sm lg:text-base border border-slate-200 dark:border-slate-700 hover:border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-500/10 transition-colors duration-300"
                     >
                         <svg class="size-4">
                             <use
                                 href="/ui.svg#link"
-                                class="fill-current group-hover:fill-black group-hover:dark:fill-white blend"
+                                class="fill-current group-hover:fill-brand-600 group-hover:dark:fill-brand-400 transition-colors duration-300"
                             />
                         </svg>
-                        <span class="text-sm md:text-base lg:text-lg text-current group-hover:text-black group-hover:dark:text-white blend">
+                        <span class="text-sm md:text-base lg:text-lg text-current group-hover:text-brand-600 group-hover:dark:text-brand-400 transition-colors duration-300">
                             See Repository
                         </span>
                     </a>

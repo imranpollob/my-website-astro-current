@@ -30,7 +30,7 @@ const estimated_initial_size = 28 + posts.length * 158 + (posts.length - 1) * 12
         <Container size="xl">
             <div class="animate space-y-6">
                 <div>
-                    <h2 class="text-2xl font-bold text-black dark:text-white uppercase">Start a Crash Course</h2>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">Start a Crash Course</h2>
                 </div>
                 {
                     pinnedPosts.length > 0 ? (
@@ -38,23 +38,23 @@ const estimated_initial_size = 28 + posts.length * 158 + (posts.length - 1) * 12
                             {pinnedPosts.map((post) => (
                                 <a
                                     href={`/blog/${post.slug}`}
-                                    class="p-6 rounded-2xl border border-black/10 dark:border-white/15 hover:bg-black/5 dark:hover:bg-white/10 "
+                                    class="group p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 transition-colors duration-300"
                                 >
-                                    <p class="text-xs uppercase text-black/60 dark:text-white/60">
+                                    <p class="text-xs uppercase text-slate-500 dark:text-slate-400">
                                         {post.data.tags.join(", ")}
                                     </p>
-                                    <h3 class="text-lg font-semibold text-black dark:text-white">{post.data.title}</h3>
-                                    <p class="text-sm md:text-base text-black/80 dark:text-white/80 leading-relaxed">
+                                    <h3 class="text-lg font-semibold text-slate-900 dark:text-white">{post.data.title}</h3>
+                                    <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
                                         {post.data.summary || "Explore the full post for details."}
                                     </p>
-                                    <p class="text-sm font-semibold underline decoration-[.5px] underline-offset-4">
+                                    <p class="text-sm font-semibold text-brand-600 dark:text-brand-400 underline decoration-[.5px] underline-offset-4">
                                         Open series →
                                     </p>
                                 </a>
                             ))}
                         </div>
                     ) : (
-                        <p class="text-sm text-black/70 dark:text-white/70">
+                        <p class="text-sm text-slate-500 dark:text-slate-400">
                             Pinned series hubs will appear here once available.
                         </p>
                     )
@@ -68,7 +68,7 @@ const estimated_initial_size = 28 + posts.length * 158 + (posts.length - 1) * 12
             <div class="animate space-y-4">
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                     <div>
-                        <h2 class="text-2xl font-bold text-black dark:text-white uppercase">Browse all posts</h2>
+                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">Browse all posts</h2>
                     </div>
                 </div>
                 <div id="search-collection-wrapper" style={{ minHeight: `${estimated_initial_size}px` }}>

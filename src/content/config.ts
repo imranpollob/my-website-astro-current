@@ -19,6 +19,7 @@ const blog = defineCollection({
     tags: z.array(z.string()),
     draft: z.boolean().optional().default(false),
     pinned: z.boolean().optional().default(false),
+    image: z.string().optional(),
   }),
 })
 
@@ -33,6 +34,7 @@ const projects = defineCollection({
     demoUrl: z.string().optional(),
     repoUrl: z.string().optional(),
     pinned: z.boolean().optional().default(false),
+    image: z.string().optional(),
   }),
 })
 

@@ -6,10 +6,25 @@ export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
+      colors: {
+        brand: {
+          50: "#ecfdfb",
+          100: "#ccfbf1",
+          200: "#99f6e4",
+          300: "#5eead4",
+          400: "#2dd4bf",
+          500: "#14b8a6",
+          600: "#0d9488",
+          700: "#0f766e",
+          800: "#115e59",
+          900: "#134e4a",
+          950: "#042f2e",
+        },
+      },
       fontFamily: {
-        sans: ["Lora", ...defaultTheme.fontFamily.serif],
-        body: ["Lora", ...defaultTheme.fontFamily.serif],
-        heading: ["Arsenal", ...defaultTheme.fontFamily.sans],
+        sans: ["Plus Jakarta Sans", ...defaultTheme.fontFamily.sans],
+        body: ["Plus Jakarta Sans", ...defaultTheme.fontFamily.sans],
+        heading: ["Outfit", ...defaultTheme.fontFamily.sans],
         mono: ["Fira Code", ...defaultTheme.fontFamily.mono],
       },
       // font-size
@@ -40,45 +55,6 @@ export default {
       },
       spacing: {
         '28': '7rem',
-      },
-      rotate: {
-        45: "45deg",
-        135: "135deg",
-        225: "225deg",
-        315: "315deg",
-      },
-      animation: {
-        twinkle: "twinkle 2s ease-in-out forwards",
-        meteor: "meteor 3s ease-in-out forwards",
-      },
-      keyframes: {
-        twinkle: {
-          "0%": {
-            opacity: 0,
-            transform: "rotate(0deg)",
-          },
-          "50%": {
-            opacity: 1,
-            transform: "rotate(180deg)",
-          },
-          "100%": {
-            opacity: 0,
-            transform: "rotate(360deg)",
-          },
-        },
-        meteor: {
-          "0%": {
-            opacity: 0,
-            transform: "translateY(200%)",
-          },
-          "50%": {
-            opacity: 1,
-          },
-          "100%": {
-            opacity: 0,
-            transform: "translateY(0)",
-          },
-        },
       },
     },
   },

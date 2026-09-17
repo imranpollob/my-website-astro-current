@@ -75,7 +75,7 @@ const supportingSections = [
     <section class="pt-28 pb-12">
         <Container size="xl">
             <div class="animate space-y-4 text-center">
-                <div class="text-xl md:text-2xl lg:text-3xl page-heading glass-panel">{PROJECTS.TITLE}</div>
+                <div class="text-xl md:text-2xl lg:text-3xl page-heading">{PROJECTS.TITLE}</div>
             </div>
         </Container>
     </section>
@@ -86,7 +86,7 @@ const supportingSections = [
             <section class="pb-16" id={section.id}>
                 <Container size="xl">
                     <div class="animate space-y-6">
-                        <h2 class="text-2xl font-bold text-black dark:text-white glass-panel uppercase">{section.label}</h2>
+                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">{section.label}</h2>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                             {section.projects.map((project) => (
                                 <ProjectCard
@@ -109,12 +109,12 @@ const supportingSections = [
     <section class="pb-20">
         <Container size="xl">
             <div class="animate space-y-10">
-                <h2 class="text-2xl font-bold text-black dark:text-white glass-panel uppercase">More Projects</h2>
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">More Projects</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                     {
                         supportingSections.map((section) => (
                             <div id={section.id} class="space-y-4">
-                                <h3 class="text-base font-semibold text-black/60 dark:text-white/60 uppercase tracking-widest">
+                                <h3 class="text-base font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
                                     {section.label}
                                 </h3>
                                 <ul class="space-y-3">
@@ -124,11 +124,11 @@ const supportingSections = [
                                                 href={project.url}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                class="font-medium text-black dark:text-white hover:underline underline-offset-2"
+                                                class="font-medium text-slate-900 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 hover:underline underline-offset-2 transition-colors"
                                             >
                                                 {project.title}
                                             </a>
-                                            <span class="text-sm text-black/60 dark:text-white/60 leading-snug">
+                                            <span class="text-sm text-slate-500 dark:text-slate-400 leading-snug">
                                                 {project.shortDescription}
                                             </span>
                                         </li>

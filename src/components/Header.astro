@@ -14,11 +14,10 @@ import Container from "@components/Container.astro";
       >
         <a
           href="/"
-          class="text-sm md:text-base lg:text-lg flex gap-1 text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"
+          class="text-sm md:text-base lg:text-lg flex items-baseline gap-0.5 pl-1 font-heading font-bold tracking-tight text-slate-900 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition-colors duration-300 ease-in-out"
         >
-          <div class="text-base md:text-lg lg:text-xl pl-1 navbar-brand">
-            {SITE.TITLE}
-          </div>
+          <span class="text-base md:text-lg lg:text-xl">{SITE.TITLE}</span>
+          <span class="text-brand-500">.</span>
         </a>
       </div>
 
@@ -34,8 +33,8 @@ import Container from "@components/Container.astro";
                   "flex items-center justify-center",
                   "transition-colors duration-300 ease-in-out",
                   pathname === LINK.HREF || "/" + subpath?.[0] === LINK.HREF
-                    ? "bg-black dark:bg-white text-white dark:text-black"
-                    : "hover:bg-black/5 dark:hover:bg-white/20 hover:text-black dark:hover:text-white"
+                    ? "bg-brand-600 dark:bg-brand-500 text-white"
+                    : "hover:bg-brand-50 dark:hover:bg-brand-500/10 hover:text-brand-600 dark:hover:text-brand-400"
                 )}
               >
                 {LINK.TEXT}
@@ -57,8 +56,8 @@ import Container from "@components/Container.astro";
                   "flex items-center justify-center",
                   "transition-colors duration-300 ease-in-out",
                   pathname === LINK.HREF || "/" + subpath?.[0] === LINK.HREF
-                    ? "bg-black dark:bg-white text-white dark:text-black"
-                    : "hover:bg-black/5 dark:hover:bg-white/20 hover:text-black dark:hover:text-white"
+                    ? "bg-brand-600 dark:bg-brand-500 text-white"
+                    : "hover:bg-brand-50 dark:hover:bg-brand-500/10 hover:text-brand-600 dark:hover:text-brand-400"
                 )}
               >
                 {LINK.TEXT}
@@ -74,8 +73,8 @@ import Container from "@components/Container.astro";
             "hidden md:flex",
             "h-9 px-3 rounded-full items-center justify-center",
             "text-sm font-semibold",
-            "bg-black text-white dark:bg-white dark:text-black",
-            "hover:opacity-80 transition-opacity duration-300 ease-in-out"
+            "bg-brand-600 text-white dark:bg-brand-500",
+            "hover:bg-brand-700 dark:hover:bg-brand-400 transition-colors duration-300 ease-in-out"
           )}
         >
           Resume
@@ -87,12 +86,12 @@ import Container from "@components/Container.astro";
           class={cn(
             "flex",
             "size-7 md:size-9 rounded-full p-1.5 md:p-2 items-center justify-center",
-            "bg-transparent hover:bg-black/5 dark:hover:bg-white/20",
-            "stroke-current hover:stroke-black hover:dark:stroke-white",
-            "border border-black/10 dark:border-white/25",
+            "bg-transparent hover:bg-brand-50 dark:hover:bg-brand-500/10",
+            "stroke-current hover:stroke-brand-600 hover:dark:stroke-brand-400",
+            "border border-slate-200 dark:border-slate-800",
             "transition-colors duration-300 ease-in-out",
             pathname === "/search" || "/" + subpath?.[0] === "/search"
-              ? "pointer-events-none bg-black dark:bg-white text-white dark:text-black"
+              ? "pointer-events-none bg-brand-600 dark:bg-brand-500 text-white border-transparent"
               : ""
           )}
         >
@@ -107,9 +106,9 @@ import Container from "@components/Container.astro";
           class={cn(
             "flex",
             "size-7 md:size-9 rounded-full p-1.5 md:p-2 items-center justify-center",
-            "bg-transparent hover:bg-black/5 dark:hover:bg-white/20",
-            "stroke-current hover:stroke-black hover:dark:stroke-white",
-            "border border-black/10 dark:border-white/25",
+            "bg-transparent hover:bg-brand-50 dark:hover:bg-brand-500/10",
+            "stroke-current hover:stroke-brand-600 hover:dark:stroke-brand-400",
+            "border border-slate-200 dark:border-slate-800",
             "transition-colors duration-300 ease-in-out"
           )}
         >
@@ -127,9 +126,9 @@ import Container from "@components/Container.astro";
           class={cn(
             "hidden",
             "size-9 rounded-full p-2 items-center justify-center",
-            "bg-transparent hover:bg-black/5 dark:hover:bg-white/20",
-            "stroke-current hover:stroke-black hover:dark:stroke-white",
-            "border border-black/10 dark:border-white/25",
+            "bg-transparent hover:bg-brand-50 dark:hover:bg-brand-500/10",
+            "stroke-current hover:stroke-brand-600 hover:dark:stroke-brand-400",
+            "border border-slate-200 dark:border-slate-800",
             "transition-colors duration-300 ease-in-out"
           )}
         >
