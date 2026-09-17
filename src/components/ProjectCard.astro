@@ -1,56 +1,74 @@
 ---
-interface Link {
-    label: string;
-    href: string;
-}
-
 interface Props {
-    id: string;
     title: string;
-    tagline?: string;
-    image?: string;
-    stack: string;
     description: string;
-    links?: Link[];
+    image?: string;
+    liveUrl?: string;
+    repoUrl: string;
 }
 
-const { id, title, tagline, image, stack, description, links } = Astro.props;
+const { title, description, image, liveUrl, repoUrl } = Astro.props;
+const primaryUrl = liveUrl || repoUrl;
+const primaryLabel = liveUrl ? "Live Demo" : "View Code";
 ---
 
-<div
-    id={id}
-    class="group p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 transition-colors duration-300"
->
+<div class="group rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 transition-colors duration-300 flex flex-col">
     {
         image && (
-            <img src={image} alt={`${title} screenshot`} class="w-full h-40 object-cover rounded-md" loading="lazy" />
+            <a href={primaryUrl} target="_blank" rel="noopener noreferrer" class="block aspect-video overflow-hidden bg-slate-100 dark:bg-slate-900">
+                <img
+                    src={image}
+                    alt={`${title} preview`}
+                    class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
+                    loading="lazy"
+                />
+            </a>
         )
     }
-    <div class="space-y-2">
-        <span class="inline-block text-xs px-2 py-1 rounded-full border border-brand-200 dark:border-brand-800 text-brand-700 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10">
-            {stack}
-        </span>
-        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">
-            {title}
+    <div class="p-4 flex flex-col gap-2 flex-1">
+        <h3 class="text-base font-semibold text-slate-900 dark:text-white">
+            <a href={primaryUrl} target="_blank" rel="noopener noreferrer" class="hover:text-brand-600 dark:hover:text-brand-400">
+                {title}
+            </a>
         </h3>
-    </div>
-    <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line">
-        {description}
-    </p>
-    {
-        links && links.length > 0 && (
-            <div class="flex flex-wrap gap-2">
-                {links.map((link) => (
+        <p class="text-sm text-slate-600 dark:text-slate-400 leading-snug flex-1">
+            {description}
+        </p>
+        <div class="flex items-center justify-between gap-2 pt-1">
+            <a
+                href={primaryUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1.5 rounded-full bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-400 border border-brand-200 dark:border-brand-800 hover:bg-brand-100 dark:hover:bg-brand-500/20 transition-colors"
+            >
+                {
+                    liveUrl ? (
+                        <svg class="size-3.5 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="9" /><ellipse cx="12" cy="12" rx="4" ry="9" /><path d="M3 12h18" />
+                        </svg>
+                    ) : (
+                        <svg class="size-3.5 fill-current">
+                            <use href="/social.svg#github" />
+                        </svg>
+                    )
+                }
+                {primaryLabel}
+            </a>
+            {
+                liveUrl && (
                     <a
-                        href={link.href}
-                        target={link.href.startsWith("http") ? "_blank" : undefined}
-                        rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                        class="px-3 py-1 rounded-sm border border-slate-200 dark:border-slate-700 text-sm hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+                        href={repoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Source code for ${title}`}
+                        class="p-1.5 rounded-full text-slate-400 dark:text-slate-500 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-brand-500/10 transition-colors"
                     >
-                        {link.label}
+                        <svg class="size-4 fill-current">
+                            <use href="/social.svg#github" />
+                        </svg>
                     </a>
-                ))}
-            </div>
-        )
-    }
+                )
+            }
+        </div>
+    </div>
 </div>

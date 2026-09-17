@@ -53,13 +53,6 @@ const allProjects: Project[] = (Object.values(projectsData.portfolio.projects) a
 const bySlug = (slug: string): Project | undefined =>
     allProjects.find((project) => project.repo === `imranpollob/${slug}`);
 
-const getLinks = (project: Project) => {
-    const links = [];
-    if (project.liveUrl) links.push({ label: "Live Demo", href: project.liveUrl });
-    if (project.url) links.push({ label: "GitHub", href: project.url });
-    return links;
-};
-
 const quickLinks = [
     { label: "Resume", href: "/resume.pdf", external: true },
     { label: "Projects", href: "#projects" },
@@ -419,12 +412,11 @@ const skills = [
                     {
                         featuredProjects.map((project) => (
                             <ProjectCard
-                                id={project.repo.split("/")[1]}
                                 title={project.title}
-                                stack={project.tags.slice(0, 3).join(" · ")}
                                 description={project.description}
                                 image={project.image || undefined}
-                                links={getLinks(project)}
+                                liveUrl={project.liveUrl || undefined}
+                                repoUrl={project.url}
                             />
                         ))
                     }

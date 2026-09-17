@@ -2,72 +2,21 @@
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import ProjectCard from "@components/ProjectCard.astro";
+import ToolCard from "@components/ToolCard.astro";
 import { PROJECTS } from "@consts";
 
 import projectsData from "./projects.json";
+import toolsData from "./tools.json";
 
 type Project = (typeof projectsData.portfolio.projects)["Blockchain Engineering"][number];
 
-// Flatten all projects into a lookup map by repo slug
-const allProjects: Project[] = (Object.values(projectsData.portfolio.projects) as Project[][]).flat();
+const flagshipSections = Object.entries(projectsData.portfolio.projects) as [string, Project[]][];
 
-const bySlug = (slug: string): Project | undefined => allProjects.find((p) => p.repo === `imranpollob/${slug}`);
-
-const getLinks = (project: Project) => {
-    const links = [];
-    if (project.liveUrl) links.push({ label: "Live Demo", href: project.liveUrl });
-    if (project.url) links.push({ label: "GitHub", href: project.url });
-    return links;
-};
-
-// ── Featured sections ────────────────────────────────────────────────────────
-const featuredSections = [
-    {
-        label: "Blockchain Engineering",
-        id: "blockchain",
-        projects: ["nft-rentals-and-sales", "stablecoin", "swap"].map(bySlug).filter(Boolean) as Project[],
-    },
-    {
-        label: "AI Projects",
-        id: "ai",
-        projects: ["ai-trading", "multi-pdf-rag-chatbot", "deal-finder-ai"].map(bySlug).filter(Boolean) as Project[],
-    },
-    {
-        label: "Full-Stack Applications",
-        id: "fullstack",
-        projects: ["notebase", "chat-app", "bangla-quran"].map(bySlug).filter(Boolean) as Project[],
-    },
-];
-
-// ── Supporting sections ──────────────────────────────────────────────────────
-const supportingSections = [
-    {
-        label: "Other Web3 Projects",
-        id: "web3-more",
-        projects: ["dao", "foundry-fund-me", "ast-generator"].map(bySlug).filter(Boolean) as Project[],
-    },
-    {
-        label: "Other AI Projects",
-        id: "ai-more",
-        projects: ["bitcoin-price-prediction-ai", "food-detector-ai", "tiny-diffusion"]
-            .map(bySlug)
-            .filter(Boolean) as Project[],
-    },
-    {
-        label: "Mini Tools & Apps",
-        id: "tools",
-        projects: [
-            "task-time-tracker",
-            "document-echo",
-            "react-spelling-quiz",
-            "mental-math",
-            "slugcopy",
-            "pomodoro-timer",
-        ]
-            .map(bySlug)
-            .filter(Boolean) as Project[],
-    },
-];
+// Online tools first, then installables — each group ordered by its curated priority.
+const tools = [...toolsData].sort((a, b) => {
+    if (a.type !== b.type) return a.type === "online" ? -1 : 1;
+    return a.priority - b.priority;
+});
 ---
 
 <PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
@@ -80,22 +29,21 @@ const supportingSections = [
         </Container>
     </section>
 
-    <!-- ── Featured Projects ───────────────────────────────────────────────── -->
+    <!-- ── Flagship Projects ───────────────────────────────────────────────── -->
     {
-        featuredSections.map((section) => (
-            <section class="pb-16" id={section.id}>
+        flagshipSections.map(([label, projects]) => (
+            <section class="pb-16" id={label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}>
                 <Container size="xl">
                     <div class="animate space-y-6">
-                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">{section.label}</h2>
+                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">{label}</h2>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            {section.projects.map((project) => (
+                            {projects.map((project) => (
                                 <ProjectCard
-                                    id={project.repo.split("/")[1]}
                                     title={project.title}
-                                    stack={project.tags.slice(0, 3).join(" · ")}
                                     description={project.description}
                                     image={project.image || undefined}
-                                    links={getLinks(project)}
+                                    liveUrl={project.liveUrl || undefined}
+                                    repoUrl={project.url}
                                 />
                             ))}
                         </div>
@@ -105,36 +53,33 @@ const supportingSections = [
         ))
     }
 
-    <!-- ── Supporting Projects ─────────────────────────────────────────────── -->
-    <section class="pb-20">
+    <!-- ── Tools ───────────────────────────────────────────────────────────── -->
+    <section class="pb-20" id="tools">
         <Container size="xl">
-            <div class="animate space-y-10">
-                <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">More Projects</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="animate space-y-6">
+                <div class="space-y-2 text-center">
+                    <p class="text-sm uppercase tracking-widest text-brand-600 dark:text-brand-400 font-semibold">
+                        Tools
+                    </p>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">
+                        Everyday tools you can actually use
+                    </h2>
+                    <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                        Small online utilities and downloadable apps, built to solve one problem well.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                     {
-                        supportingSections.map((section) => (
-                            <div id={section.id} class="space-y-4">
-                                <h3 class="text-base font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
-                                    {section.label}
-                                </h3>
-                                <ul class="space-y-3">
-                                    {section.projects.map((project) => (
-                                        <li class="flex flex-col gap-0.5">
-                                            <a
-                                                href={project.url}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                class="font-medium text-slate-900 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 hover:underline underline-offset-2 transition-colors"
-                                            >
-                                                {project.title}
-                                            </a>
-                                            <span class="text-sm text-slate-500 dark:text-slate-400 leading-snug">
-                                                {project.shortDescription}
-                                            </span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                        tools.map((tool) => (
+                            <ToolCard
+                                repo={tool.repo}
+                                title={tool.title}
+                                subtitle={tool.subtitle}
+                                type={tool.type as "online" | "install"}
+                                url={tool.url}
+                                action={tool.action}
+                                image={tool.image}
+                            />
                         ))
                     }
                 </div>
