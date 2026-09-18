@@ -1,10 +1,11 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
 import Container from "@components/Container.astro";
+import ContactCTA from "@components/ContactCTA.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import ProjectCard from "@components/ProjectCard.astro";
 import { SITE, SOCIALS } from "@consts";
 import projectsData from "./projects/projects.json";
+import { researchPapers } from "@data/research";
 
 const personSchema = {
     "@context": "https://schema.org",
@@ -15,53 +16,19 @@ const personSchema = {
     sameAs: SOCIALS.filter((social) => !social.HREF.startsWith("mailto:")).map((social) => social.HREF),
 };
 
-const publishedPosts = (await getCollection("blog"))
-    .filter((post) => !post.data.draft)
-    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-
-const featuredBlogSelections = [
-    {
-        slug: "ai/0-machine-learning-crash-course",
-        blurb: "The complete ML series, from regression to deep learning",
-    },
-    {
-        slug: "blockchain-fundamentals/00-blockchain-crash-course",
-        blurb: "Learn Blockchain, Ethereum, Smart Contracts, and core DeFi concepts",
-    },
-    {
-        slug: "system-design/00-system-design-interview-series",
-        blurb: "Crack the System Design Interview with Real-World Solutions",
-    },
-];
-
-type BlogPreview = { post: CollectionEntry<"blog">; blurb?: string };
 type Project = (typeof projectsData.portfolio.projects)["Blockchain Engineering"][number];
-
-const selectedBlogs = featuredBlogSelections
-    .map((item): BlogPreview | null => {
-        const post = publishedPosts.find((entry) => entry.slug === item.slug);
-        if (!post) return null;
-        return { post, blurb: item.blurb };
-    })
-    .filter((entry): entry is BlogPreview => entry !== null);
-
-const blogPreviews: BlogPreview[] =
-    selectedBlogs.length > 0 ? selectedBlogs : publishedPosts.slice(0, 3).map((post) => ({ post }));
 
 const allProjects: Project[] = (Object.values(projectsData.portfolio.projects) as Project[][]).flat();
 
 const bySlug = (slug: string): Project | undefined =>
     allProjects.find((project) => project.repo === `imranpollob/${slug}`);
 
-const quickLinks = [
-    { label: "Resume", href: "/resume.pdf", external: true },
-    { label: "Projects", href: "#projects" },
-    { label: "Experience", href: "#experience" },
-    { label: "Skills", href: "#skills" },
-    { label: "Contact", href: "#contact" },
-];
-
 const featuredProjects = ["nft-rentals-and-sales", "ai-trading", "notebase"].map(bySlug).filter(Boolean) as Project[];
+
+const featuredResearchSlugs = ["secure-bsm-blockchain-misbehavior-detection", "scientific-workflow-engine", "covid-vaccine-sentiment-analysis"];
+const featuredResearch = featuredResearchSlugs
+    .map((slug) => researchPapers.find((paper) => paper.slug === slug))
+    .filter(Boolean) as typeof researchPapers;
 
 const professionalExperience = [
     {
@@ -185,44 +152,6 @@ const certifications = [
                 detail: ["Learned end-to-end AI/ML systems, from fundamentals to deployment on Azure."],
             },
         ],
-    },
-];
-
-const researchPapers = [
-    {
-        title: "A generic efficient scientific workflow engine for the optimizations of run-time execution",
-        venue: "2023 IEEE International Conference on Software Services Engineering (SSE)",
-        year: 2023,
-        citations: 2,
-        url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-K7OkFUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=-K7OkFUAAAAJ:ufrVoPGSRksC",
-    },
-    {
-        title: "Supervised machine learning based liver disease prediction approach with LASSO feature selection",
-        venue: "Bulletin of Electrical Engineering and Informatics, 10(6), 3369-3376",
-        year: 2021,
-        citations: 66,
-        url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-K7OkFUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=-K7OkFUAAAAJ:9yKSN-GCB0IC",
-    },
-    {
-        title: "An automated smart embedded system on fire detection and prevention for ensuring safety",
-        venue: "2021 2nd International Conference on Smart Electronics and Communication Technologies (ICSECT)",
-        year: 2021,
-        citations: 8,
-        url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-K7OkFUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=-K7OkFUAAAAJ:2osOgNQ5qMEC",
-    },
-    {
-        title: "Sentiment analysis on twitter tweets about COVID-19 vaccines using NLP and supervised KNN classification algorithm",
-        venue: "Indonesian Journal of Electrical Engineering and Computer Science, 23(1)",
-        year: 2021,
-        citations: 175,
-        url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-K7OkFUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=-K7OkFUAAAAJ:u-x6o8ySG0sC",
-    },
-    {
-        title: "An adaptive routing algorithm for on-chip 2D mesh network with an efficient buffer allocation scheme",
-        venue: "2018 International Conference on Computer, Communication, Chemical, Material and Electronic Engineering (IC4ME2)",
-        year: 2018,
-        citations: 9,
-        url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-K7OkFUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=-K7OkFUAAAAJ:u5HHmVD_uO8C",
     },
 ];
 
@@ -433,41 +362,25 @@ const skills = [
                         <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">Research Works</h2>
                     </div>
                     <a
-                        href="https://scholar.google.com/citations?user=-K7OkFUAAAAJ&hl=en"
-                        target="_blank"
-                        rel="noreferrer"
+                        href="/research"
                         class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-brand-400/50 hover:text-brand-600 dark:hover:text-brand-400"
                     >
-                        View Google Scholar →
+                        View all research →
                     </a>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {
-                        researchPapers.map((paper) => (
-                            <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2 hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 transition-colors duration-300">
-                                <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
-                                    <a
-                                        href={paper.url}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        class="hover:text-brand-600 dark:hover:text-brand-400"
-                                    >
-                                        {paper.title}
-                                    </a>
-                                </h3>
-                                <p class="text-sm md:text-base text-slate-600 dark:text-slate-400">{paper.venue}</p>
+                        featuredResearch.map((paper) => (
+                            <a
+                                href={`/research#${paper.slug}`}
+                                class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2 hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 transition-colors duration-300"
+                            >
+                                <h3 class="text-lg font-semibold text-slate-900 dark:text-white line-clamp-2">{paper.title}</h3>
+                                <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 line-clamp-3">{paper.summary}</p>
                                 <p class="text-xs md:text-sm uppercase text-slate-500 dark:text-slate-400">
-                                    {paper.year} · {paper.citations} citations ·{" "}
-                                    <a
-                                        href={paper.url}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        class="underline decoration-[.5px] underline-offset-4 decoration-brand-400/50 hover:text-brand-600 dark:hover:text-brand-400"
-                                    >
-                                        Link
-                                    </a>
+                                    {paper.status === "in-press" ? "In Press" : paper.year}
                                 </p>
-                            </div>
+                            </a>
                         ))
                     }
                 </div>
@@ -638,80 +551,36 @@ const skills = [
 
     <section class="pb-16">
         <Container size="xl">
-            <div class="animate flex flex-col gap-6">
-                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-                    <div>
-                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">Written Courses</h2>
-                    </div>
-                    <a
-                        href="/blog"
-                        class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-brand-400/50 hover:text-brand-600 dark:hover:text-brand-400"
-                    >
-                        Read the blog →
-                    </a>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {
-                        blogPreviews.map(({ post, blurb }) => (
-                            <a
-                                href={`/blog/${post.slug}`}
-                                class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 transition-colors duration-300"
-                            >
-                                <p class="text-xs uppercase text-slate-500 dark:text-slate-400">
-                                    {post.data.tags.join(", ")}
-                                </p>
-                                <h3 class="text-lg font-semibold text-slate-900 dark:text-white mt-2">{post.data.title}</h3>
-                                <p class="mt-3 text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
-                                    {blurb || post.data.summary || "Explore the full post for details."}
-                                </p>
-                                <p class="mt-4 text-sm font-semibold text-brand-600 dark:text-brand-400 underline decoration-[.5px] underline-offset-4">
-                                    Read post →
-                                </p>
-                            </a>
-                        ))
-                    }
-                </div>
-            </div>
-        </Container>
-    </section>
-
-    <section id="contact" class="pb-20 animate">
-        <Container size="xl">
-            <div
-                class="relative overflow-hidden p-8 md:p-10 rounded-2xl border border-brand-700/20 bg-gradient-to-br from-brand-600 to-brand-800 space-y-6"
-            >
-                <div class="space-y-2">
-                    <p class="text-sm uppercase tracking-widest text-brand-200 font-semibold">Contact</p>
-                    <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">
-                        Let’s build secure and intelligent systems
-                    </h2>
-                    <p class="text-base md:text-lg text-brand-100">
-                        Open to roles in Blockchain, AI/ML, and Software Engineering
-                    </p>
-                </div>
-
-                <div
-                    class="flex flex-col md:flex-row flex-wrap md:items-center gap-4 text-sm md:text-base text-white"
+            <div class="animate grid grid-cols-1 md:grid-cols-2 gap-6">
+                <a
+                    href="/projects"
+                    class="group p-8 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 transition-colors duration-300"
                 >
-                    {
-                        SOCIALS.map((social) => (
-                            <a
-                                href={social.HREF}
-                                target="_blank"
-                                rel="noreferrer"
-                                class="flex items-center gap-2 px-3 py-2 rounded-full border border-white/20 bg-white/10 hover:bg-white/20 transition-colors"
-                            >
-                                <span class="inline-flex items-center justify-center rounded-full border border-white/20 p-1">
-                                    <svg class="size-4 fill-current">
-                                        <use href={`/social.svg#${social.ICON}`} />
-                                    </svg>
-                                </span>
-                                <span class="font-semibold text-white">{social.TEXT}</span>
-                            </a>
-                        ))
-                    }
-                </div>
+                    <p class="text-sm uppercase tracking-widest text-brand-600 dark:text-brand-400 font-semibold">Explore</p>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Projects</h2>
+                    <p class="text-sm md:text-base text-slate-600 dark:text-slate-400">
+                        Blockchain protocols, AI systems, and full-stack tools I've built and shipped.
+                    </p>
+                    <p class="text-sm font-semibold text-brand-600 dark:text-brand-400 underline decoration-[.5px] underline-offset-4 group-hover:no-underline">
+                        Browse projects →
+                    </p>
+                </a>
+                <a
+                    href="/research"
+                    class="group p-8 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 transition-colors duration-300"
+                >
+                    <p class="text-sm uppercase tracking-widest text-brand-600 dark:text-brand-400 font-semibold">Explore</p>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Research</h2>
+                    <p class="text-sm md:text-base text-slate-600 dark:text-slate-400">
+                        Peer-reviewed publications in blockchain security and applied machine learning.
+                    </p>
+                    <p class="text-sm font-semibold text-brand-600 dark:text-brand-400 underline decoration-[.5px] underline-offset-4 group-hover:no-underline">
+                        Read the research →
+                    </p>
+                </a>
             </div>
         </Container>
     </section>
+
+    <ContactCTA />
 </PageLayout>

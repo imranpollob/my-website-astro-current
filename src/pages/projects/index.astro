@@ -1,5 +1,6 @@
 ---
 import Container from "@components/Container.astro";
+import ContactCTA from "@components/ContactCTA.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import ProjectCard from "@components/ProjectCard.astro";
 import ToolCard from "@components/ToolCard.astro";
@@ -86,4 +87,9 @@ const tools = [...toolsData].sort((a, b) => {
             </div>
         </Container>
     </section>
+
+    <ContactCTA
+        heading="Have a project in mind?"
+        subheading="Open to freelance, contract, and full-time Blockchain / AI engineering work"
+    />
 </PageLayout>

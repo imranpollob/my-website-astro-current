@@ -4,19 +4,16 @@ import { formatDate, readingTime } from "@lib/utils";
 import { SITE } from "@consts";
 
 type Props = {
-    entry: CollectionEntry<"projects"> | CollectionEntry<"blog">;
+    entry: CollectionEntry<"projects">;
 };
 
 const { entry } = Astro.props;
 const { collection, data, body } = entry;
-const { title, summary, date } = data;
-
-const demoUrl = collection === "projects" ? data.demoUrl : null;
-const repoUrl = collection === "projects" ? data.repoUrl : null;
+const { title, summary, date, demoUrl, repoUrl } = data;
 
 const articleSchema = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
+    "@type": "Article",
     headline: title,
     description: summary ?? SITE.DESCRIPTION,
     datePublished: date.toISOString(),

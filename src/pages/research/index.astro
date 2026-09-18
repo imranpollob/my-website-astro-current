@@ -1,0 +1,101 @@
+---
+import Container from "@components/Container.astro";
+import ContactCTA from "@components/ContactCTA.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import { RESEARCH } from "@consts";
+import { researchPapers, RESEARCH_INTERESTS, SCHOLAR_URL } from "@data/research";
+
+const YOU = "M M Imran";
+
+const sortedPapers = [...researchPapers].sort((a, b) => b.year - a.year);
+---
+
+<PageLayout title={RESEARCH.TITLE} description={RESEARCH.DESCRIPTION}>
+    <section class="pt-28 pb-12">
+        <Container size="xl">
+            <div class="animate space-y-6 max-w-3xl">
+                <div class="text-xl md:text-2xl lg:text-3xl page-heading">{RESEARCH.TITLE}</div>
+                <p class="text-base md:text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                    {RESEARCH_INTERESTS}
+                </p>
+                <a
+                    href={SCHOLAR_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-brand-400/50 hover:text-brand-600 dark:hover:text-brand-400"
+                >
+                    View full profile on Google Scholar →
+                </a>
+            </div>
+        </Container>
+    </section>
+
+    <section class="pb-20" id="publications">
+        <Container size="xl">
+            <div class="animate space-y-6">
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">Publications</h2>
+                <div class="flex flex-col gap-6">
+                    {
+                        sortedPapers.map((paper) => (
+                            <div
+                                id={paper.slug}
+                                class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 scroll-mt-24 hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 transition-colors duration-300"
+                            >
+                                <div class="flex flex-wrap items-center gap-2">
+                                    {paper.status === "in-press" && (
+                                        <span class="text-xs font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full border border-brand-200 dark:border-brand-800 text-brand-700 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10">
+                                            In Press
+                                        </span>
+                                    )}
+                                    <span class="text-xs md:text-sm uppercase text-slate-500 dark:text-slate-400">
+                                        {paper.year}
+                                    </span>
+                                </div>
+
+                                <h3 class="text-lg md:text-xl font-semibold text-slate-900 dark:text-white">
+                                    <a href={paper.url} target="_blank" rel="noreferrer" class="hover:text-brand-600 dark:hover:text-brand-400">
+                                        {paper.title}
+                                    </a>
+                                </h3>
+
+                                <p class="text-sm md:text-base text-slate-600 dark:text-slate-400">
+                                    {paper.authors.map((author, i) => (
+                                        <>
+                                            <span class={author === YOU ? "font-semibold text-slate-900 dark:text-white" : undefined}>
+                                                {author}
+                                            </span>
+                                            {i < paper.authors.length - 1 ? ", " : ""}
+                                        </>
+                                    ))}
+                                </p>
+
+                                <p class="text-sm md:text-base italic text-slate-500 dark:text-slate-400">{paper.venue}</p>
+
+                                <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+                                    {paper.summary}
+                                </p>
+
+                                <div class="flex flex-wrap items-center gap-3 pt-1 text-xs md:text-sm uppercase text-slate-500 dark:text-slate-400">
+                                    {typeof paper.citations === "number" && <span>{paper.citations} citations</span>}
+                                    <a
+                                        href={paper.url}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        class="underline decoration-[.5px] underline-offset-4 decoration-brand-400/50 hover:text-brand-600 dark:hover:text-brand-400"
+                                    >
+                                        View on Scholar →
+                                    </a>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </Container>
+    </section>
+
+    <ContactCTA
+        heading="Interested in collaborating on research?"
+        subheading="Open to co-authorship, PhD/postdoc opportunities, and research-focused roles"
+    />
+</PageLayout>

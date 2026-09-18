@@ -10,19 +10,6 @@ const experience = defineCollection({
   }),
 })
 
-const blog = defineCollection({
-  type: "content",
-  schema: z.object({
-    title: z.string(),
-    summary: z.string().optional(),
-    date: z.coerce.date(),
-    tags: z.array(z.string()),
-    draft: z.boolean().optional().default(false),
-    pinned: z.boolean().optional().default(false),
-    image: z.string().optional(),
-  }),
-})
-
 const projects = defineCollection({
   type: "content",
   schema: z.object({
@@ -46,4 +33,4 @@ const legal = defineCollection({
   }),
 })
 
-export const collections = { experience, blog, projects, legal }
+export const collections = { experience, projects, legal }

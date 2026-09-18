@@ -4,7 +4,7 @@ import type { Site, Page, Links, Socials } from "@types";
 export const SITE: Site = {
   TITLE: "Imran Pollob",
   DESCRIPTION:
-    "Imran Pollob's portfolio and tech blog: Researching Blockchain Security and developing smart contract vulnerability detection tools. Over 5 years of experience as a software engineer with diverse tech stacks.",
+    "Imran Pollob's portfolio: Researching Blockchain Security and developing smart contract vulnerability detection tools. Over 5 years of experience as a software engineer with diverse tech stacks.",
   AUTHOR: "Imran Pollob",
 };
 
@@ -14,10 +14,10 @@ export const EXPERIENCE: Page = {
   DESCRIPTION: "Places I have worked.",
 };
 
-// Blog Page
-export const BLOG: Page = {
-  TITLE: "Blog",
-  DESCRIPTION: "Writing on topics I am passionate about.",
+// Research Page
+export const RESEARCH: Page = {
+  TITLE: "Research",
+  DESCRIPTION: "Peer-reviewed research in blockchain security and applied machine learning.",
 };
 
 // Projects Page
@@ -43,8 +43,8 @@ export const LINKS: Links = [
     HREF: "/projects",
   },
   {
-    TEXT: "Blog",
-    HREF: "/blog",
+    TEXT: "Research",
+    HREF: "/research",
   },
 ];
 

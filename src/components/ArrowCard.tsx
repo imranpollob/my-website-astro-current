@@ -1,34 +1,38 @@
-import { formatDate, truncateText } from "@lib/utils"
-import type { CollectionEntry } from "astro:content"
+import { truncateText } from "@lib/utils"
+
+export type SearchItem = {
+  type: "project" | "research"
+  title: string
+  summary: string
+  url: string
+  tags: string[]
+}
 
 type Props = {
-  entry: CollectionEntry<"blog"> | CollectionEntry<"projects">
+  entry: SearchItem
   pill?: boolean
 }
 
 export default function ArrowCard({ entry, pill }: Props) {
   return (
-    <a href={`/${entry.collection}/${entry.slug}`} class="group p-4 gap-3 flex items-center border rounded-lg hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 border-slate-200 dark:border-slate-800 transition-colors duration-300">
+    <a href={entry.url} target={entry.url.startsWith("/") ? undefined : "_blank"} rel={entry.url.startsWith("/") ? undefined : "noreferrer"} class="group p-4 gap-3 flex items-center border rounded-lg hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 border-slate-200 dark:border-slate-800 transition-colors duration-300">
       <div class="w-full">
         <div class="flex flex-wrap items-center gap-2">
           {pill &&
             <div class="text-sm capitalize px-2 py-0.5 rounded-full border border-brand-200 dark:border-brand-800 text-brand-700 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10">
-              {entry.collection === "blog" ? "post" : "project"}
+              {entry.type}
             </div>
           }
-          <div class="text-sm uppercase text-slate-500 dark:text-slate-400">
-            {formatDate(entry.data.date)}
-          </div>
         </div>
         <div class="font-semibold mt-3 text-slate-900 dark:text-white line-clamp-2 group-hover:text-brand-700 dark:group-hover:text-brand-400 transition-colors">
-          {entry.data.title}
+          {entry.title}
         </div>
 
         <div class="text-sm line-clamp-2 text-slate-600 dark:text-slate-400">
-          {entry.data.summary}
+          {entry.summary}
         </div>
         <ul class="flex flex-wrap mt-2 gap-1">
-          {entry.data.tags.map((tag: string) => (
+          {entry.tags.map((tag: string) => (
             <li class="text-xs uppercase py-0.5 px-2 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
               {truncateText(tag, 20)}
             </li>

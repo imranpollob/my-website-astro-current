@@ -1,18 +1,33 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import TopLayout from "@layouts/TopLayout.astro";
 import BottomLayout from "@layouts/BottomLayout.astro";
 import Search from "@components/Search";
+import type { SearchItem } from "@components/ArrowCard";
 import { SEARCH } from "@consts";
+import { researchPapers } from "@data/research";
+import projectsData from "../projects/projects.json";
 
-const posts = (await getCollection("blog")).filter((post) => !post.data.draft);
+type Project = (typeof projectsData.portfolio.projects)["Blockchain Engineering"][number];
 
-const projects = (await getCollection("projects")).filter(
-  (post) => !post.data.draft
-);
+const allProjects: Project[] = (Object.values(projectsData.portfolio.projects) as Project[][]).flat();
 
-const data = [...posts, ...projects] as CollectionEntry<"blog">[];
+const data: SearchItem[] = [
+  ...allProjects.map((project) => ({
+    type: "project" as const,
+    title: project.title,
+    summary: project.description,
+    url: project.url,
+    tags: [project.category],
+  })),
+  ...researchPapers.map((paper) => ({
+    type: "research" as const,
+    title: paper.title,
+    summary: paper.summary,
+    url: `/research#${paper.slug}`,
+    tags: [String(paper.year)],
+  })),
+];
 ---
 
 <PageLayout title={SEARCH.TITLE} description={SEARCH.DESCRIPTION}>
