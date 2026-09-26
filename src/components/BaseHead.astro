@@ -1,5 +1,4 @@
 ---
-import { ViewTransitions } from "astro:transitions";
 import { SITE } from "@consts";
 
 interface Props {
@@ -11,6 +10,7 @@ interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description, image = "/open-graph.jpg" } = Astro.props;
+const imageURL = new URL(image, Astro.site);
 
 const websiteSchema = {
     "@context": "https://schema.org",
@@ -18,11 +18,6 @@ const websiteSchema = {
     name: SITE.TITLE,
     url: Astro.site,
     description: SITE.DESCRIPTION,
-    potentialAction: {
-        "@type": "SearchAction",
-        target: `${Astro.site}search?q={search_term_string}`,
-        "query-input": "required name=search_term_string",
-    },
 };
 ---
 
@@ -37,15 +32,15 @@ const websiteSchema = {
 <link rel="manifest" href="/site.webmanifest" />
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0d9488" />
 <meta name="msapplication-TileColor" content="#0d9488" />
-<meta name="theme-color" content="#0d9488" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)" />
 <meta name="generator" content={Astro.generator} />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
 />
 
 <!-- Canonical URL -->
@@ -55,47 +50,42 @@ const websiteSchema = {
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="author" content={SITE.AUTHOR} />
 
-<!-- Open Graph / Facebook -->
+<!-- Open Graph -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:site_name" content={SITE.TITLE} />
+<meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:image" content={imageURL} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="en_US" />
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageURL} />
 
 <!-- Sitemap -->
 <link rel="sitemap" href="/sitemap-index.xml" />
 
 <!-- RSS Feed -->
-<link rel="alternate" type="application/rss+xml" title={title} href={`${Astro.site}rss.xml`} />
+<link rel="alternate" type="application/rss+xml" title={SITE.TITLE} href={new URL("rss.xml", Astro.site)} />
 
 <!-- Structured Data -->
-<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
 
-<!-- KaTeX for math rendering -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous" />
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
-<script
-    defer
-    src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    crossorigin="anonymous"
-    onload="renderMathInElement(document.body, {delimiters: [ {left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}, {left: '[', right: ']', display: true} ]})"
-></script>
+<!-- Show animated content when JavaScript is unavailable -->
+<noscript><style>.animate { opacity: 1 !important; transform: none !important; }</style></noscript>
 
 <!-- Global Scripts -->
 <script is:inline src="/js/theme.js"></script>
-<!-- <script is:inline src="/js/scroll.js"></script> -->
 <script is:inline src="/js/animate.js"></script>
 <script defer is:inline src="/js/copy.js"></script>
-
-<!-- <ViewTransitions  /> -->
 
 <script>
     import type { TransitionBeforeSwapEvent } from "astro:transitions/client";

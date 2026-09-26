@@ -1,6 +1,8 @@
 ---
 import Container from "@components/Container.astro";
-import { SOCIALS } from "@consts";
+import Icon from "@components/Icon.astro";
+import type { IconName } from "@types";
+import { PROFILE, SOCIALS } from "@consts";
 
 type Props = {
     heading?: string;
@@ -8,46 +10,62 @@ type Props = {
 };
 
 const {
-    heading = "Let's build secure and intelligent systems",
-    subheading = "Open to roles in Blockchain, AI/ML, and Software Engineering",
+    heading = "Contact",
+    subheading = "I'm glad to hear about research collaborations, academic positions, and industry research or engineering roles.",
 } = Astro.props;
+
+const email = SOCIALS.find((social) => social.ICON === "email")!;
+const profiles = SOCIALS.filter((social) => social.ICON !== "email");
+const iconFor = (icon: string) => (icon === "google-scholar" ? "scholar" : icon) as IconName;
 ---
 
-<section id="contact" class="pb-20 animate">
+<section id="contact" class="scroll-mt-20 py-16 md:py-20" aria-labelledby="contact-heading">
     <Container size="xl">
-        <div
-            class="relative overflow-hidden p-8 md:p-10 rounded-2xl border border-brand-700/20 bg-gradient-to-br from-brand-600 to-brand-800 space-y-6"
-        >
-            <div class="space-y-2">
-                <p class="text-sm uppercase tracking-widest text-brand-200 font-semibold">Contact</p>
-                <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">
-                    {heading}
-                </h2>
-                <p class="text-base md:text-lg text-brand-100">
-                    {subheading}
-                </p>
-            </div>
-
-            <div
-                class="flex flex-col md:flex-row flex-wrap md:items-center gap-4 text-sm md:text-base text-white"
-            >
-                {
-                    SOCIALS.map((social) => (
+        <div class="rounded-xl border border-slate-200 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-900/50 md:p-10">
+            <div class="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
+                <div class="max-w-xl">
+                    <h2 id="contact-heading" class="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white md:text-[1.75rem]">
+                        {heading}
+                    </h2>
+                    <p class="mt-2 text-slate-600 dark:text-slate-400">{subheading}</p>
+                    <a
+                        href={email.HREF}
+                        class="mt-5 inline-flex items-center gap-2 text-lg font-semibold text-brand-700 underline decoration-brand-300 underline-offset-4 hover:decoration-brand-600 dark:text-brand-400"
+                    >
+                        <Icon name="email" class="size-5" />
+                        {email.TEXT}
+                    </a>
+                </div>
+                <ul class="flex flex-wrap gap-2 md:justify-end">
+                    {
+                        profiles.map((social) => (
+                            <li>
+                                <a
+                                    href={social.HREF}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-2 rounded-md border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-brand-500 hover:text-brand-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:text-brand-300"
+                                >
+                                    <Icon name={iconFor(social.ICON)} />
+                                    {social.TEXT}
+                                    <span class="sr-only"> (opens in a new tab)</span>
+                                </a>
+                            </li>
+                        ))
+                    }
+                    <li>
                         <a
-                            href={social.HREF}
+                            href={PROFILE.CV_URL}
                             target="_blank"
-                            rel="noreferrer"
-                            class="flex items-center gap-2 px-3 py-2 rounded-full border border-white/20 bg-white/10 hover:bg-white/20 transition-colors"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 rounded-md border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-brand-500 hover:text-brand-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:text-brand-300"
                         >
-                            <span class="inline-flex items-center justify-center rounded-full border border-white/20 p-1">
-                                <svg class="size-4 fill-current">
-                                    <use href={`/social.svg#${social.ICON}`} />
-                                </svg>
-                            </span>
-                            <span class="font-semibold text-white">{social.TEXT}</span>
+                            <Icon name="file" />
+                            CV (PDF)
+                            <span class="sr-only"> (opens in a new tab)</span>
                         </a>
-                    ))
-                }
+                    </li>
+                </ul>
             </div>
         </div>
     </Container>

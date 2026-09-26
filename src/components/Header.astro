@@ -1,180 +1,74 @@
 ---
 import { SITE, LINKS } from "@consts";
 import { cn } from "@lib/utils";
-const { pathname } = Astro.url;
-const subpath = pathname.match(/[^/]+/g);
 import Container from "@components/Container.astro";
+
+const { pathname } = Astro.url;
+const section = "/" + (pathname.match(/[^/]+/g)?.[0] ?? "");
 ---
 
-<header id="header" class="fixed top-0 w-full h-16 z-50">
+<a
+  href="#main"
+  class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-3 focus:z-[60] focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:text-sm focus:font-semibold focus:text-brand-700 focus:shadow"
+>
+  Skip to content
+</a>
+
+<header id="header" class="fixed top-0 z-50 h-16 w-full">
   <Container size="xl">
-    <div class="relative h-full w-full">
-      <div
-        class="absolute left-0 top-1/2 -translate-y-1/2 flex gap-1 font-semibold"
+    <div class="flex h-full items-center justify-between gap-3">
+      <a
+        href="/"
+        class="flex items-center gap-2 font-heading font-semibold tracking-tight text-slate-900 transition-colors hover:text-brand-700 dark:text-white dark:hover:text-brand-400"
       >
-        <a
-          href="/"
-          class="flex items-center gap-2 pl-1 font-heading font-bold tracking-tight text-slate-900 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition-colors duration-300 ease-in-out"
-        >
-          <img src="/logo.svg" alt="" class="h-7 w-auto" width="480" height="595" />
-          <span class="text-base md:text-lg lg:text-xl">{SITE.TITLE}</span>
-        </a>
-      </div>
+        <img src="/logo.svg" alt="" class="hidden h-7 w-auto sm:block" width="480" height="594" />
+        <span class="whitespace-nowrap text-base md:text-lg">{SITE.TITLE}</span>
+      </a>
 
-      <div class="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-        <nav class="flex items-center justify-center text-sm gap-0.5 md:gap-1">
-          {
-            LINKS.map((LINK) => (
-              <a
-                href={LINK.HREF}
-                class={cn(
-                  "text-sm md:text-base lg:text-lg",
-                  "h-7 md:h-8 rounded-full px-1.5 md:px-3 text-current",
-                  "flex items-center justify-center",
-                  "transition-colors duration-300 ease-in-out",
-                  pathname === LINK.HREF || "/" + subpath?.[0] === LINK.HREF
-                    ? "bg-brand-600 dark:bg-brand-500 text-white"
-                    : "hover:bg-brand-50 dark:hover:bg-brand-500/10 hover:text-brand-600 dark:hover:text-brand-400"
-                )}
-              >
-                {LINK.TEXT}
-              </a>
-            ))
-          }
+      <div class="flex items-center gap-1 sm:gap-2">
+        <nav aria-label="Primary">
+          <ul class="flex items-center gap-0.5 sm:gap-1">
+            {
+              LINKS.map((LINK) => {
+                const active = !LINK.EXTERNAL && section === LINK.HREF;
+                return (
+                  <li>
+                    <a
+                      href={LINK.HREF}
+                      target={LINK.EXTERNAL ? "_blank" : undefined}
+                      rel={LINK.EXTERNAL ? "noopener noreferrer" : undefined}
+                      aria-current={active ? "page" : undefined}
+                      class={cn(
+                        "flex h-9 items-center rounded-md px-2 text-sm font-medium transition-colors sm:px-3 sm:text-[0.95rem]",
+                        active
+                          ? "text-brand-700 underline decoration-2 underline-offset-[6px] dark:text-brand-400"
+                          : "text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
+                      )}
+                    >
+                      {LINK.TEXT}
+                      {LINK.EXTERNAL && <span class="sr-only"> (PDF, opens in a new tab)</span>}
+                    </a>
+                  </li>
+                );
+              })
+            }
+          </ul>
         </nav>
-      </div>
-
-      <div class="buttons absolute right-0 top-1/2 -translate-y-1/2 flex gap-0.5 md:gap-1">
-        <nav class="flex md:hidden items-center text-sm gap-0.5">
-          {
-            LINKS.map((LINK) => (
-              <a
-                href={LINK.HREF}
-                class={cn(
-                  "text-sm",
-                  "h-7 rounded-full px-1.5 text-current",
-                  "flex items-center justify-center",
-                  "transition-colors duration-300 ease-in-out",
-                  pathname === LINK.HREF || "/" + subpath?.[0] === LINK.HREF
-                    ? "bg-brand-600 dark:bg-brand-500 text-white"
-                    : "hover:bg-brand-50 dark:hover:bg-brand-500/10 hover:text-brand-600 dark:hover:text-brand-400"
-                )}
-              >
-                {LINK.TEXT}
-              </a>
-            ))
-          }
-        </nav>
-        <a
-          href="/resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          class={cn(
-            "hidden md:flex",
-            "h-9 px-3 rounded-full items-center justify-center",
-            "text-sm font-semibold",
-            "bg-brand-600 text-white dark:bg-brand-500",
-            "hover:bg-brand-700 dark:hover:bg-brand-400 transition-colors duration-300 ease-in-out"
-          )}
-        >
-          Resume
-        </a>
-
-        <a
-          href="/search"
-          aria-label={`Search projects and research on ${SITE.TITLE}`}
-          class={cn(
-            "flex",
-            "size-7 md:size-9 rounded-full p-1.5 md:p-2 items-center justify-center",
-            "bg-transparent hover:bg-brand-50 dark:hover:bg-brand-500/10",
-            "stroke-current hover:stroke-brand-600 hover:dark:stroke-brand-400",
-            "border border-slate-200 dark:border-slate-800",
-            "transition-colors duration-300 ease-in-out",
-            pathname === "/search" || "/" + subpath?.[0] === "/search"
-              ? "pointer-events-none bg-brand-600 dark:bg-brand-500 text-white border-transparent"
-              : ""
-          )}
-        >
-          <svg class="size-full">
-            <use href="/ui.svg#search"></use>
-          </svg>
-        </a>
 
         <button
           id="header-theme-button"
-          aria-label={`Toggle light and dark theme`}
-          class={cn(
-            "flex",
-            "size-7 md:size-9 rounded-full p-1.5 md:p-2 items-center justify-center",
-            "bg-transparent hover:bg-brand-50 dark:hover:bg-brand-500/10",
-            "stroke-current hover:stroke-brand-600 hover:dark:stroke-brand-400",
-            "border border-slate-200 dark:border-slate-800",
-            "transition-colors duration-300 ease-in-out"
-          )}
+          type="button"
+          aria-label="Toggle light and dark theme"
+          class="flex size-8 items-center justify-center rounded-md p-1.5 stroke-current text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
         >
-          <svg class="size-full block dark:hidden">
+          <svg class="block size-full dark:hidden" aria-hidden="true">
             <use href="/ui.svg#sun"></use>
           </svg>
-          <svg class="size-full hidden dark:block">
+          <svg class="hidden size-full dark:block" aria-hidden="true">
             <use href="/ui.svg#moon"></use>
-          </svg>
-        </button>
-
-        <button
-          id="header-drawer-button"
-          aria-label={`Toggle drawer open and closed`}
-          class={cn(
-            "hidden",
-            "size-9 rounded-full p-2 items-center justify-center",
-            "bg-transparent hover:bg-brand-50 dark:hover:bg-brand-500/10",
-            "stroke-current hover:stroke-brand-600 hover:dark:stroke-brand-400",
-            "border border-slate-200 dark:border-slate-800",
-            "transition-colors duration-300 ease-in-out"
-          )}
-        >
-          <svg id="drawer-open" class="size-full">
-            <use href="/ui.svg#menu"></use>
-          </svg>
-          <svg id="drawer-close" class="size-full">
-            <use href="/ui.svg#x"></use>
           </svg>
         </button>
       </div>
     </div>
   </Container>
 </header>
-
-<style>
-  #header-drawer-button > #drawer-open {
-    @apply block;
-  }
-
-  #header-drawer-button > #drawer-close {
-    @apply hidden;
-  }
-
-  #header-drawer-button.open > #drawer-open {
-    @apply hidden;
-  }
-
-  #header-drawer-button.open > #drawer-close {
-    @apply block;
-  }
-</style>
-
-<script is:inline>
-  function toggleDrawer() {
-    const drawer = document.getElementById("drawer");
-    const drawerButton = document.getElementById("header-drawer-button");
-    drawer?.classList.toggle("open");
-    drawerButton?.classList.toggle("open");
-  }
-
-  function initializeDrawerButton() {
-    const drawerButton = document.getElementById("header-drawer-button");
-    drawerButton?.addEventListener("click", toggleDrawer);
-  }
-
-  document.addEventListener("astro:after-swap", initializeDrawerButton);
-  initializeDrawerButton();
-</script>

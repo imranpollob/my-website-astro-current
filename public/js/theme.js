@@ -32,11 +32,8 @@ function preloadTheme() {
   const theme = (() => {
     const userTheme = localStorage.theme
 
-    if (userTheme === "light" || userTheme === "dark") {
-      return userTheme
-    } else {
-      return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
-    }
+    // The site is designed light-first; dark mode is opt-in via the toggle.
+    return userTheme === "dark" ? "dark" : "light"
   })()
 
   const element = document.documentElement
@@ -46,17 +43,13 @@ function preloadTheme() {
   } else {
     element.classList.remove("dark")
   }
-
-  localStorage.theme = theme
 }
 
 window.onload = () => {
   function initializeThemeButtons() {
     const headerThemeButton = document.getElementById("header-theme-button")
-    const drawerThemeButton = document.getElementById("drawer-theme-button")
     headerThemeButton?.addEventListener("click", changeTheme)
-    drawerThemeButton?.addEventListener("click", changeTheme)
-  } 
+  }
   
   document.addEventListener("astro:after-swap", initializeThemeButtons)
   initializeThemeButtons()

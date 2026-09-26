@@ -1,67 +1,56 @@
 ---
 import { SITE, SOCIALS } from "@consts";
 import Container from "@components/Container.astro";
+import Icon from "@components/Icon.astro";
+import type { IconName } from "@types";
+
 const year = new Date().getFullYear();
+const iconFor = (icon: string) => (icon === "google-scholar" ? "scholar" : icon) as IconName;
 ---
 
-<footer class="relative bg-white dark:bg-slate-950">
-    <div class="animate">
-        <section class="py-5 overflow-hidden whitespace-nowrap border-t border-slate-200 dark:border-slate-800">
-            <Container size="xl">
-                <div class="h-full grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div class="order-2 sm:order-1 flex flex-col items-center justify-center sm:items-start">
-                        <div class="legal">
-                            <a
-                                href="/legal/privacy-policy-and-terms"
-                                class="text-current hover:text-brand-600 dark:hover:text-brand-400 transition-colors duration-300 ease-in-out"
-                            >
-                                Privacy & Terms
-                            </a>
-                        </div>
-                        <div class="text-sm mt-2">&copy; {year} | All rights reserved</div>
-                    </div>
+<footer class="border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
+    <Container size="xl">
+        <div class="flex flex-col-reverse items-center gap-4 py-6 text-sm text-slate-500 dark:text-slate-400 sm:flex-row sm:justify-between">
+            <p class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+                <span>&copy; {year} {SITE.AUTHOR}</span>
+                <span aria-hidden="true">·</span>
+                <a href="/legal/privacy-policy-and-terms" class="hover:text-brand-700 dark:hover:text-brand-400">Privacy & Terms</a>
+                <span aria-hidden="true">·</span>
+                <a href="/search" class="hover:text-brand-700 dark:hover:text-brand-400">Search</a>
+            </p>
 
-                    <div class="order-1 sm:order-2 flex justify-center sm:justify-end">
-                        <div class="flex flex-wrap gap-1 items-center justify-center">
-                            {
-                                SOCIALS.map((SOCIAL) => (
-                                    <a
-                                        href={SOCIAL.HREF}
-                                        target="_blank"
-                                        aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`}
-                                        class="group size-10 rounded-full p-2 items-center justify-center hover:bg-brand-50 dark:hover:bg-brand-500/10 transition-colors duration-300 ease-in-out"
-                                    >
-                                        <svg class="size-full fill-current group-hover:fill-brand-600 group-hover:dark:fill-brand-400 transition-colors duration-300 ease-in-out">
-                                            <use href={`/social.svg#${SOCIAL.ICON}`} />
-                                        </svg>
-                                    </a>
-                                ))
-                            }
-                        </div>
-                    </div>
-                </div>
-            </Container>
-        </section>
-    </div>
+            <ul class="flex items-center gap-1" aria-label="Profiles and contact">
+                {
+                    SOCIALS.map((social) => {
+                        const external = !social.HREF.startsWith("mailto:");
+                        return (
+                            <li>
+                                <a
+                                    href={social.HREF}
+                                    target={external ? "_blank" : undefined}
+                                    rel={external ? "noopener noreferrer" : undefined}
+                                    aria-label={social.NAME}
+                                    class="flex size-9 items-center justify-center rounded-md text-slate-500 transition-colors hover:bg-slate-100 hover:text-brand-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-brand-400"
+                                >
+                                    <Icon name={iconFor(social.ICON)} class="size-[1.125rem]" />
+                                </a>
+                            </li>
+                        );
+                    })
+                }
+            </ul>
+        </div>
+    </Container>
 </footer>
 
-<!-- Floating Scroll to Top Button -->
+<!-- Floating scroll-to-top button -->
 <button
     id="back-to-top"
+    type="button"
     aria-label="Scroll to top"
-    class="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-brand-600 dark:bg-brand-500 text-white shadow-lg hover:bg-brand-700 dark:hover:bg-brand-400 opacity-0 pointer-events-none transition-opacity duration-300"
+    class="pointer-events-none fixed bottom-6 right-6 z-40 rounded-full border border-slate-200 bg-white p-2.5 text-slate-600 opacity-0 shadow-sm transition-opacity duration-300 hover:text-brand-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
 >
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="stroke-current"
-    >
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="stroke-current" aria-hidden="true">
         <polyline points="18 15 12 9 6 15"></polyline>
     </svg>
 </button>
@@ -70,31 +59,18 @@ const year = new Date().getFullYear();
     function toggleBackToTop() {
         const backToTop = document.getElementById("back-to-top");
         if (!backToTop) return;
-
-        if (window.scrollY > 300) {
-            backToTop.classList.remove("opacity-0", "pointer-events-none");
-            backToTop.classList.add("opacity-100", "pointer-events-auto");
-        } else {
-            backToTop.classList.add("opacity-0", "pointer-events-none");
-            backToTop.classList.remove("opacity-100", "pointer-events-auto");
-        }
-    }
-
-    function goBackToTop(event) {
-        event.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
+        const visible = window.scrollY > 600;
+        backToTop.classList.toggle("opacity-0", !visible);
+        backToTop.classList.toggle("pointer-events-none", !visible);
+        backToTop.tabIndex = visible ? 0 : -1;
     }
 
     function initializeBackToTop() {
         const backToTop = document.getElementById("back-to-top");
-        if (backToTop) {
-            backToTop.addEventListener("click", goBackToTop);
-            window.addEventListener("scroll", toggleBackToTop, { passive: true });
-            toggleBackToTop(); // Check initial state
-        }
+        if (!backToTop) return;
+        backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+        window.addEventListener("scroll", toggleBackToTop, { passive: true });
+        toggleBackToTop();
     }
 
     document.addEventListener("astro:after-swap", initializeBackToTop);

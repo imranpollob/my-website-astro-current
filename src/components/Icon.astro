@@ -1,0 +1,54 @@
+---
+import type { IconName } from "@types";
+import { cn } from "@lib/utils";
+
+type Props = {
+    name: IconName;
+    class?: string;
+};
+
+const { name, class: className } = Astro.props;
+
+// Brand icons come from the existing /social.svg sprite.
+const sprite: Partial<Record<IconName, string>> = {
+    github: "github",
+    scholar: "google-scholar",
+    linkedin: "linkedin",
+    email: "email",
+};
+---
+
+{
+    sprite[name] ? (
+        <svg class={cn("size-4 shrink-0 fill-current", className)} aria-hidden="true">
+            <use href={`/social.svg#${sprite[name]}`} />
+        </svg>
+    ) : (
+        <svg
+            class={cn("size-4 shrink-0 stroke-current", className)}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+        >
+            {name === "globe" && (
+                <>
+                    <circle cx="12" cy="12" r="9" />
+                    <ellipse cx="12" cy="12" rx="4" ry="9" />
+                    <path d="M3 12h18" />
+                </>
+            )}
+            {name === "download" && <path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5" />}
+            {name === "file" && (
+                <>
+                    <path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z" />
+                    <path d="M14 3v5h5M9 13h6M9 17h6" />
+                </>
+            )}
+            {name === "terminal" && <path d="m5 8 4 4-4 4M12 16h7" />}
+            {name === "arrow-right" && <path d="M5 12h14m-6-6 6 6-6 6" />}
+        </svg>
+    )
+}

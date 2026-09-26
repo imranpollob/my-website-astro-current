@@ -38,7 +38,7 @@ html,
 body {
   @apply h-full w-full antialiased;
   @apply bg-white dark:bg-slate-950;
-  @apply text-slate-700/90 dark:text-slate-300/90;
+  @apply text-slate-700 dark:text-slate-300;
 }
 
 body {
@@ -52,8 +52,7 @@ h4,
 h5,
 h6,
 .page-heading,
-header,
-nav {
+#header {
   font-family: var(--font-heading);
 }
 
@@ -68,13 +67,14 @@ main {
   @apply flex flex-col flex-1 bg-white dark:bg-slate-950;
 }
 
-header {
+#header {
   @apply border-b;
-  @apply bg-white/90 dark:bg-slate-950/80;
+  @apply bg-white dark:bg-slate-950;
   @apply border-slate-200 dark:border-slate-800;
 }
 
-article {
+/* Long-form Markdown content (e.g. the legal page). */
+.prose-content {
   @apply prose dark:prose-invert max-w-full pb-12;
 }
 
@@ -88,11 +88,11 @@ article {
   @apply font-semibold text-slate-900 dark:text-white tracking-tight;
 }
 
-/** styles for public /animation.js */
+/** styles for public/js/animate.js */
 .animate {
   opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 1s ease, transform 1s ease;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .animate.show {
@@ -100,7 +100,46 @@ article {
   transform: translateY(0);
 }
 
-article img {
+@media (prefers-reduced-motion: reduce) {
+  .animate {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+main:focus {
+  outline: none;
+}
+
+@layer components {
+  /* Bordered content card used across research and project listings. */
+  .card {
+    @apply rounded-xl border border-slate-200 bg-white transition-colors duration-200;
+    @apply dark:border-slate-800 dark:bg-slate-900/40;
+  }
+
+  .card:hover {
+    @apply border-slate-300 dark:border-slate-700;
+  }
+
+  /* Inline text link with a teal accent. */
+  .text-link {
+    @apply text-brand-700 underline decoration-brand-300 decoration-1 underline-offset-4 transition-colors;
+    @apply hover:text-brand-800 hover:decoration-brand-600;
+    @apply dark:text-brand-400 dark:decoration-brand-700 dark:hover:text-brand-300;
+  }
+}
+
+.prose-content img {
   padding-top: 20px;
   padding-bottom: 20px;
   display: block;
@@ -156,12 +195,12 @@ span.bold {
 }
 
 /* Remove backticks from inline code */
-article :not(pre)>code::before,
-article :not(pre)>code::after {
+.prose-content :not(pre)>code::before,
+.prose-content :not(pre)>code::after {
   content: none;
 }
 
-article :not(pre)>code,
-article pre code {
+.prose-content :not(pre)>code,
+.prose-content pre code {
   font-family: var(--font-code);
 }

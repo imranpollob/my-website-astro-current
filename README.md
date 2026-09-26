@@ -1,14 +1,14 @@
-# Imran Pollob — Portfolio & Blog
+# Imran Pollob — Personal Website
 
-Welcome to my personal website and portfolio: [imranpollob.com](https://imranpollob.com)
+Source for my personal website: [imranpollob.com](https://www.imranpollob.com)
 
-This site showcases my professional overview, work experiences, projects, and technical blogs. Built with [Astro](https://astro.build/), [Tailwind CSS](https://tailwindcss.com/), and [TypeScript](https://www.typescriptlang.org/), it is fast, minimalist, and fully responsive.
+The site presents my research in security and decentralized systems, publications, projects, and industry experience. Built with [Astro](https://astro.build/), [Tailwind CSS](https://tailwindcss.com/), and [TypeScript](https://www.typescriptlang.org/), it is fast, minimalist, and fully responsive.
 
 ---
 
 ## 🚀 About This Project
 
-- **Live Site:** [imranpollob.com](https://imranpollob.com)
+- **Live Site:** [imranpollob.com](https://www.imranpollob.com)
 - **Base Template:** [astro-sphere](https://github.com/markhorn-dev/astro-sphere) by [markhorn-dev](https://github.com/markhorn-dev)
 - **Tech Stack:** Astro, Tailwind CSS, TypeScript, SolidJS (for stateful components)
 
@@ -17,12 +17,9 @@ This site showcases my professional overview, work experiences, projects, and te
 - ⚡️ Lightning fast performance (100/100 Lighthouse)
 - 📱 Fully responsive & accessible
 - 🌗 Light/Dark theme toggle
-- 📝 Markdown & MDX support
-- 🔍 Searchable posts & projects
+- 🔍 Searchable research and projects
 - 🗂️ Auto-generated sitemap & RSS feed
-- 💻 Code blocks with copy-to-clipboard
 - 🎨 Minimal, clean design
-- 🧩 Animated UI (stars, meteors, etc.)
 - 🔒 SEO-friendly & typesafe
 
 
@@ -64,7 +61,6 @@ Other commands:
 
 - Lint: `npm run lint`
 - Fix lint issues: `npm run lint:fix`
-- Create blog post: `npm run blog`
 
 ---
 
@@ -87,7 +83,13 @@ Resolve any conflicts as needed to keep your customizations.
 
 ## 📝 Customization
 
-- All content (projects, blogs, experience) is managed via Markdown/MDX in the `src/content/` directory.
+- Site content is structured data in `src/data/`:
+  - `research.ts`: research vision, areas, research projects, and publications
+  - `projects.ts`: tools, installable tools, engineering projects, and the homepage selection
+  - `experience.ts`: industry roles, teaching, and education
+- Identity, navigation, and social/contact links live in `src/consts.ts`.
+- Adding a paper or project normally means adding one entry to the matching data file.
+- The privacy policy is Markdown in `src/content/legal/`.
 - Components and layouts are in `src/components/` and `src/layouts/`.
 - Styles are managed with Tailwind CSS (`styles/global.css`).
 

@@ -1,292 +1,294 @@
 ---
 import Container from "@components/Container.astro";
 import ContactCTA from "@components/ContactCTA.astro";
-import PageLayout from "@layouts/PageLayout.astro";
+import Icon from "@components/Icon.astro";
 import ProjectCard from "@components/ProjectCard.astro";
-import { SITE, SOCIALS } from "@consts";
-import projectsData from "./projects/projects.json";
-import { researchPapers } from "@data/research";
+import ResearchCard from "@components/ResearchCard.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import type { IconName } from "@types";
+import { PROFILE, SITE, SOCIALS } from "@consts";
+import { researchProjects } from "@data/research";
+import { featuredProjects } from "@data/projects";
+import { education, industryExperience, teaching } from "@data/experience";
 
 const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: SITE.AUTHOR,
+    name: PROFILE.NAME,
+    alternateName: PROFILE.PUBLICATION_NAME,
     url: Astro.site,
-    jobTitle: "Blockchain & AI Software Engineer",
+    image: new URL(PROFILE.PHOTO, Astro.site),
+    email: `mailto:${PROFILE.EMAIL}`,
+    jobTitle: PROFILE.HEADLINE,
+    affiliation: { "@type": "CollegeOrUniversity", name: PROFILE.AFFILIATION },
+    alumniOf: [
+        { "@type": "CollegeOrUniversity", name: "Wayne State University" },
+        { "@type": "CollegeOrUniversity", name: "Jahangirnagar University" },
+    ],
+    knowsAbout: [
+        "Blockchain security",
+        "Smart contract security",
+        "Privacy-preserving systems",
+        "Programmable accounts",
+        "Zero-knowledge proofs",
+        "Software engineering",
+    ],
     sameAs: SOCIALS.filter((social) => !social.HREF.startsWith("mailto:")).map((social) => social.HREF),
 };
 
-type Project = (typeof projectsData.portfolio.projects)["Blockchain Engineering"][number];
+const secondaryLinks = SOCIALS.filter((social) => social.ICON !== "email");
+const iconFor = (icon: string) => (icon === "google-scholar" ? "scholar" : icon) as IconName;
 
-const allProjects: Project[] = (Object.values(projectsData.portfolio.projects) as Project[][]).flat();
+const [phd, ...earlierDegrees] = education;
+const industryCompanies = industryExperience.map((role) => role.organization).reverse();
 
-const bySlug = (slug: string): Project | undefined =>
-    allProjects.find((project) => project.repo === `imranpollob/${slug}`);
-
-const featuredProjects = ["nft-rentals-and-sales", "ai-trading", "notebase"].map(bySlug).filter(Boolean) as Project[];
-
-const featuredResearchSlugs = ["secure-bsm-blockchain-misbehavior-detection", "scientific-workflow-engine", "covid-vaccine-sentiment-analysis"];
-const featuredResearch = featuredResearchSlugs
-    .map((slug) => researchPapers.find((paper) => paper.slug === slug))
-    .filter(Boolean) as typeof researchPapers;
-
-const professionalExperience = [
-    {
-        company: "Wayne State University",
-        role: "Graduate Teaching Assistant",
-        duration: "Aug 2021 – Present · Detroit, MI",
-        logo: "/image/company-logos/wayne-state-university.png",
-        bullets: [
-            "Formulated a Solidity vulnerability detection framework using a novel Hypergraph Neural Network to mitigate oversmoothing and domain-optimized LLMs for semantic extraction, trained on a custom 30GB+ ensembled dataset to maximize DApp security.",
-            "Designed a collaborative blockchain consensus architecture to detect malicious BSMs in V2X networks, utilizing dual-layer ledgers and smart contract-enforced Verifiable Rate-limit Tokens, reducing false positives and mitigating DoS floods.",
-        ],
-    },
-    {
-        company: "Cefalo",
-        role: "Software Engineer",
-        duration: "Sep 2019 – Jul 2021",
-        logo: "/image/company-logos/cefalo.png",
-        bullets: [
-            "Engineered Python data pipelines and web scrapers to aggregate 250+ sources (reducing manual effort by 60\%), while managing AWS infrastructure to guarantee system security and 99.9\% uptime.",
-            "Enhanced a recruitment platform using Laravel and Vue.js, improving workflow efficiency and supporting 200+ active users.",
-        ],
-    },
-    {
-        company: "Rapid Web Services",
-        role: "Full-Stack Software Engineer",
-        duration: "May 2018 – Sep 2019",
-        logo: "/image/company-logos/rapid-web-services.png",
-        bullets: [
-            "Engineered an inventory platform processing 50K+ daily requests, delivering invoice generation, multi-warehouse tracking, shrinkage detection, dynamic reorder alerts, and automated dropshipping across multiple businesses.",
-        ],
-    },
-    {
-        company: "Codalo",
-        role: "Software Engineer",
-        duration: "Nov 2016 – Apr 2018",
-        logo: "/image/company-logos/codalo.png",
-        bullets: [
-            "Developed a school management system used across 20+ institutions, streamlining student and teacher administration, fee processing, course management, attendance, grading, and automated parental notifications.",
-        ],
-    },
-];
-
-const education = [
-    {
-        school: "Wayne State University",
-        degree: "PhD Candidate",
-        department: "Computer Science",
-        timeframe: "2021 – 2026",
-        detail: "Grade: 3.87 out of 4.00",
-    },
-    {
-        school: "Jahangirnagar University",
-        degree: "Master of Science",
-        department: "Information Technology",
-        timeframe: "2016 – 2017",
-        detail: "Grade: 3.65 out of 4.00",
-    },
-    {
-        school: "Jahangirnagar University",
-        degree: "Bachelor of Science",
-        department: "Information Technology",
-        timeframe: "2011 – 2015",
-        detail: "Grade: 3.62 out of 4.00",
-    },
-];
-
-const certifications = [
-    {
-        title: "Blockchain & Security",
-        items: [
-            {
-                name: "Blockchain Solution Architecture",
-                thumbnail: "/image/certifications/blockchain-solution-architecture-thumb.jpg",
-                fullImage: "/image/certifications/blockchain-solution-architecture-full.jpg",
-                credentialUrl:
-                    "https://www.coursera.org/account/accomplishments/specialization/certificate/O3Q7CG1SRKM5",
-                detail: ["Designed blockchain systems with architecture, security, and risk-aware decision-making."],
-            },
-            {
-                name: "Security for Blockchain and DApps",
-                thumbnail: "/image/certifications/security-for-blockchain-dapps-thumb.jpg",
-                fullImage: "/image/certifications/security-for-blockchain-dapps-full.jpg",
-                credentialUrl:
-                    "https://www.coursera.org/account/accomplishments/specialization/certificate/G1LITZ430K3Q",
-                detail: ["Applied blockchain security, cryptography, and DeFi risk mitigation to secure systems."],
-            },
-            {
-                name: "Blockchain Security",
-                thumbnail: "/image/certifications/blockchain-security-thumb.jpg",
-                fullImage: "/image/certifications/blockchain-security-full.jpg",
-                credentialUrl: "https://www.coursera.org/account/accomplishments/certificate/3BN6UAX4MZDZ",
-                detail: ["Explored blockchain threats and security fundamentals for vulnerability analysis."],
-            },
-        ],
-    },
-    {
-        title: "AI & Machine Learning",
-        items: [
-            {
-                name: "IBM Generative AI Engineering",
-                thumbnail: "/image/certifications/ibm-generative-ai-engineering-thumb.jpg",
-                fullImage: "/image/certifications/ibm-generative-ai-engineering-full.jpg",
-                credentialUrl:
-                    "https://www.coursera.org/account/accomplishments/specialization/certificate/VCI51YJT40UL",
-                detail: ["Built and deployed generative AI systems using LLMs, transformers, and RAG pipelines."],
-            },
-            {
-                name: "IBM RAG and Agentic AI",
-                thumbnail: "/image/certifications/ibm-rag-agentic-ai-thumb.jpg",
-                fullImage: "/image/certifications/ibm-rag-agentic-ai-full.jpg",
-                credentialUrl:
-                    "https://www.coursera.org/account/accomplishments/specialization/certificate/9T9ZY7QU9A4G",
-                detail: ["Developed agentic and RAG-based AI systems with multi-agent reasoning and tool integration."],
-            },
-            {
-                name: "Microsoft AI & ML Engineering",
-                thumbnail: "/image/certifications/microsoft-ai-ml-thumb.jpg",
-                fullImage: "/image/certifications/microsoft-ai-ml-full.jpg",
-                credentialUrl:
-                    "https://www.coursera.org/account/accomplishments/specialization/certificate/9ZRZI7NIJCI0",
-                detail: ["Learned end-to-end AI/ML systems, from fundamentals to deployment on Azure."],
-            },
-        ],
-    },
-];
-
-const skills = [
-    { label: "Languages", values: ["Python", "JavaScript", "PHP", "Solidity", "Java", "C++"] },
-    { label: "Frameworks & Databases", values: ["React", "Next.js", "Node.js", "Laravel", "MySQL", "MongoDB"] },
-    { label: "Blockchain", values: ["Solidity", "Foundry", "Hardhat", "Ethers.js", "Web3.js"] },
-    { label: "AI/ML", values: ["PyTorch", "Transformers", "LLM Fine-tuning", "RAG", "Vector Databases"] },
-    { label: "Security", values: ["Smart contract security", "Vulnerability Detection", "Secure Protocol Design"] },
-    { label: "Cloud & Ops", values: ["AWS", "Azure ML", "Docker", "CI/CD", "Linux", "Git"] },
+const atAGlance = [
+    { term: "Now", detail: `${phd.degree}, ${phd.field} · ${phd.institution}` },
+    { term: "Before", detail: `5+ years as a software engineer · ${industryCompanies.join(", ")}` },
+    { term: "Teaching", detail: `${teaching.role} · ${teaching.organization}` },
+    { term: "Based in", detail: PROFILE.LOCATION },
 ];
 ---
 
-<PageLayout title="Home" description={SITE.DESCRIPTION}>
-    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
-    <section class="relative pt-28 pb-16">
+<PageLayout description={SITE.DESCRIPTION}>
+    <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+
+    <!-- 1. Hero -->
+    <section class="pb-16 pt-28 md:pb-20 md:pt-36" aria-labelledby="hero-heading">
         <Container size="xl">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                <div class="space-y-6 animate">
-                    <p class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-brand-700 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10 border border-brand-200 dark:border-brand-800 rounded-full px-3 py-1">
-                        PhD Candidate · 5+ Years Experience
-                    </p>
-                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white leading-tight tracking-tight">
-                        Blockchain & AI Software Engineer
+            <div class="grid items-center gap-10 lg:grid-cols-[1fr_auto] lg:gap-16">
+                <div class="animate max-w-3xl">
+                    <img
+                        src={PROFILE.PHOTO}
+                        alt={`Portrait of ${PROFILE.NAME}`}
+                        width="400"
+                        height="400"
+                        class="mb-6 size-24 rounded-2xl border border-slate-200 object-cover dark:border-slate-800 lg:hidden"
+                    />
+                    <h1 id="hero-heading" class="text-4xl font-semibold tracking-tight text-slate-900 dark:text-white md:text-5xl">
+                        {PROFILE.NAME}
                     </h1>
-                    <p class="text-base md:text-lg text-slate-600 dark:text-slate-400">
-                        I love building blockchain applications and making the web more open for everyone. I’m
-                        fascinated by how AI is reshaping the world, and I enjoy experimenting with it and shaping it
-                        through my own code. Side projects are my weakness—once an idea hits, I can’t let it go.
+                    <p class="mt-3 text-xl font-medium text-slate-700 dark:text-slate-200 md:text-2xl">{PROFILE.HEADLINE}</p>
+                    <p class="mt-3 flex flex-wrap gap-x-2 gap-y-1 text-sm font-semibold text-brand-700 dark:text-brand-400 md:text-base">
+                        {
+                            PROFILE.THEMES.map((theme, i) => (
+                                <>
+                                    {i > 0 && <span aria-hidden="true" class="text-slate-300 dark:text-slate-600">·</span>}
+                                    <span>{theme}</span>
+                                </>
+                            ))
+                        }
                     </p>
-                    <div class="flex flex-wrap gap-3">
+                    <p class="mt-6 max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-400 md:text-lg">
+                        I am a Ph.D. candidate in Computer Science at {PROFILE.AFFILIATION}, researching security and privacy
+                        in decentralized and programmable systems. Before starting my doctoral research, I spent more than five
+                        years as a software engineer building production web applications, backend systems, and APIs.
+                    </p>
+
+                    <div class="mt-8 flex flex-wrap gap-3">
                         <a
-                            href="/resume.pdf"
+                            href="/research"
+                            class="inline-flex items-center gap-2 rounded-md bg-brand-700 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-800 dark:bg-brand-600 dark:hover:bg-brand-500"
+                        >
+                            Explore Research
+                        </a>
+                        <a
+                            href="/projects"
+                            class="inline-flex items-center gap-2 rounded-md border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-800 transition-colors hover:border-brand-600 hover:text-brand-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+                        >
+                            View Projects
+                        </a>
+                        <a
+                            href={PROFILE.CV_URL}
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="py-3 px-5 rounded-full bg-brand-600 text-white text-sm md:text-base font-semibold hover:bg-brand-700 transition-colors"
+                            class="inline-flex items-center gap-2 rounded-md border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-800 transition-colors hover:border-brand-600 hover:text-brand-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
                         >
-                            Download Resume
-                        </a>
-                        <a
-                            href="#contact"
-                            class="py-3 px-5 rounded-full border border-slate-200 dark:border-slate-700 text-sm md:text-base font-semibold hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
-                        >
-                            Contact me
+                            <Icon name="download" />
+                            Download CV
+                            <span class="sr-only"> (PDF, opens in a new tab)</span>
                         </a>
                     </div>
-                    <p class="text-sm text-slate-500 dark:text-slate-400">
-                        📍Detroit, MI · Open to remote and on-site roles
-                    </p>
+
+                    <ul class="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm" aria-label="Profiles">
+                        {
+                            secondaryLinks.map((social) => (
+                                <li>
+                                    <a
+                                        href={social.HREF}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="inline-flex items-center gap-1.5 font-medium text-slate-600 hover:text-brand-700 dark:text-slate-400 dark:hover:text-brand-400"
+                                    >
+                                        <Icon name={iconFor(social.ICON)} />
+                                        {social.TEXT}
+                                        <span class="sr-only"> (opens in a new tab)</span>
+                                    </a>
+                                </li>
+                            ))
+                        }
+                    </ul>
                 </div>
 
-                <div class="animate flex justify-center lg:justify-end">
-                    <div class="relative">
-                        <div
-                            class="absolute -inset-6 bg-gradient-to-tr from-brand-400/30 via-brand-500/10 to-transparent dark:from-brand-500/20 dark:via-brand-400/10 rounded-[32px] blur-2xl"
-                        >
-                        </div>
-                        <div class="relative p-1 rounded-[32px] border border-brand-200/60 dark:border-brand-800/60 bg-white dark:bg-slate-950">
-                            <img
-                                src="/image/imran-pollob.jpg"
-                                alt="Imran Pollob"
-                                class="w-[16rem] h-[16rem] md:w-[18rem] md:h-[18rem] rounded-[28px] object-cover border-4 border-white dark:border-slate-950"
-                            />
-                        </div>
-                    </div>
+                <div class="animate hidden lg:block">
+                    <img
+                        src={PROFILE.PHOTO}
+                        alt={`Portrait of ${PROFILE.NAME}`}
+                        width="400"
+                        height="400"
+                        class="size-72 rounded-2xl border border-slate-200 object-cover dark:border-slate-800"
+                    />
                 </div>
             </div>
         </Container>
     </section>
 
-    <section class="pb-20">
+    <!-- 2. Introduction -->
+    <section class="border-t border-slate-200 py-16 dark:border-slate-800 md:py-20" aria-labelledby="about-heading">
         <Container size="xl">
-            <div class="animate space-y-4">
+            <div class="grid gap-10 lg:grid-cols-[3fr_2fr] lg:gap-16">
                 <div>
-                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">Core Skills</h2>
+                    <h2 id="about-heading" class="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white md:text-[1.75rem]">
+                        Security research, grounded in engineering
+                    </h2>
+                    <div class="mt-4 space-y-4 leading-relaxed text-slate-600 dark:text-slate-400 md:text-lg">
+                        <p>
+                            My research sits at the intersection of security, decentralized systems, protocol design, and
+                            cryptographic systems. I am interested in what happens when a guarantee that holds on paper meets
+                            real blockchain state, real transactions, and real software.
+                        </p>
+                        <p>
+                            Industry experience shapes how I work. Having built and maintained production systems, I pay close
+                            attention to how designs are actually implemented and deployed, and I build prototypes to test ideas
+                            rather than stopping at the model.
+                        </p>
+                    </div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <dl class="grid content-start gap-4 rounded-xl border border-slate-200 bg-slate-50 p-6 text-sm dark:border-slate-800 dark:bg-slate-900/50">
                     {
-                        skills.map((skill) => (
-                            <div class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col gap-2 hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 transition-colors duration-300">
-                                <p class="text-sm font-semibold text-slate-900 dark:text-white uppercase">{skill.label}</p>
-                                <div class="flex flex-wrap gap-2">
-                                    {skill.values.map((value) => (
-                                        <span class="px-3 py-1 rounded-full border border-brand-200 dark:border-brand-800 text-sm text-brand-700 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10">
-                                            {value}
-                                        </span>
-                                    ))}
-                                </div>
+                        atAGlance.map((item) => (
+                            <div class="grid grid-cols-[5.5rem_1fr] gap-3">
+                                <dt class="font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">{item.term}</dt>
+                                <dd class="text-slate-800 dark:text-slate-200">{item.detail}</dd>
                             </div>
                         ))
                     }
-                </div>
+                </dl>
             </div>
         </Container>
     </section>
 
-    <section class="pb-16">
+    <!-- 3. Selected Research -->
+    <section class="border-t border-slate-200 py-16 dark:border-slate-800 md:py-20">
         <Container size="xl">
-            <div class="animate space-y-6">
+            <SectionHeader
+                id="research"
+                title="Selected Research"
+                description="Security and privacy in decentralized, programmable, and zero-knowledge systems."
+                href="/research"
+                linkText="Research & publications"
+            />
+            <div class="grid gap-5 md:grid-cols-2">
+                {researchProjects.map((project) => <ResearchCard project={project} />)}
+            </div>
+        </Container>
+    </section>
+
+    <!-- 4. Featured Projects -->
+    <section class="border-t border-slate-200 py-16 dark:border-slate-800 md:py-20">
+        <Container size="xl">
+            <SectionHeader
+                id="projects"
+                title="Featured Projects & Tools"
+                description="Software I have built: web tools people use, installable utilities, and smart-contract and full-stack systems."
+                href="/projects"
+                linkText="All projects"
+            />
+            <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {featuredProjects.map((project) => <ProjectCard project={project} />)}
+            </div>
+        </Container>
+    </section>
+
+    <!-- 5. Industry Experience -->
+    <section class="border-t border-slate-200 py-16 dark:border-slate-800 md:py-20">
+        <Container size="xl">
+            <SectionHeader
+                id="experience"
+                title="Industry Experience"
+                description="More than five years as a software engineer before my Ph.D., building and running production systems."
+            />
+            <ol class="divide-y divide-slate-200 dark:divide-slate-800">
+                {
+                    industryExperience.map((role) => (
+                        <li class="grid gap-3 py-6 first:pt-0 last:pb-0 md:grid-cols-[12rem_1fr] md:gap-8">
+                            <p class="text-sm font-medium tabular-nums text-slate-500 dark:text-slate-400">{role.period}</p>
+                            <div class="flex gap-4">
+                                {role.logo && (
+                                    <img
+                                        src={role.logo}
+                                        alt=""
+                                        width="100"
+                                        height="100"
+                                        loading="lazy"
+                                        class="mt-0.5 size-10 shrink-0 rounded-md border border-slate-200 bg-white object-contain p-0.5 dark:border-slate-700"
+                                    />
+                                )}
+                                <div>
+                                    <h3 class="font-semibold text-slate-900 dark:text-white">
+                                        {role.role} <span class="font-normal text-slate-500 dark:text-slate-400">at</span> {role.organization}
+                                    </h3>
+                                    <p class="mt-1 text-slate-600 dark:text-slate-400">{role.summary}</p>
+                                    {role.highlights && (
+                                        <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600 marker:text-slate-400 dark:text-slate-400">
+                                            {role.highlights.map((highlight) => (
+                                                <li>{highlight}</li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </div>
+                            </div>
+                        </li>
+                    ))
+                }
+            </ol>
+        </Container>
+    </section>
+
+    <!-- 6. Teaching & Education -->
+    <section class="border-t border-slate-200 py-16 dark:border-slate-800 md:py-20">
+        <Container size="xl">
+            <div class="grid gap-12 lg:grid-cols-2 lg:gap-16">
                 <div>
-                    <p class="text-sm uppercase tracking-wide text-brand-600 dark:text-brand-400 font-semibold">Timeline of</p>
-                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">Professional Experience</h2>
-                </div>
-                <div class="relative pl-4 md:pl-6">
-                    <div class="absolute left-1 md:left-2 top-2 bottom-2 w-px bg-slate-200 dark:bg-slate-800"></div>
-                    <ul class="space-y-8">
+                    <SectionHeader id="teaching" title="Teaching" />
+                    <p class="font-semibold text-slate-900 dark:text-white">{teaching.role}</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">{teaching.organization} · {teaching.period}</p>
+                    <ul class="mt-4 space-y-2.5">
                         {
-                            professionalExperience.map((item) => (
-                                <li class="relative pl-6 md:pl-8">
-                                    <span class="absolute left-0 top-2 inline-block h-3 w-3 rounded-full bg-brand-500" />
-                                    <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2 hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 transition-colors duration-300">
-                                        <div class="flex flex-col md:flex-row items-start gap-4 md:gap-6">
-                                            <div class="flex-shrink-0 flex justify-center md:justify-start">
-                                                <img
-                                                    src={item.logo}
-                                                    alt={`${item.company} logo`}
-                                                    class="w-16 h-16 md:w-24 md:h-24 object-contain rounded-md bg-white dark:bg-slate-900 mx-auto md:mx-0"
-                                                />
-                                            </div>
-                                            <div class="flex-1">
-                                                <p class="text-xs uppercase text-slate-500 dark:text-slate-400">
-                                                    {item.duration}
-                                                </p>
-                                                <h3 class="text-xl font-semibold text-slate-900 dark:text-white">
-                                                    {item.company}
-                                                </h3>
-                                                <p class="text-base font-semibold text-brand-700 dark:text-brand-400">{item.role}</p>
-                                                <ul class="pt-2 md:pt-3 list-disc ml-5 md:ml-6 space-y-2 text-sm md:text-base text-slate-600 dark:text-slate-400">
-                                                    {item.bullets.map((point) => (
-                                                        <li>{point}</li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
+                            teaching.courses.map((course) => (
+                                <li class="text-sm">
+                                    <span class="font-medium text-slate-800 dark:text-slate-200">{course.name}</span>
+                                    <span class="text-slate-500 dark:text-slate-400"> · {course.detail}</span>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+                <div>
+                    <SectionHeader id="education" title="Education" />
+                    <div class="rounded-xl border border-brand-200 bg-brand-50/60 p-5 dark:border-brand-900 dark:bg-brand-500/5">
+                        <p class="font-semibold text-slate-900 dark:text-white">{phd.degree}, {phd.field}</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">{phd.institution} · {phd.period}</p>
+                    </div>
+                    <ul class="mt-4 space-y-3 px-1">
+                        {
+                            earlierDegrees.map((degree) => (
+                                <li class="text-sm">
+                                    <span class="font-medium text-slate-800 dark:text-slate-200">
+                                        {degree.degree} in {degree.field}
+                                    </span>
+                                    <span class="text-slate-500 dark:text-slate-400"> · {degree.institution}, {degree.period}</span>
                                 </li>
                             ))
                         }
@@ -296,291 +298,8 @@ const skills = [
         </Container>
     </section>
 
-    <section class="pb-16" id="education">
-        <Container size="xl">
-            <div class="animate space-y-4">
-                <div>
-                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">Academic Background</h2>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {
-                        education.map((item) => (
-                            <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-1 hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 transition-colors duration-300">
-                                <h3 class="text-lg font-semibold text-slate-900 dark:text-white">{item.school}</h3>
-                                <p class="text-sm md:text-base text-slate-600 dark:text-slate-400">{item.degree}</p>
-                                <p class="text-sm md:text-base text-slate-600 dark:text-slate-400">{item.department}</p>
-                                <p class="text-xs md:text-sm uppercase text-slate-500 dark:text-slate-400">
-                                    {item.timeframe}
-                                </p>
-                                <p class="text-xs md:text-sm uppercase text-slate-500 dark:text-slate-400">
-                                    {item.detail}
-                                </p>
-                            </div>
-                        ))
-                    }
-                </div>
-            </div>
-        </Container>
-    </section>
-
-    <section class="pb-16" id="projects">
-        <Container size="xl">
-            <div class="animate flex flex-col gap-6">
-                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-                    <div>
-                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">Flagship Projects</h2>
-                    </div>
-                    <a
-                        href="/projects"
-                        class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-brand-400/50 hover:text-brand-600 dark:hover:text-brand-400"
-                    >
-                        View all projects →
-                    </a>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {
-                        featuredProjects.map((project) => (
-                            <ProjectCard
-                                title={project.title}
-                                description={project.description}
-                                image={project.image || undefined}
-                                liveUrl={project.liveUrl || undefined}
-                                repoUrl={project.url}
-                            />
-                        ))
-                    }
-                </div>
-            </div>
-        </Container>
-    </section>
-
-    <section class="pb-16" id="research">
-        <Container size="xl">
-            <div class="animate space-y-6">
-                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-                    <div>
-                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">Research Works</h2>
-                    </div>
-                    <a
-                        href="/research"
-                        class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-brand-400/50 hover:text-brand-600 dark:hover:text-brand-400"
-                    >
-                        View all research →
-                    </a>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {
-                        featuredResearch.map((paper) => (
-                            <a
-                                href={`/research#${paper.slug}`}
-                                class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2 hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 transition-colors duration-300"
-                            >
-                                <h3 class="text-lg font-semibold text-slate-900 dark:text-white line-clamp-2">{paper.title}</h3>
-                                <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 line-clamp-3">{paper.summary}</p>
-                                <p class="text-xs md:text-sm uppercase text-slate-500 dark:text-slate-400">
-                                    {paper.status === "in-press" ? "In Press" : paper.year}
-                                </p>
-                            </a>
-                        ))
-                    }
-                </div>
-            </div>
-        </Container>
-    </section>
-
-    <section class="pb-16" id="certifications">
-        <Container size="xl">
-            <div class="animate space-y-6">
-                <div>
-                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">Certifications</h2>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {
-                        certifications.map((group) => (
-                            <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4 hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 transition-colors duration-300">
-                                <h3 class="text-lg font-semibold text-slate-900 dark:text-white">{group.title}</h3>
-                                <div class="flex flex-col gap-8">
-                                    {group.items.map((item) => (
-                                        <div class="rounded-lg flex gap-4 items-start">
-                                            {item.thumbnail && (
-                                                <button
-                                                    type="button"
-                                                    class="shrink-0 rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden bg-white dark:bg-slate-900 hover:shadow-md hover:border-brand-400 transition cursor-pointer"
-                                                    data-cert-image={item.fullImage || item.thumbnail}
-                                                    data-cert-title={item.name}
-                                                    data-cert-link={item.credentialUrl}
-                                                    aria-label={`Open full image for ${item.name}`}
-                                                >
-                                                    <img
-                                                        src={item.thumbnail}
-                                                        alt={`${item.name} thumbnail`}
-                                                        class="w-20 h-20 object-cover"
-                                                        loading="lazy"
-                                                    />
-                                                </button>
-                                            )}
-                                            <div class="flex-1">
-                                                <p class="font-semibold text-slate-900 dark:text-white">{item.name}</p>
-                                                <ul class="list-disc ml-5 space-y-1 text-sm md:text-base text-slate-600 dark:text-slate-400">
-                                                    {item.detail.slice(0, 4).map((point) => (
-                                                        <li>{point}</li>
-                                                    ))}
-                                                </ul>
-                                                {item.credentialUrl && (
-                                                    <a
-                                                        href={item.credentialUrl}
-                                                        target="_blank"
-                                                        class="inline-flex items-center gap-1 mt-2 text-sm font-semibold text-brand-600 dark:text-brand-400 underline decoration-[.5px] underline-offset-4 cert-open"
-                                                        rel="noreferrer"
-                                                        data-cert-image={item.fullImage || item.thumbnail}
-                                                        data-cert-title={item.name}
-                                                        data-cert-link={item.credentialUrl}
-                                                    >
-                                                        View credential →
-                                                    </a>
-                                                )}
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        ))
-                    }
-                </div>
-            </div>
-        </Container>
-    </section>
-
-    <dialog id="cert-modal" class="backdrop:bg-slate-900/50 rounded-2xl p-0 border border-slate-200 dark:border-slate-700">
-        <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden max-w-3xl">
-            <div class="flex items-center justify-between px-4 py-3 border-b border-slate-200 dark:border-slate-800">
-                <p id="cert-modal-title" class="font-semibold text-slate-900 dark:text-white text-base md:text-lg"></p>
-                <button
-                    id="cert-modal-close"
-                    class="p-2 rounded-full border border-slate-200 dark:border-slate-700 hover:border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-500/10"
-                    aria-label="Close certification image"
-                >
-                    <svg class="size-4" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2">
-                        <path d="M6 6l12 12"></path>
-                        <path d="M6 18L18 6"></path>
-                    </svg>
-                </button>
-            </div>
-            <div class="bg-slate-50 dark:bg-slate-950/50 flex flex-col justify-center items-center p-4 gap-3">
-                <img
-                    id="cert-modal-img"
-                    src=""
-                    alt=""
-                    class="max-h-[70vh] w-auto rounded-lg border border-slate-200 dark:border-slate-800"
-                />
-                <a
-                    id="cert-modal-link"
-                    href="#"
-                    target="_blank"
-                    rel="noreferrer"
-                    class="inline-flex items-center gap-1 text-sm font-semibold text-brand-600 dark:text-brand-400 underline decoration-[.5px] underline-offset-4"
-                >
-                    Verify credential →
-                </a>
-            </div>
-        </div>
-    </dialog>
-
-    <script is:inline>
-        function attachCertificationModal() {
-            const modal = document.getElementById("cert-modal");
-            const modalImg = document.getElementById("cert-modal-img");
-            const modalTitle = document.getElementById("cert-modal-title");
-            const closeBtn = document.getElementById("cert-modal-close");
-            const modalLink = document.getElementById("cert-modal-link");
-
-            function openModal(src, title, link) {
-                if (!modal || !modalImg || !modalTitle || !modalLink) return;
-                modalImg.src = src;
-                modalTitle.textContent = title;
-                modalLink.href = link || "#";
-                modalLink.style.display = link ? "inline-flex" : "none";
-                // Some browsers require showModal to exist on dialog
-                if (typeof modal.showModal === "function") {
-                    modal.showModal();
-                } else {
-                    modal.setAttribute("open", "true");
-                }
-            }
-
-            function closeModal() {
-                if (!modal) return;
-                if (typeof modal.close === "function") {
-                    modal.close();
-                } else {
-                    modal.removeAttribute("open");
-                }
-            }
-
-            function attachTriggers() {
-                document.querySelectorAll("[data-cert-image]").forEach((trigger) => {
-                    trigger.addEventListener("click", (event) => {
-                        event.preventDefault();
-                        const src = trigger.getAttribute("data-cert-image");
-                        const title = trigger.getAttribute("data-cert-title") || "Certification";
-                        const link = trigger.getAttribute("data-cert-link") || "";
-                        if (src) openModal(src, title, link);
-                    });
-                });
-            }
-
-            attachTriggers();
-
-            document.addEventListener("astro:after-swap", attachTriggers);
-            document.addEventListener("astro:after-swap", () => {
-                closeBtn?.addEventListener("click", closeModal);
-                modal?.addEventListener("click", (event) => {
-                    if (event.target === modal) closeModal();
-                });
-            });
-
-            closeBtn?.addEventListener("click", closeModal);
-            modal?.addEventListener("click", (event) => {
-                if (event.target === modal) closeModal();
-            });
-        }
-
-        document.addEventListener("astro:after-swap", attachCertificationModal);
-        attachCertificationModal();
-    </script>
-
-    <section class="pb-16">
-        <Container size="xl">
-            <div class="animate grid grid-cols-1 md:grid-cols-2 gap-6">
-                <a
-                    href="/projects"
-                    class="group p-8 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 transition-colors duration-300"
-                >
-                    <p class="text-sm uppercase tracking-widest text-brand-600 dark:text-brand-400 font-semibold">Explore</p>
-                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Projects</h2>
-                    <p class="text-sm md:text-base text-slate-600 dark:text-slate-400">
-                        Blockchain protocols, AI systems, and full-stack tools I've built and shipped.
-                    </p>
-                    <p class="text-sm font-semibold text-brand-600 dark:text-brand-400 underline decoration-[.5px] underline-offset-4 group-hover:no-underline">
-                        Browse projects →
-                    </p>
-                </a>
-                <a
-                    href="/research"
-                    class="group p-8 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 transition-colors duration-300"
-                >
-                    <p class="text-sm uppercase tracking-widest text-brand-600 dark:text-brand-400 font-semibold">Explore</p>
-                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Research</h2>
-                    <p class="text-sm md:text-base text-slate-600 dark:text-slate-400">
-                        Peer-reviewed publications in blockchain security and applied machine learning.
-                    </p>
-                    <p class="text-sm font-semibold text-brand-600 dark:text-brand-400 underline decoration-[.5px] underline-offset-4 group-hover:no-underline">
-                        Read the research →
-                    </p>
-                </a>
-            </div>
-        </Container>
-    </section>
-
-    <ContactCTA />
+    <!-- 7. Contact -->
+    <div class="border-t border-slate-200 dark:border-slate-800">
+        <ContactCTA />
+    </div>
 </PageLayout>

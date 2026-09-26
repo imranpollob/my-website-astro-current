@@ -1,101 +1,146 @@
 ---
 import Container from "@components/Container.astro";
 import ContactCTA from "@components/ContactCTA.astro";
+import Icon from "@components/Icon.astro";
+import PublicationItem from "@components/PublicationItem.astro";
+import ResearchProject from "@components/ResearchProject.astro";
+import SectionHeader from "@components/SectionHeader.astro";
 import PageLayout from "@layouts/PageLayout.astro";
-import { RESEARCH } from "@consts";
-import { researchPapers, RESEARCH_INTERESTS, SCHOLAR_URL } from "@data/research";
+import { PROFILE, RESEARCH, SCHOLAR_URL } from "@consts";
+import { publications, RESEARCH_VISION, researchAreas, researchProjects } from "@data/research";
 
-const YOU = "M M Imran";
+const byYear = (a: { year: number }, b: { year: number }) => b.year - a.year;
+const selectedPublications = publications.filter((paper) => paper.group === "selected").sort(byYear);
+const earlierPublications = publications.filter((paper) => paper.group === "earlier").sort(byYear);
 
-const sortedPapers = [...researchPapers].sort((a, b) => b.year - a.year);
+const titleFor = (slug: string) => researchProjects.find((project) => project.slug === slug)?.title ?? slug;
+
+const jumpLinks = [
+    { href: "#areas", label: "Research Areas" },
+    { href: "#projects", label: "Research Projects" },
+    { href: "#publications", label: "Publications" },
+];
 ---
 
 <PageLayout title={RESEARCH.TITLE} description={RESEARCH.DESCRIPTION}>
-    <section class="pt-28 pb-12">
+    <!-- 1. Research Vision -->
+    <section class="pb-12 pt-28 md:pt-36" aria-labelledby="research-heading">
         <Container size="xl">
-            <div class="animate space-y-6 max-w-3xl">
-                <div class="text-xl md:text-2xl lg:text-3xl page-heading">{RESEARCH.TITLE}</div>
-                <p class="text-base md:text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-                    {RESEARCH_INTERESTS}
-                </p>
-                <a
-                    href={SCHOLAR_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    class="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline decoration-[.5px] underline-offset-4 decoration-brand-400/50 hover:text-brand-600 dark:hover:text-brand-400"
-                >
-                    View full profile on Google Scholar →
-                </a>
+            <div class="animate max-w-3xl">
+                <h1 id="research-heading" class="text-3xl font-semibold tracking-tight text-slate-900 dark:text-white md:text-4xl">
+                    {RESEARCH.TITLE}
+                </h1>
+                <div class="mt-5 space-y-4 text-base leading-relaxed text-slate-600 dark:text-slate-400 md:text-lg">
+                    {RESEARCH_VISION.map((paragraph) => <p>{paragraph}</p>)}
+                </div>
+                <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+                    <a
+                        href={SCHOLAR_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 rounded-md bg-brand-700 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-800 dark:bg-brand-600 dark:hover:bg-brand-500"
+                    >
+                        <Icon name="scholar" />
+                        Google Scholar
+                        <span class="sr-only"> (opens in a new tab)</span>
+                    </a>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">
+                        Publications appear under the name <span class="font-semibold text-slate-700 dark:text-slate-300">{PROFILE.PUBLICATION_NAME}</span>.
+                    </p>
+                </div>
+                <nav aria-label="On this page" class="mt-8">
+                    <ul class="flex flex-wrap gap-x-5 gap-y-2 text-sm">
+                        {
+                            jumpLinks.map((link) => (
+                                <li>
+                                    <a href={link.href} class="text-link font-medium">
+                                        {link.label}
+                                    </a>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </nav>
             </div>
         </Container>
     </section>
 
-    <section class="pb-20" id="publications">
+    <!-- 2. Research Areas -->
+    <section class="border-t border-slate-200 py-16 dark:border-slate-800 md:py-20">
         <Container size="xl">
-            <div class="animate space-y-6">
-                <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">Publications</h2>
-                <div class="flex flex-col gap-6">
-                    {
-                        sortedPapers.map((paper) => (
-                            <div
-                                id={paper.slug}
-                                class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 scroll-mt-24 hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 transition-colors duration-300"
-                            >
-                                <div class="flex flex-wrap items-center gap-2">
-                                    {paper.status === "in-press" && (
-                                        <span class="text-xs font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full border border-brand-200 dark:border-brand-800 text-brand-700 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10">
-                                            In Press
-                                        </span>
-                                    )}
-                                    <span class="text-xs md:text-sm uppercase text-slate-500 dark:text-slate-400">
-                                        {paper.year}
-                                    </span>
-                                </div>
-
-                                <h3 class="text-lg md:text-xl font-semibold text-slate-900 dark:text-white">
-                                    <a href={paper.url} target="_blank" rel="noreferrer" class="hover:text-brand-600 dark:hover:text-brand-400">
-                                        {paper.title}
-                                    </a>
-                                </h3>
-
-                                <p class="text-sm md:text-base text-slate-600 dark:text-slate-400">
-                                    {paper.authors.map((author, i) => (
+            <SectionHeader id="areas" title="Research Areas" />
+            <div class="grid gap-5 md:grid-cols-2">
+                {
+                    researchAreas.map((area) => (
+                        <article class="card flex flex-col gap-3 p-6">
+                            <h3 class="text-lg font-semibold text-slate-900 dark:text-white">{area.title}</h3>
+                            <p class="leading-relaxed text-slate-600 dark:text-slate-400">{area.description}</p>
+                            {area.note && <p class="text-sm leading-relaxed text-slate-500 dark:text-slate-400">{area.note}</p>}
+                            {area.related && (
+                                <p class="mt-auto pt-1 text-sm text-slate-500 dark:text-slate-400">
+                                    Related:{" "}
+                                    {area.related.map((slug, i) => (
                                         <>
-                                            <span class={author === YOU ? "font-semibold text-slate-900 dark:text-white" : undefined}>
-                                                {author}
-                                            </span>
-                                            {i < paper.authors.length - 1 ? ", " : ""}
+                                            {i > 0 && ", "}
+                                            <a href={`#${slug}`} class="text-link font-medium">
+                                                {titleFor(slug)}
+                                            </a>
                                         </>
                                     ))}
                                 </p>
+                            )}
+                        </article>
+                    ))
+                }
+            </div>
+        </Container>
+    </section>
 
-                                <p class="text-sm md:text-base italic text-slate-500 dark:text-slate-400">{paper.venue}</p>
+    <!-- 3. Research Projects -->
+    <section class="border-t border-slate-200 py-16 dark:border-slate-800 md:py-20">
+        <Container size="xl">
+            <SectionHeader
+                id="projects"
+                title="Research Projects"
+                description="Current and recent projects. Work that is still in progress is labelled as such."
+            />
+            <div class="space-y-6">
+                {researchProjects.map((project) => <ResearchProject project={project} />)}
+            </div>
+        </Container>
+    </section>
 
-                                <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
-                                    {paper.summary}
-                                </p>
+    <!-- 4. Publications -->
+    <section class="border-t border-slate-200 py-16 dark:border-slate-800 md:py-20">
+        <Container size="xl">
+            <SectionHeader id="publications" title="Publications" href={SCHOLAR_URL} linkText="Full list on Google Scholar" />
 
-                                <div class="flex flex-wrap items-center gap-3 pt-1 text-xs md:text-sm uppercase text-slate-500 dark:text-slate-400">
-                                    {typeof paper.citations === "number" && <span>{paper.citations} citations</span>}
-                                    <a
-                                        href={paper.url}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        class="underline decoration-[.5px] underline-offset-4 decoration-brand-400/50 hover:text-brand-600 dark:hover:text-brand-400"
-                                    >
-                                        View on Scholar →
-                                    </a>
-                                </div>
-                            </div>
-                        ))
-                    }
+            <div class="space-y-12">
+                <div>
+                    <h3 class="text-lg font-semibold text-slate-900 dark:text-white">Security & Decentralized Systems</h3>
+                    <ul class="mt-2 divide-y divide-slate-200 border-t border-slate-200 dark:divide-slate-800 dark:border-slate-800">
+                        {selectedPublications.map((publication) => <PublicationItem publication={publication} />)}
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold text-slate-900 dark:text-white">Earlier Publications</h3>
+                    <p class="mt-1 max-w-2xl text-sm text-slate-500 dark:text-slate-400">
+                        Collaborative work in scientific workflow systems, applied machine learning, and embedded and on-chip
+                        networked systems.
+                    </p>
+                    <ul class="mt-2 divide-y divide-slate-200 border-t border-slate-200 dark:divide-slate-800 dark:border-slate-800">
+                        {earlierPublications.map((publication) => <PublicationItem publication={publication} />)}
+                    </ul>
                 </div>
             </div>
         </Container>
     </section>
 
-    <ContactCTA
-        heading="Interested in collaborating on research?"
-        subheading="Open to co-authorship, PhD/postdoc opportunities, and research-focused roles"
-    />
+    <div class="border-t border-slate-200 dark:border-slate-800">
+        <ContactCTA
+            heading="Research collaboration"
+            subheading="I'm happy to talk about collaborations, co-authorship, and research positions in security and decentralized systems."
+        />
+    </div>
 </PageLayout>

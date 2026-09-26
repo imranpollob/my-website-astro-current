@@ -1,28 +1,29 @@
 import rss from "@astrojs/rss"
 import { SITE } from "@consts"
-import { researchPapers } from "@data/research"
-import projectsData from "./projects/projects.json"
+import { publications, researchProjects } from "@data/research"
+import { projects } from "@data/projects"
 
 type Context = {
   site: string
 }
 
-type Project = (typeof projectsData.portfolio.projects)["Blockchain Engineering"][number]
-
 export async function GET(context: Context) {
-  const projects: Project[] = (Object.values(projectsData.portfolio.projects) as Project[][]).flat()
-
   const items = [
+    ...researchProjects.map((project) => ({
+      title: project.title,
+      description: project.summary,
+      link: `/research#${project.slug}`,
+    })),
+    ...publications.map((paper) => ({
+      title: paper.title,
+      description: paper.summary,
+      link: `/research#${paper.slug}`,
+      pubDate: new Date(paper.year, 0, 1),
+    })),
     ...projects.map((project) => ({
       title: project.title,
       description: project.description,
-      link: project.url,
-    })),
-    ...researchPapers.map((paper) => ({
-      title: paper.title,
-      description: paper.summary,
-      link: paper.url,
-      pubDate: new Date(paper.year, 0, 1),
+      link: project.liveUrl ?? project.githubUrl ?? "/projects",
     })),
   ]
 

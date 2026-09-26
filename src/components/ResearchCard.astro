@@ -1,0 +1,27 @@
+---
+import type { ResearchProject } from "@data/research";
+import StatusBadge from "@components/StatusBadge.astro";
+import Icon from "@components/Icon.astro";
+
+type Props = {
+    project: ResearchProject;
+};
+
+const { project } = Astro.props;
+const href = `/research#${project.slug}`;
+---
+
+<article class="card flex flex-col gap-3 p-6">
+    {project.status && <div><StatusBadge status={project.status} /></div>}
+    <div>
+        <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
+            <a href={href} class="hover:text-brand-700 dark:hover:text-brand-300">{project.title}</a>
+        </h3>
+        <p class="mt-0.5 text-sm text-slate-500 dark:text-slate-400">{project.subtitle}</p>
+    </div>
+    <p class="flex-1 text-[0.95rem] leading-relaxed text-slate-600 dark:text-slate-400">{project.summary}</p>
+    <a href={href} class="text-link inline-flex items-center gap-1.5 text-sm font-semibold">
+        Details<span class="sr-only"> about {project.title}</span>
+        <Icon name="arrow-right" class="size-3.5" />
+    </a>
+</article>

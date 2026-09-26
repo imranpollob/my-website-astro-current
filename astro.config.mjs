@@ -7,10 +7,13 @@ import pagefind from "astro-pagefind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://imranpollob.com",
+  // The apex domain redirects to www, so canonical URLs and the sitemap use www.
+  site: "https://www.imranpollob.com",
   integrations: [
     mdx(),
-    sitemap(),
+    sitemap({
+      filter: (page) => !page.includes("/search"),
+    }),
     solidJs(),
     tailwind({ applyBaseStyles: false }),
     pagefind(),
