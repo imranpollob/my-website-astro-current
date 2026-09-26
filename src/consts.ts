@@ -5,7 +5,7 @@ export const SITE: Site = {
   TITLE: "Imran Pollob",
   HOME_TITLE: "Imran Pollob — Security & Decentralized Systems Researcher",
   DESCRIPTION:
-    "Imran Pollob is a Ph.D. researcher at Wayne State University studying blockchain security, privacy, and programmable account systems, with 5+ years of prior experience as a software engineer.",
+    "Imran Pollob is a Ph.D. researcher at Wayne State University studying blockchain security, privacy, and programmable accounts, with five years of software engineering industry experience before the Ph.D.",
   AUTHOR: "Imran Pollob",
 };
 
@@ -35,12 +35,6 @@ export const PROJECTS: Page = {
   TITLE: "Projects",
   DESCRIPTION:
     "Web tools, installable utilities, and engineering projects built by Imran Pollob, from Solidity protocols to full-stack applications.",
-};
-
-// Search Page
-export const SEARCH: Page = {
-  TITLE: "Search",
-  DESCRIPTION: "Search research and projects by keyword.",
 };
 
 // Primary navigation. The name/logo links to Home; CV opens the PDF.

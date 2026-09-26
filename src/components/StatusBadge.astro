@@ -16,7 +16,9 @@ const { status } = Astro.props;
             "border-brand-200 bg-brand-50 text-brand-800 dark:border-brand-800 dark:bg-brand-500/10 dark:text-brand-300",
         status.kind === "ongoing" &&
             "border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-800 dark:bg-amber-500/10 dark:text-amber-300",
-        status.kind === "in-progress" &&
+        status.kind === "accepted" &&
+            "border-brand-200 bg-white text-brand-800 dark:border-brand-800 dark:bg-slate-900 dark:text-brand-300",
+        status.kind === "study" &&
             "border-slate-200 bg-slate-50 text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300",
     )}
 >
@@ -25,7 +27,8 @@ const { status } = Astro.props;
             "size-1.5 rounded-full",
             status.kind === "published" && "bg-brand-600",
             status.kind === "ongoing" && "bg-amber-500",
-            status.kind === "in-progress" && "bg-slate-400",
+            status.kind === "accepted" && "bg-brand-500",
+            status.kind === "study" && "bg-slate-400",
         )}
         aria-hidden="true"
     >

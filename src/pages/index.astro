@@ -45,8 +45,8 @@ const industryCompanies = industryExperience.map((role) => role.organization).re
 
 const atAGlance = [
     { term: "Now", detail: `${phd.degree}, ${phd.field} · ${phd.institution}` },
-    { term: "Before", detail: `5+ years as a software engineer · ${industryCompanies.join(", ")}` },
-    { term: "Teaching", detail: `${teaching.role} · ${teaching.organization}` },
+    { term: "Before", detail: `5 years as a software engineer in industry · ${industryCompanies.join(", ")}` },
+    { term: "Teaching", detail: `${teaching.current} · ${teaching.organization}` },
     { term: "Based in", detail: PROFILE.LOCATION },
 ];
 ---
@@ -82,8 +82,8 @@ const atAGlance = [
                     </p>
                     <p class="mt-6 max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-400 md:text-lg">
                         I am a Ph.D. candidate in Computer Science at {PROFILE.AFFILIATION}, researching security and privacy
-                        in decentralized and programmable systems. Before starting my doctoral research, I spent more than five
-                        years as a software engineer building production web applications, backend systems, and APIs.
+                        in decentralized and programmable systems. Before beginning my Ph.D., I spent five years in industry as a
+                        software engineer, building production web applications, backend systems, and APIs.
                     </p>
 
                     <div class="mt-8 flex flex-wrap gap-3">
@@ -217,7 +217,7 @@ const atAGlance = [
             <SectionHeader
                 id="experience"
                 title="Industry Experience"
-                description="More than five years as a software engineer before my Ph.D., building and running production systems."
+                description="Five years of professional software engineering before beginning my Ph.D., building and running production systems."
             />
             <ol class="divide-y divide-slate-200 dark:divide-slate-800">
                 {
@@ -262,13 +262,16 @@ const atAGlance = [
             <div class="grid gap-12 lg:grid-cols-2 lg:gap-16">
                 <div>
                     <SectionHeader id="teaching" title="Teaching" />
-                    <p class="font-semibold text-slate-900 dark:text-white">{teaching.role}</p>
-                    <p class="text-sm text-slate-500 dark:text-slate-400">{teaching.organization} · {teaching.period}</p>
-                    <ul class="mt-4 space-y-2.5">
+                    <p class="font-semibold text-slate-900 dark:text-white">{teaching.organization}</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">{teaching.role} · {teaching.period}</p>
+                    <p class="mt-5 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Courses</p>
+                    <ul class="mt-2 space-y-2.5">
                         {
                             teaching.courses.map((course) => (
                                 <li class="text-sm">
-                                    <span class="font-medium text-slate-800 dark:text-slate-200">{course.name}</span>
+                                    <span class="font-medium text-slate-800 dark:text-slate-200">
+                                        {course.code && `${course.code} — `}{course.name}
+                                    </span>
                                     <span class="text-slate-500 dark:text-slate-400"> · {course.detail}</span>
                                 </li>
                             ))

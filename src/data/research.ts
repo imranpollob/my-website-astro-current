@@ -5,7 +5,8 @@ import { PROFILE } from "@consts";
 
 export const RESEARCH_VISION = [
     "My research studies security, privacy, and trust in decentralized, programmable, and zero-knowledge systems. I focus on the boundaries between layers: where cryptographic guarantees, protocol designs, and authorization rules meet blockchain state, transaction execution, and the way deployed systems actually behave.",
-    "Each of those layers can look sound in isolation while the system as a whole does not. I approach these problems as both a researcher and an engineer. Before my Ph.D. I spent more than five years building production software, and I pair analysis with working implementations.",
+    "That focus has developed across four projects: securing decentralized cyber-physical communication (Secure-BSM), preserving stealth-address privacy when gas is sponsored (PrivGas), authorization and delegation risks in programmable EOAs (EIP-7702), and, in ongoing work, how zero-knowledge proofs are bound to the state and context they authorize.",
+    "I approach these problems as both a researcher and an engineer. Before beginning my Ph.D., I spent five years as a software engineer in industry, and I pair analysis with working implementations.",
 ];
 
 // ─── Research areas ─────────────────────────────────────────────────────────
@@ -15,16 +16,14 @@ export type ResearchArea = {
     description: string;
     // Anchor ids of related research projects on /research.
     related?: string[];
-    note?: string;
 };
 
 export const researchAreas: ResearchArea[] = [
     {
-        title: "Blockchain & Smart Contract Security",
+        title: "Blockchain Security",
         description:
             "Security of blockchain applications, transaction systems, smart contracts, and decentralized infrastructure, including decentralized and cyber-physical settings such as connected vehicles.",
         related: ["secure-bsm"],
-        note: "Earlier Ph.D. work includes a Solidity vulnerability-detection framework that combines hypergraph neural networks with domain-adapted language models.",
     },
     {
         title: "Privacy-Preserving Systems",
@@ -33,9 +32,9 @@ export const researchAreas: ResearchArea[] = [
         related: ["privgas"],
     },
     {
-        title: "Programmable Account & Authorization Security",
+        title: "Programmable Accounts & Authorization",
         description:
-            "EIP-7702, programmable accounts, authorization mechanisms, wallets, and transaction execution.",
+            "EIP-7702, programmable EOAs, authorization and delegation mechanisms, wallets, and transaction execution.",
         related: ["eip-7702"],
     },
     {
@@ -50,7 +49,7 @@ export const researchAreas: ResearchArea[] = [
 
 export type ResearchStatus = {
     label: string;
-    kind: "published" | "ongoing" | "in-progress";
+    kind: "published" | "accepted" | "study" | "ongoing";
 };
 
 export type ResearchProject = {
@@ -82,44 +81,47 @@ export const researchProjects: ResearchProject[] = [
             "A collaborative misbehavior-detection architecture built on blockchain consensus, using dual-layer ledgers and Verifiable Rate-limit Tokens enforced by smart contracts.",
         contribution:
             "Designed to reduce false positives in misbehavior detection and to mitigate denial-of-service floods from misbehaving vehicles.",
-        status: { label: "In press · IEEE MOST 2026", kind: "published" },
+        status: { label: "Published · IEEE MOST 2026", kind: "published" },
         tags: ["V2X", "Blockchain", "Smart Contracts", "Cyber-Physical Systems"],
         publication: "secure-bsm-blockchain-misbehavior-detection",
     },
     {
         slug: "privgas",
         title: "PrivGas",
-        subtitle: "Privacy-preserving gas sponsorship for stealth-address transactions",
+        subtitle: "Funding–spending decoupling for anonymous stealth-address gas sponsorship",
         summary:
             "Gas sponsorship for stealth-address transactions that decouples how gas is funded from how funds are spent, so that paying for gas does not undermine stealth-address privacy.",
         problem:
-            "Stealth addresses let a recipient receive funds at a fresh, unlinkable address. Spending from that address still requires gas, and funding the gas in a way that links back to the recipient can undermine the privacy the stealth address was meant to provide.",
+            "ERC-5564 stealth addresses let a recipient receive funds at a fresh, unlinkable address. Spending from that address still requires gas, and funding the gas in a way that links back to the recipient can undo the privacy the stealth address was meant to provide.",
         approach:
-            "A funding–spending decoupling design for gas sponsorship that combines stealth addresses, account abstraction, privacy-preserving protocol design, and zero-knowledge techniques.",
-        tags: ["Stealth Addresses", "Account Abstraction", "Zero-Knowledge", "Privacy"],
+            "A privacy-preserving gas-sponsorship protocol built on funding–spending decoupling. It combines ERC-5564 stealth addresses with ERC-4337 account abstraction and uses zero-knowledge techniques in the protocol design.",
+        status: { label: "Accepted & presented · IEEE AIBThings 2026", kind: "accepted" },
+        tags: ["ERC-5564", "ERC-4337", "Stealth Addresses", "Zero-Knowledge", "Privacy"],
+        publication: "privgas-stealth-address-gas-sponsorship",
     },
     {
         slug: "eip-7702",
         title: "EIP-7702 Authorization Security",
-        subtitle: "Security of programmable account authorization",
+        subtitle: "Authorization and delegation security of programmable EOAs",
         summary:
-            "An analysis of the security risks surrounding EIP-7702, which lets existing Ethereum accounts authorize smart-contract code to act on their behalf.",
+            "A study of the authorization and delegation security risks introduced when EIP-7702 lets externally owned accounts delegate to smart-contract code.",
         problem:
             "EIP-7702 allows an externally owned account (EOA) to delegate its execution to smart-contract code through a signed authorization. This brings programmable-account features to existing accounts, but it also changes what a single signature can authorize.",
         approach:
-            "Analyzes the security risks surrounding EIP-7702 authorization, delegated account code, and the programmable-account model it introduces.",
-        tags: ["EIP-7702", "Programmable Accounts", "Authorization", "Wallets"],
+            "Studies the authorization and delegation security risks that programmable EOAs introduce under EIP-7702.",
+        status: { label: "Research study", kind: "study" },
+        tags: ["EIP-7702", "Programmable EOAs", "Authorization", "Delegation"],
     },
     {
         slug: "zk-security",
         title: "Zero-Knowledge Application Security",
-        subtitle: "What a proof establishes versus what it is used to authorize",
+        subtitle: "Binding proofs to the state and context they authorize",
         summary:
-            "Investigating security problems in the relationship between zero-knowledge proof statements and the blockchain state, execution context, or application semantics they are meant to authorize.",
+            "Investigating security failures that can occur when a valid zero-knowledge proof is not correctly bound to the blockchain state, execution context, or application semantics it is meant to authorize.",
         problem:
-            "A zero-knowledge proof establishes that a specific statement is true. Applications then rely on that proof to authorize actions that depend on blockchain state, execution context, and application semantics. Security problems can arise when the statement that is proven and the action it is meant to authorize do not match.",
+            "A zero-knowledge proof establishes that a specific statement is true, and applications rely on that proof to authorize actions. A proof can be cryptographically valid and still be unsafe to act on if it is not correctly bound to the blockchain state, execution context, or application semantics it is intended to authorize.",
         approach:
-            "This ongoing work investigates the relationship between proof statements and the state, context, and semantics they are intended to authorize.",
+            "This ongoing work investigates how proof statements are bound to the state, context, and semantics they authorize, and where that binding can fail. No results have been published yet.",
         status: { label: "Ongoing research", kind: "ongoing" },
         tags: ["Zero-Knowledge Proofs", "Blockchain State", "Authorization"],
     },
@@ -130,14 +132,15 @@ export const researchProjects: ResearchProject[] = [
 export type Publication = {
     slug: string;
     title: string;
-    authors: string[];
+    // Omitted when the author list has not been confirmed.
+    authors?: string[];
     venue: string;
+    pages?: string;
     year: number;
-    status: "published" | "in-press";
+    status: "published" | "accepted";
     // "selected" = current security / decentralized-systems work; "earlier" = prior areas.
     group: "selected" | "earlier";
-    // Short description used by search and RSS; not rendered on the page.
-    summary: string;
+    doi?: string;
     links?: ResourceLink[];
     bibtex?: string;
 };
@@ -150,40 +153,48 @@ const scholarLink = (citationId: string): ResourceLink => ({
     href: `https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-K7OkFUAAAAJ&citation_for_view=-K7OkFUAAAAJ:${citationId}`,
 });
 
+export const doiUrl = (doi: string) => `https://doi.org/${doi}`;
+
 export const publications: Publication[] = [
     {
         slug: "secure-bsm-blockchain-misbehavior-detection",
         title: "Secure-BSM: Blockchain-Assisted Collaborative Misbehavior Detection in Vehicular Networks",
         authors: [ME, "Yi Zhu", "Shiyong Lu"],
         venue: "2026 IEEE 4th International Conference on Mobility, Operations, Services and Technologies (MOST)",
+        pages: "160–171",
         year: 2026,
-        status: "in-press",
+        status: "published",
         group: "selected",
-        summary:
-            "A collaborative blockchain consensus architecture for detecting malicious Basic Safety Messages (BSMs) in V2X networks, using dual-layer ledgers and smart-contract-enforced Verifiable Rate-limit Tokens.",
+        doi: "10.1109/MOST69733.2026.00026",
+    },
+    {
+        slug: "privgas-stealth-address-gas-sponsorship",
+        title: "Funding-Spending Decoupling for Anonymous Stealth-Address Gas Sponsorship",
+        venue: "IEEE 4th International Conference on Artificial Intelligence, Blockchain, and Internet of Things (AIBThings)",
+        year: 2026,
+        status: "accepted",
+        group: "selected",
     },
     {
         slug: "scientific-workflow-engine",
         title: "A generic efficient scientific workflow engine for the optimizations of run-time execution",
         authors: ["Changxin Bai", "Junwen Liu", "Anik Tahabilder", ME, "Shiyong Lu", "Dunren Che"],
-        venue: "2023 IEEE International Conference on Software Services Engineering (SSE), pp. 98–103",
+        venue: "2023 IEEE International Conference on Software Services Engineering (SSE)",
+        pages: "98–103",
         year: 2023,
         status: "published",
         group: "earlier",
-        summary:
-            "A workflow engine architecture that separates the planner from the executor so child tasks can start as soon as their input data is ready.",
         links: [scholarLink("ufrVoPGSRksC")],
     },
     {
         slug: "smart-fire-detection-system",
         title: "An automated smart embedded system on fire detection and prevention for ensuring safety",
         authors: ["F. M. Javed Mehedi Shamrat", "Aliza Ahmed Khan", "Zakia Sultana", ME, "Md Abdulla", "Ankit Khater"],
-        venue: "2021 2nd International Conference on Smart Electronics and Communication (ICOSEC), pp. 978–983",
+        venue: "2021 2nd International Conference on Smart Electronics and Communication (ICOSEC)",
+        pages: "978–983",
         year: 2021,
         status: "published",
         group: "earlier",
-        summary:
-            "An embedded fire-detection system with coordinated smoke-detection, alert-notification, and emergency-alarm modules.",
         links: [scholarLink("2osOgNQ5qMEC")],
     },
     {
@@ -198,11 +209,11 @@ export const publications: Publication[] = [
             "Protiva Das",
             "Md Obaidur Rahman",
         ],
-        venue: "Indonesian Journal of Electrical Engineering and Computer Science, 23(1), pp. 463–470",
+        venue: "Indonesian Journal of Electrical Engineering and Computer Science, 23(1)",
+        pages: "463–470",
         year: 2021,
         status: "published",
         group: "earlier",
-        summary: "NLP and supervised KNN classification of Twitter sentiment about COVID-19 vaccines.",
         links: [scholarLink("u-x6o8ySG0sC")],
     },
     {
@@ -217,22 +228,30 @@ export const publications: Publication[] = [
             ME,
             "Md Abdulla",
         ],
-        venue: "Bulletin of Electrical Engineering and Informatics, 10(6), pp. 3369–3376",
+        venue: "Bulletin of Electrical Engineering and Informatics, 10(6)",
+        pages: "3369–3376",
         year: 2021,
         status: "published",
         group: "earlier",
-        summary: "A comparison of supervised ML algorithms for liver disease diagnosis with LASSO feature selection.",
         links: [scholarLink("9yKSN-GCB0IC")],
     },
     {
         slug: "adaptive-noc-routing",
         title: "An adaptive routing algorithm for on-chip 2D mesh network with an efficient buffer allocation scheme",
         authors: [ME, "M. S. Kaiser", "Syeda Tanjila Atik", "Jenia A. Jeba", "Z. I. Chowdhury", "Julkar N. Mahi"],
-        venue: "2018 International Conference on Computer, Communication, Chemical, Material and Electronic Engineering (IC4ME2), pp. 1–4",
+        venue: "2018 International Conference on Computer, Communication, Chemical, Material and Electronic Engineering (IC4ME2)",
+        pages: "1–4",
         year: 2018,
         status: "published",
         group: "earlier",
-        summary: "A modified XY routing algorithm with on-demand buffer allocation for 2D-mesh Networks-on-Chip.",
         links: [scholarLink("u5HHmVD_uO8C")],
     },
 ];
+
+// Buttons for a publication: DOI first, then any other links.
+export function publicationLinks(publication: Publication): ResourceLink[] {
+    return [
+        ...(publication.doi ? [{ label: "DOI", href: doiUrl(publication.doi), icon: "file" as const }] : []),
+        ...(publication.links ?? []),
+    ];
+}

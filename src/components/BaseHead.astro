@@ -73,9 +73,6 @@ const websiteSchema = {
 <!-- Sitemap -->
 <link rel="sitemap" href="/sitemap-index.xml" />
 
-<!-- RSS Feed -->
-<link rel="alternate" type="application/rss+xml" title={SITE.TITLE} href={new URL("rss.xml", Astro.site)} />
-
 <!-- Structured Data -->
 <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
 
@@ -85,13 +82,3 @@ const websiteSchema = {
 <!-- Global Scripts -->
 <script is:inline src="/js/theme.js"></script>
 <script is:inline src="/js/animate.js"></script>
-<script defer is:inline src="/js/copy.js"></script>
-
-<script>
-    import type { TransitionBeforeSwapEvent } from "astro:transitions/client";
-    document.addEventListener("astro:before-swap", (e) =>
-        [...(e as TransitionBeforeSwapEvent).newDocument.head.querySelectorAll('link[as="font"]')].forEach((link) =>
-            link.remove(),
-        ),
-    );
-</script>

@@ -55,19 +55,23 @@ export type Teaching = {
     role: string;
     organization: string;
     period: string;
-    courses: { name: string; detail: string }[];
+    // One-line summary of current teaching for the homepage.
+    current: string;
+    courses: { code?: string; name: string; detail: string }[];
 };
 
 export const teaching: Teaching = {
     role: "Graduate Teaching Assistant",
     organization: "Wayne State University",
     period: "Aug 2021 – Present",
+    current: "Teaching BE 1600 Python Programming (Fall 2026)",
     courses: [
+        { code: "BE 1600", name: "Python Programming", detail: "Teaching in Fall 2026" },
         { name: "Problem Solving and Programming (C++)", detail: "Created all course materials" },
         { name: "Java Programming", detail: "Developed and delivered course materials and final project" },
         { name: "Software Engineering", detail: "Mentored student teams through Agile projects" },
         { name: "Computer Architecture and Organization", detail: "Led the lab section" },
-        { name: "Bioinformatics Programming Lab (R)", detail: "Facilitated hands-on labs" },
+        { name: "Bioinformatics Programming Lab with R", detail: "Facilitated hands-on labs" },
     ],
 };
 

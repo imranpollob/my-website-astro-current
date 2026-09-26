@@ -1,6 +1,6 @@
 ---
 import type { ResearchProject } from "@data/research";
-import { publications } from "@data/research";
+import { doiUrl, publications } from "@data/research";
 import type { ResourceLink } from "@types";
 import StatusBadge from "@components/StatusBadge.astro";
 import ResourceLinks from "@components/ResourceLinks.astro";
@@ -15,15 +15,19 @@ const { project } = Astro.props;
 const publication = publications.find((paper) => paper.slug === project.publication);
 
 const links: ResourceLink[] = [
-    ...(publication ? [{ label: "Publication", href: `#${publication.slug}`, icon: "file" as const }] : []),
+    ...(publication?.doi ? [{ label: "Paper (DOI)", href: doiUrl(publication.doi), icon: "file" as const }] : []),
     ...(project.links ?? []),
 ];
+
+const venueDetail = publication
+    ? `“${publication.title}.” ${publication.status === "accepted" ? "Accepted and presented at " : ""}${publication.venue}${publication.pages ? `, pp. ${publication.pages}` : ""}, ${publication.year}.`
+    : "";
 
 const rows = [
     { term: "Problem", detail: project.problem },
     { term: "Approach", detail: project.approach },
     ...(project.contribution ? [{ term: "Contribution", detail: project.contribution }] : []),
-    ...(publication ? [{ term: "Publication", detail: `${publication.venue}${publication.status === "in-press" ? " (in press)" : ""}` }] : []),
+    ...(publication ? [{ term: "Publication", detail: venueDetail }] : []),
 ];
 ---
 

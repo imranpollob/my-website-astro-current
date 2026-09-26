@@ -49,6 +49,13 @@ const primaryUrl = links[0]?.href;
         </div>
         <p class="flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{project.description}</p>
         {
+            project.platforms && (
+                <p class="text-xs text-slate-500 dark:text-slate-400">
+                    <span class="font-semibold text-slate-700 dark:text-slate-300">Builds:</span> {project.platforms}
+                </p>
+            )
+        }
+        {
             project.installCommand && (
                 <code class="block overflow-x-auto whitespace-nowrap rounded-md border border-slate-200 bg-slate-50 px-3 py-2 font-mono text-xs text-slate-800 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
                     <span class="select-none text-slate-400" aria-hidden="true">$ </span>

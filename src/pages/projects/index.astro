@@ -10,7 +10,8 @@ import { GITHUB_URL, PROJECTS } from "@consts";
 import { projectLinks, projectsIn } from "@data/projects";
 
 const tools = projectsIn("tools");
-const installable = projectsIn("installable");
+const cliTools = projectsIn("installable");
+const desktopApps = projectsIn("desktop");
 const engineering = projectsIn("engineering");
 const more = projectsIn("more");
 
@@ -71,10 +72,21 @@ const jumpLinks = [
             <SectionHeader
                 id="installable"
                 title="Installable Tools"
-                description="Command-line tools and a desktop app that you can install from npm or PyPI, or download, and run locally."
+                description="Published packages and release builds that run locally. Commands are the ones each project's README recommends."
             />
-            <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                {installable.map((project) => <ProjectCard project={project} />)}
+            <div class="grid gap-10 lg:grid-cols-[3fr_1fr] lg:gap-5">
+                <div>
+                    <h3 class="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Command-line tools</h3>
+                    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                        {cliTools.map((project) => <ProjectCard project={project} headingLevel="h4" />)}
+                    </div>
+                </div>
+                <div>
+                    <h3 class="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Desktop app</h3>
+                    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
+                        {desktopApps.map((project) => <ProjectCard project={project} headingLevel="h4" />)}
+                    </div>
+                </div>
             </div>
         </Container>
     </section>

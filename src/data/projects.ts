@@ -4,8 +4,10 @@ import { GITHUB_URL } from "@consts";
 export type ProjectSection =
     // Web apps and tools people can use right now.
     | "tools"
-    // Tools that are downloaded or installed and run locally.
+    // Command-line tools installed from a package registry.
     | "installable"
+    // Desktop apps downloaded from a release page.
+    | "desktop"
     // Technically substantial projects shown for their engineering.
     | "engineering"
     // Smaller projects listed compactly under "More Projects".
@@ -27,6 +29,8 @@ export type Project = {
     installCommand?: string;
     // Release/download page for desktop apps.
     downloadUrl?: string;
+    // Platforms with published builds, e.g. "macOS · Windows · Linux".
+    platforms?: string;
 };
 
 const repo = (name: string) => `${GITHUB_URL}/${name}`;
@@ -118,10 +122,11 @@ export const projects: Project[] = [
         title: "Pomodoro Timer",
         description:
             "Desktop Pomodoro timer and stopwatch with todo management, daily statistics, syncing, and always-on-top mode.",
-        section: "installable",
+        section: "desktop",
         kind: "Desktop app",
         image: "/images/tools/pomodoro-timer.png",
-        downloadUrl: "https://github.com/imranpollob/pomodoro-timer/releases",
+        downloadUrl: "https://github.com/imranpollob/pomodoro-timer/releases/latest",
+        platforms: "macOS · Windows · Linux (.deb)",
         githubUrl: repo("pomodoro-timer"),
     },
     {
@@ -144,7 +149,7 @@ export const projects: Project[] = [
         kind: "CLI · npm",
         image: "/images/tools/slugcopy.png",
         installUrl: "https://www.npmjs.com/package/slugcopy",
-        installCommand: "npm install -g slugcopy",
+        installCommand: "npm install --global slugcopy",
         githubUrl: repo("slugcopy"),
     },
 

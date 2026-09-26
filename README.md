@@ -10,15 +10,13 @@ The site presents my research in security and decentralized systems, publication
 
 - **Live Site:** [imranpollob.com](https://www.imranpollob.com)
 - **Base Template:** [astro-sphere](https://github.com/markhorn-dev/astro-sphere) by [markhorn-dev](https://github.com/markhorn-dev)
-- **Tech Stack:** Astro, Tailwind CSS, TypeScript, SolidJS (for stateful components)
+- **Tech Stack:** Astro, Tailwind CSS, TypeScript
 
 ## ✨ Features
 
-- ⚡️ Lightning fast performance (100/100 Lighthouse)
 - 📱 Fully responsive & accessible
 - 🌗 Light/Dark theme toggle
-- 🔍 Searchable research and projects
-- 🗂️ Auto-generated sitemap & RSS feed
+- 🗂️ Auto-generated sitemap
 - 🎨 Minimal, clean design
 - 🔒 SEO-friendly & typesafe
 
