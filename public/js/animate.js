@@ -4,7 +4,7 @@ function animate() {
   animateElements.forEach((element, index) => {
     setTimeout(() => {
       element.classList.add('show')
-    }, index * 150)
+    }, index * 80)
   });
 }
 

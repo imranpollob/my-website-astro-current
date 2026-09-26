@@ -1,15 +1,15 @@
 ---
 title: "Privacy Policy & Terms"
-date: "2026-03-02"
+date: "2026-09-26"
 ---
 
 ## Privacy Policy
 
-**Last updated:** 2026-03-02
+**Last updated:** 2026-09-26
 
 ### 1. Overview
 
-This website does not use third‑party analytics, advertising, or tracking services. The only personal information the site collects is information you voluntarily provide when contacting the site owner (for example, by email). The site contact address is mmimran@wayne.com.
+This website does not use third‑party analytics, advertising, or tracking services. The only personal information the site collects is information you voluntarily provide when contacting the site owner (for example, by email). The site contact address is mmimran@wayne.edu.
 
 ### 2. Information We Collect
 
@@ -39,7 +39,7 @@ We retain personal data only as long as necessary to respond to your request or 
 ### 6. Your Choices and Rights
 
 - You may choose not to provide personal information when contacting the site.
-- To request access, correction, or deletion of personal data you provided, contact mmimran@wayne.com.
+- To request access, correction, or deletion of personal data you provided, contact mmimran@wayne.edu.
 
 ### 7. Children
 
@@ -55,7 +55,7 @@ We may update this policy from time to time. The "Last updated" date above will 
 
 ### 10. Contact
 
-For privacy-related questions, contact: mmimran@wayne.com
+For privacy-related questions, contact: mmimran@wayne.edu
 
 ---
 
@@ -99,6 +99,6 @@ We may revise these Terms at any time. Continued use of the site after changes i
 
 ### 10. Contact
 
-For questions about these Terms, contact: mmimran@wayne.com
+For questions about these Terms, contact: mmimran@wayne.edu
 
 

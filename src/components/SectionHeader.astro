@@ -1,0 +1,39 @@
+---
+import Icon from "@components/Icon.astro";
+
+interface Props {
+    title: string;
+    id?: string;
+    description?: string;
+    href?: string;
+    linkText?: string;
+    as?: "h2" | "h3";
+}
+
+const { title, id, description, href, linkText } = Astro.props;
+const Heading = Astro.props.as ?? "h2";
+---
+
+<div class="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+    <div class="max-w-2xl">
+        <Heading
+            id={id}
+            class:list={[
+                "scroll-mt-24 font-semibold tracking-tight text-slate-900 dark:text-white",
+                Heading === "h2" ? "text-2xl md:text-[1.75rem]" : "text-xl",
+            ]}
+        >
+            {title}
+        </Heading>
+        {description && <p class="mt-2 text-base text-slate-600 dark:text-slate-400">{description}</p>}
+        <slot />
+    </div>
+    {
+        href && linkText && (
+            <a href={href} class="text-link inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold">
+                {linkText}
+                <Icon name="arrow-right" class="size-3.5" />
+            </a>
+        )
+    }
+</div>

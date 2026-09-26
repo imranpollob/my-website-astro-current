@@ -1,95 +1,139 @@
 ---
 import Container from "@components/Container.astro";
 import ContactCTA from "@components/ContactCTA.astro";
-import PageLayout from "@layouts/PageLayout.astro";
+import Icon from "@components/Icon.astro";
 import ProjectCard from "@components/ProjectCard.astro";
-import ToolCard from "@components/ToolCard.astro";
-import { PROJECTS } from "@consts";
+import ResourceLinks from "@components/ResourceLinks.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import { GITHUB_URL, PROJECTS } from "@consts";
+import { projectLinks, projectsIn } from "@data/projects";
 
-import projectsData from "./projects.json";
-import toolsData from "./tools.json";
+const tools = projectsIn("tools");
+const cliTools = projectsIn("installable");
+const desktopApps = projectsIn("desktop");
+const engineering = projectsIn("engineering");
+const more = projectsIn("more");
 
-type Project = (typeof projectsData.portfolio.projects)["Blockchain Engineering"][number];
-
-const flagshipSections = Object.entries(projectsData.portfolio.projects) as [string, Project[]][];
-
-// Online tools first, then installables — each group ordered by its curated priority.
-const tools = [...toolsData].sort((a, b) => {
-    if (a.type !== b.type) return a.type === "online" ? -1 : 1;
-    return a.priority - b.priority;
-});
+const jumpLinks = [
+    { href: "#tools", label: "Tools & Applications" },
+    { href: "#installable", label: "Installable Tools" },
+    { href: "#engineering", label: "Engineering Projects" },
+    { href: "#more", label: "More Projects" },
+];
 ---
 
 <PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
-    <!-- Page header -->
-    <section class="pt-28 pb-12">
+    <section class="pb-12 pt-28 md:pt-36" aria-labelledby="projects-heading">
         <Container size="xl">
-            <div class="animate space-y-4 text-center">
-                <div class="text-xl md:text-2xl lg:text-3xl page-heading">{PROJECTS.TITLE}</div>
+            <div class="animate max-w-3xl">
+                <h1 id="projects-heading" class="text-3xl font-semibold tracking-tight text-slate-900 dark:text-white md:text-4xl">
+                    {PROJECTS.TITLE}
+                </h1>
+                <p class="mt-5 text-base leading-relaxed text-slate-600 dark:text-slate-400 md:text-lg">
+                    Software I build and maintain outside my research: tools people use in the browser, utilities you can
+                    install and run locally, and engineering projects spanning smart-contract protocols and full-stack
+                    systems. Research prototypes are described on the <a href="/research" class="text-link">Research</a> page.
+                </p>
+                <nav aria-label="On this page" class="mt-8">
+                    <ul class="flex flex-wrap gap-x-5 gap-y-2 text-sm">
+                        {
+                            jumpLinks.map((link) => (
+                                <li>
+                                    <a href={link.href} class="text-link font-medium">
+                                        {link.label}
+                                    </a>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </nav>
             </div>
         </Container>
     </section>
 
-    <!-- ── Flagship Projects ───────────────────────────────────────────────── -->
-    {
-        flagshipSections.map(([label, projects]) => (
-            <section class="pb-16" id={label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}>
-                <Container size="xl">
-                    <div class="animate space-y-6">
-                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase">{label}</h2>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            {projects.map((project) => (
-                                <ProjectCard
-                                    title={project.title}
-                                    description={project.description}
-                                    image={project.image || undefined}
-                                    liveUrl={project.liveUrl || undefined}
-                                    repoUrl={project.url}
-                                />
-                            ))}
-                        </div>
+    <!-- Tools & Applications -->
+    <section class="border-t border-slate-200 py-16 dark:border-slate-800 md:py-20">
+        <Container size="xl">
+            <SectionHeader
+                id="tools"
+                title="Tools & Applications"
+                description="Web apps and utilities that run in the browser, with nothing to install."
+            />
+            <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {tools.map((project) => <ProjectCard project={project} showImage />)}
+            </div>
+        </Container>
+    </section>
+
+    <!-- Installable Tools -->
+    <section class="border-t border-slate-200 py-16 dark:border-slate-800 md:py-20">
+        <Container size="xl">
+            <SectionHeader
+                id="installable"
+                title="Installable Tools"
+                description="Published packages and release builds that run locally. Commands are the ones each project's README recommends."
+            />
+            <div class="grid gap-10 lg:grid-cols-[3fr_1fr] lg:gap-5">
+                <div>
+                    <h3 class="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Command-line tools</h3>
+                    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                        {cliTools.map((project) => <ProjectCard project={project} headingLevel="h4" />)}
                     </div>
-                </Container>
-            </section>
-        ))
-    }
-
-    <!-- ── Tools ───────────────────────────────────────────────────────────── -->
-    <section class="pb-20" id="tools">
-        <Container size="xl">
-            <div class="animate space-y-6">
-                <div class="space-y-2 text-center">
-                    <p class="text-xl md:text-2xl lg:text-3xl uppercase tracking-widest text-brand-600 dark:text-brand-400 font-semibold">
-                        Tools
-                    </p>
-                    <h2 class="text-xl font-bold text-slate-900 dark:text-white uppercase">
-                        Everyday tools you can actually use
-                    </h2>
-                    <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-                        Small online utilities and downloadable apps, built to solve one problem well.
-                    </p>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                    {
-                        tools.map((tool) => (
-                            <ToolCard
-                                repo={tool.repo}
-                                title={tool.title}
-                                subtitle={tool.subtitle}
-                                type={tool.type as "online" | "install"}
-                                url={tool.url}
-                                action={tool.action}
-                                image={tool.image}
-                            />
-                        ))
-                    }
+                <div>
+                    <h3 class="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Desktop app</h3>
+                    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
+                        {desktopApps.map((project) => <ProjectCard project={project} headingLevel="h4" />)}
+                    </div>
                 </div>
             </div>
         </Container>
     </section>
 
-    <ContactCTA
-        heading="Have a project in mind?"
-        subheading="Open to freelance, contract, and full-time Blockchain / AI engineering work"
-    />
+    <!-- Selected Engineering Projects -->
+    <section class="border-t border-slate-200 py-16 dark:border-slate-800 md:py-20">
+        <Container size="xl">
+            <SectionHeader
+                id="engineering"
+                title="Selected Engineering Projects"
+                description="Projects chosen for their engineering depth: protocol design, backend architecture, APIs, and real-time systems."
+            />
+            <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {engineering.map((project) => <ProjectCard project={project} showImage />)}
+            </div>
+        </Container>
+    </section>
+
+    <!-- More Projects -->
+    <section class="border-t border-slate-200 py-16 dark:border-slate-800 md:py-20">
+        <Container size="xl">
+            <SectionHeader id="more" title="More Projects" href={GITHUB_URL} linkText="All repositories on GitHub" />
+            <ul class="divide-y divide-slate-200 border-y border-slate-200 dark:divide-slate-800 dark:border-slate-800">
+                {
+                    more.map((project) => (
+                        <li class="grid gap-2 py-4 md:grid-cols-[16rem_1fr_auto] md:items-center md:gap-6">
+                            <div>
+                                <h3 class="font-semibold text-slate-900 dark:text-white">{project.title}</h3>
+                                <p class="text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">{project.kind}</p>
+                            </div>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">{project.description}</p>
+                            <ResourceLinks links={projectLinks(project)} context={project.title} />
+                        </li>
+                    ))
+                }
+            </ul>
+            <p class="mt-6 text-sm">
+                <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" class="text-link inline-flex items-center gap-1.5 font-semibold">
+                    <Icon name="github" />
+                    github.com/imranpollob
+                    <span class="sr-only"> (opens in a new tab)</span>
+                </a>
+            </p>
+        </Container>
+    </section>
+
+    <div class="border-t border-slate-200 dark:border-slate-800">
+        <ContactCTA />
+    </div>
 </PageLayout>

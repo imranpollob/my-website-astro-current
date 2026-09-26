@@ -1,74 +1,69 @@
 ---
-interface Props {
-    title: string;
-    description: string;
-    image?: string;
-    liveUrl?: string;
-    repoUrl: string;
-}
+import type { Project } from "@data/projects";
+import { projectLinks } from "@data/projects";
+import ResourceLinks from "@components/ResourceLinks.astro";
+import TagList from "@components/TagList.astro";
 
-const { title, description, image, liveUrl, repoUrl } = Astro.props;
-const primaryUrl = liveUrl || repoUrl;
-const primaryLabel = liveUrl ? "Live Demo" : "View Code";
+type Props = {
+    project: Project;
+    // Show the screenshot when the project has one.
+    showImage?: boolean;
+    headingLevel?: "h3" | "h4";
+};
+
+const { project, showImage = false, headingLevel: Heading = "h3" } = Astro.props;
+const links = projectLinks(project);
+const primaryUrl = links[0]?.href;
 ---
 
-<div class="group rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:border-brand-300 dark:hover:border-brand-700/60 hover:bg-brand-50/60 dark:hover:bg-brand-500/5 transition-colors duration-300 flex flex-col">
+<article class="card group flex flex-col overflow-hidden">
     {
-        image && (
-            <a href={primaryUrl} target="_blank" rel="noopener noreferrer" class="block aspect-video overflow-hidden bg-slate-100 dark:bg-slate-900">
+        showImage && project.image && (
+            <div class="aspect-[16/9] overflow-hidden border-b border-slate-200 bg-slate-100 dark:border-slate-800 dark:bg-slate-900">
                 <img
-                    src={image}
-                    alt={`${title} preview`}
-                    class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
+                    src={project.image}
+                    alt={`Screenshot of ${project.title}`}
+                    class="h-full w-full object-cover object-top"
                     loading="lazy"
+                    decoding="async"
+                    width="640"
+                    height="360"
                 />
-            </a>
+            </div>
         )
     }
-    <div class="p-4 flex flex-col gap-2 flex-1">
-        <h3 class="text-base font-semibold text-slate-900 dark:text-white">
-            <a href={primaryUrl} target="_blank" rel="noopener noreferrer" class="hover:text-brand-600 dark:hover:text-brand-400">
-                {title}
-            </a>
-        </h3>
-        <p class="text-sm text-slate-600 dark:text-slate-400 leading-snug flex-1">
-            {description}
-        </p>
-        <div class="flex items-center justify-between gap-2 pt-1">
-            <a
-                href={primaryUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1.5 rounded-full bg-brand-50 dark:bg-brand-500/10 text-brand-700 dark:text-brand-400 border border-brand-200 dark:border-brand-800 hover:bg-brand-100 dark:hover:bg-brand-500/20 transition-colors"
-            >
+    <div class="flex flex-1 flex-col gap-3 p-5">
+        <div>
+            <p class="text-xs font-semibold uppercase tracking-wide text-brand-700 dark:text-brand-400">{project.kind}</p>
+            <Heading class="mt-1 text-base font-semibold text-slate-900 dark:text-white">
                 {
-                    liveUrl ? (
-                        <svg class="size-3.5 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="9" /><ellipse cx="12" cy="12" rx="4" ry="9" /><path d="M3 12h18" />
-                        </svg>
+                    primaryUrl ? (
+                        <a href={primaryUrl} target="_blank" rel="noopener noreferrer" class="hover:text-brand-700 dark:hover:text-brand-300">
+                            {project.title}
+                        </a>
                     ) : (
-                        <svg class="size-3.5 fill-current">
-                            <use href="/social.svg#github" />
-                        </svg>
+                        project.title
                     )
                 }
-                {primaryLabel}
-            </a>
-            {
-                liveUrl && (
-                    <a
-                        href={repoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`Source code for ${title}`}
-                        class="p-1.5 rounded-full text-slate-400 dark:text-slate-500 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-brand-500/10 transition-colors"
-                    >
-                        <svg class="size-4 fill-current">
-                            <use href="/social.svg#github" />
-                        </svg>
-                    </a>
-                )
-            }
+            </Heading>
         </div>
+        <p class="flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{project.description}</p>
+        {
+            project.platforms && (
+                <p class="text-xs text-slate-500 dark:text-slate-400">
+                    <span class="font-semibold text-slate-700 dark:text-slate-300">Builds:</span> {project.platforms}
+                </p>
+            )
+        }
+        {
+            project.installCommand && (
+                <code class="block overflow-x-auto whitespace-nowrap rounded-md border border-slate-200 bg-slate-50 px-3 py-2 font-mono text-xs text-slate-800 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
+                    <span class="select-none text-slate-400" aria-hidden="true">$ </span>
+                    {project.installCommand}
+                </code>
+            )
+        }
+        <TagList tags={project.tags} />
+        <ResourceLinks links={links} context={project.title} class="pt-1" />
     </div>
-</div>
+</article>

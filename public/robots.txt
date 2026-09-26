@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://imranpollob.com/sitemap-index.xml
+Sitemap: https://www.imranpollob.com/sitemap-index.xml

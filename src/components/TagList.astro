@@ -1,0 +1,20 @@
+---
+type Props = {
+    tags?: string[];
+    label?: string;
+};
+
+const { tags = [], label = "Topics" } = Astro.props;
+---
+
+{
+    tags.length > 0 && (
+        <ul class="flex flex-wrap gap-1.5" aria-label={label}>
+            {tags.map((tag) => (
+                <li class="rounded bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">
+                    {tag}
+                </li>
+            ))}
+        </ul>
+    )
+}

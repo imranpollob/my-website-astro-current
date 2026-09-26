@@ -3,75 +3,84 @@ import type { Site, Page, Links, Socials } from "@types";
 // Global
 export const SITE: Site = {
   TITLE: "Imran Pollob",
+  HOME_TITLE: "Imran Pollob — Security & Decentralized Systems Researcher",
   DESCRIPTION:
-    "Imran Pollob's portfolio: Researching Blockchain Security and developing smart contract vulnerability detection tools. Over 5 years of experience as a software engineer with diverse tech stacks.",
+    "Imran Pollob is a Ph.D. researcher at Wayne State University studying blockchain security, privacy, and programmable accounts, with five years of software engineering industry experience before the Ph.D.",
   AUTHOR: "Imran Pollob",
 };
 
-// Experience Page
-export const EXPERIENCE: Page = {
-  TITLE: "Experience",
-  DESCRIPTION: "Places I have worked.",
+// Identity shown in the hero, metadata, and structured data.
+export const PROFILE = {
+  NAME: "Imran Pollob",
+  // Name used on publications and the CV.
+  PUBLICATION_NAME: "M M Imran",
+  HEADLINE: "Ph.D. Researcher in Security & Decentralized Systems",
+  THEMES: ["Blockchain Security", "Privacy", "Programmable Accounts", "Zero-Knowledge Systems"],
+  AFFILIATION: "Wayne State University",
+  LOCATION: "Detroit, MI",
+  EMAIL: "mmimran@wayne.edu",
+  PHOTO: "/image/imran-pollob.jpg",
+  CV_URL: "/resume.pdf",
 };
 
 // Research Page
 export const RESEARCH: Page = {
   TITLE: "Research",
-  DESCRIPTION: "Peer-reviewed research in blockchain security and applied machine learning.",
+  DESCRIPTION:
+    "Imran Pollob's research on security, privacy, and trust in decentralized, programmable, and zero-knowledge systems: research areas, projects, and publications.",
 };
 
 // Projects Page
 export const PROJECTS: Page = {
   TITLE: "Projects",
-  DESCRIPTION: "Recent projects I have worked on.",
+  DESCRIPTION:
+    "Web tools, installable utilities, and engineering projects built by Imran Pollob, from Solidity protocols to full-stack applications.",
 };
 
-// Search Page
-export const SEARCH: Page = {
-  TITLE: "Search",
-  DESCRIPTION: "Search all posts and projects by keyword.",
-};
-
-// Links
+// Primary navigation. The name/logo links to Home; CV opens the PDF.
 export const LINKS: Links = [
   {
-    TEXT: "Home",
-    HREF: "/",
+    TEXT: "Research",
+    HREF: "/research",
   },
   {
     TEXT: "Projects",
     HREF: "/projects",
   },
   {
-    TEXT: "Research",
-    HREF: "/research",
+    TEXT: "CV",
+    HREF: PROFILE.CV_URL,
+    EXTERNAL: true,
   },
 ];
 
 // Socials
 export const SOCIALS: Socials = [
   {
-    NAME: "Reach me via Email",
+    NAME: "Email",
     ICON: "email",
-    TEXT: "mmimran@wayne.com",
-    HREF: "mailto:mmimran@wayne.com",
-  },
-  {
-    NAME: "Check out my GitHub",
-    ICON: "github",
-    TEXT: "imranpollob",
-    HREF: "https://github.com/imranpollob",
-  },
-  {
-    NAME: "Connect on LinkedIn",
-    ICON: "linkedin",
-    TEXT: "imranpollob",
-    HREF: "https://www.linkedin.com/in/imranpollob/",
+    TEXT: PROFILE.EMAIL,
+    HREF: `mailto:${PROFILE.EMAIL}`,
   },
   {
     NAME: "Google Scholar",
     ICON: "google-scholar",
-    TEXT: "M M Imran",
+    TEXT: "Google Scholar",
     HREF: "https://scholar.google.com/citations?user=-K7OkFUAAAAJ&hl=en",
   },
+  {
+    NAME: "GitHub",
+    ICON: "github",
+    TEXT: "GitHub",
+    HREF: "https://github.com/imranpollob",
+  },
+  {
+    NAME: "LinkedIn",
+    ICON: "linkedin",
+    TEXT: "LinkedIn",
+    HREF: "https://www.linkedin.com/in/imranpollob/",
+  },
 ];
+
+export const SCHOLAR_URL = SOCIALS.find((social) => social.ICON === "google-scholar")!.HREF;
+export const GITHUB_URL = SOCIALS.find((social) => social.ICON === "github")!.HREF;

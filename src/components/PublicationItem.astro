@@ -1,0 +1,54 @@
+---
+import type { Publication } from "@data/research";
+import { PROFILE } from "@consts";
+import { publicationLinks } from "@data/research";
+import ResourceLinks from "@components/ResourceLinks.astro";
+
+type Props = {
+    publication: Publication;
+};
+
+const { publication } = Astro.props;
+const links = publicationLinks(publication);
+---
+
+<li id={publication.slug} class="scroll-mt-24 grid gap-1 py-5 sm:grid-cols-[4.5rem_1fr] sm:gap-4">
+    <p class="text-sm font-semibold tabular-nums text-slate-500 dark:text-slate-400">{publication.year}</p>
+    <div class="space-y-1.5">
+        <h4 class="font-semibold leading-snug text-slate-900 dark:text-white">
+            {publication.title}
+            {
+                publication.status === "accepted" && (
+                    <span class="ml-1 whitespace-nowrap rounded-full border border-brand-200 bg-white px-2 py-0.5 align-middle text-xs font-semibold text-brand-800 dark:border-brand-800 dark:bg-slate-900 dark:text-brand-300">
+                        Accepted & presented
+                    </span>
+                )
+            }
+        </h4>
+        {
+            publication.authors && (
+                <p class="text-sm text-slate-600 dark:text-slate-400">
+                    {publication.authors.map((author, i) => (
+                        <>{i > 0 && ", "}<span class={author === PROFILE.PUBLICATION_NAME ? "font-semibold text-slate-800 dark:text-slate-200" : undefined}>{author}</span></>
+                    ))}
+                </p>
+            )
+        }
+        <p class="text-sm italic text-slate-500 dark:text-slate-400">
+            {publication.venue}{publication.pages && `, pp. ${publication.pages}`}
+        </p>
+        {
+            (links.length > 0 || publication.bibtex) && (
+                <div class="flex flex-wrap items-start gap-2 pt-1">
+                    {links.length > 0 && <ResourceLinks links={links} context={publication.title} />}
+                    {publication.bibtex && (
+                        <details class="w-full text-sm">
+                            <summary class="cursor-pointer font-medium text-slate-700 hover:text-brand-700 dark:text-slate-300">BibTeX</summary>
+                            <pre class="mt-2 overflow-x-auto rounded-md bg-slate-50 p-3 text-xs dark:bg-slate-900"><code>{publication.bibtex}</code></pre>
+                        </details>
+                    )}
+                </div>
+            )
+        }
+    </div>
+</li>
