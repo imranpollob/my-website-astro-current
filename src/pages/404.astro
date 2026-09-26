@@ -1,0 +1,26 @@
+---
+import Container from "@components/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import { PROFILE } from "@consts";
+---
+
+<PageLayout title="Page not found" description="The page you were looking for does not exist.">
+    <meta slot="head" name="robots" content="noindex" />
+    <section class="pb-24 pt-32 md:pt-40" aria-labelledby="not-found-heading">
+        <Container size="md">
+            <p class="text-sm font-semibold uppercase tracking-wide text-brand-700 dark:text-brand-400">404</p>
+            <h1 id="not-found-heading" class="mt-2 text-3xl font-semibold tracking-tight text-slate-900 dark:text-white md:text-4xl">
+                Page not found
+            </h1>
+            <p class="mt-4 text-slate-600 dark:text-slate-400">
+                This page doesn't exist or has moved. Older blog posts are no longer published.
+            </p>
+            <ul class="mt-8 flex flex-wrap gap-3 text-sm font-semibold">
+                <li><a href="/" class="text-link">Home</a></li>
+                <li><a href="/research" class="text-link">Research</a></li>
+                <li><a href="/projects" class="text-link">Projects</a></li>
+                <li><a href={PROFILE.CV_URL} class="text-link">CV (PDF)</a></li>
+            </ul>
+        </Container>
+    </section>
+</PageLayout>

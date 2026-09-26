@@ -23,10 +23,10 @@ const jumpLinks = [
 ];
 ---
 
-<PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
+<PageLayout title={PROJECTS.SEO_TITLE ?? PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
     <section class="pb-12 pt-28 md:pt-36" aria-labelledby="projects-heading">
         <Container size="xl">
-            <div class="animate max-w-3xl">
+            <div class="max-w-3xl">
                 <h1 id="projects-heading" class="text-3xl font-semibold tracking-tight text-slate-900 dark:text-white md:text-4xl">
                     {PROJECTS.TITLE}
                 </h1>
