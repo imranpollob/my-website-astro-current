@@ -1,5 +1,7 @@
 export type Page = {
   TITLE: string
+  // Optional longer <title> for search results; defaults to TITLE.
+  SEO_TITLE?: string
   DESCRIPTION: string
 }
 

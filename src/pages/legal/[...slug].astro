@@ -4,7 +4,6 @@ import PageLayout from "@layouts/PageLayout.astro";
 import TopLayout from "@layouts/TopLayout.astro";
 import BottomLayout from "@layouts/BottomLayout.astro";
 import { formatDate } from "@lib/utils";
-import { SITE } from "@consts";
 
 // Create the static pages for legal docs
 export async function getStaticPaths() {
@@ -22,7 +21,7 @@ const { title, date } = doc.data;
 const { Content } = await doc.render();
 ---
 
-<PageLayout title={title} description={`${title} for ${SITE.TITLE}`}>
+<PageLayout title={title} description={`${title} for imranpollob.com: what information the site collects, how it is used, and the terms for using the site.`}>
   <TopLayout>
     <div class="animate">
       <h1 class="text-xl md:text-2xl lg:text-3xl text-center page-heading">
