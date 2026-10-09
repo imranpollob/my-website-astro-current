@@ -1,0 +1,116 @@
+---
+import Container from "@components/Container.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+import { certificationGroups } from "@data/certifications";
+---
+
+<section class="border-t border-slate-200 py-16 dark:border-slate-800 md:py-20" aria-labelledby="certifications">
+    <Container size="xl">
+        <SectionHeader
+            id="certifications"
+            title="Certifications"
+            description="Professional coursework in blockchain security and applied AI, with verifiable credentials."
+        />
+        <div class="grid gap-5 md:grid-cols-2">
+            {
+                certificationGroups.map((group) => (
+                    <div class="rounded-xl border border-slate-200 p-5 dark:border-slate-800">
+                        <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">{group.title}</h3>
+                        <ul class="mt-4 space-y-5">
+                            {group.items.map((item) => (
+                                <li class="flex items-start gap-4">
+                                    <button
+                                        type="button"
+                                        class="shrink-0 cursor-pointer overflow-hidden rounded-md border border-slate-200 bg-white transition-colors hover:border-brand-500 dark:border-slate-700 dark:bg-slate-900"
+                                        data-cert-image={item.fullImage}
+                                        data-cert-title={item.name}
+                                        data-cert-link={item.credentialUrl}
+                                        aria-label={`View certificate: ${item.name}`}
+                                    >
+                                        <img
+                                            src={item.thumbnail}
+                                            alt=""
+                                            width="80"
+                                            height="80"
+                                            loading="lazy"
+                                            class="size-20 object-cover"
+                                        />
+                                    </button>
+                                    <div class="min-w-0">
+                                        <h4 class="font-semibold text-slate-900 dark:text-white">{item.name}</h4>
+                                        <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">{item.description}</p>
+                                        <a
+                                            href={item.credentialUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="text-link mt-1.5 inline-block text-sm font-semibold"
+                                        >
+                                            View credential
+                                            <span class="sr-only"> for {item.name} (opens in a new tab)</span>
+                                        </a>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))
+            }
+        </div>
+    </Container>
+</section>
+
+<dialog
+    id="cert-modal"
+    aria-labelledby="cert-modal-title"
+    class="m-auto w-[min(90vw,48rem)] rounded-xl border border-slate-200 bg-white p-0 backdrop:bg-slate-900/60 dark:border-slate-700 dark:bg-slate-900"
+>
+    <div class="flex items-center justify-between gap-4 border-b border-slate-200 px-4 py-3 dark:border-slate-800">
+        <p id="cert-modal-title" class="font-semibold text-slate-900 dark:text-white"></p>
+        <button
+            type="button"
+            id="cert-modal-close"
+            class="rounded-full border border-slate-200 p-2 hover:border-brand-500 dark:border-slate-700"
+            aria-label="Close certificate"
+        >
+            <svg class="size-4 stroke-current text-slate-700 dark:text-slate-300" viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true">
+                <path d="M6 6l12 12M6 18L18 6"></path>
+            </svg>
+        </button>
+    </div>
+    <div class="flex flex-col items-center gap-3 bg-slate-50 p-4 dark:bg-slate-950/50">
+        <img id="cert-modal-img" src="" alt="" class="max-h-[70vh] w-auto max-w-full rounded-md border border-slate-200 dark:border-slate-800" />
+        <a id="cert-modal-link" href="#" target="_blank" rel="noopener noreferrer" class="text-link text-sm font-semibold">
+            Verify credential
+            <span class="sr-only"> (opens in a new tab)</span>
+        </a>
+    </div>
+</dialog>
+
+<script is:inline>
+    (function () {
+        var modal = document.getElementById("cert-modal");
+        var img = document.getElementById("cert-modal-img");
+        var title = document.getElementById("cert-modal-title");
+        var link = document.getElementById("cert-modal-link");
+        if (!modal || !img || !title || !link) return;
+
+        document.querySelectorAll("[data-cert-image]").forEach(function (trigger) {
+            trigger.addEventListener("click", function () {
+                var name = trigger.getAttribute("data-cert-title") || "Certificate";
+                img.src = trigger.getAttribute("data-cert-image") || "";
+                img.alt = "Certificate: " + name;
+                title.textContent = name;
+                link.href = trigger.getAttribute("data-cert-link") || "#";
+                modal.showModal();
+            });
+        });
+
+        document.getElementById("cert-modal-close").addEventListener("click", function () {
+            modal.close();
+        });
+        // Clicking the backdrop (the dialog element itself) closes it.
+        modal.addEventListener("click", function (event) {
+            if (event.target === modal) modal.close();
+        });
+    })();
+</script>
