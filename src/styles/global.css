@@ -8,6 +8,18 @@
   --font-code: "Fira Code", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
   --color-primary: #0d9488;
   --color-primary-hover: #0f766e;
+
+  /* Brand tokens read by the tools launcher panel (launcher.css). */
+  --brand-950: theme("colors.brand.950");
+  --color-surface: theme("colors.white");
+  --color-text: theme("colors.slate.900");
+  --color-text-muted: theme("colors.slate.500");
+  --color-border: theme("colors.slate.200");
+  --font-family: var(--font-body);
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-weight-bold: 700;
+  --radius: 0.5rem;
 }
 
 ::selection {
@@ -31,6 +43,10 @@ html.dark {
   background-color: #020617;
   --color-primary: #14b8a6;
   --color-primary-hover: #2dd4bf;
+  --color-surface: theme("colors.slate.900");
+  --color-text: theme("colors.slate.50");
+  --color-text-muted: theme("colors.slate.400");
+  --color-border: theme("colors.slate.800");
 }
 
 html,
@@ -70,6 +86,21 @@ main {
   @apply border-b;
   @apply bg-white dark:bg-slate-950;
   @apply border-slate-200 dark:border-slate-800;
+}
+
+/* Tools launcher toggle: match the theme button next to it (overrides launcher.css). */
+.header-actions .bl-toggle {
+  @apply flex size-8 items-center justify-center rounded-md border-0 bg-transparent p-1.5;
+  @apply text-slate-500 transition-colors dark:text-slate-400;
+}
+
+.header-actions .bl-toggle:hover,
+.header-actions .bl-toggle[aria-expanded="true"] {
+  @apply bg-slate-100 text-slate-900 dark:bg-slate-800 dark:text-white;
+}
+
+.header-actions .bl-toggle svg {
+  @apply size-full;
 }
 
 /* Long-form Markdown content (e.g. the legal page). */
