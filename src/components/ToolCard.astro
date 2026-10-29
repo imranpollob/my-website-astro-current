@@ -1,0 +1,28 @@
+---
+import type { Tool } from "@data/tools";
+import { toolKind, toolLinks } from "@data/tools";
+import ResourceLinks from "@components/ResourceLinks.astro";
+
+type Props = {
+    tool: Tool;
+};
+
+const { tool } = Astro.props;
+const links = toolLinks(tool);
+---
+
+<article class="card flex items-start gap-4 p-4" style={`--tool-hue: ${tool.hue}`}>
+    <span
+        aria-hidden="true"
+        class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[hsl(var(--tool-hue)_85%_92%)] text-2xl dark:bg-[hsl(var(--tool-hue)_35%_22%)]"
+    >
+        {tool.glyph}
+    </span>
+    <div class="min-w-0 flex-1">
+        <p class="text-xs font-semibold uppercase tracking-wide text-brand-700 dark:text-brand-400">{toolKind(tool)}</p>
+        <h4 class="mt-0.5 font-semibold text-slate-900 dark:text-white">
+            <a href={links[0].href} target="_blank" rel="noopener noreferrer" class="hover:text-brand-700 dark:hover:text-brand-300">{tool.title}</a>
+        </h4>
+        <ResourceLinks links={links} context={tool.title} class="mt-3" />
+    </div>
+</article>

@@ -19,21 +19,21 @@ export const certificationGroups: CertificationGroup[] = [
         items: [
             {
                 name: "Blockchain Solution Architecture",
-                description: "Designed blockchain systems with architecture, security, and risk-aware decision-making.",
+                description: "Covers designing blockchain systems, including architecture choices, security, and risk.",
                 thumbnail: "/image/certifications/blockchain-solution-architecture-thumb.jpg",
                 fullImage: "/image/certifications/blockchain-solution-architecture-full.jpg",
                 credentialUrl: "https://www.coursera.org/account/accomplishments/specialization/certificate/O3Q7CG1SRKM5",
             },
             {
                 name: "Security for Blockchain and DApps",
-                description: "Applied blockchain security, cryptography, and DeFi risk mitigation to secure systems.",
+                description: "Covers blockchain and DApp security, applied cryptography, and DeFi risks.",
                 thumbnail: "/image/certifications/security-for-blockchain-dapps-thumb.jpg",
                 fullImage: "/image/certifications/security-for-blockchain-dapps-full.jpg",
                 credentialUrl: "https://www.coursera.org/account/accomplishments/specialization/certificate/G1LITZ430K3Q",
             },
             {
                 name: "Blockchain Security",
-                description: "Explored blockchain threats and security fundamentals for vulnerability analysis.",
+                description: "An introduction to blockchain threats and security fundamentals.",
                 thumbnail: "/image/certifications/blockchain-security-thumb.jpg",
                 fullImage: "/image/certifications/blockchain-security-full.jpg",
                 credentialUrl: "https://www.coursera.org/account/accomplishments/certificate/3BN6UAX4MZDZ",
@@ -45,21 +45,21 @@ export const certificationGroups: CertificationGroup[] = [
         items: [
             {
                 name: "IBM Generative AI Engineering",
-                description: "Built and deployed generative AI systems using LLMs, transformers, and RAG pipelines.",
+                description: "Covers LLMs, transformers, and RAG, and building and deploying generative AI applications.",
                 thumbnail: "/image/certifications/ibm-generative-ai-engineering-thumb.jpg",
                 fullImage: "/image/certifications/ibm-generative-ai-engineering-full.jpg",
                 credentialUrl: "https://www.coursera.org/account/accomplishments/specialization/certificate/VCI51YJT40UL",
             },
             {
                 name: "IBM RAG and Agentic AI",
-                description: "Developed agentic and RAG-based AI systems with multi-agent reasoning and tool integration.",
+                description: "Covers RAG and agent-based systems, including multi-agent setups and tool use.",
                 thumbnail: "/image/certifications/ibm-rag-agentic-ai-thumb.jpg",
                 fullImage: "/image/certifications/ibm-rag-agentic-ai-full.jpg",
                 credentialUrl: "https://www.coursera.org/account/accomplishments/specialization/certificate/9T9ZY7QU9A4G",
             },
             {
                 name: "Microsoft AI & ML Engineering",
-                description: "Learned end-to-end AI/ML systems, from fundamentals to deployment on Azure.",
+                description: "Covers AI and ML engineering, from fundamentals to deployment on Azure.",
                 thumbnail: "/image/certifications/microsoft-ai-ml-thumb.jpg",
                 fullImage: "/image/certifications/microsoft-ai-ml-full.jpg",
                 credentialUrl: "https://www.coursera.org/account/accomplishments/specialization/certificate/9ZRZI7NIJCI0",

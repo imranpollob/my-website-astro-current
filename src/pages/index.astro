@@ -28,7 +28,7 @@ const personSchema = {
                     <h1 id="hero-heading" class="text-4xl font-semibold tracking-tight text-slate-900 dark:text-white md:text-5xl">{PROFILE.NAME}</h1>
                     <p class="mt-3 text-xl font-medium text-brand-700 dark:text-brand-400 md:text-2xl">{PROFILE.HEADLINE}</p>
                     <p class="mt-3 text-sm text-slate-700 dark:text-slate-300">Ph.D. Candidate in Computer Science · {PROFILE.AFFILIATION}<br /><span class="text-slate-600 dark:text-slate-400">Expected graduation: {PROFILE.EXPECTED_GRADUATION}</span></p>
-                    <p class="mt-5 max-w-2xl leading-relaxed text-slate-600 dark:text-slate-300">I study security and privacy in Ethereum accounts, smart contracts, and zero-knowledge applications. My work combines program analysis, adversarial evaluation, and protocol design to investigate how these systems behave under attack.</p>
+                    <p class="mt-5 max-w-2xl leading-relaxed text-slate-600 dark:text-slate-300">I work on security and privacy in Ethereum: smart accounts, smart contracts, and zero-knowledge applications. I build analysis tools and protocols, then test how well they hold up against attackers.</p>
                     <p class="mt-4 max-w-2xl border-l-2 border-brand-600 pl-3 text-sm font-medium text-slate-800 dark:text-slate-200">{PROFILE.JOB_MARKET}</p>
                     <div class="mt-6 flex flex-wrap gap-3">
                         <a href="/research#publications" class="rounded-md bg-brand-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-800 dark:bg-brand-700 dark:hover:bg-brand-800">Research & Publications</a>
@@ -49,21 +49,21 @@ const personSchema = {
     </section>
     <section class="border-t border-slate-200 py-12 dark:border-slate-800 md:py-16" aria-labelledby="directions-heading">
         <Container size="xl">
-            <SectionHeader id="directions-heading" title="Research Directions" description="Questions shaping my next investigations." href="/research#directions" linkText="Read the research agenda" />
+            <SectionHeader id="directions-heading" title="Research Directions" description="What I plan to work on next." />
             <div class="grid gap-8 md:grid-cols-3">{researchDirections.map(direction => <div><h3 class="text-lg font-semibold text-slate-900 dark:text-white">{direction.title}</h3><p class="mt-2 leading-relaxed text-slate-600 dark:text-slate-400">{direction.question}</p></div>)}</div>
         </Container>
     </section>
     <section class="border-t border-slate-200 py-12 dark:border-slate-800 md:py-16" aria-labelledby="teaching-heading">
         <Container size="xl">
             <div class="grid gap-10 md:grid-cols-2">
-                <div><h2 id="teaching-heading" class="text-2xl font-semibold text-slate-900 dark:text-white">Teaching & Mentoring</h2><p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-400">As a {teaching.role} at {teaching.organization}, I develop programming materials, deliver teaching and lab sessions, and mentor student software projects.</p><p class="mt-3 text-sm font-medium">{teaching.current}.</p><p class="mt-3 text-sm font-semibold text-brand-700 dark:text-brand-400">{teachingAward.title} · {teachingAward.year}</p><a href="/teaching" class="text-link mt-5 inline-block font-semibold">Courses & teaching experience →</a></div>
+                <div><h2 id="teaching-heading" class="text-2xl font-semibold text-slate-900 dark:text-white">Teaching & Mentoring</h2><p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-400">I have been a {teaching.role} at {teaching.organization} since 2021. I write course materials, teach programming sessions and labs, and mentor student software projects.</p><p class="mt-3 text-sm font-medium">{teaching.current}.</p><p class="mt-3 text-sm font-semibold text-brand-700 dark:text-brand-400">{teachingAward.title} · {teachingAward.year}</p><a href="/teaching" class="text-link mt-5 inline-block font-semibold">Courses & teaching experience →</a></div>
                 <div><h2 class="text-2xl font-semibold text-slate-900 dark:text-white">Education</h2><ul class="mt-4 space-y-4">{education.map(degree => <li><p class="font-semibold">{degree.degree}, {degree.field}</p><p class="mt-1 text-sm text-slate-600 dark:text-slate-400">{degree.institution}<br />{degree.period}</p></li>)}</ul></div>
             </div>
         </Container>
     </section>
     <section class="border-t border-slate-200 py-12 dark:border-slate-800 md:py-16" aria-labelledby="engineering-heading">
         <Container size="xl">
-            <SectionHeader id="engineering-heading" title="Research, Grounded in Engineering" description="Nearly five years of professional software engineering before my Ph.D., building backend systems, data pipelines, and production web applications." href="/projects" linkText="Software & research artifacts" />
+            <SectionHeader id="engineering-heading" title="Industry Experience" description="Before my Ph.D., I spent almost five years as a software engineer, mostly on backend systems, data pipelines, and web applications." href="/projects" linkText="Software projects" />
             <div class="grid gap-6 md:grid-cols-3">{industryExperience.map(role => <div><p class="text-sm text-slate-600 dark:text-slate-400">{role.period}</p><h3 class="mt-1 text-lg font-semibold text-slate-900 dark:text-white">{role.organization}</h3><p class="mt-1 text-sm font-medium">{role.role}</p><p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{role.summary}</p></div>)}</div>
             <a href={PROFILE.RESUME_URL} target="_blank" rel="noopener noreferrer" class="text-link mt-7 inline-block text-sm font-semibold">Industry Research Résumé (PDF)<span class="sr-only"> (opens in a new tab)</span></a>
         </Container>

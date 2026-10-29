@@ -23,7 +23,7 @@ export const PROFILE = {
   CV_URL: "/academic-cv.pdf",
   RESUME_URL: "/industry-research-resume.pdf",
   EXPECTED_GRADUATION: "Summer 2027",
-  JOB_MARKET: "Seeking tenure-track faculty and industry research positions in blockchain security.",
+  JOB_MARKET: "Seeking faculty and industry research positions in blockchain security.",
 };
 
 // Research Page
@@ -39,7 +39,7 @@ export const PROJECTS: Page = {
   TITLE: "Projects",
   SEO_TITLE: "Projects: Open-Source Tools & Engineering",
   DESCRIPTION:
-    "Research artifacts, security and protocol engineering, and open-source software by Imran Pollob.",
+    "Security and protocol engineering, developer tools, and AI engineering projects by Imran Pollob.",
 };
 
 // Primary navigation. The name/logo links to Home; CV opens the PDF.

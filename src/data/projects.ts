@@ -2,17 +2,10 @@ import type { ResourceLink } from "@types";
 import { GITHUB_URL } from "@consts";
 
 export type ProjectSection =
-    // Web apps and tools people can use right now.
-    | "tools"
-    // Command-line tools installed from a package registry.
-    | "installable"
-    // Desktop apps downloaded from a release page.
-    | "desktop"
     // Technically substantial projects shown for their engineering.
-    | "engineering"
     | "security"
-    // Smaller projects listed compactly under "More Projects".
-    | "more";
+    // AI and LLM applications listed compactly under "AI Engineering Projects".
+    | "ai";
 
 export type Project = {
     slug: string;
@@ -37,123 +30,7 @@ export type Project = {
 const repo = (name: string) => `${GITHUB_URL}/${name}`;
 
 export const projects: Project[] = [
-    { slug: "solidity-ast-generator", title: "Solidity AST Generator", description: "Explore Solidity syntax trees with source highlighting, tree navigation, and pinned comparisons. A supporting program-analysis tool.", section: "security", kind: "Analysis tool", tags: ["Solidity", "AST"], githubUrl: repo("solidity-ast-generator") },
-    // ── Tools & Applications ────────────────────────────────────────────────
-    {
-        slug: "bangla-quran",
-        title: "Bangla Quran",
-        description:
-            "Quran web app with all 114 surahs, Arabic text, Bangla translation and tafsir, audio recitation, search, bookmarks, reading modes, and PWA support.",
-        section: "tools",
-        kind: "Web app",
-        tags: ["PWA", "Audio", "Search"],
-        image: "/images/bangla-quran.webp",
-        liveUrl: "https://banglaquran.app",
-        githubUrl: repo("bangla-quran"),
-    },
-    {
-        slug: "github-profile-analyzer",
-        title: "GitHub Profile Analyzer",
-        description:
-            "Analyze GitHub profiles, repositories, languages, stars, forks, and activity through a visual dashboard.",
-        section: "tools",
-        kind: "Web tool",
-        image: "/images/tools/github-profile-analyzer.webp",
-        liveUrl: "https://imranpollob.github.io/github-profile-analyzer/",
-        githubUrl: repo("github-profile-analyzer"),
-    },
-    {
-        slug: "snippet-notes",
-        title: "Snippet – Rich Text Notes",
-        description:
-            "Create, edit, search, and organize notes with rich text editing, autosave, and a personal online workspace.",
-        section: "tools",
-        kind: "Web app",
-        image: "/images/tools/snippet-notes.webp",
-        liveUrl: "https://imranpollob.github.io/snippet-notes/",
-        githubUrl: repo("snippet-notes"),
-    },
-    {
-        slug: "text-diff-checker",
-        title: "Text Diff Checker",
-        description:
-            "Compare two texts side by side and highlight word-level or character-level differences privately in your browser.",
-        section: "tools",
-        kind: "Web tool",
-        image: "/images/tools/text-diff-checker.webp",
-        liveUrl: "https://imranpollob.github.io/text-diff-checker/",
-        githubUrl: repo("text-diff-checker"),
-    },
-    {
-        slug: "pdf-text-to-speech-reader",
-        title: "PDF Text-to-Speech Reader",
-        description:
-            "Read PDFs and text aloud with synchronized highlighting, browser speech, and neural text-to-speech support.",
-        section: "tools",
-        kind: "Web tool",
-        image: "/images/tools/pdf-text-to-speech-reader.webp",
-        liveUrl: "https://imranpollob.github.io/pdf-text-to-speech-reader/",
-        githubUrl: repo("pdf-text-to-speech-reader"),
-    },
-    {
-        slug: "bibtex-to-bibitem",
-        title: "BibTeX to Bibitem Converter",
-        description: "Convert BibTeX references into formatted LaTeX \\bibitem entries instantly in the browser.",
-        section: "tools",
-        kind: "Web tool",
-        image: "/images/tools/bibtex-to-bibitem.webp",
-        liveUrl: "https://imranpollob.github.io/bibtex-to-bibitem/",
-        githubUrl: repo("bibtex-to-bibitem"),
-    },
-
-    // ── Installable Tools ───────────────────────────────────────────────────
-    {
-        slug: "note-cli",
-        title: "Note CLI",
-        description:
-            "A lightweight command-line note manager for creating, searching, editing, and organizing notes from the terminal.",
-        section: "installable",
-        kind: "CLI · npm",
-        image: "/images/tools/note-cli.webp",
-        installUrl: "https://www.npmjs.com/package/node-note-cli",
-        installCommand: "npm install -g node-note-cli",
-        githubUrl: repo("note-cli"),
-    },
-    {
-        slug: "pomodoro-timer",
-        title: "Pomodoro Timer",
-        description:
-            "Desktop Pomodoro timer and stopwatch with todo management, daily statistics, syncing, and always-on-top mode.",
-        section: "desktop",
-        kind: "Desktop app",
-        image: "/images/tools/pomodoro-timer.webp",
-        downloadUrl: "https://github.com/imranpollob/pomodoro-timer/releases/latest",
-        platforms: "macOS · Windows · Linux (.deb)",
-        githubUrl: repo("pomodoro-timer"),
-    },
-    {
-        slug: "github-star-calculator",
-        title: "GitHub Star Calculator",
-        description: "Calculate the total stars earned by a GitHub user and list their most-starred repositories.",
-        section: "installable",
-        kind: "CLI · PyPI",
-        image: "/images/tools/github-star-calculator.webp",
-        installUrl: "https://pypi.org/project/gitstar/",
-        installCommand: "pip install gitstar",
-        githubUrl: repo("github-star-calculator"),
-    },
-    {
-        slug: "slugcopy",
-        title: "Slugcopy",
-        description:
-            "Convert text into URL-friendly slugs and copy the result to the clipboard from the command line.",
-        section: "installable",
-        kind: "CLI · npm",
-        image: "/images/tools/slugcopy.webp",
-        installUrl: "https://www.npmjs.com/package/slugcopy",
-        installCommand: "npm install --global slugcopy",
-        githubUrl: repo("slugcopy"),
-    },
+    { slug: "solidity-ast-generator", title: "Solidity AST Generator", description: "Explore a Solidity file's syntax tree with source highlighting, tree navigation, and pinned comparisons.", section: "security", kind: "Analysis tool", tags: ["Solidity", "AST"], githubUrl: repo("solidity-ast-generator") },
 
     // ── Selected Engineering Projects ───────────────────────────────────────
     {
@@ -200,128 +77,34 @@ export const projects: Project[] = [
         image: "/images/dao-governance.webp",
         githubUrl: repo("dao"),
     },
-    {
-        slug: "notebase",
-        title: "Notebase – Personal Knowledge Base",
-        description:
-            "Knowledge workspace with rich-text notes, notebook organization, source ingestion, password-protected sharing, and notebook-scoped retrieval chat with cited answers.",
-        section: "engineering",
-        kind: "Full-stack app",
-        tags: ["Full-stack", "Ingestion", "RAG"],
-        image: "/images/notebase.webp",
-        githubUrl: repo("notebase"),
-    },
-    {
-        slug: "chat-app",
-        title: "Multi-Room Chat App",
-        description:
-            "Real-time MERN chat application with JWT authentication, public and private rooms, membership controls, moderation, persistent messaging, and Socket.IO presence.",
-        section: "engineering",
-        kind: "Full-stack app",
-        tags: ["Node.js", "MongoDB", "Socket.IO", "JWT"],
-        image: "/images/chat-app.webp",
-        githubUrl: repo("chat-app"),
-    },
+
+    // ── AI Engineering Projects ─────────────────────────────────────────────
     {
         slug: "ai-trading",
         title: "Multi-Agent Trading Simulation",
         description:
-            "Stock-trading simulation in which autonomous agents with distinct investment strategies research markets and manage portfolios, built on modular MCP services for market data, accounts, memory, and notifications, with a real-time dashboard.",
-        section: "more",
+            "A stock-trading simulation where several AI agents, each with its own strategy, research the market and manage a portfolio. Market data, accounts, memory, and notifications run as separate MCP services, and a dashboard shows activity live.",
+        section: "ai",
         kind: "Multi-agent system",
         tags: ["Python", "MCP", "Agents"],
         image: "/images/ai-trading.webp",
         githubUrl: repo("ai-trading"),
     },
-
-    // ── More Projects ───────────────────────────────────────────────────────
     {
         slug: "multi-pdf-rag-chatbot",
         title: "Multi-PDF RAG Chatbot",
         description: "Question answering across multiple PDFs with LangChain, ChromaDB, source citations, and a Streamlit UI.",
-        section: "more",
+        section: "ai",
         kind: "Python app",
         githubUrl: repo("multi-pdf-rag-chatbot"),
     },
     {
         slug: "deal-finder-ai",
         title: "Deal Finder",
-        description: "Multi-agent deal discovery that scans online feeds, estimates prices with LLM and ML models, and sends automated alerts.",
-        section: "more",
+        description: "Agents scan online deal feeds, estimate each item's price with LLM and ML models, and send an alert when they find a good deal.",
+        section: "ai",
         kind: "Python app",
         githubUrl: repo("deal-finder-ai"),
-    },
-    {
-        slug: "crypto-chart-viewer",
-        title: "Crypto Chart Viewer",
-        description: "Search cryptocurrencies and view Coinbase trading pairs with interactive TradingView charts.",
-        section: "more",
-        kind: "Web tool",
-        liveUrl: "https://imranpollob.github.io/crypto-chart-viewer",
-        githubUrl: repo("crypto-chart-viewer"),
-    },
-    {
-        slug: "online-spelling-quiz",
-        title: "Online Spelling Quiz",
-        description: "Spelling practice with audio pronunciation, difficulty levels, and commonly misspelled words.",
-        section: "more",
-        kind: "Web tool",
-        liveUrl: "https://imranpollob.github.io/online-spelling-quiz/",
-        githubUrl: repo("online-spelling-quiz"),
-    },
-    {
-        slug: "mental-math-trainer",
-        title: "Mental Math Trainer",
-        description: "Arithmetic practice with configurable operations, difficulty levels, and timers.",
-        section: "more",
-        kind: "Web tool",
-        liveUrl: "https://imranpollob.github.io/mental-math-trainer/",
-        githubUrl: repo("mental-math-trainer"),
-    },
-    {
-        slug: "online-trivia-quiz",
-        title: "Online Trivia Quiz",
-        description: "Trivia quizzes by category and difficulty with instant scoring.",
-        section: "more",
-        kind: "Web tool",
-        liveUrl: "https://imranpollob.github.io/online-trivia-quiz/",
-        githubUrl: repo("online-trivia-quiz"),
-    },
-    {
-        slug: "word-character-counter",
-        title: "Word and Character Counter",
-        description: "Counts words, characters, sentences, paragraphs, reading time, and vocabulary statistics.",
-        section: "more",
-        kind: "Web tool",
-        liveUrl: "https://imranpollob.github.io/word-character-counter/",
-        githubUrl: repo("word-character-counter"),
-    },
-    {
-        slug: "color-shade-generator",
-        title: "Color Shade Generator",
-        description: "Generates lighter and darker shades of any color with one-click HEX copy.",
-        section: "more",
-        kind: "Web tool",
-        liveUrl: "https://imranpollob.github.io/color-shade-generator/",
-        githubUrl: repo("color-shade-generator"),
-    },
-    {
-        slug: "lorem-ipsum-generator",
-        title: "Lorem Ipsum Generator",
-        description: "Placeholder text with control over paragraphs, sentences, and word length.",
-        section: "more",
-        kind: "Web tool",
-        liveUrl: "https://imranpollob.github.io/lorem-ipsum-generator/",
-        githubUrl: repo("lorem-ipsum-generator"),
-    },
-    {
-        slug: "black-screen-online",
-        title: "Black Screen Online",
-        description: "Distraction-free fullscreen screen with a clock, custom text, and background colors.",
-        section: "more",
-        kind: "Web tool",
-        liveUrl: "https://imranpollob.github.io/black-screen-online/",
-        githubUrl: repo("black-screen-online"),
     },
 ];
 

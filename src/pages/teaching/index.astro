@@ -9,7 +9,7 @@ import { teaching, teachingAward } from "@data/experience";
         <h1 class="page-heading text-4xl">Teaching & Mentoring</h1>
         <p class="mt-4 text-lg">{teaching.role} · {teaching.organization}</p>
         <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">{teaching.period}</p>
-        <p class="mt-6 max-w-3xl leading-relaxed text-slate-600 dark:text-slate-300">My teaching experience spans programming instruction, course-material development, laboratory sessions, and software-project mentoring. I help students connect programming concepts to working implementations through examples, practice, and project feedback.</p>
+        <p class="mt-6 max-w-3xl leading-relaxed text-slate-600 dark:text-slate-300">I have taught programming in C++, Java, Python, and R, written course materials, run lab sections, and mentored student software teams. Most of my teaching is hands-on: worked examples, programming practice, and feedback on student projects.</p>
     </Container></section>
     <section class="border-t border-slate-200 py-12 dark:border-slate-800"><Container size="xl">
         <div class="max-w-3xl rounded-xl border border-brand-200 bg-brand-50 p-6 dark:border-brand-800 dark:bg-brand-500/10">
@@ -21,15 +21,14 @@ import { teaching, teachingAward } from "@data/experience";
     </Container></section>
     <section class="border-t border-slate-200 py-12 dark:border-slate-800"><Container size="xl">
         <h2 class="text-2xl font-semibold text-slate-900 dark:text-white">Course Experience</h2>
-        <p class="mt-3 max-w-3xl text-slate-600 dark:text-slate-400">Responsibilities below describe my work within the Graduate Teaching Assistant appointment.</p>
+        <p class="mt-3 max-w-3xl text-slate-600 dark:text-slate-400">What I did in each course, all as a Graduate Teaching Assistant.</p>
         <ul class="mt-6 max-w-4xl divide-y divide-slate-200 dark:divide-slate-800">{teaching.courses.map(course => <li class="grid gap-2 py-5 sm:grid-cols-2"><h3 class="font-semibold text-slate-900 dark:text-white">{course.code && `${course.code} · `}{course.name}</h3><p class="text-sm leading-relaxed text-slate-600 dark:text-slate-300">{course.detail}</p></li>)}</ul>
-        <p class="mt-4 max-w-3xl text-sm text-slate-600 dark:text-slate-400">The 2026 departmental award also specifically recognized my support for CSC 3100.</p>
     </Container></section>
     <section class="border-t border-slate-200 py-12 dark:border-slate-800"><Container size="xl">
         <div class="grid gap-10 md:grid-cols-2">
-            <div><h2 class="text-2xl font-semibold text-slate-900 dark:text-white">Teaching Approach</h2><p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">I connect explanations to hands-on programming and encourage students to reason about their design choices. Developing course materials, delivering labs, and guiding final projects are complementary ways to help students move from understanding a concept to applying it independently.</p></div>
-            <div><h2 class="text-2xl font-semibold text-slate-900 dark:text-white">Project Mentoring</h2><p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">In Software Engineering, I mentored student teams through Agile projects, supporting the progression from planning and implementation to testing and delivery. My industry background informs the practical feedback I give on software development.</p></div>
+            <div><h2 class="text-2xl font-semibold text-slate-900 dark:text-white">Teaching Approach</h2><p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">I tie explanations to code that students write themselves, and I ask them to explain their design choices. Course materials introduce an idea, labs give students practice with it, and final projects are where they use it on their own.</p></div>
+            <div><h2 class="text-2xl font-semibold text-slate-900 dark:text-white">Project Mentoring</h2><p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">In Software Engineering, I mentored student teams through Agile projects, from planning and implementation to testing and delivery. I worked as a software engineer for almost five years before my Ph.D., and I draw on that when giving feedback.</p></div>
         </div>
     </Container></section>
-    <ContactCTA subheading="I'm interested in faculty opportunities that connect security research, programming education, and student mentoring." />
+    <ContactCTA subheading="I'm looking for faculty positions where I can do security research, teach programming, and mentor students." />
 </PageLayout>

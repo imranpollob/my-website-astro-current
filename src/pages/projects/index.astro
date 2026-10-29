@@ -2,45 +2,33 @@
 import Container from "@components/Container.astro";
 import ContactCTA from "@components/ContactCTA.astro";
 import ProjectCard from "@components/ProjectCard.astro";
-import ResearchCard from "@components/ResearchCard.astro";
 import ResourceLinks from "@components/ResourceLinks.astro";
 import SectionHeader from "@components/SectionHeader.astro";
+import ToolCard from "@components/ToolCard.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import { PROJECTS } from "@consts";
 import { projectLinks, projectsIn } from "@data/projects";
-import { featuredResearch } from "@data/research";
-const artifacts = featuredResearch.filter(project => project.links?.some(link => link.label === "Code"));
+import { toolCategories, toolsIn } from "@data/tools";
 const security = projectsIn("security");
-const tools = [...projectsIn("tools"), ...projectsIn("engineering")];
-const installable = [...projectsIn("installable"), ...projectsIn("desktop")];
-const more = projectsIn("more");
+const ai = projectsIn("ai");
 ---
 <PageLayout title={PROJECTS.SEO_TITLE} description={PROJECTS.DESCRIPTION}>
     <section class="pb-12 pt-28 md:pt-32"><Container size="xl">
-        <h1 class="page-heading text-4xl">Projects & Research Artifacts</h1>
-        <p class="mt-5 max-w-3xl leading-relaxed text-slate-600 dark:text-slate-300">Implementations supporting my research, security and protocol engineering projects, and other open-source software I build and maintain.</p>
-        <nav aria-label="On this page" class="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold"><a class="text-link" href="#research-artifacts">Research artifacts</a><a class="text-link" href="#engineering">Security & protocols</a><a class="text-link" href="#tools">Developer tools</a><a class="text-link" href="#installable">Installable tools</a><a class="text-link" href="#more">More projects</a></nav>
+        <h1 class="page-heading text-4xl">Projects</h1>
+        <p class="mt-5 max-w-3xl leading-relaxed text-slate-600 dark:text-slate-300">Software I have built outside my papers: Solidity protocols, small web tools, and a few AI applications.</p>
+        <nav aria-label="On this page" class="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold"><a class="text-link" href="#engineering">Security & protocols</a><a class="text-link" href="#tools">Developer tools</a><a class="text-link" href="#ai">AI engineering</a></nav>
     </Container></section>
     <section class="border-t border-slate-200 py-12 dark:border-slate-800"><Container size="xl">
-        <SectionHeader id="research-artifacts" title="Research Artifacts" description="Public implementations linked to the corresponding papers, evaluation context, and limitations." />
-        <div class="grid gap-5 md:grid-cols-2">{artifacts.map(project => <ResearchCard project={project} />)}</div>
-        <a href="/research" class="text-link mt-5 inline-block text-sm">All research, including ZKScan and Secure-BSM →</a>
-    </Container></section>
-    <section class="border-t border-slate-200 py-12 dark:border-slate-800"><Container size="xl">
-        <SectionHeader id="engineering" title="Security & Protocol Engineering" description="Supporting tools and Solidity implementations. These projects demonstrate engineering work; they are separate from the published research artifacts." />
+        <SectionHeader id="engineering" title="Security & Protocol Engineering" description="Solidity protocols, plus a tool for exploring Solidity syntax trees." />
         <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{security.map(project => <ProjectCard project={project} />)}</div>
     </Container></section>
     <section class="border-t border-slate-200 py-12 dark:border-slate-800"><Container size="xl">
-        <SectionHeader id="tools" title="Developer Tools & Applications" description="Web tools and full-stack applications built outside my research." />
-        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{tools.map(project => <ProjectCard project={project} showImage />)}</div>
+        <SectionHeader id="tools" title="Developer Tools & Applications" description="Web tools and apps I have built outside my research." />
+        <div class="space-y-8">{toolCategories.map(category => <div><h3 class="text-lg font-semibold text-slate-900 dark:text-white">{category}</h3><div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{toolsIn(category).map(tool => <ToolCard tool={tool} />)}</div></div>)}</div>
     </Container></section>
     <section class="border-t border-slate-200 py-12 dark:border-slate-800"><Container size="xl">
-        <SectionHeader id="installable" title="Installable Tools" description="Command-line utilities and desktop applications." />
-        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{installable.map(project => <ProjectCard project={project} />)}</div>
-    </Container></section>
-    <section class="border-t border-slate-200 py-12 dark:border-slate-800"><Container size="xl">
-        <SectionHeader id="more" title="More Projects" />
-        <ul class="divide-y divide-slate-200 dark:divide-slate-800">{more.map(project => <li class="grid gap-4 py-5 md:grid-cols-[1fr_auto]"><div><h3 class="font-semibold text-slate-900 dark:text-white">{project.title}</h3><p class="mt-1 max-w-3xl text-sm text-slate-600 dark:text-slate-400">{project.description}</p></div><ResourceLinks links={projectLinks(project)} context={project.title} /></li>)}</ul>
+        <SectionHeader id="ai" title="AI Engineering Projects" />
+        <ul class="divide-y divide-slate-200 dark:divide-slate-800">{ai.map(project => <li class="grid gap-4 py-5 md:grid-cols-[1fr_auto]"><div><h3 class="font-semibold text-slate-900 dark:text-white">{project.title}</h3><p class="mt-1 max-w-3xl text-sm text-slate-600 dark:text-slate-400">{project.description}</p></div><ResourceLinks links={projectLinks(project)} context={project.title} /></li>)}</ul>
     </Container></section>
     <ContactCTA />
 </PageLayout>

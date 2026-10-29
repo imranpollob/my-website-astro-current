@@ -24,7 +24,7 @@ const articleSchema = paper ? { "@context": "https://schema.org", "@type": "Scho
 <PageLayout title={`${project.title}: ${project.subtitle}`} description={project.summary}>
     {articleSchema && <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(articleSchema)} />}
     <section class="pb-12 pt-28 md:pt-32"><Container size="xl">
-        <a class="text-link text-sm" href="/research#projects">← All research</a>
+        <a class="text-link text-sm" href="/research/">← All research</a>
         <div class="mt-6"><StatusBadge status={researchStatus(project)} /></div>
         <h1 class="page-heading mt-4 text-4xl md:text-5xl">{project.title}</h1>
         <p class="mt-3 max-w-3xl text-xl text-slate-600 dark:text-slate-300">{project.subtitle}</p>

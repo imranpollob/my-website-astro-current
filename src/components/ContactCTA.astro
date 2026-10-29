@@ -11,7 +11,7 @@ type Props = {
 
 const {
     heading = "Contact",
-    subheading = "I'm glad to hear about research collaborations, tenure-track faculty positions, and industry research roles in blockchain security.",
+    subheading = "If you'd like to talk about a research collaboration, a faculty position, or an industry research role in blockchain security, email me.",
 } = Astro.props;
 
 const email = SOCIALS.find((social) => social.ICON === "email")!;
@@ -61,7 +61,7 @@ const iconFor = (icon: string) => (icon === "google-scholar" ? "scholar" : icon)
                             class="inline-flex items-center gap-2 rounded-md border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-brand-500 hover:text-brand-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:text-brand-300"
                         >
                             <Icon name="file" />
-                            Academic CV (PDF)
+                            Academic CV
                             <span class="sr-only"> (opens in a new tab)</span>
                         </a>
                     </li>

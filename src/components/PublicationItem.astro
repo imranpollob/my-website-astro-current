@@ -3,6 +3,8 @@ import type { Publication } from "@data/research";
 import { PROFILE } from "@consts";
 import { publicationLinks, publicationBibtex } from "@data/research";
 import ResourceLinks from "@components/ResourceLinks.astro";
+import { Image, getImage } from "astro:assets";
+import { cn } from "@lib/utils";
 
 type Props = {
     publication: Publication;
@@ -11,9 +13,15 @@ type Props = {
 const { publication } = Astro.props;
 const links = publicationLinks(publication);
 const bibtex = publication.group === "selected" ? publicationBibtex(publication) : publication.bibtex;
+
+const figures = import.meta.glob<{ default: ImageMetadata }>("/src/assets/figures/*", { eager: true });
+const figure = publication.figure;
+const figureImage = figure && figures[`/src/assets/figures/${figure.file}`]?.default;
+if (figure && !figureImage) throw new Error(`Missing figure src/assets/figures/${figure.file} for ${publication.slug}`);
+const fullFigure = figureImage && (await getImage({ src: figureImage, format: "webp" }));
 ---
 
-<li id={["authguard-7702", "zkscan"].includes(publication.slug) ? `publication-${publication.slug}` : publication.slug} class="scroll-mt-24 grid gap-1 py-5 sm:grid-cols-[4.5rem_1fr] sm:gap-4">
+<li id={["authguard-7702", "zkscan"].includes(publication.slug) ? `publication-${publication.slug}` : publication.slug} class={cn("scroll-mt-24 grid gap-1 py-5 sm:grid-cols-[4.5rem_1fr] sm:gap-4", figureImage && "lg:grid-cols-[4.5rem_1fr_18rem] lg:gap-x-8")}>
     <p class="text-sm font-semibold tabular-nums text-slate-500 dark:text-slate-400">{publication.year}</p>
     <div class="space-y-1.5">
         <h4 class="font-semibold leading-snug text-slate-900 dark:text-white">
@@ -53,4 +61,38 @@ const bibtex = publication.group === "selected" ? publicationBibtex(publication)
             )
         }
     </div>
+    {
+        figure && figureImage && fullFigure && (
+            <figure class="mt-3 sm:col-start-2 lg:col-start-3 lg:row-start-1 lg:mt-0">
+                {/* The link is the no-JS fallback; the script below opens the dialog instead. */}
+                <a href={fullFigure.src} data-figure-dialog={`figure-${publication.slug}`} aria-haspopup="dialog" class="group block cursor-zoom-in overflow-hidden rounded-md border border-slate-200 bg-white p-2 transition-colors hover:border-brand-500 dark:border-slate-700 dark:hover:border-brand-400">
+                    <Image src={figureImage} alt={figure.alt} widths={[288, 576]} sizes="(min-width: 1024px) 18rem, (min-width: 640px) calc(100vw - 9rem), calc(100vw - 2rem)" format="webp" loading="lazy" class="h-40 w-full object-contain sm:max-w-md lg:max-w-none" />
+                    <span class="sr-only">Enlarge figure</span>
+                </a>
+                <figcaption class="mt-1.5 text-xs leading-snug text-slate-500 dark:text-slate-400">{figure.caption}</figcaption>
+                <dialog id={`figure-${publication.slug}`} aria-label={figure.caption} class="w-full max-w-[min(94vw,72rem)] rounded-lg bg-white p-0 shadow-2xl backdrop:bg-slate-950/80">
+                    <div class="flex items-start justify-between gap-4 border-b border-slate-200 px-4 py-3">
+                        <p class="text-sm leading-snug text-slate-700">{figure.caption}</p>
+                        <form method="dialog">
+                            <button class="-m-1 rounded p-1 text-2xl leading-none text-slate-500 hover:text-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-500" aria-label="Close figure">&times;</button>
+                        </form>
+                    </div>
+                    <img src={fullFigure.src} alt={figure.alt} width={fullFigure.attributes.width} height={fullFigure.attributes.height} loading="lazy" decoding="async" class="mx-auto max-h-[80vh] w-auto max-w-full object-contain p-4" />
+                </dialog>
+            </figure>
+        )
+    }
 </li>
+
+<script>
+    // Delegated on document so it keeps working across page swaps.
+    document.addEventListener("click", (event) => {
+        const target = event.target as HTMLElement;
+        if (target instanceof HTMLDialogElement && target.open) return target.close(); // backdrop click
+        const trigger = target.closest<HTMLAnchorElement>("[data-figure-dialog]");
+        const dialog = trigger && document.getElementById(trigger.dataset.figureDialog!);
+        if (!(dialog instanceof HTMLDialogElement)) return;
+        event.preventDefault();
+        dialog.showModal();
+    });
+</script>
