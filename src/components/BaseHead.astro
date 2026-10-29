@@ -9,7 +9,7 @@ interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = "/open-graph.jpg" } = Astro.props;
+const { title, description, image = "/research-social.png" } = Astro.props;
 const imageURL = new URL(image, Astro.site);
 
 const websiteSchema = {
@@ -62,6 +62,7 @@ const websiteSchema = {
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={imageURL} />
+<meta property="og:image:alt" content="Imran Pollob — Blockchain Security & Privacy Researcher, Ph.D. Candidate at Wayne State University. Expected graduation: Summer 2027." />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:locale" content="en_US" />

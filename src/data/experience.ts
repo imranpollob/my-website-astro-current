@@ -1,4 +1,6 @@
-// Sources: public/resume.pdf and the former src/content/experience/*.md entries.
+import { PROFILE } from "@consts";
+// Sources: original pre-update résumé and former src/content/experience/*.md entries.
+// public/resume.pdf is now generated from these records; see IMPLEMENTATION_REPORT.md.
 
 export type Role = {
     organization: string;
@@ -31,7 +33,7 @@ export const industryExperience: Role[] = [
         period: "May 2018 – Sep 2019",
         logo: "/image/company-logos/rapid-web-services.png",
         summary:
-            "Developed and maintained the SeeBiz inventory management platform, used by multiple businesses and handling 50K+ requests per day.",
+            "Developed and maintained the SeeBiz inventory management platform, used by multiple businesses.",
         highlights: [
             "Built RESTful APIs and features for invoicing, multi-warehouse tracking, shrinkage detection, reorder alerts, and automated dropshipping.",
             "Worked across PHP (Laravel), Node.js, and React, and automated deployment with CI/CD.",
@@ -87,7 +89,7 @@ export const education: Degree[] = [
         degree: "Ph.D. Candidate",
         field: "Computer Science",
         institution: "Wayne State University",
-        period: "2021 – Present",
+        period: `2021 – Present · Expected ${PROFILE.EXPECTED_GRADUATION}`,
     },
     {
         degree: "M.Sc.",
@@ -102,3 +104,12 @@ export const education: Degree[] = [
         period: "2015",
     },
 ];
+
+// Award details supplied by the user from the April 16, 2026 notification letter.
+export const teachingAward = {
+    title: "Outstanding Graduate Teaching Assistant Award",
+    issuer: "Department of Computer Science, Wayne State University",
+    date: "April 16, 2026",
+    year: "2026",
+    description: "Recognized for dedication to student learning and engagement, innovative teaching support, and exceptional support for CSC 3100 in recent semesters.",
+};

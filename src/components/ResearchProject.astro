@@ -1,6 +1,6 @@
 ---
 import type { ResearchProject } from "@data/research";
-import { doiUrl, publications } from "@data/research";
+import { publications, researchLinks, researchStatus } from "@data/research";
 import type { ResourceLink } from "@types";
 import StatusBadge from "@components/StatusBadge.astro";
 import ResourceLinks from "@components/ResourceLinks.astro";
@@ -14,13 +14,10 @@ const { project } = Astro.props;
 
 const publication = publications.find((paper) => paper.slug === project.publication);
 
-const links: ResourceLink[] = [
-    ...(publication?.doi ? [{ label: "Paper (DOI)", href: doiUrl(publication.doi), icon: "file" as const }] : []),
-    ...(project.links ?? []),
-];
+const links: ResourceLink[] = researchLinks(project);
 
 const venueDetail = publication
-    ? `“${publication.title}.” ${publication.status === "accepted" ? "Accepted and presented at " : ""}${publication.venue}${publication.pages ? `, pp. ${publication.pages}` : ""}, ${publication.year}.`
+    ? `“${publication.title}.” ${publication.status === "accepted" ? "Accepted at " : ""}${publication.venue}${publication.pages ? `, pp. ${publication.pages}` : ""}, ${publication.year}.`
     : "";
 
 const rows = [
@@ -39,7 +36,7 @@ const rows = [
             </h3>
             <p class="mt-1 text-slate-600 dark:text-slate-400">{project.subtitle}</p>
         </div>
-        {project.status && <div class="shrink-0"><StatusBadge status={project.status} /></div>}
+        <div class="shrink-0"><StatusBadge status={researchStatus(project)} /></div>
     </header>
 
     <dl class="mt-6 grid gap-x-8 gap-y-4 md:grid-cols-[8rem_1fr]">

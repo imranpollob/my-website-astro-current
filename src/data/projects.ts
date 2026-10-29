@@ -10,6 +10,7 @@ export type ProjectSection =
     | "desktop"
     // Technically substantial projects shown for their engineering.
     | "engineering"
+    | "security"
     // Smaller projects listed compactly under "More Projects".
     | "more";
 
@@ -36,6 +37,7 @@ export type Project = {
 const repo = (name: string) => `${GITHUB_URL}/${name}`;
 
 export const projects: Project[] = [
+    { slug: "solidity-ast-generator", title: "Solidity AST Generator", description: "Explore Solidity syntax trees with source highlighting, tree navigation, and pinned comparisons. A supporting program-analysis tool.", section: "security", kind: "Analysis tool", tags: ["Solidity", "AST"], githubUrl: repo("solidity-ast-generator") },
     // ── Tools & Applications ────────────────────────────────────────────────
     {
         slug: "bangla-quran",
@@ -159,7 +161,7 @@ export const projects: Project[] = [
         title: "NFT Rentals & Sales Protocol",
         description:
             "Solidity protocol for renting and selling NFTs with ERC-4907 time-bound user rights, ERC-2981 royalties, conflict-free rental scheduling, escrowed pull-payments, and reentrancy protection.",
-        section: "engineering",
+        section: "security",
         kind: "Solidity protocol",
         tags: ["Solidity", "ERC-4907", "ERC-2981", "Escrow"],
         image: "/images/nft-rentals.webp",
@@ -170,7 +172,7 @@ export const projects: Project[] = [
         title: "Overcollateralized Stablecoin",
         description:
             "Stablecoin protocol backed by WETH and WBTC collateral, with Chainlink price feeds, health-factor checks, liquidations, and minting and redemption flows.",
-        section: "engineering",
+        section: "security",
         kind: "Solidity protocol",
         tags: ["Solidity", "DeFi", "Chainlink"],
         image: "/images/stablecoin-dsc.webp",
@@ -181,7 +183,7 @@ export const projects: Project[] = [
         title: "Swap – Decentralized Exchange",
         description:
             "Uniswap-style exchange with constant-product AMM pools, CREATE2 pair deployment, liquidity management, multi-hop swaps, slippage protection, and TWAP support.",
-        section: "engineering",
+        section: "security",
         kind: "Solidity protocol",
         tags: ["Solidity", "AMM", "DeFi"],
         image: "/images/swap-dex.webp",
@@ -192,7 +194,7 @@ export const projects: Project[] = [
         title: "DAO – Community Grants Governance",
         description:
             "Governance system for proposing, voting on, and executing ETH and ERC-20 grants with OpenZeppelin Governor, Timelock, treasury, and vesting support.",
-        section: "engineering",
+        section: "security",
         kind: "Solidity protocol",
         tags: ["Solidity", "Governance", "OpenZeppelin"],
         image: "/images/dao-governance.webp",
@@ -324,14 +326,7 @@ export const projects: Project[] = [
 ];
 
 // Projects featured on the homepage, in display order.
-export const featuredProjectSlugs = [
-    "bangla-quran",
-    "nft-rentals-and-sales",
-    "notebase",
-    "github-profile-analyzer",
-    "stablecoin",
-    "note-cli",
-];
+export const featuredProjectSlugs = ["solidity-ast-generator", "nft-rentals-and-sales", "stablecoin"];
 
 export const projectsIn = (section: ProjectSection) => projects.filter((project) => project.section === section);
 

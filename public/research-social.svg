@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f8fafc"/>
+  <rect width="16" height="630" fill="#0f766e"/>
+  <g fill="none" stroke="#0f766e" opacity=".10" stroke-width="2"><circle cx="1130" cy="120" r="130"/><circle cx="1130" cy="120" r="205"/><circle cx="1130" cy="120" r="280"/></g>
+  <g font-family="DejaVu Sans, sans-serif">
+    <text x="76" y="103" fill="#0f766e" font-size="25" font-weight="bold">imranpollob.com</text>
+    <text x="76" y="230" fill="#0f172a" font-size="78" font-weight="bold">Imran Pollob</text>
+    <text x="76" y="304" fill="#0f766e" font-size="36">Blockchain Security &amp; Privacy Researcher</text>
+    <text x="76" y="378" fill="#475569" font-size="26">Ph.D. Candidate · Wayne State University</text>
+    <text x="76" y="423" fill="#475569" font-size="26">Expected graduation: Summer 2027</text>
+    <path d="M76 477H1120" stroke="#cbd5e1"/>
+    <text x="76" y="532" fill="#334155" font-size="23">Smart Contracts  ·  Programmable Accounts  ·  Zero-Knowledge Systems</text>
+  </g>
+</svg>

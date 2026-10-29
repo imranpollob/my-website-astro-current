@@ -1,7 +1,7 @@
 ---
 import type { Publication } from "@data/research";
 import { PROFILE } from "@consts";
-import { publicationLinks } from "@data/research";
+import { publicationLinks, publicationBibtex } from "@data/research";
 import ResourceLinks from "@components/ResourceLinks.astro";
 
 type Props = {
@@ -10,9 +10,10 @@ type Props = {
 
 const { publication } = Astro.props;
 const links = publicationLinks(publication);
+const bibtex = publication.group === "selected" ? publicationBibtex(publication) : publication.bibtex;
 ---
 
-<li id={publication.slug} class="scroll-mt-24 grid gap-1 py-5 sm:grid-cols-[4.5rem_1fr] sm:gap-4">
+<li id={["authguard-7702", "zkscan"].includes(publication.slug) ? `publication-${publication.slug}` : publication.slug} class="scroll-mt-24 grid gap-1 py-5 sm:grid-cols-[4.5rem_1fr] sm:gap-4">
     <p class="text-sm font-semibold tabular-nums text-slate-500 dark:text-slate-400">{publication.year}</p>
     <div class="space-y-1.5">
         <h4 class="font-semibold leading-snug text-slate-900 dark:text-white">
@@ -20,7 +21,7 @@ const links = publicationLinks(publication);
             {
                 publication.status === "accepted" && (
                     <span class="ml-1 whitespace-nowrap rounded-full border border-brand-200 bg-white px-2 py-0.5 align-middle text-xs font-semibold text-brand-800 dark:border-brand-800 dark:bg-slate-900 dark:text-brand-300">
-                        Accepted & presented
+                        Accepted
                     </span>
                 )
             }
@@ -34,17 +35,18 @@ const links = publicationLinks(publication);
                 </p>
             )
         }
+        {publication.presented && <p class="text-xs text-slate-500 dark:text-slate-400">Presented at the conference</p>}
         <p class="text-sm italic text-slate-500 dark:text-slate-400">
             {publication.venue}{publication.pages && `, pp. ${publication.pages}`}
         </p>
         {
-            (links.length > 0 || publication.bibtex) && (
+            (links.length > 0 || bibtex) && (
                 <div class="flex flex-wrap items-start gap-2 pt-1">
                     {links.length > 0 && <ResourceLinks links={links} context={publication.title} />}
-                    {publication.bibtex && (
+                    {bibtex && (
                         <details class="w-full text-sm">
                             <summary class="cursor-pointer font-medium text-slate-700 hover:text-brand-700 dark:text-slate-300">BibTeX</summary>
-                            <pre class="mt-2 overflow-x-auto rounded-md bg-slate-50 p-3 text-xs dark:bg-slate-900"><code>{publication.bibtex}</code></pre>
+                            <pre class="mt-2 overflow-x-auto rounded-md bg-slate-50 p-3 text-xs dark:bg-slate-900"><code>{bibtex}</code></pre>
                         </details>
                     )}
                 </div>

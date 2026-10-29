@@ -1,0 +1,35 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import ContactCTA from "@components/ContactCTA.astro";
+import { teaching, teachingAward } from "@data/experience";
+---
+<PageLayout title="Teaching & Mentoring" description="Programming instruction, software-project mentoring, and the 2026 Outstanding Graduate Teaching Assistant Award at Wayne State University.">
+    <section class="pb-12 pt-28 md:pt-32"><Container size="xl">
+        <h1 class="page-heading text-4xl">Teaching & Mentoring</h1>
+        <p class="mt-4 text-lg">{teaching.role} · {teaching.organization}</p>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">{teaching.period}</p>
+        <p class="mt-6 max-w-3xl leading-relaxed text-slate-600 dark:text-slate-300">My teaching experience spans programming instruction, course-material development, laboratory sessions, and software-project mentoring. I help students connect programming concepts to working implementations through examples, practice, and project feedback.</p>
+    </Container></section>
+    <section class="border-t border-slate-200 py-12 dark:border-slate-800"><Container size="xl">
+        <div class="max-w-3xl rounded-xl border border-brand-200 bg-brand-50 p-6 dark:border-brand-800 dark:bg-brand-500/10">
+            <p class="text-sm font-semibold text-brand-800 dark:text-brand-300">Teaching recognition · {teachingAward.year}</p>
+            <h2 class="mt-2 text-2xl font-semibold text-slate-900 dark:text-white">{teachingAward.title}</h2>
+            <p class="mt-2 text-sm">{teachingAward.issuer} · {teachingAward.date}</p>
+            <p class="mt-4 leading-relaxed">{teachingAward.description}</p>
+        </div>
+    </Container></section>
+    <section class="border-t border-slate-200 py-12 dark:border-slate-800"><Container size="xl">
+        <h2 class="text-2xl font-semibold text-slate-900 dark:text-white">Course Experience</h2>
+        <p class="mt-3 max-w-3xl text-slate-600 dark:text-slate-400">Responsibilities below describe my work within the Graduate Teaching Assistant appointment.</p>
+        <ul class="mt-6 max-w-4xl divide-y divide-slate-200 dark:divide-slate-800">{teaching.courses.map(course => <li class="grid gap-2 py-5 sm:grid-cols-2"><h3 class="font-semibold text-slate-900 dark:text-white">{course.code && `${course.code} · `}{course.name}</h3><p class="text-sm leading-relaxed text-slate-600 dark:text-slate-300">{course.detail}</p></li>)}</ul>
+        <p class="mt-4 max-w-3xl text-sm text-slate-600 dark:text-slate-400">The 2026 departmental award also specifically recognized my support for CSC 3100.</p>
+    </Container></section>
+    <section class="border-t border-slate-200 py-12 dark:border-slate-800"><Container size="xl">
+        <div class="grid gap-10 md:grid-cols-2">
+            <div><h2 class="text-2xl font-semibold text-slate-900 dark:text-white">Teaching Approach</h2><p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">I connect explanations to hands-on programming and encourage students to reason about their design choices. Developing course materials, delivering labs, and guiding final projects are complementary ways to help students move from understanding a concept to applying it independently.</p></div>
+            <div><h2 class="text-2xl font-semibold text-slate-900 dark:text-white">Project Mentoring</h2><p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">In Software Engineering, I mentored student teams through Agile projects, supporting the progression from planning and implementation to testing and delivery. My industry background informs the practical feedback I give on software development.</p></div>
+        </div>
+    </Container></section>
+    <ContactCTA subheading="I'm interested in faculty opportunities that connect security research, programming education, and student mentoring." />
+</PageLayout>

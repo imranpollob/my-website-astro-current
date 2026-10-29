@@ -10,7 +10,7 @@ interface Props {
     as?: "h2" | "h3";
 }
 
-const { title, id, description, href, linkText } = Astro.props;
+const { title, id, description, href, linkText } = Astro.props as Props;
 const Heading = Astro.props.as ?? "h2";
 ---
 

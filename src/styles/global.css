@@ -28,8 +28,11 @@
 }
 
 :focus-visible {
-  outline-color: var(--color-primary);
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
 }
+
+[id] { scroll-margin-top: 6rem; }
 
 html {
   overflow-y: scroll;
@@ -137,9 +140,6 @@ main {
     transition: none;
   }
 
-  html {
-    scroll-behavior: auto;
-  }
 }
 
 html {
@@ -219,3 +219,5 @@ span.bold {
 .prose-content pre code {
   font-family: var(--font-code);
 }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

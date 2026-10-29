@@ -1,312 +1,72 @@
 ---
-import Certifications from "@components/Certifications.astro";
 import Container from "@components/Container.astro";
 import ContactCTA from "@components/ContactCTA.astro";
-import Icon from "@components/Icon.astro";
-import ProjectCard from "@components/ProjectCard.astro";
 import ResearchCard from "@components/ResearchCard.astro";
 import SectionHeader from "@components/SectionHeader.astro";
+import ResourceLinks from "@components/ResourceLinks.astro";
 import PageLayout from "@layouts/PageLayout.astro";
-import type { IconName } from "@types";
 import { PROFILE, SITE, SOCIALS } from "@consts";
-import { researchProjects } from "@data/research";
-import { featuredProjects } from "@data/projects";
-import { education, industryExperience, teaching } from "@data/experience";
-
+import { featuredResearch, researchDirections } from "@data/research";
+import { education, industryExperience, teaching, teachingAward } from "@data/experience";
+import type { ResourceLink } from "@types";
+const profiles: ResourceLink[] = SOCIALS.filter(s => s.ICON !== "email").map(s => ({ label: s.TEXT, href: s.HREF, icon: s.ICON === "google-scholar" ? "scholar" : s.ICON as "github" | "linkedin" }));
 const personSchema = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: PROFILE.NAME,
-    alternateName: PROFILE.PUBLICATION_NAME,
-    url: Astro.site,
-    image: new URL(PROFILE.PHOTO, Astro.site),
-    email: `mailto:${PROFILE.EMAIL}`,
-    jobTitle: PROFILE.HEADLINE,
+    "@context": "https://schema.org", "@type": "Person", name: PROFILE.NAME, alternateName: PROFILE.PUBLICATION_NAME,
+    url: Astro.site, image: new URL(PROFILE.PHOTO, Astro.site), email: `mailto:${PROFILE.EMAIL}`,
+    jobTitle: "Ph.D. Candidate in Computer Science", description: PROFILE.HEADLINE,
     affiliation: { "@type": "CollegeOrUniversity", name: PROFILE.AFFILIATION },
-    alumniOf: [
-        { "@type": "CollegeOrUniversity", name: "Wayne State University" },
-        { "@type": "CollegeOrUniversity", name: "Jahangirnagar University" },
-    ],
-    knowsAbout: [
-        "Blockchain security",
-        "Smart contract security",
-        "Privacy-preserving systems",
-        "Programmable accounts",
-        "Zero-knowledge proofs",
-        "Software engineering",
-    ],
-    sameAs: SOCIALS.filter((social) => !social.HREF.startsWith("mailto:")).map((social) => social.HREF),
+    alumniOf: [{ "@type": "CollegeOrUniversity", name: "Jahangirnagar University" }],
+    knowsAbout: PROFILE.THEMES, sameAs: SOCIALS.filter(s => !s.HREF.startsWith("mailto:")).map(s => s.HREF),
 };
-
-const secondaryLinks = SOCIALS.filter((social) => social.ICON !== "email");
-const iconFor = (icon: string) => (icon === "google-scholar" ? "scholar" : icon) as IconName;
-
-const [phd, ...earlierDegrees] = education;
-const industryCompanies = industryExperience.map((role) => role.organization).reverse();
-
-const atAGlance = [
-    { term: "Now", detail: `${phd.degree}, ${phd.field} · ${phd.institution}` },
-    { term: "Before", detail: `5 years as a software engineer in industry · ${industryCompanies.join(", ")}` },
-    { term: "Teaching", detail: `${teaching.current} · ${teaching.organization}` },
-    { term: "Based in", detail: PROFILE.LOCATION },
-];
 ---
-
 <PageLayout description={SITE.DESCRIPTION}>
     <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(personSchema)} />
-
-    <!-- 1. Hero -->
-    <section class="pb-16 pt-28 md:pb-20 md:pt-36" aria-labelledby="hero-heading">
+    <section class="pb-12 pt-28 md:pb-14 md:pt-32" aria-labelledby="hero-heading">
         <Container size="xl">
-            <div class="grid items-center gap-10 lg:grid-cols-[1fr_auto] lg:gap-16">
+            <div class="grid items-center gap-8 md:grid-cols-[1fr_auto] md:gap-14">
                 <div class="max-w-3xl">
-                    <img
-                        src={PROFILE.PHOTO}
-                        alt={`Portrait of ${PROFILE.NAME}`}
-                        width="819"
-                        height="1024"
-                        class="mb-6 w-24 rounded-2xl border border-slate-200 object-cover aspect-[819/1024] dark:border-slate-800 lg:hidden"
-                    />
-                    <h1 id="hero-heading" class="text-4xl font-semibold tracking-tight text-slate-900 dark:text-white md:text-5xl">
-                        {PROFILE.NAME}
-                    </h1>
-                    <p class="mt-3 text-xl font-medium text-slate-700 dark:text-slate-200 md:text-2xl">{PROFILE.HEADLINE}</p>
-                    <p class="mt-3 flex flex-wrap gap-x-2 gap-y-1 text-sm font-semibold text-brand-700 dark:text-brand-400 md:text-base">
-                        {
-                            PROFILE.THEMES.map((theme, i) => (
-                                <>
-                                    {i > 0 && <span aria-hidden="true" class="text-slate-300 dark:text-slate-600">·</span>}
-                                    <span>{theme}</span>
-                                </>
-                            ))
-                        }
-                    </p>
-                    <p class="mt-6 max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-400 md:text-lg">
-                        I am a Ph.D. candidate in Computer Science at {PROFILE.AFFILIATION}, researching security and privacy
-                        in decentralized and programmable systems. Before beginning my Ph.D., I spent five years in industry as a
-                        software engineer, building production web applications, backend systems, and APIs.
-                    </p>
-
-                    <div class="mt-8 flex flex-wrap gap-3">
-                        <a
-                            href="/research"
-                            class="inline-flex items-center gap-2 rounded-md bg-brand-700 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-800 dark:bg-brand-600 dark:hover:bg-brand-500"
-                        >
-                            Explore Research
-                        </a>
-                        <a
-                            href="/projects"
-                            class="inline-flex items-center gap-2 rounded-md border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-800 transition-colors hover:border-brand-600 hover:text-brand-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
-                        >
-                            View Projects
-                        </a>
-                        <a
-                            href={PROFILE.CV_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="inline-flex items-center gap-2 rounded-md border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-800 transition-colors hover:border-brand-600 hover:text-brand-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
-                        >
-                            <Icon name="download" />
-                            Download CV
-                            <span class="sr-only"> (PDF, opens in a new tab)</span>
-                        </a>
+                    <h1 id="hero-heading" class="text-4xl font-semibold tracking-tight text-slate-900 dark:text-white md:text-5xl">{PROFILE.NAME}</h1>
+                    <p class="mt-3 text-xl font-medium text-brand-700 dark:text-brand-400 md:text-2xl">{PROFILE.HEADLINE}</p>
+                    <p class="mt-3 text-sm text-slate-700 dark:text-slate-300">Ph.D. Candidate in Computer Science · {PROFILE.AFFILIATION}<br /><span class="text-slate-600 dark:text-slate-400">Expected graduation: {PROFILE.EXPECTED_GRADUATION}</span></p>
+                    <p class="mt-5 max-w-2xl leading-relaxed text-slate-600 dark:text-slate-300">I study security and privacy in Ethereum accounts, smart contracts, and zero-knowledge applications. My work combines program analysis, adversarial evaluation, and protocol design to investigate how these systems behave under attack.</p>
+                    <p class="mt-4 max-w-2xl border-l-2 border-brand-600 pl-3 text-sm font-medium text-slate-800 dark:text-slate-200">{PROFILE.JOB_MARKET}</p>
+                    <div class="mt-6 flex flex-wrap gap-3">
+                        <a href="/research#publications" class="rounded-md bg-brand-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-800 dark:bg-brand-700 dark:hover:bg-brand-800">Research & Publications</a>
+                        <a href={PROFILE.CV_URL} target="_blank" rel="noopener noreferrer" class="rounded-md border border-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-800 hover:border-brand-600 dark:border-slate-700 dark:text-white">Academic CV<span class="sr-only"> (PDF, opens in a new tab)</span></a>
+                        <a href={`mailto:${PROFILE.EMAIL}`} class="rounded-md border border-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-800 hover:border-brand-600 dark:border-slate-700 dark:text-white">Email</a>
                     </div>
-
-                    <ul class="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm" aria-label="Profiles">
-                        {
-                            secondaryLinks.map((social) => (
-                                <li>
-                                    <a
-                                        href={social.HREF}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        class="inline-flex items-center gap-1.5 font-medium text-slate-600 hover:text-brand-700 dark:text-slate-400 dark:hover:text-brand-400"
-                                    >
-                                        <Icon name={iconFor(social.ICON)} />
-                                        {social.TEXT}
-                                        <span class="sr-only"> (opens in a new tab)</span>
-                                    </a>
-                                </li>
-                            ))
-                        }
-                    </ul>
+                    <ResourceLinks links={profiles} class="mt-5" />
                 </div>
-
-                <div class="animate hidden lg:block">
-                    <img
-                        src={PROFILE.PHOTO}
-                        alt={`Portrait of ${PROFILE.NAME}`}
-                        width="819"
-                        height="1024"
-                        class="w-64 max-w-xs rounded-2xl border border-slate-200 object-cover aspect-[819/1024] shadow-sm dark:border-slate-800"
-                    />
-                </div>
+                <img src={PROFILE.PHOTO} alt={`Portrait of ${PROFILE.NAME}`} width="819" height="1024" class="hidden w-48 rounded-2xl border border-slate-200 object-cover shadow-sm dark:border-slate-800 md:block lg:w-56" />
             </div>
         </Container>
     </section>
-
-    <!-- 2. Introduction -->
-    <section class="border-t border-slate-200 py-16 dark:border-slate-800 md:py-20" aria-labelledby="about-heading">
+    <section class="border-t border-slate-200 py-12 dark:border-slate-800 md:py-16" aria-labelledby="selected-research-heading">
         <Container size="xl">
-            <div class="grid gap-10 lg:grid-cols-[3fr_2fr] lg:gap-16">
-                <div>
-                    <h2 id="about-heading" class="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white md:text-[1.75rem]">
-                        Security research, grounded in engineering
-                    </h2>
-                    <div class="mt-4 space-y-4 leading-relaxed text-slate-600 dark:text-slate-400 md:text-lg">
-                        <p>
-                            My research sits at the intersection of security, decentralized systems, protocol design, and
-                            cryptographic systems. I am interested in what happens when a guarantee that holds on paper meets
-                            real blockchain state, real transactions, and real software.
-                        </p>
-                        <p>
-                            Industry experience shapes how I work. Having built and maintained production systems, I pay close
-                            attention to how designs are actually implemented and deployed, and I build prototypes to test ideas
-                            rather than stopping at the model.
-                        </p>
-                    </div>
-                </div>
-                <dl class="grid content-start gap-4 rounded-xl border border-slate-200 bg-slate-50 p-6 text-sm dark:border-slate-800 dark:bg-slate-900/50">
-                    {
-                        atAGlance.map((item) => (
-                            <div class="grid grid-cols-[5.5rem_1fr] gap-3">
-                                <dt class="font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">{item.term}</dt>
-                                <dd class="text-slate-800 dark:text-slate-200">{item.detail}</dd>
-                            </div>
-                        ))
-                    }
-                </dl>
+            <SectionHeader id="selected-research-heading" title="Selected Research" description="Account authorization, privacy-preserving protocols, and security analysis." href="/research" linkText="All research & publications" />
+            <div class="grid gap-5 md:grid-cols-2">{featuredResearch.map(project => <ResearchCard project={project} />)}</div>
+        </Container>
+    </section>
+    <section class="border-t border-slate-200 py-12 dark:border-slate-800 md:py-16" aria-labelledby="directions-heading">
+        <Container size="xl">
+            <SectionHeader id="directions-heading" title="Research Directions" description="Questions shaping my next investigations." href="/research#directions" linkText="Read the research agenda" />
+            <div class="grid gap-8 md:grid-cols-3">{researchDirections.map(direction => <div><h3 class="text-lg font-semibold text-slate-900 dark:text-white">{direction.title}</h3><p class="mt-2 leading-relaxed text-slate-600 dark:text-slate-400">{direction.question}</p></div>)}</div>
+        </Container>
+    </section>
+    <section class="border-t border-slate-200 py-12 dark:border-slate-800 md:py-16" aria-labelledby="teaching-heading">
+        <Container size="xl">
+            <div class="grid gap-10 md:grid-cols-2">
+                <div><h2 id="teaching-heading" class="text-2xl font-semibold text-slate-900 dark:text-white">Teaching & Mentoring</h2><p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-400">As a {teaching.role} at {teaching.organization}, I develop programming materials, deliver teaching and lab sessions, and mentor student software projects.</p><p class="mt-3 text-sm font-medium">{teaching.current}.</p><p class="mt-3 text-sm font-semibold text-brand-700 dark:text-brand-400">{teachingAward.title} · {teachingAward.year}</p><a href="/teaching" class="text-link mt-5 inline-block font-semibold">Courses & teaching experience →</a></div>
+                <div><h2 class="text-2xl font-semibold text-slate-900 dark:text-white">Education</h2><ul class="mt-4 space-y-4">{education.map(degree => <li><p class="font-semibold">{degree.degree}, {degree.field}</p><p class="mt-1 text-sm text-slate-600 dark:text-slate-400">{degree.institution}<br />{degree.period}</p></li>)}</ul></div>
             </div>
         </Container>
     </section>
-
-    <!-- 3. Selected Research -->
-    <section class="border-t border-slate-200 py-16 dark:border-slate-800 md:py-20">
+    <section class="border-t border-slate-200 py-12 dark:border-slate-800 md:py-16" aria-labelledby="engineering-heading">
         <Container size="xl">
-            <SectionHeader
-                id="research"
-                title="Selected Research"
-                description="Security and privacy in decentralized, programmable, and zero-knowledge systems."
-                href="/research"
-                linkText="Research & publications"
-            />
-            <div class="grid gap-5 md:grid-cols-2">
-                {researchProjects.map((project) => <ResearchCard project={project} />)}
-            </div>
+            <SectionHeader id="engineering-heading" title="Research, Grounded in Engineering" description="Nearly five years of professional software engineering before my Ph.D., building backend systems, data pipelines, and production web applications." href="/projects" linkText="Software & research artifacts" />
+            <div class="grid gap-6 md:grid-cols-3">{industryExperience.map(role => <div><p class="text-sm text-slate-600 dark:text-slate-400">{role.period}</p><h3 class="mt-1 text-lg font-semibold text-slate-900 dark:text-white">{role.organization}</h3><p class="mt-1 text-sm font-medium">{role.role}</p><p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{role.summary}</p></div>)}</div>
+            <a href={PROFILE.RESUME_URL} target="_blank" rel="noopener noreferrer" class="text-link mt-7 inline-block text-sm font-semibold">Industry Research Résumé (PDF)<span class="sr-only"> (opens in a new tab)</span></a>
         </Container>
     </section>
-
-    <!-- 4. Featured Projects -->
-    <section class="border-t border-slate-200 py-16 dark:border-slate-800 md:py-20">
-        <Container size="xl">
-            <SectionHeader
-                id="projects"
-                title="Featured Projects & Tools"
-                description="Software I have built: web tools people use, installable utilities, and smart-contract and full-stack systems."
-                href="/projects"
-                linkText="All projects"
-            />
-            <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                {featuredProjects.map((project) => <ProjectCard project={project} />)}
-            </div>
-        </Container>
-    </section>
-
-    <!-- 5. Industry Experience -->
-    <section class="border-t border-slate-200 py-16 dark:border-slate-800 md:py-20">
-        <Container size="xl">
-            <SectionHeader
-                id="experience"
-                title="Industry Experience"
-                description="Five years of professional software engineering before beginning my Ph.D., building and running production systems."
-            />
-            <ol class="divide-y divide-slate-200 dark:divide-slate-800">
-                {
-                    industryExperience.map((role) => (
-                        <li class="grid gap-3 py-6 first:pt-0 last:pb-0 md:grid-cols-[12rem_1fr] md:gap-8">
-                            <p class="text-sm font-medium tabular-nums text-slate-500 dark:text-slate-400">{role.period}</p>
-                            <div class="flex gap-4">
-                                {role.logo && (
-                                    <img
-                                        src={role.logo}
-                                        alt=""
-                                        width="100"
-                                        height="100"
-                                        loading="lazy"
-                                        class="mt-0.5 size-10 shrink-0 rounded-md border border-slate-200 bg-white object-contain p-0.5 dark:border-slate-700"
-                                    />
-                                )}
-                                <div>
-                                    <h3 class="font-semibold text-slate-900 dark:text-white">
-                                        {role.role} <span class="font-normal text-slate-500 dark:text-slate-400">at</span> {role.organization}
-                                    </h3>
-                                    <p class="mt-1 text-slate-600 dark:text-slate-400">{role.summary}</p>
-                                    {role.highlights && (
-                                        <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600 marker:text-slate-400 dark:text-slate-400">
-                                            {role.highlights.map((highlight) => (
-                                                <li>{highlight}</li>
-                                            ))}
-                                        </ul>
-                                    )}
-                                </div>
-                            </div>
-                        </li>
-                    ))
-                }
-            </ol>
-        </Container>
-    </section>
-
-    <!-- 6. Teaching & Education -->
-    <section class="border-t border-slate-200 py-16 dark:border-slate-800 md:py-20">
-        <Container size="xl">
-            <div class="grid gap-12 lg:grid-cols-2 lg:gap-16">
-                <div>
-                    <SectionHeader id="teaching" title="Teaching" />
-                    <p class="font-semibold text-slate-900 dark:text-white">{teaching.organization}</p>
-                    <p class="text-sm text-slate-500 dark:text-slate-400">{teaching.role} · {teaching.period}</p>
-                    <p class="mt-5 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Courses</p>
-                    <ul class="mt-2 space-y-2.5">
-                        {
-                            teaching.courses.map((course) => (
-                                <li class="text-sm">
-                                    <span class="font-medium text-slate-800 dark:text-slate-200">
-                                        {course.code && `${course.code} — `}{course.name}
-                                    </span>
-                                    <span class="text-slate-500 dark:text-slate-400"> · {course.detail}</span>
-                                </li>
-                            ))
-                        }
-                    </ul>
-                </div>
-                <div>
-                    <SectionHeader id="education" title="Education" />
-                    <div class="rounded-xl border border-brand-200 bg-brand-50/60 p-5 dark:border-brand-900 dark:bg-brand-500/5">
-                        <p class="font-semibold text-slate-900 dark:text-white">{phd.degree}, {phd.field}</p>
-                        <p class="text-sm text-slate-600 dark:text-slate-400">{phd.institution} · {phd.period}</p>
-                    </div>
-                    <ul class="mt-4 space-y-3 px-1">
-                        {
-                            earlierDegrees.map((degree) => (
-                                <li class="text-sm">
-                                    <span class="font-medium text-slate-800 dark:text-slate-200">
-                                        {degree.degree} in {degree.field}
-                                    </span>
-                                    <span class="text-slate-500 dark:text-slate-400"> · {degree.institution}, {degree.period}</span>
-                                </li>
-                            ))
-                        }
-                    </ul>
-                </div>
-            </div>
-        </Container>
-    </section>
-
-    <!-- 7. Certifications -->
-    <Certifications />
-
-    <!-- 8. Contact -->
-    <div class="border-t border-slate-200 dark:border-slate-800">
-        <ContactCTA />
-    </div>
+    <ContactCTA />
 </PageLayout>

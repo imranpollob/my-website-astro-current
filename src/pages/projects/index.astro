@@ -1,139 +1,46 @@
 ---
 import Container from "@components/Container.astro";
 import ContactCTA from "@components/ContactCTA.astro";
-import Icon from "@components/Icon.astro";
 import ProjectCard from "@components/ProjectCard.astro";
+import ResearchCard from "@components/ResearchCard.astro";
 import ResourceLinks from "@components/ResourceLinks.astro";
 import SectionHeader from "@components/SectionHeader.astro";
 import PageLayout from "@layouts/PageLayout.astro";
-import { GITHUB_URL, PROJECTS } from "@consts";
+import { PROJECTS } from "@consts";
 import { projectLinks, projectsIn } from "@data/projects";
-
-const tools = projectsIn("tools");
-const cliTools = projectsIn("installable");
-const desktopApps = projectsIn("desktop");
-const engineering = projectsIn("engineering");
+import { featuredResearch } from "@data/research";
+const artifacts = featuredResearch.filter(project => project.links?.some(link => link.label === "Code"));
+const security = projectsIn("security");
+const tools = [...projectsIn("tools"), ...projectsIn("engineering")];
+const installable = [...projectsIn("installable"), ...projectsIn("desktop")];
 const more = projectsIn("more");
-
-const jumpLinks = [
-    { href: "#tools", label: "Tools & Applications" },
-    { href: "#installable", label: "Installable Tools" },
-    { href: "#engineering", label: "Engineering Projects" },
-    { href: "#more", label: "More Projects" },
-];
 ---
-
-<PageLayout title={PROJECTS.SEO_TITLE ?? PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
-    <section class="pb-12 pt-28 md:pt-36" aria-labelledby="projects-heading">
-        <Container size="xl">
-            <div class="max-w-3xl">
-                <h1 id="projects-heading" class="text-3xl font-semibold tracking-tight text-slate-900 dark:text-white md:text-4xl">
-                    {PROJECTS.TITLE}
-                </h1>
-                <p class="mt-5 text-base leading-relaxed text-slate-600 dark:text-slate-400 md:text-lg">
-                    Software I build and maintain outside my research: tools people use in the browser, utilities you can
-                    install and run locally, and engineering projects spanning smart-contract protocols and full-stack
-                    systems. Research prototypes are described on the <a href="/research" class="text-link">Research</a> page.
-                </p>
-                <nav aria-label="On this page" class="mt-8">
-                    <ul class="flex flex-wrap gap-x-5 gap-y-2 text-sm">
-                        {
-                            jumpLinks.map((link) => (
-                                <li>
-                                    <a href={link.href} class="text-link font-medium">
-                                        {link.label}
-                                    </a>
-                                </li>
-                            ))
-                        }
-                    </ul>
-                </nav>
-            </div>
-        </Container>
-    </section>
-
-    <!-- Tools & Applications -->
-    <section class="border-t border-slate-200 py-16 dark:border-slate-800 md:py-20">
-        <Container size="xl">
-            <SectionHeader
-                id="tools"
-                title="Tools & Applications"
-                description="Web apps and utilities that run in the browser, with nothing to install."
-            />
-            <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                {tools.map((project) => <ProjectCard project={project} showImage />)}
-            </div>
-        </Container>
-    </section>
-
-    <!-- Installable Tools -->
-    <section class="border-t border-slate-200 py-16 dark:border-slate-800 md:py-20">
-        <Container size="xl">
-            <SectionHeader
-                id="installable"
-                title="Installable Tools"
-                description="Published packages and release builds that run locally. Commands are the ones each project's README recommends."
-            />
-            <div class="grid gap-10 lg:grid-cols-[3fr_1fr] lg:gap-5">
-                <div>
-                    <h3 class="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Command-line tools</h3>
-                    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                        {cliTools.map((project) => <ProjectCard project={project} headingLevel="h4" />)}
-                    </div>
-                </div>
-                <div>
-                    <h3 class="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Desktop app</h3>
-                    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
-                        {desktopApps.map((project) => <ProjectCard project={project} headingLevel="h4" />)}
-                    </div>
-                </div>
-            </div>
-        </Container>
-    </section>
-
-    <!-- Selected Engineering Projects -->
-    <section class="border-t border-slate-200 py-16 dark:border-slate-800 md:py-20">
-        <Container size="xl">
-            <SectionHeader
-                id="engineering"
-                title="Selected Engineering Projects"
-                description="Projects chosen for their engineering depth: protocol design, backend architecture, APIs, and real-time systems."
-            />
-            <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                {engineering.map((project) => <ProjectCard project={project} showImage />)}
-            </div>
-        </Container>
-    </section>
-
-    <!-- More Projects -->
-    <section class="border-t border-slate-200 py-16 dark:border-slate-800 md:py-20">
-        <Container size="xl">
-            <SectionHeader id="more" title="More Projects" href={GITHUB_URL} linkText="All repositories on GitHub" />
-            <ul class="divide-y divide-slate-200 border-y border-slate-200 dark:divide-slate-800 dark:border-slate-800">
-                {
-                    more.map((project) => (
-                        <li class="grid gap-2 py-4 md:grid-cols-[16rem_1fr_auto] md:items-center md:gap-6">
-                            <div>
-                                <h3 class="font-semibold text-slate-900 dark:text-white">{project.title}</h3>
-                                <p class="text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">{project.kind}</p>
-                            </div>
-                            <p class="text-sm text-slate-600 dark:text-slate-400">{project.description}</p>
-                            <ResourceLinks links={projectLinks(project)} context={project.title} />
-                        </li>
-                    ))
-                }
-            </ul>
-            <p class="mt-6 text-sm">
-                <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" class="text-link inline-flex items-center gap-1.5 font-semibold">
-                    <Icon name="github" />
-                    github.com/imranpollob
-                    <span class="sr-only"> (opens in a new tab)</span>
-                </a>
-            </p>
-        </Container>
-    </section>
-
-    <div class="border-t border-slate-200 dark:border-slate-800">
-        <ContactCTA />
-    </div>
+<PageLayout title={PROJECTS.SEO_TITLE} description={PROJECTS.DESCRIPTION}>
+    <section class="pb-12 pt-28 md:pt-32"><Container size="xl">
+        <h1 class="page-heading text-4xl">Projects & Research Artifacts</h1>
+        <p class="mt-5 max-w-3xl leading-relaxed text-slate-600 dark:text-slate-300">Implementations supporting my research, security and protocol engineering projects, and other open-source software I build and maintain.</p>
+        <nav aria-label="On this page" class="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold"><a class="text-link" href="#research-artifacts">Research artifacts</a><a class="text-link" href="#engineering">Security & protocols</a><a class="text-link" href="#tools">Developer tools</a><a class="text-link" href="#installable">Installable tools</a><a class="text-link" href="#more">More projects</a></nav>
+    </Container></section>
+    <section class="border-t border-slate-200 py-12 dark:border-slate-800"><Container size="xl">
+        <SectionHeader id="research-artifacts" title="Research Artifacts" description="Public implementations linked to the corresponding papers, evaluation context, and limitations." />
+        <div class="grid gap-5 md:grid-cols-2">{artifacts.map(project => <ResearchCard project={project} />)}</div>
+        <a href="/research" class="text-link mt-5 inline-block text-sm">All research, including ZKScan and Secure-BSM →</a>
+    </Container></section>
+    <section class="border-t border-slate-200 py-12 dark:border-slate-800"><Container size="xl">
+        <SectionHeader id="engineering" title="Security & Protocol Engineering" description="Supporting tools and Solidity implementations. These projects demonstrate engineering work; they are separate from the published research artifacts." />
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{security.map(project => <ProjectCard project={project} />)}</div>
+    </Container></section>
+    <section class="border-t border-slate-200 py-12 dark:border-slate-800"><Container size="xl">
+        <SectionHeader id="tools" title="Developer Tools & Applications" description="Web tools and full-stack applications built outside my research." />
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{tools.map(project => <ProjectCard project={project} showImage />)}</div>
+    </Container></section>
+    <section class="border-t border-slate-200 py-12 dark:border-slate-800"><Container size="xl">
+        <SectionHeader id="installable" title="Installable Tools" description="Command-line utilities and desktop applications." />
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{installable.map(project => <ProjectCard project={project} />)}</div>
+    </Container></section>
+    <section class="border-t border-slate-200 py-12 dark:border-slate-800"><Container size="xl">
+        <SectionHeader id="more" title="More Projects" />
+        <ul class="divide-y divide-slate-200 dark:divide-slate-800">{more.map(project => <li class="grid gap-4 py-5 md:grid-cols-[1fr_auto]"><div><h3 class="font-semibold text-slate-900 dark:text-white">{project.title}</h3><p class="mt-1 max-w-3xl text-sm text-slate-600 dark:text-slate-400">{project.description}</p></div><ResourceLinks links={projectLinks(project)} context={project.title} /></li>)}</ul>
+    </Container></section>
+    <ContactCTA />
 </PageLayout>

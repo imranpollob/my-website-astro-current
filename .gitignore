@@ -19,3 +19,9 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# Local document-generation environment
+.venv-cv/
+
+# Review artifacts; publishable copies live under public/
+output/
